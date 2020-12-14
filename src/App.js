@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './App.css';
+import DropDown from './DropDown.js'
 
 
 
@@ -18,7 +19,8 @@ export default function App() {
     kdRatio: [],
     hits: [],
     shots: [],
-    value: ["iw8_ar_falima"],
+    value: [],
+    gunName: [],
   })
 
   useEffect(() => {
@@ -26,7 +28,7 @@ export default function App() {
     axios
       .get('http://localhost:8080/g')
       .then(res => {
-        console.log(res, "=-=-=-=-=-=")
+        console.log(res.data.weapon_assault_rifle)
         const guns = state.value
         const deaths = res.data.weapon_assault_rifle[guns].properties.deaths
         const hits = res.data.weapon_assault_rifle[guns].properties.hits
@@ -47,7 +49,7 @@ export default function App() {
       .catch(error => {
         console.log(error);
       })
-  }, [state.guns])
+  }, [state.value])
 
   const submitForm = (event) => {
     setState(prev => ({
@@ -56,16 +58,39 @@ export default function App() {
     }))
     event.preventDefault();
   }
+
+
+  const changeGun = () => {
+
+  }
+
+
+  // console.log(event.target.options[event.target.options.selectedIndex].innerText)
+
   return (
     <div>
       <p>kills {state.kills}</p>
-      <p>guns {state.guns}</p>
+      <p>guns {state.gunName}</p>
       <p>deaths {state.deaths}</p>
       <p>kdRatio {state.kdRatio}</p>
       <p>shots {state.shots}</p>
       <p>hits {state.hits}</p>
       <br/>
-      <form onSubmit={submitForm}>
+      
+      <DropDown
+      
+      newGun={changeGun}
+      selected={event => setState(prev => ({
+        ...prev,
+        value: event.target.value,
+        gunName: event.target.options[event.target.options.selectedIndex].innerText
+      })) }
+      />
+    </div>
+  );
+}
+
+{/* <form onSubmit={submitForm}>
         <label>
           ENTER GUN
           <br/>
@@ -77,7 +102,4 @@ export default function App() {
           />
         </label>
         <input type="submit" value="Submit" />
-      </form>
-    </div>
-  );
-}
+      </form> */}
