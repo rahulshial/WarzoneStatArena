@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { Component, useState, useEffect } from "react";
+import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
-import DropDown from './DropDown.js'
-
-
-
-
-
-
-// ####################### GUNS #########################
-// res.data.weapon_assault_rifle
+import Home from './RouterPages/Home.js';
+import Guns from './RouterPages/Guns.js';
+import PrimarySearchAppBar from './Navbar.js';
+import Roulette from './RouterPages/Roulette.js';
 
 export default function App() {
   const [state, setState] = useState({
-    guns: [],
+    guns: ["iw8_ar_tango21"],
     kills: [],
     deaths: [],
     kdRatio: [],
@@ -26,7 +22,7 @@ export default function App() {
   useEffect(() => {
     console.log("In Axios");
     axios
-      .get('http://localhost:8080/g')
+      .get('http://localhost:8080/gg')
       .then(res => {
         console.log(res.data.weapon_assault_rifle)
         const guns = state.value
@@ -49,57 +45,28 @@ export default function App() {
       .catch(error => {
         console.log(error);
       })
-  }, [state.value])
-
-  const submitForm = (event) => {
-    setState(prev => ({
-      ...prev,
-      guns: state.value
-    }))
-    event.preventDefault();
-  }
-
-
-  const changeGun = () => {
-
-  }
-
-
-  // console.log(event.target.options[event.target.options.selectedIndex].innerText)
+  }, [])
+  // state.value // This is what gets updated for the effect!!
 
   return (
     <div>
-      <p>kills {state.kills}</p>
-      <p>guns {state.gunName}</p>
-      <p>deaths {state.deaths}</p>
-      <p>kdRatio {state.kdRatio}</p>
-      <p>shots {state.shots}</p>
-      <p>hits {state.hits}</p>
-      <br/>
-      
-      <DropDown
-      
-      newGun={changeGun}
-      selected={event => setState(prev => ({
-        ...prev,
-        value: event.target.value,
-        gunName: event.target.options[event.target.options.selectedIndex].innerText
-      })) }
-      />
+      <PrimarySearchAppBar />
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/guns' component={Guns} />
+        <Route exact path='/roulette' component={Roulette} />
+
+      </Switch>
     </div>
   );
 }
 
-{/* <form onSubmit={submitForm}>
-        <label>
-          ENTER GUN
-          <br/>
-          <input type="text" value={state.value}
-            onChange={event => setState(prev => ({
-              ...prev,
-              value: event.target.value
-            }))}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form> */}
+
+
+/* <DropDown
+selected={event => setState(prev => ({
+  ...prev,
+  value: event.target.value,
+  gunName: event.target.options[event.target.options.selectedIndex].innerText
+}))}
+/> */

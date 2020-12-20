@@ -1,7 +1,4 @@
 
-
-
-
 export default function DropDown(props) {
 
   return (
@@ -27,7 +24,6 @@ export default function DropDown(props) {
           <option value="iw8_ar_sierra552">sierra552</option>
           <option value="iw8_ar_tango21">tango21</option>
           <option value="iw8_ar_valpha">valpha</option>
-
       </select>
       <br/>
         <input type="submit" value="Submit"/>
