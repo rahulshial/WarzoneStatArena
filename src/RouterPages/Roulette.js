@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SwitchesSize from '../Switch'
 
 
 
@@ -7,6 +8,8 @@ export default function Roullette() {
     guns: [],
     dropZones: []
   })
+
+
   function generateRoullette() {
   
   
@@ -29,8 +32,12 @@ export default function Roullette() {
   
 
   }
+
+  
+
   return (
     <div>
+
       <div className ="guns">
         <h1>Gun</h1>
         <br/>
@@ -51,3 +58,7 @@ export default function Roullette() {
     
   )
 }
+
+
+
+
