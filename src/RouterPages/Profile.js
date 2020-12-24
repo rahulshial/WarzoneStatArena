@@ -12,6 +12,7 @@ export default function Profile(props) {
 
     return (
       <StatCard
+      image={fav.image}
       hits={fav.hits}
       kills={fav.kills}
       kd={fav.kd}

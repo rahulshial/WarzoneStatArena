@@ -24,8 +24,8 @@ export default function GunImage(props) {
     const image = gunImgs[gun]
 
 
-
     const onButtonClick = (gun) => {
+      
       const gunObj = {
         gun,
         hits,
@@ -36,6 +36,7 @@ export default function GunImage(props) {
         headShots,
         image,
       }
+      console.log(gunObj.image);
       favs.push(gunObj)
       const gunsArr = JSON.stringify(favs)
       localStorage.setItem("name", gunsArr)
