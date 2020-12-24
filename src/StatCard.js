@@ -1,15 +1,16 @@
 import React from 'react'
 
 export default function StatCard(props) {
+  const {image, hits, kills, kd, headshots, accuracy, shots, gunName, onAdd} = props;
+  console.log(image);
   return (
     <div class="container">
       <div class="card">
         <div class="face face1">
-          <button onClick={() => onButtonClick(gun)} >ADD TO PROFILE</button>
+          <button onClick={() => onAdd(gunName)} >ADD TO PROFILE</button>
           <div class="content">
             <div class='gun-flex'>
-
-              <img class="gun-icon" src={gunImgs[gun]} alt="" />
+              <img class="gun-icon" src={image} alt="" />
             </div>
           </div>
         </div>
@@ -25,13 +26,12 @@ export default function StatCard(props) {
           <div class="top-row">
             <h5>{hits}</h5>
             <h5>{kills}</h5>
-            <h5>{kdRatio}</h5>
-            <h5>{headShots}</h5>
+            <h5>{kd}</h5>
+            <h5>{headshots}</h5>
             <h5>{accuracy}</h5>
             <h5>{shots}</h5>
           </div>
           <div class="achievements">
-
             <h2>Achievements</h2>
             <hr></hr>
             <div >

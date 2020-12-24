@@ -1,9 +1,9 @@
 import React from 'react'
+import StatCard from '../StatCard.js'
 
 
 
 export default function Profile(props) {
-
   const storedFavs = localStorage.getItem("name")
 
   const gunsArr = JSON.parse(storedFavs)
@@ -11,7 +11,14 @@ export default function Profile(props) {
   const favItems = gunsArr.map((fav) => {
 
     return (
-      <h1>{fav.gun}</h1>
+      <StatCard
+      hits={fav.hits}
+      kills={fav.kills}
+      kd={fav.kd}
+      headshots={fav.headshots}
+      accuracy={fav.accuracy}
+      shots={fav.shots}
+    />
     )
   })
   return (

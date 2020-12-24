@@ -5,9 +5,6 @@ import StatCard from './StatCard.js'
 // THIS CAN BE REMOVED SOON!
 const gunNames = ['RAM-7', "M4A1", "AS VAL", "FR 5.56", "M13", "AK-47", "Oden", "CR-56 AMAX", "Grau 5.56", "FAL", "AN-94", "Kilo-141", "FN Scar 17"]
 
-
-
-
 const favs = []
 
 export default function GunImage(props) {
@@ -16,7 +13,7 @@ export default function GunImage(props) {
   // https://gyazo.com/c46f6b283da6cffbab9a14605683eef7
 
   const weapons = Object.keys(shown).map((gun) => {
-    
+
     const hits = shown[gun].properties.hits
     const kills = shown[gun].properties.kills
     const kdRatio = Math.round(shown[gun].properties.kdRatio * 100) / 100
@@ -24,9 +21,11 @@ export default function GunImage(props) {
     const shots = shown[gun].properties.shots
     const deaths = shown[gun].properties.deaths
     const headShots = shown[gun].properties.headshots
+    const image = gunImgs[gun]
+
+
 
     const onButtonClick = (gun) => {
-
       const gunObj = {
         gun,
         hits,
@@ -35,20 +34,37 @@ export default function GunImage(props) {
         accuracy,
         shots,
         headShots,
+        image,
       }
       favs.push(gunObj)
       const gunsArr = JSON.stringify(favs)
       localStorage.setItem("name", gunsArr)
     }
-
     return (
-    <StatCard/>
+      <StatCard
+        gunName={gun}
+        image={gunImgs[gun]}
+        hits={hits}
+        kills={kills}
+        kd={kdRatio}
+        headshots={headShots}
+        accuracy={accuracy}
+        shots={shots}
+        onAdd={onButtonClick}
+      />
+    )
   });
+
+
+
+
+
   return (
     <>
       {weapons}
     </>
   )
+
 }
 
 
