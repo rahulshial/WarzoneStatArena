@@ -1,0 +1,39 @@
+
+.componenet{
+  display: flex;
+  align-items: center;
+}
+.checkbox {
+  display: flex;
+    /* border: solid; */
+    margin: 20px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.answers {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  justify-content: space-around;
+}
+
+
+h1 {
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  justify-content: space-between;
+  width: 600px;
+  height: 300px;
+  border: solid #5B6DCD;
+  padding: 10px;
+  margin: 20px;
+}
+
+.button {
+  border-radius: round ;
+  cursor: pointer;
+}
+
