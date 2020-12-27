@@ -7,11 +7,10 @@ import StatCard from './StatCard.js'
 const favs = []
 export default function GunImage(props) {
   const { shown, gunImgs } = props
-
-
   // Looping through whatever specific category was selected!
-  const weapons = Object.keys(shown).map((gun) => {
 
+  // WE CAN ADD SORTING HERE gun.kills or gun.headshots
+  const weapons = Object.keys(shown).map((gun) => {
     const hits = shown[gun].properties.hits
     const kills = shown[gun].properties.kills
     const kdRatio = Math.round(shown[gun].properties.kdRatio * 100) / 100
@@ -20,8 +19,6 @@ export default function GunImage(props) {
     const deaths = shown[gun].properties.deaths
     const headShots = shown[gun].properties.headshots
     const image = gunImgs[gun]
-
-
     const onButtonClick = (gun) => {
       const gunObj = {
         gun,
@@ -41,12 +38,6 @@ export default function GunImage(props) {
         .catch(err => {
           console.log(err);
         })
-
-
-      // console.log(gunObj.image);
-      // favs.push(gunObj)
-      // const gunsArr = JSON.stringify(favs)
-      // localStorage.setItem("name", gunsArr)
     }
     return (
       <StatCard

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import MultilineTextFields from '../Selectbox.js';
 import '../stats.css'
 import CenteredTabs from '../StatNavBar';
 import GunImage from '../GunImage'
@@ -116,56 +115,3 @@ export default function Guns(props) {
     </div>
   )
 }
-
-
-//
-{/* <div className="top-row">
-        <h4>Name</h4>
-        <h4>Hits</h4>
-        <h4>Kills</h4>
-        <h4>KD</h4>
-        <h4>Headshots</h4>
-        <h4>accuracy</h4>
-        <h4>shots</h4>
-        <h4>Deaths</h4>
-        <h4>Add To Custom</h4>
-      </div> */}
-
-// Row Style for stats
-{/* <div className="top-row">
-<h4>{gun}</h4>
-<h4>{hits}</h4>
-<h4>{kills}</h4>
-<h4>{kdRatio}</h4>
-<h4>{headShots}</h4>
-<h4>{accuracy}</h4>
-<h4>{shots}</h4>
-<h4>{deaths}</h4>
-<button>Add</button>
-</div> */}
-
-
-
-// This is that cool card we made  save for l8r
-
-//  <div class="container">
-// <div class="card">
-//     <div class="face face1">
-//         <div class="content">
-//             <div>
-//                 <img class="icon" src="https://titles.trackercdn.com/modern-warfare/db/images/icon_cac_weapon_sm_mpapa7.png" alt="" />
-//             </div>
-//         </div>
-//     </div>
-//     <div class="face face2 stats">
-//             <h5>Hits</h5>
-//             <h5>Kills</h5>
-//             <h5>KD</h5>
-//             <h5>HeadShots</h5>
-//             <h5>Acc</h5>
-//             <h5>Shots</h5>
-
-
-//     </div>
-// </div>
-// </div>

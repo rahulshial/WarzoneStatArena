@@ -35,10 +35,9 @@ export default function Profile(props) {
       })
   }, [])
 
-
   const earnedAchievements = Object.keys(state.achievements).map((achievement) => {
     return (
-      <img className="achiev-icons" src={state.achievements[achievement]} alt="" />
+      <img style={{ width: '3%' }} className="achiev-icons" src={state.achievements[achievement]} alt="" />
     )
   })
 
@@ -61,10 +60,14 @@ export default function Profile(props) {
     })
     return (
       <>
-        {favItems}
+        <div className="card-row">
+          {favItems}
+        </div>
         <div>
-          <h3 style={{ backgroundColor: "#272928", color: "white" }}>Achievements</h3>
+          <h3 style={{ textAlign: 'center', backgroundColor: "#272928", color: "white" }}>Achievements</h3>
+          <div style={{ display: "flex", flexDirection: "row", justifyContent:"center" }}>
           {earnedAchievements}
+        </div>
         </div>
       </>
     )
@@ -72,7 +75,9 @@ export default function Profile(props) {
     return (
       <>
         <h1>Empty</h1>
-        <Achievements />
+        <div style={{ display: "flex", flexDirection: "row", justifyContent:"center" }}>
+          {earnedAchievements}
+        </div>
       </>
     )
   }

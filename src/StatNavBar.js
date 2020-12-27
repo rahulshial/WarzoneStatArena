@@ -18,6 +18,7 @@ export default function CenteredTabs(props) {
     setTab(newTab)
     props.onSelect(newTab)
   }
+  
   return (
     <Paper className={classes.root}>
       <Tabs
