@@ -6,10 +6,9 @@ import Home from './RouterPages/Home.js';
 import Guns from './RouterPages/Guns.js';
 import Profile from './RouterPages/Profile.js'
 import PrimarySearchAppBar from './Navbar.js';
-import Roulette from './RouterPages/Roulette.js';
+import Roulette from './roulette/Roulette.js';
 
-export default function App() {
-
+export default function App(props) {
   return (
     <>
       <PrimarySearchAppBar />
@@ -22,3 +21,4 @@ export default function App() {
     </>
   );
 }
+
