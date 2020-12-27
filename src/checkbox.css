@@ -1,4 +1,7 @@
-
+.Roulette {
+  background-image: url("./img/warzone8.jpg");
+  padding-bottom: 30px;
+}
 .componenet{
   display: flex;
   align-items: center;

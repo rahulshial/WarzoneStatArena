@@ -8,11 +8,6 @@ import Roulette from './roulette/Roulette.js';
 
 
 export default function App(props) {
- 
-
-
-  
-  
   return (
     <div>
       <PrimarySearchAppBar />
@@ -30,10 +25,3 @@ export default function App(props) {
 
 
 
-/* <DropDown
-selected={event => setState(prev => ({
-  ...prev,
-  value: event.target.value,
-  gunName: event.target.options[event.target.options.selectedIndex].innerText
-}))}
-/> */

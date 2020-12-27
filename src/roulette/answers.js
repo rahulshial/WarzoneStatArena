@@ -45,13 +45,9 @@ export default function MediaCard(props) {
             label={props.title} checked={props.checked} onChange={props.onChange}/>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p" className={classes.text}>
-          
-          {props.class}:
-          
-           {props.selected}
-          
-          
-            
+          {props.selected}
+          <br/>
+          {props.class}
           </Typography>
         </CardContent>
       </CardActionArea>

@@ -10,6 +10,7 @@ import drop from "../img/droped.jpeg";
 import guned from "../img/loadout.jpg";
 import ruled from "../img/ruled.jpg";
 import mine from "../img/mine1.png";
+
 export default function Roulette(props) {
 
 
@@ -27,10 +28,11 @@ export default function Roulette(props) {
     primary:[],
     primaryClass:[],
     secondary:[],
+    secondaryClass:[],
     dropzone:[],
-    primaryImage:image,
+    primaryImage:[],
     secondaryImage:image1,
-    dropzoneImage:image
+    dropzoneImage:[]
   })
   
   
@@ -43,10 +45,12 @@ export default function Roulette(props) {
     //Primary Weapon
     let allowableChars1 = Math.floor(Math.random()*weapon.length);
     const primary = weapon[allowableChars1]
+    console.log(primary.image);
     if (primaryChecked) {
       setSelected(prev => ({
         ...prev,
         primary: primary.weapon,
+        primaryImage:"../img/trainstation-weapon.jpeg",
         primaryClass: primary.class
 
       
@@ -69,6 +73,7 @@ export default function Roulette(props) {
       setSelected(prev => ({
         ...prev,
         secondary: secondary.weapon,
+        secondaryClass: secondary.class
         
       }))
     } 
@@ -98,60 +103,55 @@ export default function Roulette(props) {
     } 
 
   }
-  console.log(selected.secondaryImage);
+  //console.log(selected.secondaryImage);
   return (
     <div className="Roulette">
-      <div className="checkbox">
-       {/*  <div>
-        <SwitchesSize 
-            checked={primaryChecked}
-            onChange = {() => setPrimaryChecked(!primaryChecked)}
-            label="Primary Gun"/>
-
-          <SwitchesSize 
-            checked={secondaryChecked}
-            onChange = {() => setSecondaryChecked(!secondaryChecked)}
-            label="Secondary Gun"/>
-        </div>
-        <div>
-        <SwitchesSize
-            className="size"
-            checked={dropzoneChecked}
-            onChange = {() => setDropzoneChecked(!dropzoneChecked)}
-            label="dropzone"/>
-
-          <SwitchesSize 
-            checked={rulesChecked}
-            onChange = {() => setRulesChecked(!rulesChecked)}
-            label="Rule"/>
-        </div> */}
-        {/* <div>
-          <ClassesNesting className="button" onClick={generateRoulette}/>
-        </div>  */} 
-      </div>
-      
         <div className="answers">
           <div className="test">
-            <MediaCard title= "Primary Gun" selected={selected.primary} class= {selected.primaryClass} image={guned} checked={primaryChecked}
-            onChange = {() => setPrimaryChecked(!primaryChecked)}/>
+            <MediaCard 
+              title= "Primary Gun" 
+              selected={selected.primary} class= {selected.primaryClass} 
+              image={selected.primaryImage} 
+              checked={primaryChecked}
+              onChange = {() => setPrimaryChecked(!primaryChecked)}
+            />
 
-            <MediaCard title= "Secondary Gun" selected= {selected.secondary} image={guned} checked={secondaryChecked}
-            onChange = {() => setSecondaryChecked(!secondaryChecked)}/>
+            <MediaCard 
+              title= "Secondary Gun" 
+              selected= {selected.secondary} 
+              class= {selected.secondaryClass} 
+              image={guned} 
+              checked={secondaryChecked}
+              onChange = {() => setSecondaryChecked (!secondaryChecked)}
+            />
           </div>
           Press on the Proximity Mine bellow to roll
           <div>
-            <MediaCard title= "Drop Zone" selected= {selected.dropzone} image={drop} className="size"
-            checked={dropzoneChecked}
-            onChange = {() => setDropzoneChecked(!dropzoneChecked)}/>
+            <MediaCard 
+              title= "Drop Zone" 
+              selected= {selected.dropzone} 
+              image={drop} 
+              className="size"
+              checked={dropzoneChecked}
+              onChange = {() => setDropzoneChecked(!dropzoneChecked)}
+            />
                 
-            <MediaCard title= "Rules" selected= {selected.rule} image={ruled} checked={rulesChecked}
-            onChange = {() => setRulesChecked(!rulesChecked)}/>
+            <MediaCard 
+              title= "Rules" 
+              selected= {selected.rule} 
+              image={ruled} 
+              checked={rulesChecked}
+              onChange = {() => setRulesChecked(!rulesChecked)}
+            />
            
           </div>
         </div>
         <div className="checkbox">
         
-            <img className="button" src={mine} onClick={generateRoulette}></img>
+            <img 
+              className="button" 
+              src={mine} onClick={generateRoulette}
+            />
           
         </div> 
     </div>
