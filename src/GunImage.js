@@ -1,17 +1,15 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import './stats.css'
 import StatCard from './StatCard.js'
 
-// THIS CAN BE REMOVED SOON!
-const gunNames = ['RAM-7', "M4A1", "AS VAL", "FR 5.56", "M13", "AK-47", "Oden", "CR-56 AMAX", "Grau 5.56", "FAL", "AN-94", "Kilo-141", "FN Scar 17"]
 
 const favs = []
-
 export default function GunImage(props) {
   const { shown, gunImgs } = props
-  // THIS IS OUR LOOP THROUGH SPECIFICALLY AR'S AND STATS
-  // https://gyazo.com/c46f6b283da6cffbab9a14605683eef7
 
+
+  // Looping through whatever specific category was selected!
   const weapons = Object.keys(shown).map((gun) => {
 
     const hits = shown[gun].properties.hits
@@ -25,7 +23,6 @@ export default function GunImage(props) {
 
 
     const onButtonClick = (gun) => {
-      
       const gunObj = {
         gun,
         hits,
@@ -36,10 +33,20 @@ export default function GunImage(props) {
         headShots,
         image,
       }
-      console.log(gunObj.image);
-      favs.push(gunObj)
-      const gunsArr = JSON.stringify(favs)
-      localStorage.setItem("name", gunsArr)
+      axios
+        .post("http://localhost:3030/favourited/moho", gunObj)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+
+
+      // console.log(gunObj.image);
+      // favs.push(gunObj)
+      // const gunsArr = JSON.stringify(favs)
+      // localStorage.setItem("name", gunsArr)
     }
     return (
       <StatCard

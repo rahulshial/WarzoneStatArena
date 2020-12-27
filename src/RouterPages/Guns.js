@@ -32,7 +32,7 @@ export default function Guns(props) {
   useEffect(() => {
     console.log("In Axios");
     axios
-      .get('http://localhost:8080/g/moho')
+      .get('http://localhost:3030/g/moho')
       .then(res => {
         const assaultRifles = res.data.weapon_assault_rifle
         const shotGuns = res.data.weapon_shotgun

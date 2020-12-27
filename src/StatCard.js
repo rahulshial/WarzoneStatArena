@@ -2,12 +2,11 @@ import React from 'react'
 
 export default function StatCard(props) {
   const {image, hits, kills, kd, headshots, accuracy, shots, gunName, onAdd} = props;
-  console.log(image);
   return (
     <div class="container">
       <div class="card">
         <div class="face face1">
-          <button onClick={() => onAdd(gunName)} >ADD TO PROFILE</button>
+          <button onClick={() => onAdd(gunName)} >{gunName}</button>
           <div class="content">
             <div class='gun-flex'>
               <img class="gun-icon" src={image} alt="" />
