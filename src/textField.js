@@ -38,12 +38,12 @@ export default function BasicTextFields() {
   
   
 
-   return [(
+   return (
     <form className={classes.root} noValidate autoComplete="off">
       <TextField id="outlined-basic" label="GAMER ID" variant="outlined" onChange= {(event) => setName(event.target.value)} />
       <button onClick={hello}/>
     </form>
-  ), name]; 
+  ); 
   
 }
 
