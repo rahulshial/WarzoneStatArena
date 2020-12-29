@@ -15,6 +15,7 @@ export default function useApplicationData () {
     getDropZone();
     getGun();
     getRules();
+    getGameId();
   
   }, [setState])
   
@@ -67,6 +68,12 @@ export default function useApplicationData () {
 
         }));
       });
+  }
+  function getGameId () {
+    axios.post('http://localhost:3002/')
+      .then ((req, res) => {
+        console.log(req.body);
+      })
   }
   return { 
     state,

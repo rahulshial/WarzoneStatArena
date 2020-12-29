@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
-import './stats.css'
+import './stats.css';
 import Home from './RouterPages/Home.js';
 import Guns from './RouterPages/Guns.js';
 import Profile from './RouterPages/Profile.js'

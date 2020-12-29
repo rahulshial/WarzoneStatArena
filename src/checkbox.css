@@ -1,6 +1,8 @@
 .Roulette {
   background-image: url("./img/warzone8.jpg");
   padding-bottom: 30px;
+  padding-top: 30px;
+
 }
 .componenet{
   display: flex;
@@ -22,7 +24,7 @@
 }
 
 
-h1 {
+/* h1 {
   display: flex;
   align-items: center;
   position: relative;
@@ -33,10 +35,15 @@ h1 {
   border: solid #5B6DCD;
   padding: 10px;
   margin: 20px;
-}
+} */
 
 .button {
   border-radius: round ;
   cursor: pointer;
 }
+
+.img {
+  width: 45px;
+}
+
 

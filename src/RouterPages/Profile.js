@@ -18,8 +18,8 @@ export default function Profile(props) {
 
   useEffect(() => {
     Promise.all([
-      axios.get('http://localhost:3030/favorites/moho'),
-      axios.get('http://localhost:3030/achieve/moho')
+      axios.get('https://shrouded-ridge-71805.herokuapp.com/favorites/moho'),
+      axios.get('https://shrouded-ridge-71805.herokuapp.com/achieve/moho')
     ])
       .then(([favorites, achievements]) => {
         // console.log(favorites.data);
