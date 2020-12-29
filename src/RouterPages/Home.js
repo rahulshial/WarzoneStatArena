@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -67,9 +67,11 @@ function click () {
   })
 }
 
-export default function Home() {
+export default function Home(props) {
   const classes = useStyles();
   console.log(classes.paper);
+  
+ 
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import '../stats.css'
 import CenteredTabs from '../StatNavBar';
-import GunImage from '../GunImage'
+import GunImage from '../GunImage';
 import { AR, SMG, SG, LMG, MRKSMN, SNPR, PISTOL, LAUNCHER } from '../images.js'
+import BasicTextFields from "../textField";
 
 
 export default function Guns(props) {
@@ -27,11 +28,13 @@ export default function Guns(props) {
 
   const [tab, setTab] = useState(0);
   const [guns, setGuns] = useState(state.assaultRifles)
-
+  const {nickname} = BasicTextFields()
+  console.log(nickname);
   useEffect(() => {
     console.log("In Axios");
+    //let nickname = name.replace("#", "%23")
     axios
-      .get('https://shrouded-ridge-71805.herokuapp.com/g/moho')
+      .get(`http://localhost:8080/stats/${nickname}`)
       .then(res => {
         const assaultRifles = res.data.weapon_assault_rifle
         const shotGuns = res.data.weapon_shotgun
