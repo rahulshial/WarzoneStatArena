@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import '../stats.css'
 import CenteredTabs from '../StatNavBar';
-import GunImage from '../GunImage'
+import GunImage from '../GunStats'
 import { AR, SMG, SG, LMG, MRKSMN, SNPR, PISTOL, LAUNCHER } from '../images.js'
 
 
@@ -31,7 +31,7 @@ export default function Guns(props) {
   useEffect(() => {
     console.log("In Axios");
     axios
-      .get('http://localhost:3030/g/moho')
+      .get('http://localhost:3030/stats/moho')
       .then(res => {
         const assaultRifles = res.data.weapon_assault_rifle
         const shotGuns = res.data.weapon_shotgun
@@ -72,10 +72,9 @@ export default function Guns(props) {
       })
   }, [])
 
-
   // Checking for what tab is selected on the stats page
-  const tabSelected = (indexValue) => {
-
+  const gunTabSelected = (indexValue) => {
+    console.log("We selected a tab");
     const categories = ["assaultRifles", "marksman", "snipers", "smg", "tacticals", "lethals", "lmg", "launcher", "pistol", "shotGuns", "supers", "other", "melee"];
 
     const gunCat = [
@@ -90,7 +89,6 @@ export default function Guns(props) {
       PISTOL,
       SG,
     ]
-
     // shown = setting the cat state to an object of the category
     setState(prev => ({
       ...prev,
@@ -103,9 +101,8 @@ export default function Guns(props) {
     <div style={{ display: "flex-box", flexDirection: 'center' }}>
       <h1>STATS</h1>
       <CenteredTabs
-        onSelect={tabSelected}
+        onSelect={gunTabSelected}
       />
-
       <div className="card-row">
         <GunImage
           shown={state.shown}

@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-
-
 export default function useApplicationData () {
   const [state, setState] = useState({
     guns:[],
@@ -15,7 +13,6 @@ export default function useApplicationData () {
     getDropZone();
     getGun();
     getRules();
-  
   }, [setState])
   
   function getDropZone() {

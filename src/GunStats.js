@@ -19,8 +19,9 @@ export default function GunImage(props) {
     const deaths = shown[gun].properties.deaths
     const headShots = shown[gun].properties.headshots
     const image = gunImgs[gun]
+
     const onButtonClick = (gun) => {
-      const gunObj = {
+      const  gunObj = {
         gun,
         hits,
         kills,
@@ -30,8 +31,9 @@ export default function GunImage(props) {
         headShots,
         image,
       }
+
       axios
-        .post("http://localhost:3030/favourited/moho", gunObj)
+        .post("http://localhost:3030/trackedstats/addnew", gunObj)
         .then(res => {
           console.log(res);
         })
@@ -53,10 +55,6 @@ export default function GunImage(props) {
       />
     )
   });
-
-
-
-
 
   return (
     <>

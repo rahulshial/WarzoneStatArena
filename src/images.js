@@ -23,7 +23,6 @@ import iw8_sm_beta from './images/guns/smg/pp19-bizon.png';
 import iw8_sm_smgolf45 from './images/guns/smg/striker-45.png';
 import iw8_sm_uzulu from './images/guns/smg/uzi.png';
 
-
 import iw8_sh_romeo870 from './images/guns/sg/model-680.png'
 import iw8_sh_charlie725 from './images/guns/sg/725.png'
 import iw8_sh_oscar12 from './images/guns/sg/origin-12-shotgun.png'
