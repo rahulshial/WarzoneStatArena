@@ -7,7 +7,7 @@ import { AR, SMG, SG, LMG, MRKSMN, SNPR, PISTOL, LAUNCHER } from '../images.js'
 import BasicTextFields from "../textField";
 import useApplicationData from "../hooks/useApplicationData";
 
-export default function Guns(props) {
+export default function Guns({name}) {
   const [gun, setGun] = useState({
     assaultRifles: [],
     shotGuns: [],
@@ -32,10 +32,10 @@ export default function Guns(props) {
 
   const [tab, setTab] = useState(0);
   const [guns, setGuns] = useState(state.assaultRifles)
-  console.log(state.name);
+  console.log(name.data);
   useEffect(() => {
     console.log("In Axios");
-    let nickname = state.name.replace("#", "%23")
+    let nickname = name.replace("#", "%23")
     axios
       .get(`http://localhost:8080/stats/${nickname}`)
       .then(res => {

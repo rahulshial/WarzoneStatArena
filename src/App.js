@@ -7,14 +7,31 @@ import Guns from './RouterPages/Guns.js';
 import Profile from './RouterPages/Profile.js'
 import PrimarySearchAppBar from './Navbar.js';
 import Roulette from './roulette/Roulette.js';
+import useApplicationData from "./hooks/useApplicationData";
+
 
 export default function App(props) {
+
+  const {
+    state,
+    setState,
+    nickname,
+  } = useApplicationData();
+  function setName(event) {
+    
+    setState(prev => ({
+      ...prev,
+      name: event.target.value
+    }))
+  }
+  
+ 
   return (
     <>
       <PrimarySearchAppBar />
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/guns' component={Guns} />
+        <Route exact path='/' render={(props) => <Home name={state.name} nickname={nickname} setName={setName}/>} />
+        <Route path='/guns' render={(props) => <Guns name={state.name} />} />
         <Route path='/roulette' component={Roulette} />
         <Route path='/myProf' component={Profile} />
       </Switch>

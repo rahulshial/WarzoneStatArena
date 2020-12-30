@@ -16,7 +16,7 @@ import BasicTextFields from "../textField";
 import GroupSizesColors from "../platform";
 import RecipeReviewCard from "../news";
 import EnhancedTable from "../leaderboard";
-import useApplicationData from "../hooks/useApplicationData";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,15 +68,11 @@ const useStyles = makeStyles((theme) => ({
   })
 } */
 
-export default function Home(props) {
+export default function Home({name, setName, nickname}) {
   const classes = useStyles();
   
-  const {
-    state,
-    setState,
-    nickname,
-  } = useApplicationData();
-  
+
+  console.log(name);
   
   
  
@@ -97,16 +93,9 @@ export default function Home(props) {
           <div className={classes.gameId}>
             <GroupSizesColors/>
             <BasicTextFields 
-              onChange={(event) => {
-                console.log(event.target.value);
-                setState(prev => ({
-                  ...prev,
-                  name: event.target.value
-                }))
-                console.log(state.name);
-               
-              }}
-              onSubmit={nickname()}
+              value={name}
+              onChange={setName}
+              onClick={nickname}
             />
           </div>
           <Button className={classes.shoot} href= "http://localhost:3000/auth/twitch/callback">
