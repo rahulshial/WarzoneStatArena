@@ -29,23 +29,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function GroupSizesColors() {
+export default function GroupSizesColors(props) {
   const classes = useStyles();
-  const [platform, setPlatform] = useState("");
-  console.log(platform);
+  const [platform, setPlatform] = useState("")
+  
+  //console.log(platform);
   return (
     <div className={classes.root}>
       <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
-        <Button onClick= {(event) => setPlatform("psn")}>
+        <Button value="psn" onClick= {(event) => console.log("shit")}>
           <img className="img" src={psn}/>
         </Button>
-        <Button  onClick= {(event) => setPlatform("activi")}>
+        <Button  value="acti" onClick= {(event) => setPlatform("activi")} >
           <img  className="img" src={Mw}/>
         </Button>
-        <Button onClick= {(event) => setPlatform("battlenet")}>
+        <Button value="battlenet" onClick= {(event) => setPlatform("battlenet")} >
           <img  className="img" src={battlenet}/>
         </Button>
-        <Button onClick= {(event) => setPlatform("xbox")}>
+        <Button value="xbox" onClick= {(event) => setPlatform("xbox")} >
           <img className="img" src={xbox}/>
         </Button>
       </ButtonGroup>

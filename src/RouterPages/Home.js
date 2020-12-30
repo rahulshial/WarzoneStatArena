@@ -10,12 +10,13 @@ import ruled from "../img/ruled.jpg";
 import mine from "../img/mine1.png";
 import backgournd from "../img/warzone8.jpg";
 import Button from '@material-ui/core/Button';
-import Axios from 'axios';
+import axios from 'axios';
 import twitch from "../img/twitch.png";
 import BasicTextFields from "../textField";
 import GroupSizesColors from "../platform";
 import RecipeReviewCard from "../news";
-import EnhancedTable from "../leaderboard"
+import EnhancedTable from "../leaderboard";
+import useApplicationData from "../hooks/useApplicationData";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,15 +62,22 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function click () {
+/* function click () {
   Axios.post("http://localhost:3000/auth/twitch/callback", (req, res) => {
     res.redirect("http://localhost:3000/auth/twitch/callback");
   })
-}
+} */
 
 export default function Home(props) {
   const classes = useStyles();
-  console.log(classes.paper);
+  
+  const {
+    state,
+    setState,
+    nickname,
+  } = useApplicationData();
+  
+  
   
  
   return (
@@ -88,7 +96,18 @@ export default function Home(props) {
           </p>
           <div className={classes.gameId}>
             <GroupSizesColors/>
-            <BasicTextFields/>
+            <BasicTextFields 
+              onChange={(event) => {
+                console.log(event.target.value);
+                setState(prev => ({
+                  ...prev,
+                  name: event.target.value
+                }))
+                console.log(state.name);
+               
+              }}
+              onSubmit={nickname()}
+            />
           </div>
           <Button className={classes.shoot} href= "http://localhost:3000/auth/twitch/callback">
             Login With Twitch

@@ -5,17 +5,21 @@ import axios from "axios";
 
 
 export default function useApplicationData () {
-  const [state, setState] = useState({
+  const [state, setState] = useState(prev => ({
+    ...prev,
     guns:[],
     dropzone:[],
     rules:[],
-  });
+    name:"",
+    platform: ""
+  }));
   useEffect(() => {
     console.log("In Axios");
     getDropZone();
     getGun();
     getRules();
     getGameId();
+    
   
   }, [setState])
   
@@ -75,7 +79,26 @@ export default function useApplicationData () {
         console.log(req.body);
       })
   }
+  function nickname () {
+    
+    console.log("hiii");
+    let nickname = state.name.replace("#", "%23")
+    console.log(state.name);
+    console.log(nickname);
+    axios
+        .get(`http://localhost:8080/${nickname}&acti`)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+        
+  }
+  
   return { 
     state,
+    setState,
+    nickname
   };
 }

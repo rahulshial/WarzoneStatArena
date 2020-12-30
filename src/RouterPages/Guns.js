@@ -5,10 +5,10 @@ import CenteredTabs from '../StatNavBar';
 import GunImage from '../GunImage';
 import { AR, SMG, SG, LMG, MRKSMN, SNPR, PISTOL, LAUNCHER } from '../images.js'
 import BasicTextFields from "../textField";
-
+import useApplicationData from "../hooks/useApplicationData";
 
 export default function Guns(props) {
-  const [state, setState] = useState({
+  const [gun, setGun] = useState({
     assaultRifles: [],
     shotGuns: [],
     marksman: [],
@@ -25,14 +25,17 @@ export default function Guns(props) {
     shown: [],
     category: [],
   })
+  const {
+    state,
+  } = useApplicationData();
+  
 
   const [tab, setTab] = useState(0);
   const [guns, setGuns] = useState(state.assaultRifles)
-  const {nickname} = BasicTextFields()
-  console.log(nickname);
+  console.log(state.name);
   useEffect(() => {
     console.log("In Axios");
-    //let nickname = name.replace("#", "%23")
+    let nickname = state.name.replace("#", "%23")
     axios
       .get(`http://localhost:8080/stats/${nickname}`)
       .then(res => {
@@ -50,7 +53,7 @@ export default function Guns(props) {
         const smg = res.data.weapon_smg
         const melee = res.data.weapon_melee
 
-        setState(prev => ({
+         setGun(prev => ({
           ...prev,
           assaultRifles: assaultRifles,
           shotGuns: shotGuns,
@@ -95,9 +98,9 @@ export default function Guns(props) {
     ]
 
     // shown = setting the cat state to an object of the category
-    setState(prev => ({
+    setGun(prev => ({
       ...prev,
-      shown: state[categories[indexValue]],
+      shown: gun[categories[indexValue]],
       category: gunCat[indexValue]
     }))
   };
@@ -111,8 +114,8 @@ export default function Guns(props) {
 
       <div className="card-row">
         <GunImage
-          shown={state.shown}
-          gunImgs={state.category}
+          shown={gun.shown}
+          gunImgs={gun.category}
         />
       </div>
     </div>
