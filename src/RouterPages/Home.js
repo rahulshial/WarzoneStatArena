@@ -68,14 +68,10 @@ const useStyles = makeStyles((theme) => ({
   })
 } */
 
-export default function Home({name, setName, nickname}) {
+export default function Home({name, setName, nickname, yoo, setPlatform}) {
   const classes = useStyles();
   
 
-  console.log(name);
-  
-  
- 
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -91,7 +87,9 @@ export default function Home({name, setName, nickname}) {
             </h2>
           </p>
           <div className={classes.gameId}>
-            <GroupSizesColors/>
+            <GroupSizesColors 
+              onClick={setPlatform}
+            />
             <BasicTextFields 
               value={name}
               onChange={setName}

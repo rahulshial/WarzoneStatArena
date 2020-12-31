@@ -24,13 +24,22 @@ export default function App(props) {
       name: event.target.value
     }))
   }
+
+  function setPlatform(platform) {
+    setState(prev => ({
+      ...prev,
+      platform
+    }))
+  }
+
+ 
   
  
   return (
     <>
       <PrimarySearchAppBar />
       <Switch>
-        <Route exact path='/' render={(props) => <Home name={state.name} nickname={nickname} setName={setName}/>} />
+        <Route exact path='/' render={(props) => <Home name={state.name} nickname={nickname} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom}/>} />
         <Route path='/guns' render={(props) => <Guns name={state.name} />} />
         <Route path='/roulette' component={Roulette} />
         <Route path='/myProf' component={Profile} />

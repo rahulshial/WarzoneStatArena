@@ -31,22 +31,28 @@ const useStyles = makeStyles((theme) => ({
 
 export default function GroupSizesColors(props) {
   const classes = useStyles();
-  const [platform, setPlatform] = useState("")
-  
+  function test1 (platform) {
+    props.onClick(platform);
+    return;
+  }
   //console.log(platform);
   return (
     <div className={classes.root}>
-      <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
-        <Button value="psn" onClick= {(event) => console.log("shit")}>
-          <img className="img" src={psn}/>
-        </Button>
-        <Button  value="acti" onClick= {(event) => setPlatform("activi")} >
+      <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group" >
+        {/* give back "psn" */}
+        <Button onClick= {()=> test1("psn")}>
+          <img className="img"  src={psn} />
+        </Button> 
+        {/* give back "acti" */}
+        <Button  onClick= {()=> test1("acti")}>
           <img  className="img" src={Mw}/>
         </Button>
-        <Button value="battlenet" onClick= {(event) => setPlatform("battlenet")} >
+        {/* give back "battlenet" */}
+        <Button  onClick= {()=> test1("battle")} >
           <img  className="img" src={battlenet}/>
         </Button>
-        <Button value="xbox" onClick= {(event) => setPlatform("xbox")} >
+        {/* give back "xbox" */}
+        <Button  onClick= {()=> test1("xbox")} >
           <img className="img" src={xbox}/>
         </Button>
       </ButtonGroup>
