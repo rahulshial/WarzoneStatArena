@@ -2,6 +2,17 @@ import React from 'react'
 
 export default function StatCard(props) {
   const {image, hits, kills, kd, headshots, accuracy, shots, gunName, onAdd} = props;
+
+
+
+  const checkStats = () => {
+    if (kills > 50) {
+      return (
+        <img class="achiev-icons" src="https://www.flaticon.com/svg/static/icons/svg/3135/3135783.svg" alt="" />
+      )
+    }
+  }
+
   return (
     <div class="container">
       <div class="card">
@@ -31,12 +42,10 @@ export default function StatCard(props) {
             <h5>{shots}</h5>
           </div>
           <div class="achievements">
-            <h2>Achievements</h2>
+            <h5>Achievements</h5>
             <hr></hr>
-            <div >
-              <img class="achiev-icons" src="https://www.flaticon.com/svg/static/icons/svg/3135/3135783.svg" />
-              <img class="achiev-icons" src="https://www.flaticon.com/svg/static/icons/svg/1170/1170611.svg" />
-              <img class="achiev-icons" src="https://www.flaticon.com/svg/static/icons/svg/3938/3938361.svg" />
+            <div>
+            {checkStats()}
             </div>
           </div>
 

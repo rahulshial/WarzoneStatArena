@@ -3,11 +3,21 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import './stats.css';
 import Home from './RouterPages/Home.js';
-import Guns from './RouterPages/Guns.js';
+import Stats from './RouterPages/Stats.js';
 import Profile from './RouterPages/Profile.js'
 import PrimarySearchAppBar from './Navbar.js';
 import Roulette from './roulette/Roulette.js';
 import useApplicationData from "./hooks/useApplicationData";
+
+
+
+
+
+const globalState = {
+  text: "foo",
+};
+
+const globalStateContext = React.createContext(globalState);
 
 
 export default function App(props) {
@@ -36,7 +46,9 @@ export default function App(props) {
   
  
   return (
+    <globalStateContext.Provider value={globalState}>
     <>
+     
       <PrimarySearchAppBar />
       <Switch>
         <Route exact path='/' render={(props) => <Home name={state.name} nickname={nickname} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom}/>} />
@@ -45,6 +57,7 @@ export default function App(props) {
         <Route path='/myProf' component={Profile} />
       </Switch>
     </>
+    </globalStateContext.Provider>
   );
 }
 

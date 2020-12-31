@@ -4,16 +4,16 @@
   padding-top: 30px;
 
 }
-.componenet{
+.componenet {
   display: flex;
   align-items: center;
 }
 .checkbox {
   display: flex;
-    /* border: solid; */
-    margin: 20px;
-    justify-content: space-around;
-    align-items: center;
+  border: solid;
+  margin: 20px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .answers {
@@ -32,13 +32,13 @@
   justify-content: space-between;
   width: 600px;
   height: 300px;
-  border: solid #5B6DCD;
+  border: solid #5b6dcd;
   padding: 10px;
   margin: 20px;
 } */
 
 .button {
-  border-radius: round ;
+  border-radius: round;
   cursor: pointer;
 }
 

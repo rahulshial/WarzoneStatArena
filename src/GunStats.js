@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import axios from 'axios'
 import './stats.css'
 import StatCard from './StatCard.js'
 
 
-const favs = []
+
 export default function GunImage(props) {
   const { shown, gunImgs } = props
   // Looping through whatever specific category was selected!
@@ -16,11 +16,12 @@ export default function GunImage(props) {
     const kdRatio = Math.round(shown[gun].properties.kdRatio * 100) / 100
     const accuracy = Math.round(shown[gun].properties.accuracy * 100) / 100
     const shots = shown[gun].properties.shots
-    const deaths = shown[gun].properties.deaths
+    // const deaths = shown[gun].properties.deaths // USE LATER?
     const headShots = shown[gun].properties.headshots
     const image = gunImgs[gun]
+
     const onButtonClick = (gun) => {
-      const gunObj = {
+      const  gunObj = {
         gun,
         hits,
         kills,
@@ -30,8 +31,9 @@ export default function GunImage(props) {
         headShots,
         image,
       }
+
       axios
-        .post("http://localhost:3030/favourited/moho", gunObj)
+        .post("http://localhost:3030/trackedstats/addnew", gunObj)
         .then(res => {
           console.log(res);
         })
@@ -53,10 +55,6 @@ export default function GunImage(props) {
       />
     )
   });
-
-
-
-
 
   return (
     <>
