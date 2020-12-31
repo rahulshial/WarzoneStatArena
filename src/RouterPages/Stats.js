@@ -25,36 +25,34 @@ export default function Guns(props) {
     shown: [],
     category: [],
   })
-  const {
-    state,
-  } = useApplicationData();
-  
 
-  const [tab, setTab] = useState(0);
-  const [guns, setGuns] = useState(state.assaultRifles)
+  // const [tab, setTab] = useState(0);
+  // const [guns, setGuns] = useState(state.assaultRifles)
+
   console.log(props.name.data);
   useEffect(() => {
     console.log("In Axios");
     let nickname = props.name.replace("#", "%23")
+    // nickname will === username
     axios
-      .get(`http://localhost:8080/stats/${nickname}`)
+      .get(`http://localhost:3030/stats/moho`)
       .then(res => {
-        console.log(res[1].data);
-        const assaultRifles = res[0].data.weapon_assault_rifle
-        const shotGuns = res[0].data.weapon_shotgun
-        const marksman = res[0].data.weapon_marksman
-        const snipers = res[0].data.weapon_sniper
-        const tacticals = res[0].data.tacticals
-        const lethals = res[0].data.lethals
-        const lmg = res[0].data.weapon_lmg
-        const launcher = res[0].data.weapon_launcher
-        const supers = res[0].data.supers
-        const pistol = res[0].data.weapon_pistol
-        const other = res[0].data.weapon_other
-        const smg = res[0].data.weapon_smg
-        const melee = res[0].data.weapon_melee
+        console.log(res);
+        const assaultRifles = res.data.weapon_assault_rifle
+        const shotGuns = res.data.weapon_shotgun
+        const marksman = res.data.weapon_marksman
+        const snipers = res.data.weapon_sniper
+        const tacticals = res.data.tacticals
+        const lethals = res.data.lethals
+        const lmg = res.data.weapon_lmg
+        const launcher = res.data.weapon_launcher
+        const supers = res.data.supers
+        const pistol = res.data.weapon_pistol
+        const other = res.data.weapon_other
+        const smg = res.data.weapon_smg
+        const melee = res.data.weapon_melee
 
-         setGun(prev => ({
+        setState(prev => ({
           ...prev,
           assaultRifles: assaultRifles,
           shotGuns: shotGuns,
@@ -97,9 +95,9 @@ export default function Guns(props) {
       SG,
     ]
     // shown = setting the cat state to an object of the category
-    setGun(prev => ({
+    setState(prev => ({
       ...prev,
-      shown: gun[categories[indexValue]],
+      shown: state[categories[indexValue]],
       category: gunCat[indexValue]
     }))
   };
@@ -112,8 +110,8 @@ export default function Guns(props) {
       />
       <div className="card-row">
         <GunImage
-          shown={gun.shown}
-          gunImgs={gun.category}
+          shown={state.shown}
+          gunImgs={state.category}
         />
       </div>
     </div>

@@ -44,7 +44,7 @@ export default function Roulette(props) {
     //Primary Weapon
     let allowableChars1 = Math.floor(Math.random()*weapon.length);
     const primary = weapon[allowableChars1]
-    console.log(primary.image);
+    // console.log(primary.image);
     if (primaryChecked) {
       setSelected(prev => ({
         ...prev,

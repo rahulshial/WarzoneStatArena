@@ -9,16 +9,11 @@ import PrimarySearchAppBar from './Navbar.js';
 import Roulette from './roulette/Roulette.js';
 import useApplicationData from "./hooks/useApplicationData";
 
-
-
-
-
 const globalState = {
   text: "foo",
 };
 
 const globalStateContext = React.createContext(globalState);
-
 
 export default function App(props) {
 
@@ -42,17 +37,13 @@ export default function App(props) {
     }))
   }
 
- 
-  
- 
   return (
     <globalStateContext.Provider value={globalState}>
     <>
-     
       <PrimarySearchAppBar />
       <Switch>
         <Route exact path='/' render={(props) => <Home name={state.name} nickname={nickname} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom}/>} />
-        <Route path='/guns' render={(props) => <Guns name={state.name} />} />
+        <Route path='/stats' render={(props) => <Stats name={state.name} />} />
         <Route path='/roulette' component={Roulette} />
         <Route path='/myProf' component={Profile} />
       </Switch>
