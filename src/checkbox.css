@@ -2,16 +2,16 @@
   background-image: url("./img/warzone8.jpg");
   padding-bottom: 30px;
 }
-.componenet{
+.componenet {
   display: flex;
   align-items: center;
 }
 .checkbox {
   display: flex;
-    /* border: solid; */
-    margin: 20px;
-    justify-content: space-around;
-    align-items: center;
+  border: solid;
+  margin: 20px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .answers {
@@ -21,22 +21,20 @@
   justify-content: space-around;
 }
 
-
 h1 {
   display: flex;
   align-items: center;
   position: relative;
   box-sizing: border-box;
   justify-content: space-between;
-  width: 600px;
-  height: 300px;
-  border: solid #5B6DCD;
+  /* width: 600px;
+  height: 300px; */
+  border: solid #5b6dcd;
   padding: 10px;
   margin: 20px;
 }
 
 .button {
-  border-radius: round ;
+  border-radius: round;
   cursor: pointer;
 }
-

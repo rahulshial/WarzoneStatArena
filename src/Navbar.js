@@ -184,7 +184,7 @@ export default function PrimarySearchAppBar() {
           </Typography>
 
           <Typography className={classes.title} variant="h6" style={{marginRight:'1%'}}>
-          <Link className="item-nav" to="/guns">Stats</Link>
+          <Link className="item-nav" to="/Stats">Stats</Link>
           </Typography>
 
           <Typography className={classes.title} variant="h6" style={{marginRight:'1%'}}>

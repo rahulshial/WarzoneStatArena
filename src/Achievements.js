@@ -5,8 +5,6 @@ import React from 'react'
 export default function Achievements() {
   return (
     <>
-
-
     <div style={{backgroundColor: '#272928', color: 'white'}}>
     <h1>These are the achievements</h1>
     </div>
@@ -16,7 +14,6 @@ export default function Achievements() {
       <h3>kills</h3>
       <h3>acheive name</h3>
     </div>
-
     </>
   )
 }

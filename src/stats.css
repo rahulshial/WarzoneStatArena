@@ -1,5 +1,6 @@
 .top-row {
   width: 100%;
+  height: 20%;
   display: flex;
   margin-top: 1px;
   justify-content: space-between;
@@ -18,7 +19,6 @@
   color: #424242;
   padding: 1%;
 }
-
 
 /*             CARD CSS                 */
 .achievements {
@@ -39,14 +39,65 @@
 .gun-icon {
   width: 50%;
 }
+
+/* #################################33 */
+.fav-gun-icon {
+  width: 100%;
+  align-self: center;
+}
+.fav-guns-container {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.fav-gun-card {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 44%;
+  margin: 2px;
+  background-color: rgb(180, 180, 180);
+}
+.card-img {
+  display: flex;
+  background-color: rgb(138, 138, 138);
+
+}
+.gun-achieves {
+  display: flex;
+  justify-content: center;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .container {
-  width: 15%;
+  /* width: 17%; */
+  margin: 5px;
   position: relative;
 }
 
-.container .card {
-  position: relative;
-  border-radius: 10px;
+.card {
+  /* position: relative; */
+  /* border-radius: 10px; */
 }
 
 .container .card .icon {
@@ -114,9 +165,6 @@ justify-content: space-between;
 .container .card .face.face2 {
   position: relative;
   background: #fff;
-
-
-  padding: 5px;
   box-sizing: border-box;
   box-shadow: 0 20px 50px rgba(0,0,0,0.8);
   transform: translateY(-100px);
@@ -128,7 +176,6 @@ justify-content: space-between;
 
 .container .card .face.face2 .content p {
   margin: 44%;
-  padding: 0;
   text-align: center;
 }
 
