@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     height: 48,
   },
 });
+
 export default function SwitchesSize(props) {
   const classes = useStyles();
 
