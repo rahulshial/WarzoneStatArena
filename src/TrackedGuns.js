@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './stats.css'
-import axios from 'axios';
+
 
 
 export default function TrackedGuns(props) {

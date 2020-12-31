@@ -8,7 +8,7 @@ export default function StatCard(props) {
   const checkStats = () => {
     if (kills > 50) {
       return (
-        <img class="achiev-icons" src="https://www.flaticon.com/svg/static/icons/svg/3135/3135783.svg" />
+        <img class="achiev-icons" src="https://www.flaticon.com/svg/static/icons/svg/3135/3135783.svg" alt="" />
       )
     }
   }

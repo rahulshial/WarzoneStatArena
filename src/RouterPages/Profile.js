@@ -1,16 +1,14 @@
-import React, { useState, useEffect, useContext, globalStateContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import '../stats.css'
 import TrackedGuns from '../TrackedGuns.js'
 
 export default function Profile(props) {
-
   const [state, setState] = useState({
     favorites: [],
     achievements: [],
     displayedCards: [],
   })
-
 
   useEffect(() => {
     Promise.all([

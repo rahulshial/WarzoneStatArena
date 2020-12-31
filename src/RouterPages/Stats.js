@@ -5,7 +5,6 @@ import CenteredTabs from '../StatNavBar';
 import GunImage from '../GunStats'
 import { AR, SMG, SG, LMG, MRKSMN, SNPR, PISTOL, LAUNCHER } from '../images.js'
 
-
 export default function Guns(props) {
   const [state, setState] = useState({
     assaultRifles: [],
@@ -25,27 +24,28 @@ export default function Guns(props) {
     category: [],
   })
 
-  const [tab, setTab] = useState(0);
-  const [guns, setGuns] = useState(state.assaultRifles)
 
   useEffect(() => {
-    console.log("In Axios");
-    axios
-      .get('http://localhost:3030/stats/moho')
+    Promise.all([
+      axios.get('http://localhost:3030/stats/moho'),
+      axios.get('http://localhost:3030/stats/allstats/cats')
+
+    ])
       .then(res => {
-        const assaultRifles = res.data.weapon_assault_rifle
-        const shotGuns = res.data.weapon_shotgun
-        const marksman = res.data.weapon_marksman
-        const snipers = res.data.weapon_sniper
-        const tacticals = res.data.tacticals
-        const lethals = res.data.lethals
-        const lmg = res.data.weapon_lmg
-        const launcher = res.data.weapon_launcher
-        const supers = res.data.supers
-        const pistol = res.data.weapon_pistol
-        const other = res.data.weapon_other
-        const smg = res.data.weapon_smg
-        const melee = res.data.weapon_melee
+        console.log(res[1].data);
+        const assaultRifles = res[0].data.weapon_assault_rifle
+        const shotGuns = res[0].data.weapon_shotgun
+        const marksman = res[0].data.weapon_marksman
+        const snipers = res[0].data.weapon_sniper
+        const tacticals = res[0].data.tacticals
+        const lethals = res[0].data.lethals
+        const lmg = res[0].data.weapon_lmg
+        const launcher = res[0].data.weapon_launcher
+        const supers = res[0].data.supers
+        const pistol = res[0].data.weapon_pistol
+        const other = res[0].data.weapon_other
+        const smg = res[0].data.weapon_smg
+        const melee = res[0].data.weapon_melee
 
         setState(prev => ({
           ...prev,
@@ -74,7 +74,7 @@ export default function Guns(props) {
 
   // Checking for what tab is selected on the stats page
   const gunTabSelected = (indexValue) => {
-    console.log("We selected a tab");
+    // console.log(indexValue, "Tab Selected");
     const categories = ["assaultRifles", "marksman", "snipers", "smg", "tacticals", "lethals", "lmg", "launcher", "pistol", "shotGuns", "supers", "other", "melee"];
 
     const gunCat = [
