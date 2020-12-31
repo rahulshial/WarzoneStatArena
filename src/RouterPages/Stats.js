@@ -4,6 +4,8 @@ import '../stats.css'
 import CenteredTabs from '../StatNavBar';
 import GunImage from '../GunStats'
 import { AR, SMG, SG, LMG, MRKSMN, SNPR, PISTOL, LAUNCHER } from '../images.js'
+import BasicTextFields from "../textField";
+import useApplicationData from "../hooks/useApplicationData";
 
 export default function Guns(props) {
   const [state, setState] = useState({
@@ -23,14 +25,19 @@ export default function Guns(props) {
     shown: [],
     category: [],
   })
+  const {
+    state,
+  } = useApplicationData();
+  
 
-
+  const [tab, setTab] = useState(0);
+  const [guns, setGuns] = useState(state.assaultRifles)
+  console.log(props.name.data);
   useEffect(() => {
-    Promise.all([
-      axios.get('http://localhost:3030/stats/moho'),
-      axios.get('http://localhost:3030/stats/allstats/cats')
-
-    ])
+    console.log("In Axios");
+    let nickname = props.name.replace("#", "%23")
+    axios
+      .get(`http://localhost:8080/stats/${nickname}`)
       .then(res => {
         console.log(res[1].data);
         const assaultRifles = res[0].data.weapon_assault_rifle
@@ -47,7 +54,7 @@ export default function Guns(props) {
         const smg = res[0].data.weapon_smg
         const melee = res[0].data.weapon_melee
 
-        setState(prev => ({
+         setGun(prev => ({
           ...prev,
           assaultRifles: assaultRifles,
           shotGuns: shotGuns,
@@ -90,9 +97,9 @@ export default function Guns(props) {
       SG,
     ]
     // shown = setting the cat state to an object of the category
-    setState(prev => ({
+    setGun(prev => ({
       ...prev,
-      shown: state[categories[indexValue]],
+      shown: gun[categories[indexValue]],
       category: gunCat[indexValue]
     }))
   };
@@ -105,8 +112,8 @@ export default function Guns(props) {
       />
       <div className="card-row">
         <GunImage
-          shown={state.shown}
-          gunImgs={state.category}
+          shown={gun.shown}
+          gunImgs={gun.category}
         />
       </div>
     </div>

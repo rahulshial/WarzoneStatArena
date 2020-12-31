@@ -10,7 +10,6 @@ import drop from "../img/droped.jpeg";
 import guned from "../img/loadout.jpg";
 import ruled from "../img/ruled.jpg";
 import mine from "../img/mine1.png";
-
 export default function Roulette(props) {
 
 
