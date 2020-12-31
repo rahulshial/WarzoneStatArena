@@ -86,7 +86,7 @@ export default function useApplicationData () {
     console.log(state.name);
     console.log(state.platform);
     axios
-        .get(`http://localhost:8080/nickname=${nickname}&platform=${state.platform}`)
+        .get(`http://localhost:8080/stats/nickname=${nickname}&platform=${state.platform}`)
         .then(res => {
           console.log("are you resolving");
           setState(prev => ({
