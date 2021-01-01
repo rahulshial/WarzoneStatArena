@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import './stats.css'
-import StatCard from './StatCard.js'
+import '../stats.css'
+import StatCard from '../StatCard.js'
 
 
 
@@ -21,7 +21,11 @@ export default function GunImage(props) {
     const image = gunImgs[gun]
 
     const onButtonClick = (gun) => {
-      const  gunObj = {
+
+      // THIS NEEDS TO SEND THE API CALL RATHER THAN THE OBJ... THIS IS GETTING SET TO THE CURRENT KILLS AND WILL NOT UPDATE!!!
+  
+
+      const gunObj = {
         gun,
         hits,
         kills,

@@ -28,16 +28,18 @@ export default function CenteredTabs(props) {
         textColor="primary"
         centered
       >
-        <Tab label="Assault Rifles" />
-        <Tab label="MarksMan Rifles" />
-        <Tab label="Snipers" />
-        <Tab label="Smg's" />
-        <Tab label="Tacticals" />
-        <Tab label="Lethals" />
-        <Tab label="LMG's" />
-        <Tab label="Launchers" />
-        <Tab label="Pistols" />
-        <Tab label="ShotGuns" />
+        <Tab label="Gun Game" />
+        <Tab label="Domination" />
+        <Tab label="War" />
+        <Tab label="HQ" />
+        <Tab label="HC Domination" />
+        <Tab label="KOTH" />
+        <Tab label="Arena" />
+        <Tab label="WARZONE" />
+        <Tab label="Search And Destroy" />
+        <Tab label="Cyber" />
+        <Tab label="arm" />
+
       </Tabs>
     </Paper>
   );
