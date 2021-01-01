@@ -58,6 +58,9 @@ const deleteStat = (stat) => {
 }
 
 
+
+
+
   if (state.favorites.length > 0) {
     const favItems = state.favorites.map((fav, index) => {
       const fixed = JSON.parse(fav.tracked);

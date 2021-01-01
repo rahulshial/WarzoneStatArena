@@ -28,8 +28,8 @@ export default function CenteredTabs(props) {
         textColor="primary"
         centered
       >
-        <Tab label="Gun Game" />
-        <Tab label="Domination" />
+        <Tab label="f" />
+        {/* <Tab label="Domination" />
         <Tab label="War" />
         <Tab label="HQ" />
         <Tab label="HC Domination" />
@@ -38,7 +38,7 @@ export default function CenteredTabs(props) {
         <Tab label="WARZONE" />
         <Tab label="Search And Destroy" />
         <Tab label="Cyber" />
-        <Tab label="arm" />
+        <Tab label="arm" /> */}
 
       </Tabs>
     </Paper>
