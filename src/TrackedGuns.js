@@ -1,38 +1,69 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './stats.css'
+import axios from 'axios';
+import getStatsForFavorites from './helpers/getStatsForFavorites'
 
 export default function TrackedGuns(props) {
+  const { favorites, deleteStat, achievements, displayedCards } = props
+  const [trackedStats, setTrackedStats] = useState([])
+  console.log("CHECKING");
+
+  useEffect(() => {
+    return getStatsForFavorites(favorites).then(data => {
+      setTrackedStats(data)
+    })
+  }, [displayedCards])
+
+  // useEffect(() => {
+  // }, [trackedStats])
 
 
-  return() => {
-    
-    
-    const titles = []
-    Object.keys(props.stats[0].properties).map((title) => {
-      titles.push(<h4>{title}</h4>)
-  
-    })
-    const stats = []
-    Object.values(props.stats[0].properties).map((stat) => {
-      stats.push(<h4>{stat}</h4>)
-    })
-  
+
+
+  return favorites.map((fav, index) => {
+    // console.log(fav);
+    const fixed = JSON.parse(fav.tracked);
+    displayedCards.push(fixed.gun)
+    const removedItem = { gunName: fixed.gun }
+
+    // console.log(trackedStats[index]);
+    const loopTrackedStats = () => {
+      const stats = [];
+      for (const stat in trackedStats[index]) {
+        stats.push(<h4>{stat}: {trackedStats[index][stat]}</h4>)
+      }
+      return stats;
+    }
+
+
+    const removeStat = () => {
+      axios
+        // change to .delete
+        .post("http://localhost:3030/trackedstats/removestat", removedItem)
+        .then((res) => {
+          deleteStat(fixed.gun)
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+
     return (
       <>
         <div>
           <div className="fav-gun-card">
             <div className="card-img">
-              <img className="fav-gun-icon" src={props.image} alt="" />
+              <img className="fav-gun-icon" src={fixed.image} alt="" />
             </div>
+
             <div>
-              <button onClick={() => props.onRemove(props.gunName)}>Remove</button>
+              <button onClick={() => removeStat(fixed.gun)}>Remove</button>
               <div className="right-side">
-                <h3 style={{ textAlign: 'center' }}>{props.gunName}</h3>
+                <h3 style={{ textAlign: 'center' }}>{fixed.gun}</h3>
                 <hr />
               </div>
               <div>
-                {titles}
-                {stats}
+                {loopTrackedStats()}
               </div>
               <hr />
               <div>
@@ -40,14 +71,20 @@ export default function TrackedGuns(props) {
               </div>
               <hr />
               <div className="gun-achieves">
-                {props.achievements}
+                {achievements(fixed.gun)}
               </div>
             </div>
           </div>
         </div>
       </>
     )
-
-  }
-  
+  })
 }
+
+
+{/* <h5>Kills: {props.kills}</h5>
+<h5>Shots: {props.shots}</h5>
+<h5>Hits: {props.hits}</h5>
+<h5>KD: {props.kdRatio}</h5>
+<h5>Head Shots: {props.headshots}</h5>
+<h5>Accuracy: {props.accuracy}</h5> */}
