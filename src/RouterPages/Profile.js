@@ -8,6 +8,7 @@ export default function Profile(props) {
     favorites: [],
     achievements: [],
     displayedCards: [],
+    trackedStats: [],
   })
 
   useEffect(() => {
@@ -16,17 +17,36 @@ export default function Profile(props) {
       axios.get('http://localhost:3030/achievements')
     ])
       .then(([favorites, achievements]) => {
-        setState(prev => ({
-          ...prev,
-          favorites: favorites.data,
-          achievements: achievements.data,
-        }))
+        let newArr = [];
+        favorites.data.map((fav, index) => {
+
+          const fixed = JSON.parse(fav.tracked);
+          axios.get(`http://localhost:3030/stats/moho/${fixed.gun}/${fixed.cat}`)
+            .then(res => {
+              // newArr.push(res.data)
+              setState(prev => ({
+                ...prev,
+                favorites: favorites.data,
+                achievements: achievements.data,
+                trackedStats: [...state.trackedStats, res.data]
+              }))
+            })
+            .catch(err => {
+              console.log("we have an error");
+              console.log(err);
+            })
+
+        });
       })
+
       .catch(error => {
         console.log("WE GOT AN ERROR");
         console.log(error);
       })
+
+
   }, [state.displayedCards])
+
 
   const earnedAchievements = (gun) => state.achievements.map((achievement) => {
     let hasHitFlag = false;
@@ -47,56 +67,54 @@ export default function Profile(props) {
     }
   })
 
-const deleteStat = (stat) => {
-
-  const cardShown = state.displayedCards.filter(item => item !== stat)
-  
-  setState(prev => ({
-    ...prev,
-    displayedCards: cardShown
-  }))
-}
-
+  const deleteStat = (stat) => {
+    const cardShown = state.displayedCards.filter(item => item !== stat)
+    setState(prev => ({
+      ...prev,
+      displayedCards: cardShown
+    }))
+  }
+  console.log(state.trackedStats);
 
 
+  const favItems = state.favorites.map((fav, index) => {
+
+    const fixed = JSON.parse(fav.tracked);
+    state.displayedCards.push(fixed.gun)
+    const removedItem = { gunName: fixed.gun }
+
+    const removeStat = () => {
+      axios
+        // change to .delete
+        .post("http://localhost:3030/trackedstats/removestat", removedItem)
+        .then((res) => {
+          deleteStat(fixed.gun)
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+
+    return (
+      <TrackedGuns
+        onRemove={removeStat}
+        achievements={earnedAchievements(fixed)}
+        image={fixed.image}
+        stats={state.trackedStats}
+        id={index}
+      />
+    )
+  })
 
 
   if (state.favorites.length > 0) {
-    const favItems = state.favorites.map((fav, index) => {
-      const fixed = JSON.parse(fav.tracked);
-      state.displayedCards.push(fixed.gun)
-      console.log(state.displayedCards);
-      const removedItem = { gunName: fixed.gun}
-      const removeStat = () => {
-        axios
-          // change to .delete
-          .post("http://localhost:3030/trackedstats/removestat", removedItem)
-          .then((res) => {
-            deleteStat(fixed.gun)
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-      }
-      return (
-        <TrackedGuns
-          onRemove={removeStat}
-          achievements={earnedAchievements(fixed)}
-          image={fixed.image}
-          gunName={fixed.gun}
-          hits={fixed.hits}
-          kills={fixed.kills}
-          kdRatio={fixed.kdRatio}
-          headshots={fixed.headShots}
-          accuracy={fixed.accuracy}
-          shots={fixed.shots}
-        />
-      )
-    })
+
+
     return (
       <>
         <div className="fav-guns-container">
           {favItems}
+          <h1>cats</h1>
         </div>
         <div>
           <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
@@ -113,4 +131,5 @@ const deleteStat = (stat) => {
       </>
     )
   }
+
 }

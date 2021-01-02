@@ -15,7 +15,6 @@ export default function CenteredTabs(props) {
   const [tab, setTab] = useState(0);
 
   const chosenTab = (e, newTab) => {
-    console.log(newTab);
     setTab(newTab)
     props.onSelect(newTab)
   }

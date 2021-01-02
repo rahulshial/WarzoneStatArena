@@ -13,25 +13,14 @@ import useApplicationData from "../hooks/useApplicationData";
 export default function Guns(props) {
   const [state, setState] = useState({
     gameModes: [],
-    assaultRifles: [],
-    shotGuns: [],
-    marksman: [],
-    snipers: [],
-    tacticals: [],
-    lethals: [],
-    lmg: [],
-    launcher: [],
-    supers: [],
-    pistol: [],
-    other: [],
-    smg: [],
-    melee: [],
     shown: [],
     shownCat: [],
     gameModeCat: [],
     category: [],
+    weapons:[],
+    gunNavSelected: [],
+    selectedGunTab: []
   })
-
 
   useEffect(() => {
     let nickname = props.name.replace("#", "%23")
@@ -41,38 +30,13 @@ export default function Guns(props) {
       axios.get(`http://localhost:3030/stats/allstats/moho`)
     ])
       .then(res => {
-        const assaultRifles = res[0].data.weapon_assault_rifle
-        const shotGuns = res[0].data.weapon_shotgun
-        const marksman = res[0].data.weapon_marksman
-        const snipers = res[0].data.weapon_sniper
-        const tacticals = res[0].data.tacticals
-        const lethals = res[0].data.lethals
-        const lmg = res[0].data.weapon_lmg
-        const launcher = res[0].data.weapon_launcher
-        const supers = res[0].data.supers
-        const pistol = res[0].data.weapon_pistol
-        const other = res[0].data.weapon_other
-        const smg = res[0].data.weapon_smg
-        const melee = res[0].data.weapon_melee
-
+        const weapons = res[0].data;
         const gameModes = res[1];
 
         setState(prev => ({
           ...prev,
-          gameModes: gameModes,
-          assaultRifles: assaultRifles,
-          shotGuns: shotGuns,
-          marksman: marksman,
-          snipers: snipers,
-          tacticals: tacticals,
-          lethals: lethals,
-          lmg: lmg,
-          launcher: launcher,
-          supers: supers,
-          pistol: pistol,
-          other: other,
-          smg: smg,
-          melee: melee,
+          gameModes,
+          weapons,
           category: AR,
         }))
 
@@ -84,7 +48,8 @@ export default function Guns(props) {
 
   // Checking for what tab is selected on the stats page
   const gunTabSelected = (indexValue) => {
-    const categories = ["assaultRifles", "marksman", "snipers", "smg", "tacticals", "lethals", "lmg", "launcher", "pistol", "shotGuns", "supers", "other", "melee"];
+    const categories = ["weapon_assault_rifle", "weapon_marksman", "weapon_sniper", "weapon_smg", "tacticals", "lethals", "weapon_lmg", "weapon_launcher", "weapon_pistol", "weapon_shotgun", "supers", "weapon_other", "weapon_melee"];
+
     const gunCat = [
       AR,
       MRKSMN,
@@ -100,7 +65,9 @@ export default function Guns(props) {
     // shown = setting the cat state to an object of the category
     setState(prev => ({
       ...prev,
-      shown: state[categories[indexValue]],
+      gunNavSelected: indexValue,
+      selectedGunTab: categories[indexValue],
+      shown: state.weapons[categories[indexValue]],
       category: gunCat[indexValue]
     }))
   };
@@ -149,7 +116,6 @@ export default function Guns(props) {
     }))
   };
 
-
   const navBarsToShow = () => {
 
     // This is setting to return what SECONDARY navBar is shown...
@@ -165,6 +131,9 @@ export default function Guns(props) {
             <GunStats
               shown={state.shown}
               gunImgs={state.category}
+              gunTab={state.selectedGunTab}
+              weapons={state.weapons}
+              gunNavSelected={state.gunNavSelected}
             />
           </div>
         </>

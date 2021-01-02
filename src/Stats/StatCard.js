@@ -1,14 +1,13 @@
 import React from 'react'
 
 export default function StatCard(props) {
-  const {image, gunName, onAdd} = props;
-
-
+  const { image, gunName, onAdd, cat } = props;
   return (
     <div className="container">
       <div className="card">
         <div className="face face1">
-          <button onClick={() => onAdd(gunName)} >{gunName}</button>
+          <button onClick={() => onAdd(gunName, image, cat)} >{gunName}</button>
+          <button onClick={() => console.log(cat)} >WHAT IS THIS</button>
           <div className="content">
             <div className='gun-flex'>
               <img className="gun-icon" src={image} alt="" />
