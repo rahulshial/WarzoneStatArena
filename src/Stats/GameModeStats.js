@@ -1,10 +1,8 @@
 import React from 'react'
-import axios from 'axios'
 import '../stats.css'
-import { red } from '@material-ui/core/colors';
 
 export default function GameModeStats(props) {
-  const { shown, category } = props
+  const { shown } = props
   const topRow = [];
 
   const modes = ["Gun Game", "Domination", "TDM", "Headquarters", "HardCore Domination", "Kill Confirmed Hardcore", "King Of The Hill", "Kill Confirmed", "Headquarters Hardcore", "Gunfight", "Plunder", "WARZONE", "Search And Destroy", "Grind", "Cyber Attack", "Team Deathmatch Hardcore", "br_all", "Search and Destroy Hardcore", "Ground War", "Cyber Attack HardCore", "Infected"]

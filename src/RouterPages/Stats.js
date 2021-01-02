@@ -2,13 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import '../stats.css'
 import GunNav from '../Stats/GunNavBar';
-import GameModeNav from '../Stats/GameModeNavBar';
 import CategoryNav from '../Stats/CategoryNavBar';
 import GunStats from '../Stats/GunStats';
 import GameModeStats from '../Stats/GameModeStats';
 import { AR, SMG, SG, LMG, MRKSMN, SNPR, PISTOL, LAUNCHER } from '../images.js'
-import BasicTextFields from "../textField";
-import useApplicationData from "../hooks/useApplicationData";
 
 export default function Guns(props) {
   const [state, setState] = useState({
@@ -21,7 +18,7 @@ export default function Guns(props) {
     gunNavSelected: [],
     selectedGunTab: []
   })
-
+  console.log(state.selectedGunTab);
   useEffect(() => {
     let nickname = props.name.replace("#", "%23")
     // nickname will === username
@@ -98,7 +95,7 @@ export default function Guns(props) {
     if (categories[indexValue] === "guns") {
       setState(prev => ({
         ...prev,
-        shown: state.assaultRifles,
+        shown: state.weapons.weapon_assault_rifle,
         category: AR
       }))
     } else if (categories[indexValue] === "game_modes") {
@@ -128,6 +125,7 @@ export default function Guns(props) {
             onSelect={gunTabSelected}
           />
           <div className="card-row">
+
             <GunStats
               shown={state.shown}
               gunImgs={state.category}
@@ -135,6 +133,7 @@ export default function Guns(props) {
               weapons={state.weapons}
               gunNavSelected={state.gunNavSelected}
             />
+            
           </div>
         </>
       )
