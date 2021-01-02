@@ -19,7 +19,7 @@
 .answers {
   display: flex;
   flex-wrap: wrap;
-  margin: 20px;
+  
   justify-content: space-around;
 }
 
@@ -47,3 +47,7 @@
 }
 
 
+.test1{
+  display: flex;
+  justify-content: center;
+}

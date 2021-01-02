@@ -28,6 +28,10 @@ export default function Roulette(props) {
     primaryClass:[],
     secondary:[],
     secondaryClass:[],
+    // attachment1:[],
+    // attachment1Class:[],
+    // attachment2:[],
+    // attachment2Class:[],
     dropzone:[],
     primaryImage:[],
     secondaryImage:image1,
@@ -40,6 +44,8 @@ export default function Roulette(props) {
     let weapon = state.guns;
     let rules = state.rules;
     let dropzone = state.dropzone;
+    // let attachments1 = state.attachment1;
+    // let attachments2 = state.attachments2;
 
     //Primary Weapon
     let allowableChars1 = Math.floor(Math.random()*weapon.length);
@@ -76,6 +82,50 @@ export default function Roulette(props) {
         
       }))
     } 
+
+   /*  //Primary Attachments
+    let randomAttachment1 = Math.floor(Math.random()*weapon.length);
+    let randomAttachment2 = Math.floor(Math.random()*weapon.length);
+    let randomAttachment3 = Math.floor(Math.random()*weapon.length);
+    let randomAttachment4 = Math.floor(Math.random()*weapon.length);
+    let randomAttachment5 = Math.floor(Math.random()*weapon.length);
+
+    const attachmentPrimary1 = attachment1[randomAttachment1]
+    const attachmentPrimary2 = attachment1[randomAttachment2]
+    const attachmentPrimary3 = attachment1[randomAttachment3]
+    const attachmentPrimary4 = attachment1[randomAttachment4]
+    const attachmentPrimary5 = attachment1[randomAttachment5]
+    const attachments = [attachmentPrimary1, attachmentPrimary2, attachmentPrimary3, attachmentPrimary4, attachmentPrimary5]
+    // console.log(primary.image);
+    if (attachment1Checked) {
+      setSelected(prev => ({
+        ...prev,
+        attachment1:attachments,
+        
+      }))
+    } */
+  
+
+   /*  //Secondary Attachments
+    let randomAttachment6 = Math.floor(Math.random()*weapon.length);
+    let randomAttachment7 = Math.floor(Math.random()*weapon.length);
+    let randomAttachment8 = Math.floor(Math.random()*weapon.length);
+    let randomAttachment9 = Math.floor(Math.random()*weapon.length);
+    let randomAttachment = Math.floor(Math.random()*weapon.length);
+    const attachmentSecondary1 = attachment1[randomAttachment6]
+    const attachmentSecondary2 = attachment1[randomAttachment7]
+    const attachmentSecondary3 = attachment1[randomAttachment8]
+    const attachmentSecondary4 = attachment1[randomAttachment9]
+    const attachmentSecondary5 = attachment1[randomAttachment0]
+    const attachments = [attachmentSecondary1, attachmentSecondary2, attachmentSecondary3, attachmentSecondary4, attachmentSecondary5]
+    if (attachment2Checked) {
+      setSelected(prev => ({
+        ...prev,
+        secondary: attachmentSecondary.weapon,
+        secondaryClass: attachmentSecondary.class
+        
+      }))
+    } */
     
   
 
@@ -105,12 +155,15 @@ export default function Roulette(props) {
   //console.log(selected.secondaryImage);
   return (
     <div className="Roulette">
+      <p className="test1">
+        Press on the Proximity Mine bellow to roll
+      </p>
         <div className="answers">
-          <div className="test">
+          <div>
             <MediaCard 
               title= "Primary Gun" 
               selected={selected.primary} class= {selected.primaryClass} 
-              image={selected.primaryImage} 
+              image={guned} 
               checked={primaryChecked}
               onChange = {() => setPrimaryChecked(!primaryChecked)}
             />
@@ -124,7 +177,25 @@ export default function Roulette(props) {
               onChange = {() => setSecondaryChecked (!secondaryChecked)}
             />
           </div>
-          Press on the Proximity Mine bellow to roll
+          <div>
+            <MediaCard 
+              title= "Primary Attachments" 
+              selected={selected.primary} class= {selected.primaryClass} 
+              image={guned} 
+              checked={primaryChecked}
+              onChange = {() => setPrimaryChecked(!primaryChecked)}
+            />
+
+            <MediaCard 
+              title= "Secondary Attachments" 
+              selected= {selected.secondary} 
+              class= {selected.secondaryClass} 
+              image={guned} 
+              checked={secondaryChecked}
+              onChange = {() => setSecondaryChecked (!secondaryChecked)}
+            />
+          </div>
+          
           <div>
             <MediaCard 
               title= "Drop Zone" 

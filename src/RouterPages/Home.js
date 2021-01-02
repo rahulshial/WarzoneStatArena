@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
     height: 500,
     background: "lightblue" ,
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    flexDirection: "column"
 
     
   },
@@ -77,29 +78,34 @@ export default function Home({name, setName, nickname, yoo, setPlatform}) {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper} >
-          <p>
-            <h1>
-              Welcome
-            </h1>
-            <br/>
-            <h2>
-              to StatSite
-            </h2>
-          </p>
-          <div className={classes.gameId}>
-            <GroupSizesColors 
-              onClick={setPlatform}
-            />
-            <BasicTextFields 
-              value={name}
-              onChange={setName}
-              onClick={nickname}
-            />
-          </div>
-          <Button className={classes.shoot} href= "http://localhost:3000/auth/twitch/callback">
-            Login With Twitch
-            <img className={classes.img} src={twitch}/>
-          </Button>
+            <div>
+              <p>
+                <h1>
+                  Welcome to StatSite
+                </h1>
+                <br/>
+                <h2>
+                  
+                </h2>
+              </p>
+            </div>
+            <div className={classes.gameId}>
+              <GroupSizesColors 
+                onClick={setPlatform}
+              />
+              <BasicTextFields 
+                value={name}
+                onChange={setName}
+                onClick={nickname}
+              />
+            </div>
+            <div>
+              <Button className={classes.shoot} href= "http://localhost:3000/auth/twitch/callback">
+                Login With Twitch
+                <img className={classes.img} src={twitch}/>
+              </Button>
+            </div>
+            
           
           
           </Paper>
