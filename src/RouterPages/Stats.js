@@ -141,12 +141,12 @@ export default function Guns(props) {
 
       return (
         <>
-          <div>
+          <table>
             <GameModeStats
               shown={state.shown}
               category={state.gameModeCat}
             />
-          </div>
+          </table>
         </>
       )
     }
