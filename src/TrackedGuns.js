@@ -17,19 +17,18 @@ export default function TrackedGuns(props) {
   // useEffect(() => {
   // }, [trackedStats])
 
-
-
-
   return favorites.map((fav, index) => {
     // console.log(fav);
     const fixed = JSON.parse(fav.tracked);
     displayedCards.push(fixed.gun)
     const removedItem = { gunName: fixed.gun }
-
     // console.log(trackedStats[index]);
+
+
     const loopTrackedStats = () => {
       const stats = [];
       for (const stat in trackedStats[index]) {
+        console.log('stat');
         stats.push(<h4>{stat}: {trackedStats[index][stat]}</h4>)
       }
       return stats;

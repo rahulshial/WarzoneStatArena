@@ -16,9 +16,9 @@ export default function Guns(props) {
     category: [],
     weapons:[],
     gunNavSelected: [],
-    selectedGunTab: []
+    selectedGunTab: 'weapon_assault_rifle'
   })
-  console.log(state.selectedGunTab);
+  console.log(state.selectedGunTab, "*************");
   useEffect(() => {
     let nickname = props.name.replace("#", "%23")
     // nickname will === username

@@ -8,11 +8,11 @@ export default async function getStatsForFavorites (favorites) {
     let trackedStats = [];
 
     await asy.eachSeries(favorites, async fav => {
+      console.log(favorites);
       const fixed = JSON.parse(fav.tracked);
       const res = await axios.get(`http://localhost:3030/stats/moho/${fixed.gun}/${fixed.cat}`)
       trackedStats.push(res.data.properties);
     });
-
     resolve(trackedStats)
   })
 
