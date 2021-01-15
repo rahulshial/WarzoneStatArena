@@ -6,15 +6,17 @@ const merchantModel = require('./merchant_model');
 
 app.use(express.json());
 app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3002');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
   next();
 });
 app.get('/dropzone', (req, res) => {
   merchantModel.getDropZone()
     .then(response => {
+      console.log("hii",response);
       res.status(200).send(response);
     })
     .catch(error => {
+      console.log("hello");
       res.status(500).send(error);
     });
 });
@@ -23,6 +25,7 @@ app.get('/dropzone', (req, res) => {
 app.get('/rules', (req, res) => {
   merchantModel.getRules()
     .then(response => {
+      console.log(response);
       res.status(200).send(response);
     })
     .catch(error => {

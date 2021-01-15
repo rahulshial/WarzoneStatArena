@@ -14,7 +14,7 @@ const getDropZone = () => {
       if (error) {
         reject(error);
       }
-      console.log(results.rows);
+      console.log("hello", results);
       resolve(results.rows);
     });
   });
@@ -26,7 +26,7 @@ const getGun = () => {
       if (error) {
         reject(error);
       }
-      console.log(results.rows);
+      
       resolve(results.rows);
     });
   });
@@ -40,7 +40,7 @@ const getRules = () => {
       if (error) {
         reject(error);
       }
-      console.log(results.rows);
+      
       resolve(results.rows);
     });
   });
