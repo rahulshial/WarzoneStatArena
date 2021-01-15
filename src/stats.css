@@ -69,18 +69,24 @@
 
 }
 
+table  {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+table h2 {
+  margin: 60px 0 15px 0;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
 
 
-
-
-
-
-
-
-
-
-
-
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 
 
 

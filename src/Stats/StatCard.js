@@ -7,7 +7,7 @@ export default function StatCard(props) {
       <div className="card">
         <div className="face face1">
           <button onClick={() => onAdd(gunName, image, cat)} >{gunName}</button>
-          <button onClick={() => console.log(cat)} >WHAT IS THIS</button>
+          <button onClick={cat} >Check Category</button>
           <div className="content">
             <div className='gun-flex'>
               <img className="gun-icon" src={image} alt="" />
