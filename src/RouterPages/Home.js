@@ -8,7 +8,7 @@ import drop from "../img/droped.jpeg";
 import guned from "../img/loadout.jpg";
 import ruled from "../img/ruled.jpg";
 import mine from "../img/mine1.png";
-import backgournd from "../img/warzone8.jpg";
+import codLogo from "../img/cod-logo.png"
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import twitch from "../img/twitch.png";
@@ -23,14 +23,16 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    margin:0,
+    padding: theme.spacing(1),
     color: theme.palette.text.secondary,
     textAlign: 'center',
     height: 500,
     background: "lightblue" ,
     display: "flex",
-    justifyContent: "space-between",
-    flexDirection: "column"
+    justifyContent: "space-evenly",
+    alignItems: "center",
+
 
     
   },
@@ -69,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   })
 } */
 
-export default function Home({name, setName, nickname, yoo, setPlatform}) {
+export default function Home({name, setName, nickname, setPlatform}) {
   const classes = useStyles();
   
 
@@ -79,9 +81,14 @@ export default function Home({name, setName, nickname, yoo, setPlatform}) {
         <Grid item xs={12}>
           <Paper className={classes.paper} >
             <div>
+              <img src={codLogo}/>
+              
+            </div>
+            <div>
+            <div>
               <p>
                 <h1>
-                  Welcome to StatSite
+                  Modern Warfare Stats
                 </h1>
                 <br/>
                 <h2>
@@ -90,7 +97,7 @@ export default function Home({name, setName, nickname, yoo, setPlatform}) {
               </p>
             </div>
             <div className={classes.gameId}>
-              <GroupSizesColors 
+              <GroupSizesColors
                 onClick={setPlatform}
               />
               <BasicTextFields 
@@ -105,38 +112,47 @@ export default function Home({name, setName, nickname, yoo, setPlatform}) {
                 <img className={classes.img} src={twitch}/>
               </Button>
             </div>
+            </div>
+            
+            
             
           
           
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        
+          
+          
+        <Grid item xs={12}>
           <Paper className={classes.paper}>
+          <EnhancedTable/>
           <EnhancedTable/>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} >
           <Paper className={classes.paper}>
-          <EnhancedTable/>
+            <RecipeReviewCard 
+              url="https://youtu.be/XgCtsrElVn8"
+              title='Call of Duty: Warzone Supposedly Has a New "Broken" OP Gun'
+              avatar="AB"
+              subheader="charlieintel.com"
+              link="https://charlieintel.com/faze-swagg-reveals-a-gun-better-than-dmr-14-in-warzone/75052/"
+            />
+            <RecipeReviewCard
+              url='https://www.youtube.com/watch?v=nEJD_q21vCM'
+              title="FaZe Swagg reveals a gun better than DMR-14 in Warzone"
+              avatar="MT"
+              subheader="charlieintel.com"
+              link="https://charlieintel.com/faze-swagg-reveals-a-gun-better-than-dmr-14-in-warzone/75052/"
+            />
           </Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}><RecipeReviewCard/></Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}><RecipeReviewCard/></Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}><RecipeReviewCard/></Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}><RecipeReviewCard/></Paper>
         </Grid>
       </Grid>
       
     </div>
   );
 }
+
 
 
 

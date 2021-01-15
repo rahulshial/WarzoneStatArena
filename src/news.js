@@ -14,13 +14,15 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import twitch from "./img/twitch.png";
+import news1 from "./img/news1.jpg";
 import ReactPlayer from "react-player"
+import LinkIcon from '@material-ui/icons/Link';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-   
+   height: 480,
+   width: 650,
+   background: 'skyblue',
     
   },
   media: {
@@ -40,44 +42,30 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
+  hello: {
+    width:500,
+  },
+ 
 }));
 
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  return (
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            AG
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="News"
-        subheader="Twitch"
-      />
-      <img src={twitch}>
-      </img>
-      {/* <ReactPlayer
-        url="https://www.twitch.tv/videos/852030079"
-      /> */}
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
+  if (expanded) {
+    return (
+      
+        <Card className={classes.root}>
+          <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
+        </IconButton>
+        <IconButton aria-label="link" target="_blank" href={props.link}>
+        <LinkIcon>
+        </LinkIcon>
         </IconButton>
         <IconButton aria-label="share">
           <ShareIcon />
@@ -93,33 +81,74 @@ export default function RecipeReviewCard() {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Method:</Typography>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
           <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
           </Typography>
           <Typography paragraph>
-            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-            heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-            browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-            and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-            pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-            saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+            The DMR-14 has become a fan-favorite weapon ever since Warzone Season 1 went live, but now it appears to have some competition as YouTuber ‘FaZe Swagg’ has found another gun that he claims is even better.
           </Typography>
           <Typography paragraph>
-            Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-            without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-            medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-            again without stirring, until mussels have opened and rice is just tender, 5 to 7
-            minutes more. (Discard any mussels that don’t open.)
+            With Warzone Season 1 well underway, players have taken the time to get used to the different weapons and loadouts that are available to them. There is a great variety of guns to choose from in the latest update, and one that’s gained a lot of popularity is the DMR-14.
+
+            This high-powered weapon is capable of destroying armor, and bringing down your foes at any range. It does more damage than any other weapon in the game, and comes with a 40 round magazine for long gunfights.
           </Typography>
           <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
+            All of these factors have led to many fans considering the DMR-14 to be the best weapon in Warzone, but FaZe Swagg claims to have found a contender that’s similar “but way better”.
           </Typography>
         </CardContent>
       </Collapse>
+
+      </Card>
+        
+    )
+  } else {
+
+  }
+  return (
+    <Card className={classes.root}>
+
+      <CardHeader
+        className={classes.header}
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            {props.avatar}
+          </Avatar>
+        }
+        action={
+          <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+        
+          <ExpandMoreIcon />
+        </IconButton>
+        } 
+        title={props.title}
+        subheader={props.subheader}
+      />
+   
+        <ReactPlayer 
+        url={props.url}
+        />
+       {/* <img
+        className={classes.hello}
+        src={news1}
+      />  */}
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" component="p">
+        </Typography>
+      </CardContent>
+      {/* <Typography>
+      Call of Duty: Warzone Supposedly Has a New "Broken" OP Gun
+      </Typography> */}
+      
+      
+      
     </Card>
   );
 }

@@ -10,7 +10,7 @@
 }
 .checkbox {
   display: flex;
-  border: solid;
+  
   margin: 20px;
   justify-content: space-around;
   align-items: center;
