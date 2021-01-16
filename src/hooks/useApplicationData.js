@@ -11,72 +11,67 @@ export default function useApplicationData () {
     name:"",
     platform: "",
   }));
+
   useEffect(() => {
     console.log("In Axios");
     getDropZone();
     getGun();
     getRules();
-    getGameId();
-    
-  
+    // getGameId();  
   }, [setState])
   
-  function getDropZone() {
+  const getDropZone = () => {
     console.log("iniside function");
-    axios('http://localhost:3001/dropzone')
+    axios('http://localhost:3030/roulette/dropzone')
       .then(res => {
-      console.log("dropzone")
-       
-        return res.data
-      })
-      .then(res => {
+        console.log("dropzone", res.data[0])
         setState(prev => ({
           ...prev,
-          dropzone: res
-
+          dropzone: res.data[0]
         }));
+      })
+      .catch(error => {
+        console.log('Dropzone Axios Error: ', error)
       });
-  }
+  };
+
   function getGun() {
     console.log("iniside function");
-    axios('http://localhost:3001/gun')
+    axios('http://localhost:3030/roulette/gun')
       .then(res => {
-         console.log("weapon")
-        
-        return res.data
-      })
-      .then()
-      .then(data => {
+         console.log("weapon", res.data[0])
         setState(prev => ({
           ...prev,
-          guns: data
-
+          guns: res.data[0]
         }));
+      })
+      .catch(error => {
+        console.log('Weapon Axios Error: ', error)
       });
   }
  
   function getRules() {
     console.log("iniside function");
-    axios('http://localhost:3001/rules')
+    axios('http://localhost:3030/roulette/rules')
       .then(res => {
-        console.log("rules")
-      
-        return res.data
-      })
-      .then(data => {
+        console.log("rules", res.data[0])
         setState(prev => ({
           ...prev,
-          rules: data
-
+          rules: res.data[0]
         }));
+      })
+      .catch(error => {
+        console.log('Rules Axios Error: ', error)
       });
-  }
+    }
+  
   function getGameId () {
-    axios.post('http://localhost:3002/')
+    axios.post('http://localhost:3000/')
       .then ((req, res) => {
         console.log(req.body);
       })
   }
+
   function nickname () {
     
     console.log("hiii");

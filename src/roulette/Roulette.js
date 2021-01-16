@@ -10,8 +10,8 @@ import drop from "../img/droped.jpeg";
 import guned from "../img/loadout.jpg";
 import ruled from "../img/ruled.jpg";
 import mine from "../img/mine1.png";
-export default function Roulette(props) {
 
+export default function Roulette(props) {
 
   const {
     state,
@@ -23,16 +23,16 @@ export default function Roulette(props) {
   const[rulesChecked, setRulesChecked] = useState(false)
  
   const[selected, setSelected] = useState({
-    rule:[],
-    primary:[],
-    primaryClass:[],
-    secondary:[],
-    secondaryClass:[],
+    rule:'',
+    primary:'',
+    primaryClass:'',
+    secondary:'',
+    secondaryClass:'',
     // attachment1:[],
     // attachment1Class:[],
     // attachment2:[],
     // attachment2Class:[],
-    dropzone:[],
+    dropzone:'',
     primaryImage:[],
     secondaryImage:image1,
     dropzoneImage:[]
@@ -40,46 +40,46 @@ export default function Roulette(props) {
   
   
   function generateRoulette(props) {
+
+    // if primary_checked and weapon_loaded don't call getGun()
+    // else if primary_checked and weapon_not_loaded - call getGun()
+
     //data
     let weapon = state.guns;
     let rules = state.rules;
-    let dropzone = state.dropzone;
+    // let dropZoneObject = state.dropzone;
+    // console.log("DropZoneObject - Function GenRoulette: ", dropZoneObject)
     // let attachments1 = state.attachment1;
     // let attachments2 = state.attachments2;
 
     //Primary Weapon
     let allowableChars1 = Math.floor(Math.random()*weapon.length);
-    const primary = weapon[allowableChars1]
+    // const primary = weapon[allowableChars1]
     // console.log(primary.image);
     if (primaryChecked) {
       setSelected(prev => ({
         ...prev,
-        primary: primary.weapon,
+        primary: state.guns.weapon,
         primaryImage:"../img/trainstation-weapon.jpeg",
-        primaryClass: primary.class
-
-      
+        primaryClass: state.guns.class
       }))
-
-      
-    }
+  }
   
 
     //Secondary Weapon
-     let allowableChars2 = Math.floor(Math.random()*weapon.length);
-    let secondary;
-    if (allowableChars1 !== allowableChars2) {
-      secondary = weapon[allowableChars2]
-    } else {
-      secondary = "any secondary Gun"
-    };
-    console.log(secondary.image)
     if (secondaryChecked) {
+      let allowableChars2 = Math.floor(Math.random()*weapon.length);
+      let secondary;
+      if (allowableChars1 !== allowableChars2) {
+        secondary = weapon[allowableChars2]
+      } else {
+        secondary = "any secondary Gun"
+      };
+      console.log("Secondary Weapon: ", secondary)
       setSelected(prev => ({
         ...prev,
         secondary: secondary.weapon,
-        secondaryClass: secondary.class
-        
+        secondaryClass: secondary.class        
       }))
     } 
 
@@ -130,24 +130,24 @@ export default function Roulette(props) {
   
 
     //dropZones
-    let allowableChars = Math.floor(Math.random()*dropzone.length);
-    const dropZones = dropzone[allowableChars]
+    // let allowableChars = Math.floor(Math.random()*dropzone.length);
+    // const dropZones = dropzone[allowableChars]
     if (dropzoneChecked) {
+      console.log('GenRoulette - Inside dropzoneChecked..')
       setSelected(prev => ({
         ...prev,
-        dropzone:dropZones.dropzone
-      }))
-    }
+        dropzone: state.dropzone.dropzone
+      }));
+    };
 
     
     //rules
-    let allowableChars3 = Math.floor(Math.random()*rules.length);
-    const rule = rules[allowableChars3];
-    if (rulesChecked) {
-      
+    // let allowableChars3 = Math.floor(Math.random()*rules.length);
+    // const rule = rules[allowableChars3];
+    if (rulesChecked) {      
       setSelected(prev => ({
         ...prev,
-        rule:rule.rules,
+        rule:state.rules.rules
       }))
     } 
 
