@@ -4,12 +4,13 @@ import axios from 'axios';
 import getStatsForFavorites from './helpers/getStatsForFavorites'
 
 export default function TrackedGuns(props) {
-  const { favorites, deleteStat, achievements, displayedCards } = props
-  const [trackedStats, setTrackedStats] = useState([])
+  const { favorites, deleteStat, achievements, displayedCards } = props;
+  const [trackedStats, setTrackedStats] = useState([]);
   console.log("CHECKING");
 
   useEffect(() => {
-    return getStatsForFavorites(favorites).then(data => {
+    return getStatsForFavorites(favorites)
+    .then(data => {
       setTrackedStats(data)
     })
   }, [displayedCards])
@@ -18,8 +19,8 @@ export default function TrackedGuns(props) {
   // }, [trackedStats])
 
   return favorites.map((fav, index) => {
-    // console.log(fav);
-    const fixed = JSON.parse(fav.tracked);
+    console.log(fav);
+    const fixed = JSON.parse(fav.tracked_item);
     displayedCards.push(fixed.gun)
     const removedItem = { gunName: fixed.gun }
     // console.log(trackedStats[index]);
@@ -28,12 +29,54 @@ export default function TrackedGuns(props) {
     const loopTrackedStats = () => {
       const stats = [];
       for (const stat in trackedStats[index]) {
-        console.log('stat');
+        // console.log('stat:');
         stats.push(<h4>{stat}: {trackedStats[index][stat]}</h4>)
       }
       return stats;
     }
 
+    const earnedAchievements = () => achievements.map((achievement) => {
+      let hasHitFlag = false;
+      let headShotRatio = 0;
+      let accuracyRatio = 0;
+      let kdRatio = 0;
+      //#################3
+      // MAKE ACHIEVE FOR KILL COUNT AND ACCURACY
+      let tempVar = {
+        gunStat: trackedStats[index]
+      };
+
+      console.log('trackedGuns.js - gun: ', tempVar.gunStat);
+  
+      switch (achievement.category) {
+        case 'headshots':
+          headShotRatio = achievement.category_ratio;
+          break;
+        case 'accuracy':
+          accuracyRatio = achievement.category_ratio;
+          break;
+        case 'kdratio':
+          kdRatio = achievement.category_ratio;
+          break;
+        default:
+          break;
+      };
+  
+      // if ((gun.headshots >= headShotRatio) && (achievement.headShotRatio != null)) {
+      //   hasHitFlag = true;
+      // };
+      // if ((gun.accuracy <= accuracyRatio) && (achievement.accuracyRatio != null)) {
+      //   hasHitFlag = true;
+      // };
+      // if ((gun.kdRatio >= kdRatio) && (achievement.kdRatio != null)) {
+      //   hasHitFlag = true;
+      // };
+      // add else if it always does this if all 3 are true
+  
+      if (hasHitFlag) {
+        return <img className="achiev-icons" src={achievement.image} alt="" />
+      };
+    });
 
     const removeStat = () => {
       axios
@@ -45,7 +88,7 @@ export default function TrackedGuns(props) {
         .catch((err) => {
           console.log(err);
         })
-    }
+    };
 
     return (
       <>
@@ -54,7 +97,6 @@ export default function TrackedGuns(props) {
             <div className="card-img">
               <img className="fav-gun-icon" src={fixed.image} alt="" />
             </div>
-
             <div>
               <button onClick={() => removeStat(fixed.gun)}>Remove</button>
               <div className="right-side">
@@ -70,7 +112,7 @@ export default function TrackedGuns(props) {
               </div>
               <hr />
               <div className="gun-achieves">
-                {achievements(fixed.gun)}
+                {earnedAchievements()}
               </div>
             </div>
           </div>
