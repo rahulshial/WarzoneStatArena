@@ -1,16 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import image from "../img/trainstation-weapon.jpeg";
-import image1 from "../img/trainstation-secondary.png";
-import drop from "../img/droped.jpeg";
-import guned from "../img/loadout.jpg";
-import ruled from "../img/ruled.jpg";
-import mine from "../img/mine1.png";
 import codLogo from "../img/cod-logo.png"
 import Button from '@material-ui/core/Button';
-import axios from 'axios';
 import twitch from "../img/twitch.png";
 import BasicTextFields from "../textField";
 import GroupSizesColors from "../platform";
@@ -82,7 +75,7 @@ export default function Home({name, setName, nickname, setPlatform}) {
         <Grid item xs={12}>
           <Paper className={classes.paper} >
             <div>
-              <img src={codLogo}/>
+              <img src={codLogo} alt=""/>
               
             </div>
             <div>
@@ -110,7 +103,7 @@ export default function Home({name, setName, nickname, setPlatform}) {
             <div>
               <Button className={classes.shoot} href= "http://localhost:3000/auth/twitch/callback">
                 Login With Twitch
-                <img className={classes.img} src={twitch}/>
+                <img className={classes.img} src={twitch} alt="" />
               </Button>
             </div>
             </div>

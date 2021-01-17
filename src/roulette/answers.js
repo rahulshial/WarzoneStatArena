@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
   text: {
    fontFamily: "Times New Roman, serif",
-   fontSize: 30,
+   fontSize: 20,
   }
 });
 

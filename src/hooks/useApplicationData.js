@@ -38,7 +38,7 @@ export default function useApplicationData () {
 
   async function getPrimary() {
     console.log("iniside function");
-    return await axios('http://localhost:3030/roulette/gun')
+    return await axios('http://localhost:3030/roulette/primary')
       .then(res => {
          console.log("weapon", res.data[0])
          return res.data[0]
@@ -52,9 +52,25 @@ export default function useApplicationData () {
       });
   }
 
+  async function getPrimaryAttachments () {
+    console.log("iniside function");
+    return await axios('http://localhost:3030/roulette/attachments')
+      .then(res => {
+         console.log("weapon", res.data)
+         return res.data
+        // setState(prev => ({
+        //   ...prev,
+        //   guns: res.data[0]
+        // }));
+      })
+      .catch(error => {
+        console.log('Weapon Axios Error: ', error)
+      });
+  }
+
   async function getSecondary() {
     console.log("iniside function");
-    return await axios('http://localhost:3030/roulette/gun')
+    return await axios('http://localhost:3030/roulette/secondary')
       .then(res => {
          console.log("weapon", res.data[0])
          return res.data[0]
@@ -115,6 +131,7 @@ export default function useApplicationData () {
     getDropZone,
     getRules,
     getPrimary,
-    getSecondary
+    getSecondary,
+    getPrimaryAttachments
   };
 }

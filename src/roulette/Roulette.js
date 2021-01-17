@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../checkbox.css";
 import MediaCard from "./answers";
 import useApplicationData from "../hooks/useApplicationData";
-import image from "../img/trainstation-weapon.jpeg";
 import image1 from "../img/trainstation-secondary.png";
 import drop from "../img/droped.jpeg";
 import guned from "../img/loadout.jpg";
@@ -14,12 +13,14 @@ export default function Roulette() {
     getDropZone,
     getRules,
     getPrimary,
-    getSecondary
+    getSecondary,
+    getPrimaryAttachments,
   } = useApplicationData();
 
   
 
   const [primaryChecked, setPrimaryChecked] = useState(false);
+  const [primaryAttachmentChecked, setPrimaryAttachmentChecked] = useState(false);
   const [secondaryChecked, setSecondaryChecked] = useState(false);
   const [dropzoneChecked, setDropzoneChecked] = useState(false);
   const [rulesChecked, setRulesChecked] = useState(false);
@@ -30,8 +31,8 @@ export default function Roulette() {
     primaryClass: "",
     secondary: "",
     secondaryClass: "",
-    // attachment1:[],
-    // attachment1Class:[],
+    attachment1:[],
+    attachment1Class:[],
     // attachment2:[],
     // attachment2Class:[],
     dropzone: "",
@@ -56,10 +57,12 @@ export default function Roulette() {
     // const primary = weapon[allowableChars1]
     // console.log(primary.image);
  
-    Promise.all([getRules(), getPrimary(), getDropZone(), getSecondary()]).then((data) =>{
-
+    Promise.all([getRules(), getPrimary(), getDropZone(), getSecondary(), getPrimaryAttachments()]).then((data) =>{
+      console.log(data);
       let primaryGun = data[1].name
       let primaryGunClass = data[1].category
+      let primaryGunAttachments = data[4]
+      console.log("Primary Attachments", primaryGunAttachments);
 
       let secondaryGun = data[3].name
       let secondaryGunClass = data[3].category
@@ -68,6 +71,21 @@ export default function Roulette() {
 
       let rule = data[0].text
 
+    
+      let primAttachments = []
+      let primAttachmentsClass = []
+      let count = 0;
+      for (const attachment in primaryGunAttachments) {
+        
+        count = count + 1;
+        const allAttachments = primaryGunAttachments[attachment];
+        primAttachments.push (count, ". ", allAttachments.attachment_name, ",   ")
+        primAttachmentsClass.push (count, ". ", allAttachments.type, ",  ")
+      }
+
+       
+      
+      
 
       if (dropzoneChecked) {
         
@@ -99,7 +117,8 @@ export default function Roulette() {
           ...prev,
           primary: primaryGun,
           primaryImage:"../img/trainstation-weapon.jpeg",
-          primaryClass: primaryGunClass
+          primaryClass: primaryGunClass,
+          
         }))
       } else {
         setSelected(prev => ({
@@ -109,6 +128,21 @@ export default function Roulette() {
           primaryClass: ""
         }))
       };
+
+      if (primaryAttachmentChecked) {
+        setSelected(prev => ({
+          ...prev,
+          attachment1: primAttachments,
+          attachment1Class: primAttachmentsClass
+        }))
+      } else {
+        setSelected(prev => ({
+          ...prev,
+          attachment1: "",
+          attachment1Class: ""
+        }))
+      };
+      
 
       if (secondaryChecked) {
         setSelected(prev => ({
@@ -233,11 +267,11 @@ export default function Roulette() {
         <div>
           <MediaCard
             title="Primary Attachments"
-            selected={selected.primary}
-            class={selected.primaryClass}
+            selected={selected.attachment1}
+            class={selected.attachment1Class}
             image={guned}
-            checked={primaryChecked}
-            onChange={() => setPrimaryChecked(!primaryChecked)}
+            checked={primaryAttachmentChecked}
+            onChange={() => setPrimaryAttachmentChecked(!primaryAttachmentChecked)}
           />
 
           <MediaCard
