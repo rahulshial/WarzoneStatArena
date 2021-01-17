@@ -1,0 +1,48 @@
+.cats {
+  display: flex;
+  justify-content: center;
+}
+
+.dogs {
+  margin-top: 5%;
+  height: 75px;
+  background-color: rgb(226, 41, 17);
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+.under-dogs {
+  height: 75px;
+  background-color: rgb(226, 41, 17);
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.full-bar {
+  
+  width: 900px;
+  height: 70px;
+  background-color: black;
+}
+
+.stats {
+
+  position: absolute;
+  left: 30px;
+  top: 16px;
+}
+.stats1 {
+  
+  width: 80px;
+  float: left;
+  text-align: center;
+  font-weight: 900;
+  padding: 10 0px;
+  margin-top: 60px;
+  text-transform: uppercase;
+  color: white;
+}
+
+
