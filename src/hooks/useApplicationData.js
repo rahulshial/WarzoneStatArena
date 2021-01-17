@@ -1,76 +1,89 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 
 export default function useApplicationData () {
   const [state, setState] = useState(prev => ({
     ...prev,
-    guns:[],
-    dropzone:[],
-    rules:[],
     name:"",
     platform: "",
   }));
 
-  useEffect(() => {
-    console.log("In Axios");
-    getDropZone();
-    getGun();
-    getRules();
-    // getGameId();  
-  }, [setState])
+  // useEffect(() => {
+  //   console.log("In Axios");
+  //   getDropZone();
+  //   getGun();
+  //   getRules();
+  // }, [getDropZone,
+  //   getRules,
+  //   getGun])
   
-  const getDropZone = () => {
+
+  
+  async function getDropZone () {
     console.log("iniside function");
-    axios('http://localhost:3030/roulette/dropzone')
+    return await axios('http://localhost:3030/roulette/dropzone')
       .then(res => {
         console.log("dropzone", res.data[0])
-        setState(prev => ({
-          ...prev,
-          dropzone: res.data[0]
-        }));
+        return res.data[0]
+        // setState(prev => ({
+        //   ...prev,
+        //   dropzone: res.data[0]
+        // }));
       })
       .catch(error => {
         console.log('Dropzone Axios Error: ', error)
       });
   };
 
-  function getGun() {
+  async function getPrimary() {
     console.log("iniside function");
-    axios('http://localhost:3030/roulette/gun')
+    return await axios('http://localhost:3030/roulette/gun')
       .then(res => {
          console.log("weapon", res.data[0])
-        setState(prev => ({
-          ...prev,
-          guns: res.data[0]
-        }));
+         return res.data[0]
+        // setState(prev => ({
+        //   ...prev,
+        //   guns: res.data[0]
+        // }));
+      })
+      .catch(error => {
+        console.log('Weapon Axios Error: ', error)
+      });
+  }
+
+  async function getSecondary() {
+    console.log("iniside function");
+    return await axios('http://localhost:3030/roulette/gun')
+      .then(res => {
+         console.log("weapon", res.data[0])
+         return res.data[0]
+        // setState(prev => ({
+        //   ...prev,
+        //   guns: res.data[0]
+        // }));
       })
       .catch(error => {
         console.log('Weapon Axios Error: ', error)
       });
   }
  
-  function getRules() {
+  async function getRules() {
     console.log("iniside function");
-    axios('http://localhost:3030/roulette/rules')
+    return await axios('http://localhost:3030/roulette/rules')
       .then(res => {
         console.log("rules", res.data[0])
-        setState(prev => ({
-          ...prev,
-          rules: res.data[0]
-        }));
+        return res.data[0]
+        // setState(prev => ({
+        //   ...prev,
+        //   rules: res.data[0]
+        // }));
       })
       .catch(error => {
         console.log('Rules Axios Error: ', error)
       });
     }
   
-  function getGameId () {
-    axios.post('http://localhost:3000/')
-      .then ((req, res) => {
-        console.log(req.body);
-      })
-  }
 
   function nickname () {
     
@@ -98,6 +111,10 @@ export default function useApplicationData () {
   return { 
     state,
     setState,
-    nickname
+    nickname,
+    getDropZone,
+    getRules,
+    getPrimary,
+    getSecondary
   };
 }

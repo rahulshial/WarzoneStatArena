@@ -21,6 +21,7 @@ import EnhancedTable from "../leaderboard";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    padding: 0
   },
   paper: {
     margin:0,
@@ -62,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center"
 
-  }
+  },
 }));
 
 /* function click () {
@@ -77,7 +78,7 @@ export default function Home({name, setName, nickname, setPlatform}) {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
+      <Grid container spacing={0}>
         <Grid item xs={12}>
           <Paper className={classes.paper} >
             <div>
@@ -126,6 +127,10 @@ export default function Home({name, setName, nickname, setPlatform}) {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
           <EnhancedTable/>
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
           <EnhancedTable/>
           </Paper>
         </Grid>
