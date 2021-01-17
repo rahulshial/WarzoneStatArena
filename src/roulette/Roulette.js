@@ -58,15 +58,15 @@ export default function Roulette() {
  
     Promise.all([getRules(), getPrimary(), getDropZone(), getSecondary()]).then((data) =>{
 
-      let primaryGun = data[1].weapon
-      let primaryGunClass = data[1].class
+      let primaryGun = data[1].name
+      let primaryGunClass = data[1].category
 
-      let secondaryGun = data[3].weapon
-      let secondaryGunClass = data[3].class
+      let secondaryGun = data[3].name
+      let secondaryGunClass = data[3].category
 
-      let location  = data[2].dropzone
+      let location  = data[2].name
 
-      let rule = data[0].rules
+      let rule = data[0].text
 
 
       if (dropzoneChecked) {
