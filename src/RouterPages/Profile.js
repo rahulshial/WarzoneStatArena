@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import '../stats.css'
 import TrackedGuns from '../TrackedGuns.js'
+import bar from '../overlay/imgs/topBar.png'
 
 
 

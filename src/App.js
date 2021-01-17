@@ -4,6 +4,7 @@ import './App.css';
 import './stats.css';
 import Home from './RouterPages/Home.js';
 import Stats from './RouterPages/Stats.js';
+import Overlay from './RouterPages/Overlay.js';
 import Profile from './RouterPages/Profile.js'
 import PrimarySearchAppBar from './Navbar.js';
 import Roulette from './roulette/Roulette.js';
@@ -43,8 +44,10 @@ export default function App(props) {
       <PrimarySearchAppBar />
       <Switch>
         <Route exact path='/' render={(props) => <Home name={state.name} nickname={nickname} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom}/>} />
+
         <Route path='/stats' render={(props) => <Stats name={state.name} />} />
         <Route path='/roulette' component={Roulette} />
+        <Route path='/overlay' component={Overlay} />
         <Route path='/myProf' component={Profile} />
       </Switch>
     </>

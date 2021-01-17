@@ -191,6 +191,10 @@ export default function PrimarySearchAppBar() {
           <Link className="item-nav" to="/myProf">My Profile</Link>
           </Typography>
 
+          <Typography className={classes.title} variant="h6" style={{marginRight:'1%'}}>
+          <Link className="item-nav" to="/Overlay">Stream Overlay</Link>
+          </Typography>
+
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
 
