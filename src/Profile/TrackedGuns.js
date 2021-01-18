@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import './stats.css'
+// import '../stats.css'
 import axios from 'axios';
-import getStatsForFavorites from './helpers/getStatsForFavorites'
+import getStatsForFavorites from '../helpers/getStatsForFavorites'
 
 export default function TrackedGuns(props) {
   const { favorites, deleteStat, achievements, displayedCards } = props;
@@ -74,7 +74,7 @@ export default function TrackedGuns(props) {
 
     return (
       <>
-        <div>
+        <div class='tracked-guns'>
           <div className="fav-gun-card">
             <div className="card-img">
               <img className="fav-gun-icon" src={fixed.image} alt="" />
@@ -82,7 +82,7 @@ export default function TrackedGuns(props) {
             <div>
               <button onClick={() => removeStat(fixed.gun)}>Unfavourite</button>
               <div className="right-side">
-                <h3 style={{ textAlign: 'center' }}>{fixed.gun}</h3>
+                <h3>{fixed.gun}</h3>
                 <hr />
               </div>
               <div>

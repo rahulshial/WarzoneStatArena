@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import '../stats.css'
-import TrackedGuns from '../TrackedGuns.js'
+// import '../styles/profile.css'
+import TrackedGuns from '../Profile/TrackedGuns.js'
 import bar from '../overlay/imgs/topBar.png'
-
+import GamerStats from '../Profile/GamerStats';
 export default function Profile(props) {
   const [state, setState] = useState({
     favorites: [],
@@ -40,20 +41,22 @@ export default function Profile(props) {
 
   if (state.favorites.length > 0) {
     return (
-      <TrackedGuns
-        favorites={state.favorites}
-        displayedCards={state.displayedCards}
-        deleteStat={deleteStat}
-        // achievements={earnedAchievements}
-        achievements={state.achievements}
-        // image={fixed.image}
-      />
+      <>
+        <div class='card-row'>
+          <TrackedGuns
+            favorites={state.favorites}
+            displayedCards={state.displayedCards}
+            deleteStat={deleteStat}
+            achievements={state.achievements}
+            />
+        </div>
+      </>
     )
   } else {
     return (
       <>
-        <h1>Empty</h1>
-        <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
+        <div class='profile-page-gamer-stats'>
+          <h3>Empty Favourites</h3>
         </div>
       </>
     );
