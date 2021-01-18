@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
@@ -11,10 +10,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import news1 from "./img/news1.jpg";
 import ReactPlayer from "react-player"
 import LinkIcon from '@material-ui/icons/Link';
 
@@ -61,14 +57,14 @@ export default function RecipeReviewCard(props) {
         <Card className={classes.root}>
           <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          {/* <FavoriteIcon /> */}
         </IconButton>
         <IconButton aria-label="link" target="_blank" href={props.link}>
         <LinkIcon>
         </LinkIcon>
         </IconButton>
         <IconButton aria-label="share">
-          <ShareIcon />
+          {/* <ShareIcon /> */}
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
@@ -135,19 +131,10 @@ export default function RecipeReviewCard(props) {
         <ReactPlayer 
         url={props.url}
         />
-       {/* <img
-        className={classes.hello}
-        src={news1}
-      />  */}
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
         </Typography>
       </CardContent>
-      {/* <Typography>
-      Call of Duty: Warzone Supposedly Has a New "Broken" OP Gun
-      </Typography> */}
-      
-      
       
     </Card>
   );

@@ -28,8 +28,8 @@ export default function ClassesNesting(props) {
     <Button
       onClick={props.onClick}
       classes={{
-        root: classes.root, // class name, e.g. `classes-nesting-root-x`
-        label: classes.label, // class name, e.g. `classes-nesting-label-x`
+        root: classes.root, 
+        label: classes.label,
       }}
     >
       Roll

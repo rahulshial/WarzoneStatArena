@@ -8,15 +8,6 @@ export default function useApplicationData () {
     name:"",
     platform: "",
   }));
-
-  // useEffect(() => {
-  //   console.log("In Axios");
-  //   getDropZone();
-  //   getGun();
-  //   getRules();
-  // }, [getDropZone,
-  //   getRules,
-  //   getGun])
   
 
   
@@ -26,10 +17,6 @@ export default function useApplicationData () {
       .then(res => {
         console.log("dropzone", res.data[0])
         return res.data[0]
-        // setState(prev => ({
-        //   ...prev,
-        //   dropzone: res.data[0]
-        // }));
       })
       .catch(error => {
         console.log('Dropzone Axios Error: ', error)
@@ -42,10 +29,6 @@ export default function useApplicationData () {
       .then(res => {
          console.log("weapon", res.data[0])
          return res.data[0]
-        // setState(prev => ({
-        //   ...prev,
-        //   guns: res.data[0]
-        // }));
       })
       .catch(error => {
         console.log('Weapon Axios Error: ', error)
@@ -58,10 +41,6 @@ export default function useApplicationData () {
       .then(res => {
          console.log("weapon", res.data)
          return res.data
-        // setState(prev => ({
-        //   ...prev,
-        //   guns: res.data[0]
-        // }));
       })
       .catch(error => {
         console.log('Weapon Axios Error: ', error)
@@ -74,10 +53,6 @@ export default function useApplicationData () {
       .then(res => {
          console.log("weapon", res.data[0])
          return res.data[0]
-        // setState(prev => ({
-        //   ...prev,
-        //   guns: res.data[0]
-        // }));
       })
       .catch(error => {
         console.log('Weapon Axios Error: ', error)
@@ -90,15 +65,23 @@ export default function useApplicationData () {
       .then(res => {
         console.log("rules", res.data[0])
         return res.data[0]
-        // setState(prev => ({
-        //   ...prev,
-        //   rules: res.data[0]
-        // }));
       })
       .catch(error => {
         console.log('Rules Axios Error: ', error)
       });
     }
+
+    async function getTactical() {
+      console.log("iniside function");
+      return await axios('http://localhost:3030/roulette/tactical')
+        .then(res => {
+          console.log("tactical", res.data)
+          return res.data
+        })
+        .catch(error => {
+          console.log('Rules Axios Error: ', error)
+        });
+      }
   
 
   function nickname () {
@@ -132,6 +115,7 @@ export default function useApplicationData () {
     getRules,
     getPrimary,
     getSecondary,
-    getPrimaryAttachments
+    getPrimaryAttachments,
+    getTactical
   };
 }

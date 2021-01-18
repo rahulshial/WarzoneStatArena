@@ -15,12 +15,14 @@ export default function Roulette() {
     getPrimary,
     getSecondary,
     getPrimaryAttachments,
+    getTactical,
   } = useApplicationData();
 
   
 
   const [primaryChecked, setPrimaryChecked] = useState(false);
   const [primaryAttachmentChecked, setPrimaryAttachmentChecked] = useState(false);
+  const [tacticalLethalChecked, settacticalLethalChecked] = useState(false);
   const [secondaryChecked, setSecondaryChecked] = useState(false);
   const [dropzoneChecked, setDropzoneChecked] = useState(false);
   const [rulesChecked, setRulesChecked] = useState(false);
@@ -33,8 +35,8 @@ export default function Roulette() {
     secondaryClass: "",
     attachment1:[],
     attachment1Class:[],
-    // attachment2:[],
-    // attachment2Class:[],
+    tactical:[],
+    tacticalClass:[],
     dropzone: "",
     primaryImage: [],
     secondaryImage: image1,
@@ -42,26 +44,14 @@ export default function Roulette() {
   });
 
   function generateRoulette() {
-    // if primary_checked and weapon_loaded don't call getGun()
-    // else if primary_checked and weapon_not_loaded - call getGun()
-
-    //data
-    //let weapon = state.guns;
-    // let dropZoneObject = state.dropzone;
-    // console.log("DropZoneObject - Function GenRoulette: ", dropZoneObject)
-    // let attachments1 = state.attachment1;
-    // let attachments2 = state.attachments2;
-
-    //Primary Weapon
-    
-    // const primary = weapon[allowableChars1]
-    // console.log(primary.image);
+   
  
-    Promise.all([getRules(), getPrimary(), getDropZone(), getSecondary(), getPrimaryAttachments()]).then((data) =>{
+    Promise.all([getRules(), getPrimary(), getDropZone(), getSecondary(), getPrimaryAttachments(), getTactical()]).then((data) =>{
       console.log(data);
       let primaryGun = data[1].name
       let primaryGunClass = data[1].category
       let primaryGunAttachments = data[4]
+      let tacticalAttachment = data[5]
       console.log("Primary Attachments", primaryGunAttachments);
 
       let secondaryGun = data[3].name
@@ -74,13 +64,23 @@ export default function Roulette() {
     
       let primAttachments = []
       let primAttachmentsClass = []
-      let count = 0;
+      let countAttachment = 0;
       for (const attachment in primaryGunAttachments) {
         
-        count = count + 1;
+        countAttachment = countAttachment + 1;
         const allAttachments = primaryGunAttachments[attachment];
-        primAttachments.push (count, ". ", allAttachments.attachment_name, ",   ")
-        primAttachmentsClass.push (count, ". ", allAttachments.type, ",  ")
+        primAttachments.push (countAttachment, ". ", allAttachments.attachment_name, ",   ")
+        primAttachmentsClass.push (countAttachment, ". ", allAttachments.type, ",  ")
+      }
+
+      let tacticalLethal = []
+      let tacticalLethalClass = []
+      let countTactical = 0;
+      for (const tactical in tacticalAttachment) {
+        countTactical = countTactical + 1;
+        const allTactical = tacticalAttachment[tactical];
+        tacticalLethal.push (countTactical, ". ", allTactical.attachment_name, ",   ")
+        tacticalLethalClass.push (countTactical, ". ", allTactical.type, ",  ")
       }
 
        
@@ -142,6 +142,20 @@ export default function Roulette() {
           attachment1Class: ""
         }))
       };
+
+      if (tacticalLethalChecked) {
+        setSelected(prev => ({
+          ...prev,
+          tactical: tacticalLethal,
+          tacticalClass: tacticalLethalClass
+        }))
+      } else {
+        setSelected(prev => ({
+          ...prev,
+          attachment1: "",
+          attachment1Class: ""
+        }))
+      };
       
 
       if (secondaryChecked) {
@@ -161,86 +175,8 @@ export default function Roulette() {
       };
 
     });
-
-
-      
-
-   
-    // console.log(weapon);
-    // let allowableChars1 = Math.floor(Math.random() * weapon.length);
-    
-
-    // //Secondary Weapon
-    // if (secondaryChecked) {
-    //   let allowableChars2 = Math.floor(Math.random() * weapon.length);
-    //   let secondary;
-    //   if (allowableChars1 !== allowableChars2) {
-    //     secondary = weapon[allowableChars2];
-    //   } else {
-    //     secondary = "any secondary Gun";
-    //   }
-    //   console.log("Secondary Weapon: ", secondary);
-    //   setSelected((prev) => ({
-    //     ...prev,
-    //     secondary: secondary.weapon,
-    //     secondaryClass: secondary.class,
-    //   }));
-    // }
-
-    /*  //Primary Attachments
-     let randomAttachment1 = Math.floor(Math.random()*weapon.length);
-     let randomAttachment2 = Math.floor(Math.random()*weapon.length);
-     let randomAttachment3 = Math.floor(Math.random()*weapon.length);
-     let randomAttachment4 = Math.floor(Math.random()*weapon.length);
-     let randomAttachment5 = Math.floor(Math.random()*weapon.length);
- 
-     const attachmentPrimary1 = attachment1[randomAttachment1]
-     const attachmentPrimary2 = attachment1[randomAttachment2]
-     const attachmentPrimary3 = attachment1[randomAttachment3]
-     const attachmentPrimary4 = attachment1[randomAttachment4]
-     const attachmentPrimary5 = attachment1[randomAttachment5]
-     const attachments = [attachmentPrimary1, attachmentPrimary2, attachmentPrimary3, attachmentPrimary4, attachmentPrimary5]
-     // console.log(primary.image);
-     if (attachment1Checked) {
-       setSelected(prev => ({
-         ...prev,
-         attachment1:attachments,
-         
-       }))
-     } */
-
-    /*  //Secondary Attachments
-     let randomAttachment6 = Math.floor(Math.random()*weapon.length);
-     let randomAttachment7 = Math.floor(Math.random()*weapon.length);
-     let randomAttachment8 = Math.floor(Math.random()*weapon.length);
-     let randomAttachment9 = Math.floor(Math.random()*weapon.length);
-     let randomAttachment = Math.floor(Math.random()*weapon.length);
-     const attachmentSecondary1 = attachment1[randomAttachment6]
-     const attachmentSecondary2 = attachment1[randomAttachment7]
-     const attachmentSecondary3 = attachment1[randomAttachment8]
-     const attachmentSecondary4 = attachment1[randomAttachment9]
-     const attachmentSecondary5 = attachment1[randomAttachment0]
-     const attachments = [attachmentSecondary1, attachmentSecondary2, attachmentSecondary3, attachmentSecondary4, attachmentSecondary5]
-     if (attachment2Checked) {
-       setSelected(prev => ({
-         ...prev,
-         secondary: attachmentSecondary.weapon,
-         secondaryClass: attachmentSecondary.class
-         
-       }))
-     } */
-
-    //dropZones
-    // let allowableChars = Math.floor(Math.random()*dropzone.length);
-    // const dropZones = dropzone[allowableChars]
-    
-
-    //rules
-    // let allowableChars3 = Math.floor(Math.random()*rules.length);
-    // const rule = rules[allowableChars3];
-   
   }
-  //console.log(selected.secondaryImage);
+
   return (
     <div className="Roulette">
       <p className="test1">Press on the Proximity Mine bellow to roll</p>
@@ -266,7 +202,7 @@ export default function Roulette() {
         </div>
         <div>
           <MediaCard
-            title="Primary Attachments"
+            title="Attachments"
             selected={selected.attachment1}
             class={selected.attachment1Class}
             image={guned}
@@ -275,12 +211,12 @@ export default function Roulette() {
           />
 
           <MediaCard
-            title="Secondary Attachments"
-            selected={selected.secondary}
-            class={selected.secondaryClass}
+            title='Tactical & Lethal'
+            selected={selected.tactical}
+            class={selected.tacticalClass}
             image={guned}
-            checked={secondaryChecked}
-            onChange={() => setSecondaryChecked(!secondaryChecked)}
+            checked={tacticalLethalChecked}
+            onChange={() => settacticalLethalChecked(!tacticalLethalChecked)}
           />
         </div>
 

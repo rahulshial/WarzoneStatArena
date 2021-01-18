@@ -59,11 +59,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-/* function click () {
-  Axios.post("http://localhost:3000/auth/twitch/callback", (req, res) => {
-    res.redirect("http://localhost:3000/auth/twitch/callback");
-  })
-} */
 
 export default function Home({name, setName, nickname, setPlatform}) {
   const classes = useStyles();
@@ -101,7 +96,7 @@ export default function Home({name, setName, nickname, setPlatform}) {
               />
             </div>
             <div>
-              <Button className={classes.shoot} href= "http://localhost:3000/auth/twitch/callback">
+              <Button className={classes.shoot} href= "http://localhost:8080/auth/twitch/callback">
                 Login With Twitch
                 <img className={classes.img} src={twitch} alt="" />
               </Button>
