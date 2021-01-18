@@ -1,18 +1,22 @@
 import React from 'react'
+import Container from '@material-ui/core/Container';
 
-function GamerStats() {
+export default function GamerStats() {
   /** THIS IS WHERE WE WILL SHOW THE GAMER'S WEEKLY AND LIFETIME STATS next to the favourited guns */
   return (
     <div class='gamer-stats'>
-      <div class='weekly-stats'>
-        <h1>Gamer weekly stats</h1>
-      </div>
-      <div class='lifetime-stats'>
-        <h1>Gamer lifetime stats</h1>
-      </div>
+      <Container maxWidth="sm">
+        <div class='weekly-stats'>
+          <h1>Gamer weekly stats</h1>
+        </div>
+      </Container>
+      <Container maxWidth="sm">
+        <div class='lifetime-stats'>
+          <h1>Gamer lifetime stats</h1>
+        </div>
+      </Container>
     </div>
-  )
-}
+  );
+};
 
-export default GamerStats
-
+/**  style={{ backgroundColor: '#cfe8fc', height: '50vh', width: 800 }} */

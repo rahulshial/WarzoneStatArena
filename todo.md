@@ -6,3 +6,20 @@
 
 
 [] more stat routes!!
+
+add to .gitignore
+statsite-api/
+db/
+
+refactor folder-structure
+
+# profile page
+* create additional navbar to navigate between favourite guns and stats
+* favourite guns - 3 per line
+* stats tab
+  * weekly stats box
+  * lifetime stats box
+
+# compare stats
+* what do we compare?
+
