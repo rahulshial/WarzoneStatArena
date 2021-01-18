@@ -20,6 +20,7 @@ export default function GunStats({ shown, gunImgs, gunTab, weapons, gunNavSelect
   }
 
   const onButtonClick = (gun, img, cat) => {
+    
     const gunObj = {
       cat: gunTab,
       gun,

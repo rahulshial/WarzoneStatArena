@@ -15,9 +15,12 @@ export default function Profile(props) {
   useEffect(() => {
     Promise.all([
       axios.get('http://localhost:3030/trackedstats/trackedfavs'),
-      axios.get('http://localhost:3030/achievements')
+      axios.get('http://localhost:3030/achievements'),
+      axios.get(`http://localhost:3030/stats/moho`)
     ])
-      .then(([favorites, achievements]) => {
+      .then(([favorites, achievements, allData]) => {
+        // console.log(allData.data[0].weeklyData);
+        console.log(allData.data[3].lifetimeData);
         setState(prev => ({
           ...prev,
           favorites: favorites.data,

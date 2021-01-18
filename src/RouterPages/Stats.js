@@ -14,22 +14,23 @@ export default function Guns(props) {
     shownCat: [],
     gameModeCat: [],
     category: [],
-    weapons:[],
+    weapons: [],
     gunNavSelected: [],
     selectedGunTab: 'weapon_assault_rifle'
   })
-  console.log(state.selectedGunTab, "*************");
+
   useEffect(() => {
     let nickname = props.name.replace("#", "%23")
     // nickname will === username
-    Promise.all([
-      axios.get(`http://localhost:3030/stats/moho`),
-      axios.get(`http://localhost:3030/stats/allstats/moho`)
-    ])
+    // Promise.all([
+    //   axios.get(`http://localhost:3030/stats/moho`),
+    //   axios.get(`http://localhost:3030/stats/allstats/moho`)
+    // ])
+    axios.get(`http://localhost:3030/stats/moho`)
       .then(res => {
-        const weapons = res[0].data;
-        const gameModes = res[1];
-
+        const weapons = res.data[2].guns;
+        const gameModes = res.data[1].gameModes;
+        console.log(gameModes);
         setState(prev => ({
           ...prev,
           gameModes,
@@ -69,22 +70,6 @@ export default function Guns(props) {
     }))
   };
 
-  const gameModeSelected = (indexValue) => {
-
-  // I want to change this so we only show multiplayer OR warzone...
-  // IF !WARZONE THEN SHOW ALL MULTIPLAYER?
-  // There is not too many warzone stats... so maybe we should just show ALL game modes when its selected
-    const categories = ["gun", "dom", "war", "hq", "hc_dom", "koth", "arena", "br", "sd", "cyber", "arm"];
-
-    console.log("selected", categories[indexValue]);
-    setState(prev => ({
-      ...prev,
-      shown: state.gameModes.data[categories[indexValue]],
-      gameModeCat: categories[indexValue]
-    }))
-  }
-
-
 
   const categorySelected = (indexValue) => {
 
@@ -101,7 +86,7 @@ export default function Guns(props) {
     } else if (categories[indexValue] === "game_modes") {
       setState(prev => ({
         ...prev,
-        shown: state.gameModes.data,
+        shown: state.gameModes,
         // gameModeCat: 'gun'
       }))
     }
@@ -133,7 +118,7 @@ export default function Guns(props) {
               weapons={state.weapons}
               gunNavSelected={state.gunNavSelected}
             />
-            
+
           </div>
         </>
       )

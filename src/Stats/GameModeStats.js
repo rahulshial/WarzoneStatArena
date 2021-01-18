@@ -4,7 +4,7 @@ import '../stats.css'
 export default function GameModeStats(props) {
   const { shown } = props
   const topRow = [];
-
+  console.log(shown);
   const modes = ["Gun Game", "Domination", "TDM", "Headquarters", "HardCore Domination", "Kill Confirmed Hardcore", "King Of The Hill", "Kill Confirmed", "Headquarters Hardcore", "Gunfight", "Plunder", "WARZONE", "Search And Destroy", "Grind", "Cyber Attack", "Team Deathmatch Hardcore", "br_all", "Search and Destroy Hardcore", "Ground War", "Cyber Attack HardCore", "Infected"]
 
 
