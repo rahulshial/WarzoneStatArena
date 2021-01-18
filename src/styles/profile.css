@@ -1,0 +1,49 @@
+.profile-page {
+  /* display: flex;
+  flex-direction: row, wrap; */
+}
+
+.fav-gun-card {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 44%;
+  margin: 2px;
+  background-color: rgb(180, 180, 180);
+}
+
+.fav-gun-icon {
+  width: 100%;
+  align-self: center;
+}
+
+.right-side {
+  text-align: center
+}
+
+.card-img {
+  display: flex;
+  background-color: rgb(138, 138, 138);
+}
+
+.gun-achieves {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-page-gamer-stats {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.gamer-stats {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.weekly-stats {
+  height: 50%;
+}
