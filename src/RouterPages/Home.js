@@ -57,6 +57,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center"
 
   },
+  title: {
+    fontSize: 40,
+    marginBottom: 400
+    
+  }
 }));
 
 
@@ -71,7 +76,6 @@ export default function Home({name, setName, nickname, setPlatform}) {
           <Paper className={classes.paper} >
             <div>
               <img src={codLogo} alt=""/>
-              
             </div>
             <div>
             <div>
@@ -80,21 +84,19 @@ export default function Home({name, setName, nickname, setPlatform}) {
                   Modern Warfare Stats
                 </h1>
                 <br/>
-                <h2>
-                  
-                </h2>
               </p>
             </div>
             <div className={classes.gameId}>
               <GroupSizesColors
                 onClick={setPlatform}
               />
-              <BasicTextFields 
+              
+            </div>
+            <BasicTextFields 
                 value={name}
                 onChange={setName}
                 onClick={nickname}
               />
-            </div>
             <div>
               <Button className={classes.shoot} href= "http://localhost:8080/auth/twitch/callback">
                 Login With Twitch
@@ -114,14 +116,12 @@ export default function Home({name, setName, nickname, setPlatform}) {
           
         <Grid item xs={12}>
           <Paper className={classes.paper}>
+          <p className={classes.title}>Leaderboard</p>
+          <EnhancedTable/>
           <EnhancedTable/>
           </Paper>
         </Grid>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-          <EnhancedTable/>
-          </Paper>
-        </Grid>
+        
         <Grid item xs={12} >
           <Paper className={classes.paper}>
             <RecipeReviewCard 

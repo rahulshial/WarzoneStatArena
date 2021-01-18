@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.5.0",
     "async": "^3.2.0",
     "call-of-duty-api": "^1.3.0",
+    "classnames": "^2.2.6",
     "cors": "^2.8.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
