@@ -43,7 +43,10 @@ export default function GunStats({ shown, gunImgs, gunTab, weapons, gunNavSelect
 
     Object.keys(gun).map((gunStat, i) => {
 
-      // You can push JSX to an array!!!!!!
+     // FOR GRABBING PROPPER GUN NAMES PERHAPS A HELPER FILE WITH AN OBJECT 
+    //  KEY = IW8_AR*** 
+    //  VALUE = PROPPER GUN NAME
+
       if (gunStat === "kdRatio" || gunStat === "accuracy") {
         titles.push(<h3>{gunStat}</h3>)
         stats.push(<h3>{gun[gunStat].toFixed(2)}</h3>)

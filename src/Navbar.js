@@ -192,7 +192,7 @@ export default function PrimarySearchAppBar() {
           </Typography>
 
           <Typography className={classes.title} variant="h6" style={{marginRight:'1%'}}>
-          <Link className="item-nav" to="/Overlay">Stream Overlay</Link>
+          <Link className="item-nav" to="/Overlay/Large">Stream Overlay</Link>
           </Typography>
 
           <div className={classes.grow} />
