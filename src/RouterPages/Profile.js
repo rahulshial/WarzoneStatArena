@@ -42,7 +42,10 @@ export default function Profile(props) {
   if (state.favorites.length > 0) {
     return (
       <>
-        <div class='card-row'>
+        <div class='profile-page-gamer-stats'>
+          <GamerStats />
+        </div>
+        <div class='tracked-guns'>
           <TrackedGuns
             favorites={state.favorites}
             displayedCards={state.displayedCards}
@@ -56,6 +59,10 @@ export default function Profile(props) {
     return (
       <>
         <div class='profile-page-gamer-stats'>
+        <GamerStats />
+        </div>
+       <hr></hr>
+        <div>
           <h3>Empty Favourites</h3>
         </div>
       </>
