@@ -1,41 +1,22 @@
-.cats {
-  display: flex;
-  justify-content: center;
-}
-
-.dogs {
-  margin-top: 5%;
-  height: 75px;
-  background-color: rgb(226, 41, 17);
-  width: 80%;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-}
-.under-dogs {
-  height: 75px;
-  background-color: rgb(226, 41, 17);
-  width: 80%;
-  display: flex;
-  justify-content: space-around;
-}
-
 .full-bar {
-  
+  position: absolute;
+  margin-top: 80px;
   width: 900px;
   height: 70px;
   background-color: black;
+  left: 25%;
+  right:25%;
+
 }
-
 .stats {
-
-  position: absolute;
-  left: 30px;
+  margin-top: 20px;
+  position: relative;
+  left: 27%;
   top: 16px;
 }
 .stats1 {
   
-  width: 80px;
+  width: 100px;
   float: left;
   text-align: center;
   font-weight: 900;
@@ -45,4 +26,31 @@
   color: white;
 }
 
+/*  MEDIUM BAR */
+
+.medium-bar {
+  position: absolute;
+  margin-top: 80px;
+  width: 500px;
+  height: 60px;
+  background-color: black;
+  left: 35%;
+}
+.stats-medium-bar {
+  margin-top: 20px;
+  position: relative;
+  left: 37%;
+  top: 16px;
+}
+.stats1 {
+  
+  width: 100px;
+  float: left;
+  text-align: center;
+  font-weight: 900;
+  padding: 10 0px;
+  margin-top: 60px;
+  text-transform: uppercase;
+  color: white;
+}
 
