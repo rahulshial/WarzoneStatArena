@@ -18,15 +18,10 @@ export default function WeeklyStatCard({weeklyData}) {
   const classes = useStyles();
 console.log('Weekly Data: ', weeklyData)
   if(weeklyData.length > 0) {
-    const totalKnockedDownPlayers = 0;
-    // weeklyData.objectiveBrDownEnemyCircle1 + 
-    // weeklyData.objectiveBrDownEnemyCircle4 + 
-    // weeklyData.objectiveBrDownEnemyCircle5 + 
-    // weeklyData.objectiveBrDownEnemyCircle6;
-
     const avgLifeTime = weeklyData[0].avgLifeTime / 60;
     const headShotPercent = weeklyData[0].headshotPercentage * 100;
     const timePlayed = weeklyData[0].timePlayed / 60;
+    const distanceTraveled = weeklyData[0].distanceTraveled / 39.3701
     return (
       <div className={classes.root}>
         <Grid container spacing={1}>
@@ -76,7 +71,7 @@ console.log('Weekly Data: ', weeklyData)
               <Paper className={classes.paper}>Score: {weeklyData[0].score} @ {weeklyData[0].scorePerMinute.toFixed(2)} / min</Paper>
           </Grid>
           <Grid item xs={1.5}>
-              <Paper className={classes.paper}>Distance Travelled: {weeklyData[0].distanceTraveled.toFixed(0)}</Paper>
+              <Paper className={classes.paper}>Distance Travelled: {distanceTraveled.toFixed(0)} mts</Paper>
           </Grid>
           <Grid item xs={1.5}>
               <Paper className={classes.paper}>Time Played: {timePlayed.toFixed(0)} mins</Paper>
@@ -95,9 +90,6 @@ console.log('Weekly Data: ', weeklyData)
           </Grid>
           <Grid item xs={1.5}>
               <Paper className={classes.paper}>Missions Accepted: {weeklyData[0].objectiveBrMissionPickupTablet}</Paper>
-          </Grid>
-          <Grid item xs={1.5}>
-              <Paper className={classes.paper}>Total knocked Players: {totalKnockedDownPlayers}</Paper>
           </Grid>
           <Grid item xs={1.5}>
               <Paper className={classes.paper}>Mates Revived: {weeklyData[0].objectiveReviver}</Paper>
