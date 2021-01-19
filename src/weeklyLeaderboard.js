@@ -196,7 +196,7 @@ function tableRows () {
 }
 
 
-export default function EnhancedTable() {
+export default function EnhancedTable1() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('kills');
@@ -220,11 +220,11 @@ export default function EnhancedTable() {
   }
 
   const rows = [
-    createData('YooGood', 305, 3.7, 67, 4.3),
-    createData('Stephan', 452, 25.0, 51, 4.9),
-    createData('CaprianPrice', 262, 16.0, 24, 6.0),
+    createData('YooGood', weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
+    createData('Stephan', weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
+    createData('CaprianPrice', weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
     createData('yesSiir', weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
-    createData('Mo', 356, 16.0, 49, 3.9),
+    createData('Mo', weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
   ];
 
   const handleRequestSort = (event, property) => {

@@ -3,8 +3,6 @@ import "../checkbox.css";
 import MediaCard from "./answers";
 import useApplicationData from "../hooks/useApplicationData";
 import image1 from "../img/trainstation-secondary.png";
-import drop from "../img/droped.jpeg";
-import guned from "../img/loadout.jpg";
 import heartbeat from '../img/dropzone_images/heartbeat.jpg';
 import mags from '../img/dropzone_images/mags.jpg';
 import ruled from "../img/ruled.jpg";

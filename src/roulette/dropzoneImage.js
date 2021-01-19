@@ -39,15 +39,15 @@ import shotgun from "../img/dropzone_images/shotgun.jpeg";
 
 // ARS
 import ak47 from '../images/guns/ar/ak-47.png';
-import iw8_ar_anovember94 from '../images/guns/ar/an-94.png';
+
 import asVal from '../images/guns/ar/as-val.png';
 import crMax from '../images/guns/ar/cr-56-amax.png';
 import fal from '../images/guns/ar/fal.png';
 import fnScar from '../images/guns/ar/fn-scar-17.png';
 import fr556 from '../images/guns/ar/fr-556.png';
-import grau from '../images/guns/ar/grau-556.png';
+
 import killo141 from '../images/guns/ar/kilo141.png';
-import m4 from '../images/guns/ar/m4a1.png';
+
 import m13 from '../images/guns/ar/m13.png';
 import oden from '../images/guns/ar/oden.png';
 import ram7 from '../images/guns/ar/ram-7.png';

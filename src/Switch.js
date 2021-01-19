@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Switch from '@material-ui/core/Switch';
 import FormGroup from '@material-ui/core/FormGroup';

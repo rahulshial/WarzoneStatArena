@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeReviewCard(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -120,8 +121,9 @@ export default function RecipeReviewCard(props) {
           aria-expanded={expanded}
           aria-label="show more"
         >
-        
+          
           <ExpandMoreIcon />
+          
         </IconButton>
         } 
         title={props.title}
