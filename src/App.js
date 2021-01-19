@@ -21,7 +21,7 @@ export default function App(props) {
   const {
     state,
     setState,
-    nickname,
+    setGamerData,
   } = useApplicationData();
   function setName(event) {
     
@@ -42,7 +42,7 @@ export default function App(props) {
     <>
       <PrimarySearchAppBar />
       <Switch>
-        <Route exact path='/' render={(props) => <Home name={state.name} nickname={nickname} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom}/>} />
+        <Route exact path='/' render={(props) => <Home name={state.name} setGamerData={setGamerData} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom}/>} />
 
         <Route path='/stats' render={(props) => <Stats name={state.name} />} />
         <Route path='/roulette' component={Roulette} />

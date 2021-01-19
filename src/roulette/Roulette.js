@@ -17,6 +17,7 @@ export default function Roulette() {
     getSecondary,
     getPrimaryAttachments,
     getTactical,
+    cookies
   } = useApplicationData();
 
   
@@ -45,7 +46,7 @@ export default function Roulette() {
   });
 
   function generateRoulette() {
-   
+    console.log(cookies.gamerTagInfo);
  
     Promise.all([getRules(), getPrimary(), getDropZone(), getSecondary(), getPrimaryAttachments(), getTactical()]).then((data) =>{
       console.log(data);
