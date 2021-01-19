@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-// import '../stats.css'
 import axios from 'axios';
 import getStatsForFavorites from '../helpers/getStatsForFavorites'
 
 export default function TrackedGuns(props) {
   const { favorites, deleteStat, achievements, displayedCards } = props;
   const [trackedStats, setTrackedStats] = useState([]);
-  console.log("CHECKING");
 
   useEffect(() => {
     return getStatsForFavorites(favorites)
@@ -16,7 +14,7 @@ export default function TrackedGuns(props) {
   }, [displayedCards])
 
   return favorites.map((fav, index) => {
-    console.log(fav);
+    console.log('Favourite: ',fav);
     const fixed = JSON.parse(fav.tracked_item);
     displayedCards.push(fixed.gun);
     const removedItem = { gunName: fixed.gun };

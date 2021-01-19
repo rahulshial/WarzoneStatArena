@@ -50,6 +50,7 @@ export default function LifetimeStatCard({lifetimeData}) {
             <Paper className={classes.paper}>Score: {lifetimeData[0].bestScore} @{lifetimeData[0].bestSPM}/min</Paper>
           </Grid>
         </Grid>
+        <br></br>
         <Grid container spacing={1}>
           <Grid item xs={1.5}>
             <Paper className={classes.paper}><strong>Lifetime</strong></Paper>

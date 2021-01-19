@@ -16,13 +16,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function WeeklyStatCard({weeklyData}) {
   const classes = useStyles();
-
+console.log('Weekly Data: ', weeklyData)
   if(weeklyData.length > 0) {
-    const totalKnockedDownPlayers = 
-    weeklyData.objectiveBrDownEnemyCircle1 + 
-    weeklyData.objectiveBrDownEnemyCircle4 + 
-    weeklyData.objectiveBrDownEnemyCircle5 + 
-    weeklyData.objectiveBrDownEnemyCircle6;
+    const totalKnockedDownPlayers = 0;
+    // weeklyData.objectiveBrDownEnemyCircle1 + 
+    // weeklyData.objectiveBrDownEnemyCircle4 + 
+    // weeklyData.objectiveBrDownEnemyCircle5 + 
+    // weeklyData.objectiveBrDownEnemyCircle6;
+
     const avgLifeTime = weeklyData[0].avgLifeTime / 60;
     const headShotPercent = weeklyData[0].headshotPercentage * 100;
     const timePlayed = weeklyData[0].timePlayed / 60;
@@ -96,7 +97,7 @@ export default function WeeklyStatCard({weeklyData}) {
               <Paper className={classes.paper}>Missions Accepted: {weeklyData[0].objectiveBrMissionPickupTablet}</Paper>
           </Grid>
           <Grid item xs={1.5}>
-              <Paper className={classes.paper}>Total knocked Players: {weeklyData[0].totalKnockedDownPlayers}</Paper>
+              <Paper className={classes.paper}>Total knocked Players: {totalKnockedDownPlayers}</Paper>
           </Grid>
           <Grid item xs={1.5}>
               <Paper className={classes.paper}>Mates Revived: {weeklyData[0].objectiveReviver}</Paper>
@@ -113,7 +114,7 @@ export default function WeeklyStatCard({weeklyData}) {
   }
   else {
     return (
-    <h4>Please wait, fetching data!</h4>
+    <h4>You haven't played this week!!!</h4>
     );
   };
 };
