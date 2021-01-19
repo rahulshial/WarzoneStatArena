@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../overlay.css';
-import bar from '../overlay/imgs/topBar.png';
+// import bar from '../overlay/imgs/topBar.png';
 import DropDownCategory from "../DropDownCategory";
 import DropDownStats from "../DropDownStats";
 import {
