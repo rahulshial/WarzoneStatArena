@@ -1,18 +1,31 @@
 import React from 'react'
+import Container from '@material-ui/core/Container';
+import WeeklyStatCard from './WeeklyStatCard';
+import LifetimeStatCard from './LifetimeStatCard';
 
-function GamerStats() {
+export default function GamerStats(props) {
   /** THIS IS WHERE WE WILL SHOW THE GAMER'S WEEKLY AND LIFETIME STATS next to the favourited guns */
+  const { weeklyData, lifetimeData } = props;
+  console.log('weekly data: ', weeklyData)
   return (
-    <div class='gamer-stats'>
-      <div class='weekly-stats'>
-        <h1>Gamer weekly stats</h1>
-      </div>
-      <div class='lifetime-stats'>
-        <h1>Gamer lifetime stats</h1>
-      </div>
+    <div className='gamer-stats'>
+      <Container maxWidth="false">
+        <div className='weekly-stats'>
+          <br></br>
+          <h1>Weekly Game Stats</h1>
+          <WeeklyStatCard 
+          weeklyData = {weeklyData}
+          />
+        </div>
+      </Container>
+      <Container maxWidth="false">
+        <div className='lifetime-stats'>
+          <h1>Lifetime Game Stats</h1>
+          <LifetimeStatCard 
+          lifetimeData = {lifetimeData}
+          />
+        </div>
+      </Container>
     </div>
-  )
-}
-
-export default GamerStats
-
+  );
+};
