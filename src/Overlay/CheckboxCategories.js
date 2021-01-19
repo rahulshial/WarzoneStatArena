@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function CheckboxCategories(props) {
+  const {selectedStat} = props
   return (
     <div>
         <input type="checkbox" id="stat1" name="stat1" value="avgLifeTime" isChecked='false' onChange={(e) => { selectedStat(e.target.value, e.target.id, e.target.checked)}}></input>

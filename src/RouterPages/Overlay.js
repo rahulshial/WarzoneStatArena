@@ -193,7 +193,9 @@ function Child(props) {
   if (id === "Large") {
     return (
       <>
-        <CheckboxCategories />
+        <CheckboxCategories 
+        selectedStat={selectedStat}
+        />
 
         <div className="full-bar"></div>
         <div className="stats">
@@ -236,7 +238,9 @@ function Child(props) {
   } else {
     return (
       <>
-        <CheckboxCategories />
+        <CheckboxCategories 
+        selectedStat={selectedStat}
+        />
         <div className="medium-bar"></div>
         <div className="stats-medium-bar">
         <div className="stats1">
