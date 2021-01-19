@@ -30,7 +30,6 @@ export default function App(props) {
       name: event.target.value
     }))
   }
-
   function setPlatform(platform) {
     setState(prev => ({
       ...prev,
@@ -47,7 +46,13 @@ export default function App(props) {
 
         <Route path='/stats' render={(props) => <Stats name={state.name} />} />
         <Route path='/roulette' component={Roulette} />
-        <Route path='/overlay/Large' component={Overlay} />
+
+
+        <Route path='/overlay' component={Overlay} />
+
+
+
+
         <Route path='/myProf' component={Profile} />
       </Switch>
     </>
