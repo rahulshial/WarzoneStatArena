@@ -9,7 +9,7 @@ import BasicTextFields from "../textField";
 import GroupSizesColors from "../platform";
 import RecipeReviewCard from "../news";
 import EnhancedTable from "../leaderboard";
-
+import EnhancedTable1 from "../weeklyLeaderboard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,8 +65,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Home({name, setName, nickname, setPlatform}) {
+export default function Home({name, setName, nickname, setPlatform, }) {
   const classes = useStyles();
+
+  // const {
+  //   weapons1,
+  //   setWeapon
+  // } = useApplicationData();
+
+  // console.log(weapons1.weapons.weapon_assault_rifle);
+  // console.log(weapons1.weeklyData.properties);
+  //   // if (weapons1.weapons.weapon_assault_rifle) {
+  //   //   const gunstat = weapons1.weapons.weapon_assault_rifle.iw8_ar_akilo47.properties.kills
+  //   //   return gunstat
+  //   // }
+  //   let weeklyKills = 0
+  //   let weeklyDeaths = 0
+  //   let weeklyKdRatio = 0
+  //   let weeklyMatchesPlayed = 0
+  //   if (weapons1.weeklyData.properties) {
+  //     console.log(weapons1.weeklyData.properties["kills"]);
+  //      weeklyKills = weapons1.weeklyData.properties.kills
+  //      weeklyDeaths = weapons1.weeklyData.properties.deaths
+  //      weeklyKdRatio = weapons1.weeklyData.properties.kdRatio
+  //      weeklyMatchesPlayed = weapons1.weeklyData.properties.matchesPlayed
+  //   }
   
 
   return (
@@ -117,8 +140,13 @@ export default function Home({name, setName, nickname, setPlatform}) {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
           <p className={classes.title}>Leaderboard</p>
-          <EnhancedTable/>
-          <EnhancedTable/>
+          <EnhancedTable
+            // weeklyKills = {weeklyKills}
+            // weeklyDeaths = {weeklyDeaths}
+            // weeklyKdRatio = {weeklyKdRatio}
+            // weeklyMatchesPlayed = {weeklyMatchesPlayed}
+          />
+          <EnhancedTable1/>
           </Paper>
         </Grid>
         
@@ -127,7 +155,7 @@ export default function Home({name, setName, nickname, setPlatform}) {
             <RecipeReviewCard 
               url="https://youtu.be/XgCtsrElVn8"
               title='Call of Duty: Warzone Supposedly Has a New "Broken" OP Gun'
-              avatar="AB"
+              avatar="RS"
               subheader="charlieintel.com"
               link="https://charlieintel.com/faze-swagg-reveals-a-gun-better-than-dmr-14-in-warzone/75052/"
             />

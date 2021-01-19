@@ -3,10 +3,11 @@ import "../checkbox.css";
 import MediaCard from "./answers";
 import useApplicationData from "../hooks/useApplicationData";
 import image1 from "../img/trainstation-secondary.png";
-import drop from "../img/droped.jpeg";
-import guned from "../img/loadout.jpg";
+import heartbeat from '../img/dropzone_images/heartbeat.jpg';
+import mags from '../img/dropzone_images/mags.jpg';
 import ruled from "../img/ruled.jpg";
 import mine from "../img/mine1.png";
+import {dropzoneImage, primaryGunImage, secondaryGunImage} from './dropzoneImage'
 
 export default function Roulette() {
   const {
@@ -186,7 +187,7 @@ export default function Roulette() {
             title="Primary Gun"
             selected={selected.primary}
             class={selected.primaryClass}
-            image={guned}
+            image={primaryGunImage(selected.primary)}
             checked={primaryChecked}
             onChange={() => setPrimaryChecked(!primaryChecked)}
           />
@@ -195,7 +196,7 @@ export default function Roulette() {
             title="Secondary Gun"
             selected={selected.secondary}
             class={selected.secondaryClass}
-            image={guned}
+            image={secondaryGunImage(selected.secondary)}
             checked={secondaryChecked}
             onChange={() => setSecondaryChecked(!secondaryChecked)}
           />
@@ -205,7 +206,7 @@ export default function Roulette() {
             title="Attachments"
             selected={selected.attachment1}
             class={selected.attachment1Class}
-            image={guned}
+            image={mags}
             checked={primaryAttachmentChecked}
             onChange={() => setPrimaryAttachmentChecked(!primaryAttachmentChecked)}
           />
@@ -214,7 +215,7 @@ export default function Roulette() {
             title='Tactical & Lethal'
             selected={selected.tactical}
             class={selected.tacticalClass}
-            image={guned}
+            image={heartbeat}
             checked={tacticalLethalChecked}
             onChange={() => settacticalLethalChecked(!tacticalLethalChecked)}
           />
@@ -224,7 +225,7 @@ export default function Roulette() {
           <MediaCard
             title="Drop Zone"
             selected={selected.dropzone}
-            image={drop}
+            image={dropzoneImage(selected.dropzone)}
             className="size"
             checked={dropzoneChecked}
             onChange={() => setDropzoneChecked(!dropzoneChecked)}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 
@@ -9,6 +9,17 @@ export default function useApplicationData () {
     platform: "",
   }));
   
+  const [weapons1, setWeapon] = useState({
+    gameModes: [],
+    shown: [],
+    shownCat: [],
+    gameModeCat: [],
+    category: [],
+    weapons: [],
+    weeklyData: [],
+    gunNavSelected: [],
+    selectedGunTab: 'weapon_assault_rifle'
+  })
 
   
   async function getDropZone () {
@@ -106,6 +117,36 @@ export default function useApplicationData () {
         })
         
   }
+
+
+  useEffect(() => {
+    //let nickname = props.name.replace("#", "%23")
+    // nickname will === username
+    // Promise.all([
+    //   axios.get(`http://localhost:3030/stats/moho`),
+    //   axios.get(`http://localhost:3030/stats/allstats/moho`)
+    // ])
+    axios.get(`http://localhost:3030/stats/moho`)
+      .then(res => {
+        const weapons = res.data[2].guns;
+        const gameModes = res.data[1].gameModes;
+        const weeklyData = res.data[0].weeklyData.all;
+        console.log(weeklyData);
+        console.log(gameModes);
+        console.log(weapons);
+        setWeapon(prev => ({
+          ...prev,
+          gameModes,
+          weapons,
+          weeklyData,
+          category: "",
+        }))
+
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }, [])
   
   return { 
     state,
@@ -116,6 +157,8 @@ export default function useApplicationData () {
     getPrimary,
     getSecondary,
     getPrimaryAttachments,
-    getTactical
+    getTactical,
+    weapons1,
+    setWeapon,
   };
 }

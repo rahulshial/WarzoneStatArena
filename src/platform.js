@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,7 +7,6 @@ import xbox from "./img/xbox2.png";
 import psn from "./img/psn-icon.png";
 import Mw from "./img/Cod-icon.png";
 import "./checkbox.css"
-const classNames = require('classnames');
 
 
 const useStyles = makeStyles((theme) => ({
