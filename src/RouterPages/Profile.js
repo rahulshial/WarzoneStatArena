@@ -18,7 +18,7 @@ export default function Profile(props) {
   useEffect(() => {    
     const gamerTag = "Nickmercs%2311526"
     const gamerPlatform = "battle"
-    const compareGamerTag = "SardarMamad%23371309"
+    const compareGamerTag = "SardarMamad%233717309"
     const compareGamerPlatform = "acti"
 
     Promise.all([

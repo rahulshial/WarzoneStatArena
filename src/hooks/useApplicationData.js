@@ -107,6 +107,8 @@ export default function useApplicationData () {
     console.log(state.name);
     console.log(state.platform);
     const gamerTag = state.name.replace("#", "%23")
+    // const gamerTag = state.name;
+
     const gamerPlatform = state.platform
     const gamerInfo = {gamerTag, gamerPlatform}
     setCookie('gamerTagInfo', {gamerTag, gamerPlatform}, { path: '/' });
@@ -127,8 +129,22 @@ export default function useApplicationData () {
     //   axios.get(`http://localhost:3030/stats/moho`),
     //   axios.get(`http://localhost:3030/stats/allstats/moho`)
     // ])
-    if (cookies.gamerTagInfo) {
-      axios.get(`http://localhost:3030/stats/${cookies.gamerTagInfo.gamerTag}&${cookies.gamerTagInfo.gamerPlatform}`)
+    let gamerTag = '';
+    let gamerPlatform = '';
+    if(cookies.gamerTagInfo) {
+      gamerTag = cookies.gamerTagInfo.gamerTag;
+      gamerPlatform = cookies.gamerTagInfo.gamerPlatform;
+    }
+    else {
+      gamerTag = 'Nickmercs%2311526';
+      gamerPlatform = 'battle';
+    };
+
+    console.log ('Gamer Tag: ', gamerTag);
+    console.log ('Gamer Platform: ', gamerPlatform);
+
+    // if (cookies.gamerTagInfo) {
+      axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
       .then(res => {
         
         // console.log(res.data[0].weeklyData);
@@ -164,7 +180,7 @@ export default function useApplicationData () {
       .catch(error => {
         console.log(error);
       })
-    }
+    // }
     
   }, [])
 
