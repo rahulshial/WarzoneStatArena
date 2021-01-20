@@ -1,8 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
+/** Local imports */
 import getStatsForFavorites from '../helpers/getStatsForFavorites'
+import gunDataObj from '../helpers/gunData'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
+
 
 export default function TrackedGuns(props) {
+  const classes = useStyles();
   const { favorites, deleteStat, achievements, displayedCards } = props;
   const [trackedStats, setTrackedStats] = useState([]);
 
@@ -16,12 +35,24 @@ export default function TrackedGuns(props) {
   return favorites.map((fav, index) => {
     console.log('Favourite: ',fav);
     const fixed = JSON.parse(fav.tracked_item);
+    const gunId = fixed.gun;
+    console.log("Gun Name from Object: ", gunDataObj.gunNameObj[gunId]);
+    const gunName = gunDataObj.gunNameObj[gunId];
     displayedCards.push(fixed.gun);
     const removedItem = { gunName: fixed.gun };
+
     const loopTrackedStats = () => {
       const stats = [];
       for (const stat in trackedStats[index]) {
-        stats.push(<h4>{stat}: {trackedStats[index][stat]}</h4>);
+        if(trackedStats[index][stat] % 1 > 0) {
+          stats.push(<Grid item xs={1.5}>
+            <Paper className={classes.paper}>{gunDataObj.gunStatTitle[stat]}: {trackedStats[index][stat].toFixed(2)}</Paper>
+            </Grid>);
+          } else {
+            stats.push(<Grid item xs={1.5}>
+              <Paper className={classes.paper}>{gunDataObj.gunStatTitle[stat]}: {trackedStats[index][stat]}</Paper>
+              </Grid>);
+            }
       }
       return stats;
     };
@@ -75,16 +106,17 @@ export default function TrackedGuns(props) {
         <div class='tracked-guns'>
           <div className="fav-gun-card">
             <div className="card-img">
-              <img className="fav-gun-icon" src={fixed.image} alt="" />
+              <img className="fav-gun-icon" src={fixed.image} alt="" onClick={() => removeStat(fixed.gun)}/>
             </div>
             <div>
-              <button onClick={() => removeStat(fixed.gun)}>Unfavourite</button>
+              <button onClick={() => removeStat(fixed.gun)}><h2>Unfavourite the {gunName}</h2></button>
               <div className="right-side">
-                <h3>{fixed.gun}</h3>
                 <hr />
               </div>
-              <div>
-                {loopTrackedStats()}
+              <div className={classes.root}>
+                <Grid container spacing={1}>
+                  {loopTrackedStats()}
+                </Grid>
               </div>
               <hr />
               <div>

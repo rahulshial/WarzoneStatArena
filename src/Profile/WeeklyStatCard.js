@@ -21,7 +21,7 @@ console.log('Weekly Data: ', weeklyData)
     const avgLifeTime = weeklyData[0].avgLifeTime / 60;
     const headShotPercent = weeklyData[0].headshotPercentage * 100;
     const timePlayed = weeklyData[0].timePlayed / 60;
-    const distanceTraveled = weeklyData[0].distanceTraveled / 39.3701
+    const distanceTraveled = weeklyData[0].distanceTraveled / 39370.1
     return (
       <div className={classes.root}>
         <Grid container spacing={1}>
@@ -41,7 +41,7 @@ console.log('Weekly Data: ', weeklyData)
               <Paper className={classes.paper}>Gulag: {weeklyData[0].gulagDeaths}</Paper>
           </Grid>
           <Grid item xs={2.25}>
-              <Paper className={classes.paper}>Kills/game: {weeklyData[0].killsPerGame}</Paper>
+              <Paper className={classes.paper}>Kills/game: {weeklyData[0].killsPerGame.toFixed(2)}</Paper>
           </Grid>
           <Grid item xs={1.5}>
               <Paper className={classes.paper}>Wall Bangs: {weeklyData[0].wallBangs}</Paper>
@@ -71,7 +71,7 @@ console.log('Weekly Data: ', weeklyData)
               <Paper className={classes.paper}>Score: {weeklyData[0].score} @ {weeklyData[0].scorePerMinute.toFixed(2)} / min</Paper>
           </Grid>
           <Grid item xs={1.5}>
-              <Paper className={classes.paper}>Distance Travelled: {distanceTraveled.toFixed(0)} mts</Paper>
+              <Paper className={classes.paper}>Distance Travelled: {distanceTraveled.toFixed(0)} kms</Paper>
           </Grid>
           <Grid item xs={1.5}>
               <Paper className={classes.paper}>Time Played: {timePlayed.toFixed(0)} mins</Paper>

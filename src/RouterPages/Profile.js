@@ -15,22 +15,30 @@ export default function Profile(props) {
     shownTab: 0,
   });
 
-  useEffect(() => {
+  useEffect(() => {    
+    const gamerTag = "Nickmercs%2311526"
+    const gamerPlatform = "battle"
+    const compareGamerTag = "SardarMamad%23371309"
+    const compareGamerPlatform = "acti"
+
     Promise.all([
       axios.get('http://localhost:3030/trackedstats/trackedfavs'),
       axios.get('http://localhost:3030/achievements'),
-      axios.get(`http://localhost:3030/stats/moho`)
+      axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`),
+      axios.get(`http://localhost:3030/stats/${compareGamerTag}&${compareGamerPlatform}`)
     ])
-      .then(([favorites, achievements, allData]) => {
+      .then(([favorites, achievements, allData, compareGamerData]) => {
+        console.log('Compare Gamer Data: ', compareGamerData.data[2].guns);
         if (allData.data[0].weeklyData !== null) {
           const weeklyStatData = [allData.data[0].weeklyData.all.properties];
-          const lifetimeStatData = [allData.data[3].lifetimeData]
+          const lifetimeStatData = [allData.data[3].lifetimeData];
+          const compareGamerFavourites = [compareGamerData.data[2].guns];
           setState(prev => ({
             ...prev,
             favorites: favorites.data,
             achievements: achievements.data,
             weeklyData: weeklyStatData,
-            lifetimeData: lifetimeStatData
+            lifetimeData: lifetimeStatData,
           }))
         }
         else {
@@ -86,6 +94,7 @@ export default function Profile(props) {
             displayedCards={state.displayedCards}
             deleteStat={deleteStat}
             achievements={state.achievements}
+            compareGamerStats={state.favorites}
             />
         </div>
         )
