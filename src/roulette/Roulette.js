@@ -154,8 +154,8 @@ export default function Roulette() {
       } else {
         setSelected(prev => ({
           ...prev,
-          attachment1: "",
-          attachment1Class: ""
+          tactical: "",
+          tacticalClass: ""
         }))
       };
       
