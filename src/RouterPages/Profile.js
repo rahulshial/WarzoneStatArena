@@ -21,6 +21,7 @@ export default function Profile(props) {
       axios.get('http://localhost:3030/achievements'),
       axios.get(`http://localhost:3030/stats/moho`)
     ])
+    
       .then(([favorites, achievements, allData]) => {
         if (allData.data[0].weeklyData !== null) {
           const weeklyStatData = [allData.data[0].weeklyData.all.properties];

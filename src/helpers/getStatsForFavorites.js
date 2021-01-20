@@ -5,12 +5,13 @@ import asy from 'async'
 export default async function getStatsForFavorites (favorites) {
   
   return new Promise(async (resolve, reject) => {
-    let trackedStats = [];
+    let trackedStats = [];  
+
 
     await asy.eachSeries(favorites, async fav => {
       console.log(favorites);
       const fixed = JSON.parse(fav.tracked_item);
-      const res = await axios.get(`http://localhost:3030/stats/moho/${fixed.gun}/${fixed.cat}`)
+      const res = await axios.get(`http://localhost:3030/stats/${fixed.gun}/${fixed.cat}`)
       trackedStats.push(res.data.properties);
     });
     resolve(trackedStats)

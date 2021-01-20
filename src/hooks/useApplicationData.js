@@ -96,6 +96,10 @@ export default function useApplicationData () {
   
 
   function nickname () {
+
+
+    // set cookie
+    //redirect -> stats page
     
     console.log("hiii");
     let nickname = state.name.replace("#", "%23")
@@ -126,6 +130,7 @@ export default function useApplicationData () {
     //   axios.get(`http://localhost:3030/stats/moho`),
     //   axios.get(`http://localhost:3030/stats/allstats/moho`)
     // ])
+    
     axios.get(`http://localhost:3030/stats/moho`)
       .then(res => {
         const weapons = res.data[2].guns;
@@ -141,7 +146,6 @@ export default function useApplicationData () {
           weeklyData,
           category: "",
         }))
-
       })
       .catch(error => {
         console.log(error);

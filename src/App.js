@@ -8,6 +8,7 @@ import Overlay from './RouterPages/Overlay.js';
 import Profile from './RouterPages/Profile.js'
 import PrimarySearchAppBar from './Navbar.js';
 import Roulette from './roulette/Roulette.js';
+import OverlaySelected from './Overlay/OverlaySelected'
 import useApplicationData from "./hooks/useApplicationData";
 
 const globalState = {
@@ -15,7 +16,6 @@ const globalState = {
 };
 
 const globalStateContext = React.createContext(globalState);
-
 export default function App(props) {
 
   const {
@@ -24,7 +24,7 @@ export default function App(props) {
     nickname,
   } = useApplicationData();
   function setName(event) {
-    
+
     setState(prev => ({
       ...prev,
       name: event.target.value
@@ -37,25 +37,21 @@ export default function App(props) {
     }))
   }
 
+
   return (
     <globalStateContext.Provider value={globalState}>
-    <>
-      <PrimarySearchAppBar />
-      <Switch>
-        <Route exact path='/' render={(props) => <Home name={state.name} nickname={nickname} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom}/>} />
+      <>
 
-        <Route path='/stats' render={(props) => <Stats name={state.name} />} />
-        <Route path='/roulette' component={Roulette} />
-
-
-        <Route path='/overlay' component={Overlay} />
-
-
-
-
-        <Route path='/myProf' component={Profile} />
-      </Switch>
-    </>
+        {window.location.pathname.indexOf('show') === 9 ? <></> : <PrimarySearchAppBar />}
+        <Switch>
+          <Route exact path='/' render={(props) => <Home name={state.name} nickname={nickname} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom} />} />
+          <Route path='/stats' render={(props) => <Stats name={state.name} />} />
+          <Route path='/roulette' component={Roulette} />
+          <Route path='/Large' component={Overlay} />
+          <Route path='/myProf' component={Profile} />
+          <Route path='/overlay/show' component={OverlaySelected} />
+        </Switch>
+      </>
     </globalStateContext.Provider>
   );
 }
