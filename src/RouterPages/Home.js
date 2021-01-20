@@ -65,8 +65,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Home({name, setName, nickname, setPlatform, }) {
+export default function Home({name, setName, setGamerData, setPlatform}) {
   const classes = useStyles();
+
+  
 
   // const {
   //   weapons1,
@@ -118,7 +120,7 @@ export default function Home({name, setName, nickname, setPlatform, }) {
             <BasicTextFields 
                 value={name}
                 onChange={setName}
-                onClick={nickname}
+                onClick={setGamerData}
               />
             <div>
               <Button className={classes.shoot} href= "http://localhost:8080/auth/twitch/callback">

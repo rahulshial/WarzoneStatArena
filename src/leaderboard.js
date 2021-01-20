@@ -206,6 +206,7 @@ export default function EnhancedTable() {
   const {
     weapons1,
   } = useApplicationData();
+  
 
   let weeklyKills = 0
   let weeklyDeaths = 0

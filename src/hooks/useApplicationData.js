@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useCookies } from 'react-cookie';
+import {useHistory} from 'react-router-dom';
+// const cookieSession = require('cookie-session');
+
+
 
 
 export default function useApplicationData () {
+  const [cookies, setCookie] = useCookies(['name']);
+  const history = useHistory();
   const [state, setState] = useState(prev => ({
     ...prev,
     name:"",
@@ -21,7 +28,7 @@ export default function useApplicationData () {
     selectedGunTab: 'weapon_assault_rifle'
   })
 
-  
+
   async function getDropZone () {
     console.log("iniside function");
     return await axios('http://localhost:3030/roulette/dropzone')
@@ -94,35 +101,25 @@ export default function useApplicationData () {
         });
       }
   
+  
 
-  function nickname () {
-
-
-    // set cookie
-    //redirect -> stats page
-    
-    console.log("hiii");
-    let nickname = state.name.replace("#", "%23")
+  function setGamerData () {
     console.log(state.name);
     console.log(state.platform);
-    axios
-        .get(`http://localhost:8080/stats/nickname=${nickname}&platform=${state.platform}`)
-        .then(res => {
-          console.log("are you resolving");
-          setState(prev => ({
-            ...prev,
-            name: res.data
-  
-          }));
-          return;
-        })
-        .catch(err => {
-          console.log(err);
-        })
+    const gamerTag = state.name.replace("#", "%23")
+    const gamerPlatform = state.platform
+    const gamerInfo = {gamerTag, gamerPlatform}
+    setCookie('gamerTagInfo', {gamerTag, gamerPlatform}, { path: '/' });
+    
+    
+    history.push("/stats")
+    
+    
+    return;
         
   }
 
-
+  
   useEffect(() => {
     //let nickname = props.name.replace("#", "%23")
     // nickname will === username
@@ -130,9 +127,12 @@ export default function useApplicationData () {
     //   axios.get(`http://localhost:3030/stats/moho`),
     //   axios.get(`http://localhost:3030/stats/allstats/moho`)
     // ])
-    
-    axios.get(`http://localhost:3030/stats/moho`)
+    if (cookies.gamerTagInfo) {
+      axios.get(`http://localhost:3030/stats/${cookies.gamerTagInfo.gamerTag}&${cookies.gamerTagInfo.gamerPlatform}`)
       .then(res => {
+        
+        // console.log(res.data[0].weeklyData);
+        if (res.data[0].weeklyData !== null) {
         const weapons = res.data[2].guns;
         const gameModes = res.data[1].gameModes;
         const weeklyData = res.data[0].weeklyData.all;
@@ -146,16 +146,78 @@ export default function useApplicationData () {
           weeklyData,
           category: "",
         }))
+      } else {
+        console.log("insided elsee useapllication");
+        const weapons = res.data[2].guns;
+        const gameModes = res.data[1].gameModes;
+        console.log(gameModes);
+        console.log(weapons);
+        setWeapon(prev => ({
+          ...prev,
+          gameModes,
+          weapons,
+          category: "",
+        }))
+      }
+
       })
       .catch(error => {
         console.log(error);
       })
+    }
+    
   }, [])
+
+  // useEffect(() => {
+  //   //let nickname = props.name.replace("#", "%23")
+  //   // nickname will === username
+  //   // Promise.all([
+  //   //   axios.get(`http://localhost:3030/stats/moho`),
+  //   //   axios.get(`http://localhost:3030/stats/allstats/moho`)
+  //   // ])
+  //     axios.get(`http://localhost:3030/stats/moho}`)
+  //     .then(res => {
+        
+  //       // console.log(res.data[0].weeklyData);
+  //       if (res.data[0].weeklyData !== null) {
+  //       const weapons = res.data[2].guns;
+  //       const gameModes = res.data[1].gameModes;
+  //       const weeklyData = res.data[0].weeklyData.all;
+  //       console.log(weeklyData);
+  //       console.log(gameModes);
+  //       console.log(weapons);
+  //       setWeapon(prev => ({
+  //         ...prev,
+  //         gameModes,
+  //         weapons,
+  //         weeklyData,
+  //         category: "",
+  //       }))
+  //     } else {
+  //       console.log("insided elsee useapllication");
+  //       const weapons = res.data[2].guns;
+  //       const gameModes = res.data[1].gameModes;
+  //       console.log(gameModes);
+  //       console.log(weapons);
+  //       setWeapon(prev => ({
+  //         ...prev,
+  //         gameModes,
+  //         weapons,
+  //         category: "",
+  //       }))
+  //     }
+
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     })
+    
+  // }, [])
   
   return { 
     state,
     setState,
-    nickname,
+    setGamerData,
     getDropZone,
     getRules,
     getPrimary,
@@ -164,5 +226,6 @@ export default function useApplicationData () {
     getTactical,
     weapons1,
     setWeapon,
+    cookies,
   };
 }

@@ -211,7 +211,7 @@ export default function EnhancedTable1() {
   let weeklyDeaths = 0
   let weeklyKdRatio = 0
   let weeklyMatchesPlayed = 0
-  if (weapons1.weeklyData.properties) {
+  if (weapons1.weeklyData.length !== 0) {
     console.log(weapons1.weeklyData.properties["kills"]);
      weeklyKills = weapons1.weeklyData.properties.kills
      weeklyDeaths = weapons1.weeklyData.properties.deaths
