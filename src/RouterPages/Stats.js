@@ -22,7 +22,7 @@ export default function Guns(props) {
 
   const {
     weapons1,
-    setWeapon
+    setWeapon,
   } = useApplicationData();
 
   // useEffect(() => {

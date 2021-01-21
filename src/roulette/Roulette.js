@@ -46,7 +46,7 @@ export default function Roulette() {
   });
 
   function generateRoulette() {
-    console.log(cookies.gamerTagInfo);
+    // console.log(cookies.gamerTagInfo);
  
     Promise.all([getRules(), getPrimary(), getDropZone(), getSecondary(), getPrimaryAttachments(), getTactical()]).then((data) =>{
       console.log(data);

@@ -205,7 +205,9 @@ export default function EnhancedTable() {
 
   const {
     weapons1,
+    state,
   } = useApplicationData();
+  // console.log(weapons1.name);
   
 
   let weeklyKills = 0
@@ -213,7 +215,7 @@ export default function EnhancedTable() {
   let weeklyKdRatio = 0
   let weeklyMatchesPlayed = 0
   if (weapons1.weeklyData.properties) {
-    console.log(weapons1.weeklyData.properties["kills"]);
+    // console.log(weapons1.weeklyData.properties["kills"]);
      weeklyKills = weapons1.weeklyData.properties.kills
      weeklyDeaths = weapons1.weeklyData.properties.deaths
      weeklyKdRatio = weapons1.weeklyData.properties.kdRatio
@@ -224,7 +226,7 @@ export default function EnhancedTable() {
     createData('YooGood', 305, 3.7, 67, 4.3),
     createData('Stephan', 452, 25.0, 51, 4.9),
     createData('CaprianPrice', 262, 16.0, 24, 6.0),
-    createData('yesSiir', weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
+    createData("Nickmercs", state.platform, weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
     createData('Mo', 356, 16.0, 49, 3.9),
   ];
 
