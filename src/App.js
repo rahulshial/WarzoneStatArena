@@ -12,6 +12,8 @@ import OverlaySelected from './Overlay/OverlaySelected'
 import useApplicationData from "./hooks/useApplicationData";
 import Games from "./live_stream/games";
 import Streams from "./live_stream/streams";
+import GameStreams from "./live_stream/gamesStreams"
+
 
 const globalState = {
   text: "foo",
@@ -53,7 +55,7 @@ export default function App(props) {
           <Route path='/myProf' component={Profile} />
           <Route path='/overlay/show' component={OverlaySelected} />
           <Route exact path='/streams' component={Games}/>
-          <Route exact path='/top-streams' component={Streams} />
+          <Route exact path='/streams/game/:id' component={GameStreams} />
         </Switch>
       </>
     </globalStateContext.Provider>
