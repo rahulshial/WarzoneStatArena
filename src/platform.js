@@ -36,6 +36,8 @@ export default function GroupSizesColors(props) {
   }
 
   
+
+  
   //console.log(platform);
   return (
     <div className={classes.root}>

@@ -141,7 +141,7 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Top Streamer of the week
+          Top Achievers of StatSite
         </Typography>
       )}
 
@@ -203,21 +203,21 @@ export default function EnhancedTable1() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(tableRows);
 
-  const {
-    weapons1,
-  } = useApplicationData();
+  // const {
+  //   weapons1,
+  // } = useApplicationData();
 
   let weeklyKills = 0
   let weeklyDeaths = 0
   let weeklyKdRatio = 0
   let weeklyMatchesPlayed = 0
-  if (weapons1.weeklyData.length !== 0) {
-    console.log(weapons1.weeklyData.properties["kills"]);
-     weeklyKills = weapons1.weeklyData.properties.kills
-     weeklyDeaths = weapons1.weeklyData.properties.deaths
-     weeklyKdRatio = weapons1.weeklyData.properties.kdRatio
-     weeklyMatchesPlayed = weapons1.weeklyData.properties.matchesPlayed
-  }
+  // if (weapons1.weeklyData.length !== 0) {
+  //   console.log(weapons1.weeklyData.properties["kills"]);
+  //    weeklyKills = weapons1.weeklyData.properties.kills
+  //    weeklyDeaths = weapons1.weeklyData.properties.deaths
+  //    weeklyKdRatio = weapons1.weeklyData.properties.kdRatio
+  //    weeklyMatchesPlayed = weapons1.weeklyData.properties.matchesPlayed
+  // }
 
   const rows = [
     createData('YooGood', weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),

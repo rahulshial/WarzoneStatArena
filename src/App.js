@@ -10,6 +10,8 @@ import PrimarySearchAppBar from './Navbar.js';
 import Roulette from './roulette/Roulette.js';
 import OverlaySelected from './Overlay/OverlaySelected'
 import useApplicationData from "./hooks/useApplicationData";
+import Games from "./live_stream/games";
+import Streams from "./live_stream/streams";
 
 const globalState = {
   text: "foo",
@@ -18,25 +20,25 @@ const globalState = {
 const globalStateContext = React.createContext(globalState);
 export default function App(props) {
 
-  const {
-    state,
-    setState,
-    setGamerData,
-  } = useApplicationData();
-  function setName(event) {
+  // const {
+  //   state,
+  //   setState,
+  //   setGamerData,
+  // } = useApplicationData();
+  // function setName(event) {
 
-    setState(prev => ({
-      ...prev,
-      name: event.target.value
-    }))
-  }
-  function setPlatform(platform) {
-    setState(prev => ({
-      ...prev,
-      platform
-    }))
-  }
-
+  //   setState(prev => ({
+  //     ...prev,
+  //     name: event.target.value
+  //   }))
+  // }
+  // function setPlatform(platform) {
+  //   setState(prev => ({
+  //     ...prev,
+  //     platform
+  //   }))
+  // }
+// name={state.name} setGamerData={setGamerData} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom} 
 
   return (
     <globalStateContext.Provider value={globalState}>
@@ -44,12 +46,14 @@ export default function App(props) {
 
         {window.location.pathname.indexOf('show') === 9 ? <></> : <PrimarySearchAppBar />}
         <Switch>
-          <Route exact path='/' render={(props) => <Home name={state.name} setGamerData={setGamerData} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom} />} />
-          <Route path='/stats' render={(props) => <Stats name={state.name} />} />
+          <Route exact path='/' render={(props) => <Home/>} />
+          <Route path='/stats' render={(props) => <Stats />} />
           <Route path='/roulette' component={Roulette} />
           <Route path='/Large' component={Overlay} />
           <Route path='/myProf' component={Profile} />
           <Route path='/overlay/show' component={OverlaySelected} />
+          <Route exact path='/streams' component={Games}/>
+          <Route exact path='/top-streams' component={Streams} />
         </Switch>
       </>
     </globalStateContext.Provider>

@@ -9,7 +9,8 @@ import BasicTextFields from "../textField";
 import GroupSizesColors from "../platform";
 import RecipeReviewCard from "../news";
 import EnhancedTable from "../leaderboard";
-import EnhancedTable1 from "../weeklyLeaderboard";
+import EnhancedTable1 from "../topAchievers";
+import useApplicationData from "../hooks/useApplicationData";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,9 +66,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Home({name, setName, setGamerData, setPlatform}) {
+export default function Home() {
   const classes = useStyles();
 
+  const {
+    state,
+    setState,
+    setGamerData,
+  } = useApplicationData();
+
+  function setName(event) {
+
+    setState(prev => ({
+      ...prev,
+      name: event.target.value
+    }))
+  }
+
+  function setPlatform(platform) {
+    setState(prev => ({
+      ...prev,
+      platform
+    }))
+  }
   
 
   // const {
@@ -118,7 +139,7 @@ export default function Home({name, setName, setGamerData, setPlatform}) {
               
             </div>
             <BasicTextFields 
-                value={name}
+                value={state.name}
                 onChange={setName}
                 onClick={setGamerData}
               />
@@ -155,7 +176,7 @@ export default function Home({name, setName, setGamerData, setPlatform}) {
         <Grid item xs={12} >
           <Paper className={classes.paper}>
             <RecipeReviewCard 
-              url="https://youtu.be/XgCtsrElVn8"
+              url="https://www.twitch.tv/nickmercs"
               title='Call of Duty: Warzone Supposedly Has a New "Broken" OP Gun'
               avatar="RS"
               subheader="charlieintel.com"

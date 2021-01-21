@@ -15,6 +15,8 @@ export default function useApplicationData () {
     name:"",
     platform: "",
   }));
+
+
   
   const [weapons1, setWeapon] = useState({
     gameModes: [],
@@ -25,7 +27,7 @@ export default function useApplicationData () {
     weapons: [],
     weeklyData: [],
     gunNavSelected: [],
-    selectedGunTab: 'weapon_assault_rifle'
+    selectedGunTab: 'weapon_assault_rifle',
   })
 
 
@@ -33,11 +35,11 @@ export default function useApplicationData () {
     console.log("iniside function");
     return await axios('http://localhost:3030/roulette/dropzone')
       .then(res => {
-        console.log("dropzone", res.data[0])
+        // console.log("dropzone", res.data[0])
         return res.data[0]
       })
       .catch(error => {
-        console.log('Dropzone Axios Error: ', error)
+        // console.log('Dropzone Axios Error: ', error)
       });
   };
 
@@ -45,67 +47,67 @@ export default function useApplicationData () {
     console.log("iniside function");
     return await axios('http://localhost:3030/roulette/primary')
       .then(res => {
-         console.log("weapon", res.data[0])
+        //  console.log("weapon", res.data[0])
          return res.data[0]
       })
       .catch(error => {
-        console.log('Weapon Axios Error: ', error)
+        // console.log('Weapon Axios Error: ', error)
       });
   }
 
   async function getPrimaryAttachments () {
-    console.log("iniside function");
+    // console.log("iniside function");
     return await axios('http://localhost:3030/roulette/attachments')
       .then(res => {
-         console.log("weapon", res.data)
+        //  console.log("weapon", res.data)
          return res.data
       })
       .catch(error => {
-        console.log('Weapon Axios Error: ', error)
+        // console.log('Weapon Axios Error: ', error)
       });
   }
 
   async function getSecondary() {
-    console.log("iniside function");
+    // console.log("iniside function");
     return await axios('http://localhost:3030/roulette/secondary')
       .then(res => {
-         console.log("weapon", res.data[0])
+        //  console.log("weapon", res.data[0])
          return res.data[0]
       })
       .catch(error => {
-        console.log('Weapon Axios Error: ', error)
+        // console.log('Weapon Axios Error: ', error)
       });
   }
  
   async function getRules() {
-    console.log("iniside function");
+    // console.log("iniside function");
     return await axios('http://localhost:3030/roulette/rules')
       .then(res => {
-        console.log("rules", res.data[0])
+        // console.log("rules", res.data[0])
         return res.data[0]
       })
       .catch(error => {
-        console.log('Rules Axios Error: ', error)
+        // console.log('Rules Axios Error: ', error)
       });
     }
 
     async function getTactical() {
-      console.log("iniside function");
+      // console.log("iniside function");
       return await axios('http://localhost:3030/roulette/tactical')
         .then(res => {
-          console.log("tactical", res.data)
+          // console.log("tactical", res.data)
           return res.data
         })
         .catch(error => {
-          console.log('Rules Axios Error: ', error)
+          // console.log('Rules Axios Error: ', error)
         });
       }
   
   
 
   function setGamerData () {
-    console.log(state.name);
-    console.log(state.platform);
+    // console.log(state.name);
+    // console.log(state.platform);
     const gamerTag = state.name.replace("#", "%23")
     // const gamerTag = state.name;
 
@@ -134,14 +136,15 @@ export default function useApplicationData () {
     if(cookies.gamerTagInfo) {
       gamerTag = cookies.gamerTagInfo.gamerTag;
       gamerPlatform = cookies.gamerTagInfo.gamerPlatform;
+      console.log(gamerPlatform);
     }
     else {
       gamerTag = 'Nickmercs%2311526';
       gamerPlatform = 'battle';
     };
 
-    console.log ('Gamer Tag: ', gamerTag);
-    console.log ('Gamer Platform: ', gamerPlatform);
+    // console.log ('Gamer Tag: ', gamerTag);
+    // console.log ('Gamer Platform: ', gamerPlatform);
 
     // if (cookies.gamerTagInfo) {
       axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
@@ -152,9 +155,9 @@ export default function useApplicationData () {
         const weapons = res.data[2].guns;
         const gameModes = res.data[1].gameModes;
         const weeklyData = res.data[0].weeklyData.all;
-        console.log(weeklyData);
-        console.log(gameModes);
-        console.log(weapons);
+        // console.log(weeklyData);
+        // console.log(gameModes);
+        // console.log(weapons);
         setWeapon(prev => ({
           ...prev,
           gameModes,
@@ -163,11 +166,11 @@ export default function useApplicationData () {
           category: "",
         }))
       } else {
-        console.log("insided elsee useapllication");
+        // console.log("insided elsee useapllication");
         const weapons = res.data[2].guns;
         const gameModes = res.data[1].gameModes;
-        console.log(gameModes);
-        console.log(weapons);
+        // console.log(gameModes);
+        // console.log(weapons);
         setWeapon(prev => ({
           ...prev,
           gameModes,
