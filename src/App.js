@@ -12,7 +12,8 @@ import OverlaySelected from './Overlay/OverlaySelected'
 import useApplicationData from "./hooks/useApplicationData";
 import Games from "./live_stream/games";
 import Streams from "./live_stream/streams";
-import GameStreams from "./live_stream/gamesStreams"
+import GameStreams from "./live_stream/gamesStreams";
+
 
 
 const globalState = {
@@ -40,7 +41,7 @@ export default function App(props) {
   //     platform
   //   }))
   // }
-// name={state.name} setGamerData={setGamerData} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom} 
+  // name={state.name} setGamerData={setGamerData} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom} 
 
   return (
     <globalStateContext.Provider value={globalState}>

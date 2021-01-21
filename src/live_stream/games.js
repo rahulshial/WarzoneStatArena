@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import api from "./api";
 import { Link } from 'react-router-dom';
-import "bootstrap/dist/css/bootstrap.min.css"
+// import "bootstrap/dist/css/bootstrap.min.css"
 // import "shards-ui/dist/css/shards/shards.min.css"
 
 

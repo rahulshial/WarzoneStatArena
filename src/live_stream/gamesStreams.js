@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from "./api";
 import { Link } from 'react-router-dom';
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import ReactPlayer from "react-player";
 import "../checkbox.css"
 
@@ -57,6 +57,7 @@ function GameStreams ({match, location}) {
             <div className='card-text'>
               {stream.viewer_count} live Viewers
             </div>
+
             <button className="btn btn-success">
             <Link
                 className='link'
