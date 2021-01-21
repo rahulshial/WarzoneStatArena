@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 /** Local imports */
 import getStatsForFavorites from '../helpers/getStatsForFavorites'
 import gunDataObj from '../helpers/gunData'
+// import GunCard from './GunCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TrackedGuns(props) {
   const classes = useStyles();
-  const { favorites, deleteStat, achievements, displayedCards } = props;
+  const { favorites, deleteStat, achievements, displayedCards, compareGamerGuns } = props;
   const [trackedStats, setTrackedStats] = useState([]);
 
   useEffect(() => {
@@ -30,13 +31,14 @@ export default function TrackedGuns(props) {
     .then(data => {
       setTrackedStats(data)
     })
-  }, [displayedCards])
+  }, [favorites])
 
   return favorites.map((fav, index) => {
-    console.log('Favourite: ',fav);
+    // console.log('TRACKED GUNS - Favourites: ',fav);
+    // console.log('TRACKED GUNS - Compare Gamer Guns: ', compareGamerGuns);
     const fixed = JSON.parse(fav.tracked_item);
+    const gunCat = fixed.cat;
     const gunId = fixed.gun;
-    console.log("Gun Name from Object: ", gunDataObj.gunNameObj[gunId]);
     const gunName = gunDataObj.gunNameObj[gunId];
     displayedCards.push(fixed.gun);
     const removedItem = { gunName: fixed.gun };
@@ -57,8 +59,38 @@ export default function TrackedGuns(props) {
       return stats;
     };
 
-    const earnedAchievements = () => {
-      if(trackedStats[index]) {
+    const loopCompareStats = () => {
+      const compareStatsReturn = [];
+      console.log(compareGamerGuns.length)
+      if(compareGamerGuns.length > 0) {
+        const compareGunStats = compareGamerGuns[0][gunCat][gunId].properties
+        if(compareGamerGuns && fixed) {
+          for (const stat in compareGunStats) {
+            if(compareGunStats[stat] % 1 > 0) {
+              compareStatsReturn.push(<Grid item xs={1.5}>
+                <Paper className={classes.paper}>{gunDataObj.gunStatTitle[stat]}: {compareGunStats[stat].toFixed(2)}</Paper>
+                </Grid>);
+            } else {
+              compareStatsReturn.push(<Grid item xs={1.5}>
+                <Paper className={classes.paper}>{gunDataObj.gunStatTitle[stat]}: {compareGunStats[stat]}</Paper>
+                </Grid>);
+              };
+          };
+          return compareStatsReturn; 
+        };
+      };
+    };
+
+    const compareEarnedAchievements = () => {
+      if(compareGamerGuns.length > 0) {
+        console.log('Calling Earned Achievements...');
+        return earnedAchievements(compareGamerGuns[0][gunCat][gunId].properties);
+    };
+  };
+
+    const earnedAchievements = (statsArray) => {
+      console.log('Stats Array: ', statsArray);
+      if(statsArray) {
         return achievements.map((achievement) => {
           let headShotRatio = 0;
           let accuracyRatio = 0;
@@ -76,13 +108,13 @@ export default function TrackedGuns(props) {
             default:
               break;
           };
-          if ((trackedStats[index].headshots >= headShotRatio) && (headShotRatio > 0)) {
+          if ((statsArray.headshots >= headShotRatio) && (headShotRatio > 0)) {
             return <img className="achiev-icons" src={achievement.image} alt="" />
           };
-          if ((trackedStats[index].accuracy <= accuracyRatio) && (accuracyRatio > 0)) {
+          if ((statsArray.accuracy <= accuracyRatio) && (accuracyRatio > 0)) {
             return <img className="achiev-icons" src={achievement.image} alt="" />
           };
-          if ((trackedStats[index].kdRatio >= kdRatio) && (kdRatio > 0)) {
+          if ((statsArray.kdRatio >= kdRatio) && (kdRatio > 0)) {
             return <img className="achiev-icons" src={achievement.image} alt="" />
           };
         });      
@@ -124,12 +156,30 @@ export default function TrackedGuns(props) {
               </div>
               <hr />
               <div className="gun-achieves">
-                {earnedAchievements()}
+                {earnedAchievements(trackedStats[index])}
+              </div>
+            </div>
+            <div className='empty-block'>
+              <h3>Empty Block</h3>
+            </div>
+            <div className='compare-gamer-block'>
+              <h3>Compare Gamer Stats</h3>
+              <Grid container spacing={1}>
+                  {loopCompareStats()}
+                </Grid>
+                <hr />
+              <div>
+                <h3 style={{ textAlign: 'center' }}>Achievements</h3>
+              </div>
+              <hr />
+              <div className="gun-achieves">
+                {compareEarnedAchievements()}
               </div>
             </div>
           </div>
         </div>
       </>
-    )
+    );  
   })
 };
+

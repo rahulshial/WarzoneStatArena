@@ -1,38 +1,62 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 import '../styles/profile.css'
 import ProfileNavBar from '../Profile/ProfileNavBar'
 import TrackedGuns from '../Profile/TrackedGuns.js'
 import GamerStats from '../Profile/GamerStats';
+// import { cookies } from '../hooks/useApplicationData';
+
 
 export default function Profile(props) {
+  const [cookies, setCookie] = useCookies(['name']);
+  
   const [state, setState] = useState({
     favorites: [],
     achievements: [],
     displayedCards: [],
     weeklyData: [],
     lifetimeData: [],
+    compareGamerGuns: [],
     shownTab: 0,
   });
+  // const { cookies } = useApplicationData();
+  console.log('Cookies in profile: ', cookies);
 
-  useEffect(() => {    
-    const gamerTag = "Nickmercs%2311526"
-    const gamerPlatform = "battle"
-    const compareGamerTag = "SardarMamad%233717309"
-    const compareGamerPlatform = "acti"
-
+  useEffect(() => {
+    const gamerTag = "Nickmercs%2311526";
+    const gamerPlatform = "battle";
+    // const compareGamerTag = "SardarMamad%233717309";
+    // const compareGamerPlatform = "acti";
+    if(Object.keys(cookies).length > 0) {
+      console.log("Something is happenng here....")
+      const compareGamerTag = cookies.gamerTagInfo.gamerTag;
+      const compareGamerPlatform = cookies.gamerTagInfo.gamerPlatform;
+      console.log('what am i doing here???', compareGamerTag, compareGamerPlatform)
+      axios.get(`http://localhost:3030/stats/${compareGamerTag}&${compareGamerPlatform}`)
+      .then((compareGamerData) => {
+        console.log('PROFILE - Compare Gamer guns: ', compareGamerData.data[2].guns);
+        const compareGamerGuns = [compareGamerData.data[2].guns];
+        setState(prev => ({
+          ...prev,
+          compareGamerGuns: compareGamerGuns
+        }))
+      })
+      .catch(error => {
+        console.log('Error fetching Compare Gamer Stats: ', error)
+      });
+    }
     Promise.all([
       axios.get('http://localhost:3030/trackedstats/trackedfavs'),
       axios.get('http://localhost:3030/achievements'),
-      axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`),
-      axios.get(`http://localhost:3030/stats/${compareGamerTag}&${compareGamerPlatform}`)
+      axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
     ])
-      .then(([favorites, achievements, allData, compareGamerData]) => {
-        console.log('Compare Gamer Data: ', compareGamerData.data[2].guns);
+      .then(([favorites, achievements, allData]) => {
+        console.log('PROFILE - Favourites Data: ', favorites);
+  
         if (allData.data[0].weeklyData !== null) {
           const weeklyStatData = [allData.data[0].weeklyData.all.properties];
           const lifetimeStatData = [allData.data[3].lifetimeData];
-          const compareGamerFavourites = [compareGamerData.data[2].guns];
           setState(prev => ({
             ...prev,
             favorites: favorites.data,
@@ -42,17 +66,17 @@ export default function Profile(props) {
           }))
         }
         else {
-          const lifetimeStatData = [allData.data[3].lifetimeData]
+          const lifetimeStatData = [allData.data[3].lifetimeData];
           setState(prev => ({
             ...prev,
             favorites: favorites.data,
             achievements: achievements.data,
-            lifetimeData: lifetimeStatData
+            lifetimeData: lifetimeStatData,
           }))
         }
       })
       .catch(error => {
-        console.log("WE GOT AN ERROR", error);
+        console.log("Error fetching Logged User Stats", error);
       });
   }, [state.displayedCards]);
 
@@ -64,6 +88,7 @@ export default function Profile(props) {
     }));
   };
 
+  
   const categorySelected = (indexValue) => {
     // This function sets the state for the specific shown state and category if we dont set states here the page crashes when you change from a stats to guns... because the guns component cant read the stats object and vice versa
        setState(prev => ({
@@ -94,7 +119,7 @@ export default function Profile(props) {
             displayedCards={state.displayedCards}
             deleteStat={deleteStat}
             achievements={state.achievements}
-            compareGamerStats={state.favorites}
+            compareGamerGuns={state.compareGamerGuns}
             />
         </div>
         )

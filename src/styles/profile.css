@@ -5,14 +5,16 @@
 
 .fav-gun-card {
   display: grid;
-  grid-template-columns: 50% 50%;
-  width: 44%;
+  grid-template-columns: 30% 30% 10% 30%;
+  width: 100%;
   margin: 2px;
   background-color: rgb(180, 180, 180);
 }
 
 .fav-gun-icon {
   width: 100%;
+  max-width: 300px;
+  max-height: 300px;
   align-self: center;
 }
 
@@ -27,7 +29,7 @@
 
 .gun-achieves {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .gamer-stats {
