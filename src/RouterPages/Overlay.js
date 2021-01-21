@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../overlay.css';
-// import PrimarySearchAppBar from '../Navbar'
 
 import OverlayBar from '../Overlay/OverlayBar';
 
@@ -23,7 +22,7 @@ export default function Overlay() {
   useEffect(() => {
     // let nickname = props.name.replace("#", "%23")
     // nickname will === username
-    axios.get(`http://localhost:3030/stats/moho`)
+    axios.get(`http://localhost:3030/stats/Nickmercs%2311526&battle`)
       .then(res => {
         if (res.data[0].weeklyData) {
           setState(prev => ({

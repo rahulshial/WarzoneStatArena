@@ -2,8 +2,9 @@
 import axios from 'axios';
 import asy from 'async'
 
-export default async function getStatsForFavorites (favorites) {
-  
+
+export default async function getStatsForFavorites(favorites) {
+
   return new Promise(async (resolve, reject) => {
     let trackedStats = [];  
 
@@ -17,16 +18,21 @@ export default async function getStatsForFavorites (favorites) {
     resolve(trackedStats)
   })
 
+
+
+
+
+
   // Loop through favourites
 
-      // Do API request
+  // Do API request
 
-      // Push to array of promises
+  // Push to array of promises
 
   // promise.all(array of promises)
 
   // Return data
-  
+
   // favorites.map((fav, index) => {
   //   const fixed = JSON.parse(fav.tracked);
   //   axios.get(`http://localhost:3030/stats/moho/${fixed.gun}/${fixed.cat}`)

@@ -1,3 +1,4 @@
+/*  LARGE OVERLAY */
 .full-bar {
   position: absolute;
   margin-top: 80px;
@@ -23,6 +24,43 @@
   text-transform: uppercase;
   color: white;
 }
+
+
+.full-bar-created {
+  position: absolute;
+  /* margin-top: 80px; */
+  width: 900px;
+  height: 70px;
+  background-color: black;
+  /* left: 25%; */
+  /* right:25%; */
+}
+.stats-created{
+  /* margin-top: 20px; */
+  position: relative;
+  /* left: 27%; */
+  /* top: 16px; */
+}
+.stats1-created {
+  width: 100px;
+  float: left;
+  text-align: center;
+  font-weight: 900;
+  padding: 10 0px;
+  margin: 4px 0 0 9px ;
+  text-transform: uppercase;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
 /*  MEDIUM BAR */
 .medium-bar {
   position: absolute;
@@ -39,3 +77,27 @@
   top: 16px;
 }
 
+.medium-created-bar {
+  position: absolute;
+  /* margin-top: 80px; */
+  width: 430px;
+  height: 60px;
+  background-color: black;
+  /* left: 35%; */
+}
+.stats-medium-created-bar {
+  /* margin-top: 20px; */
+  position: relative;
+  /* left: 37%; */
+  /* top: 16px; */
+}
+.created-stats1 {
+  width: 100px;
+  float: left;
+  text-align: center;
+  font-weight: 900;
+  /* padding: 10 0px; */
+  margin: 4px 0 5px 0;
+  text-transform: uppercase;
+  color: white;
+}
