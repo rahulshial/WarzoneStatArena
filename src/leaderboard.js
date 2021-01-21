@@ -226,7 +226,7 @@ export default function EnhancedTable() {
     createData('YooGood', 305, 3.7, 67, 4.3),
     createData('Stephan', 452, 25.0, 51, 4.9),
     createData('CaprianPrice', 262, 16.0, 24, 6.0),
-    createData("Nickmercs", weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
+    createData("Nickmercs", state.platform, weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
     createData('Mo', 356, 16.0, 49, 3.9),
   ];
 

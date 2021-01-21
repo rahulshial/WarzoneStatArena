@@ -56,6 +56,7 @@ export default function App(props) {
           <Route path='/overlay/show' component={OverlaySelected} />
           <Route exact path='/streams' component={Games}/>
           <Route exact path='/streams/game/:id' component={GameStreams} />
+          <Route exact path='/streams/game/:id/:id' component={Streams} />
         </Switch>
       </>
     </globalStateContext.Provider>

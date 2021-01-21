@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import api from "./api";
 import { Link } from 'react-router-dom';
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
+import ReactPlayer from "react-player";
+import "../checkbox.css"
 
 
 function GameStreams ({match, location}) {
-  console.log(location);
+  console.log(match);
+ 
   const [streamData, setStreamData] = useState([])
   const [viewers, setViewers] = useState(0)
   useEffect(() => {
@@ -45,19 +48,27 @@ function GameStreams ({match, location}) {
         <div className='col-lg-4 col-md-6 col-sm-12 mt-5'>
         <div className='card'>
           <img className='card-img-top' src={stream.thumbnail_url} alt=""></img>
+          {/* <ReactPlayer
+          style ={{width: 100}}
+          url={`http://twitch.tv/${stream.user_name}`}
+          /> */}
           <div className="card-body">
             <h5 className="card-title">{stream.user_name}</h5>
             <div className='card-text'>
               {stream.viewer_count} live Viewers
             </div>
             <button className="btn btn-success">
-              <a
+            <Link
                 className='link'
-                href={"http://twitch.tv/" + stream.user_name}
-                target="_blank"
+                to ={{
+                  pathname:`/streams/game/${match.params.id}/` + stream.user_name,
+                  state: {
+                    username: stream.user_name
+                  }
+                }}
               >
                 {stream.name} streams {" "}
-              </a>
+              </Link>
             </button>
           </div>
         </div>
