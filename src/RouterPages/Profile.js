@@ -59,28 +59,35 @@ export default function Profile(props) {
     compareGamerGuns: [],
     shownTab: 1,
   });
-  console.log('Cookies in profile: ', cookies);
+
+  if ('gamerTagInfo' in cookies) {
+    console.log('gamerTagInfo found in : ', cookies);
+  } else {
+    console.log('gamerTagInfo not found in : ', cookies);
+  }
 
   useEffect(() => {
     const gamerTag = "Nickmercs%2311526";
     const gamerPlatform = "battle";
     if(Object.keys(cookies).length > 0) {
-      const compareGamerTag = cookies.gamerTagInfo.gamerTag;
-      const compareGamerPlatform = cookies.gamerTagInfo.gamerPlatform;
-      axios.get(`http://localhost:3030/stats/${compareGamerTag}&${compareGamerPlatform}`)
-      .then((compareGamerData) => {
-        // console.log('PROFILE - Compare Gamer guns: ', compareGamerData);
-        console.log('PROFILE - Compare Gamer guns: ', compareGamerData.data[2].guns);
-        const compareGamerGuns = [compareGamerData.data[2].guns];
-        setState(prev => ({
-          ...prev,
-          compareGamerGuns: compareGamerGuns
-        }))
-      })
-      .catch(error => {
-        console.log('Error fetching Compare Gamer Stats: ', error)
-      });
-    }
+      if('gamerTagInfo' in cookies) {
+        const compareGamerTag = cookies.gamerTagInfo.gamerTag;
+        const compareGamerPlatform = cookies.gamerTagInfo.gamerPlatform;
+        axios.get(`http://localhost:3030/stats/${compareGamerTag}&${compareGamerPlatform}`)
+        .then((compareGamerData) => {
+          // console.log('PROFILE - Compare Gamer guns: ', compareGamerData);
+          console.log('PROFILE - Compare Gamer guns: ', compareGamerData.data[2].guns);
+          const compareGamerGuns = [compareGamerData.data[2].guns];
+          setState(prev => ({
+            ...prev,
+            compareGamerGuns: compareGamerGuns
+          }))
+        })
+        .catch(error => {
+          console.log('Error fetching Compare Gamer Stats: ', error)
+        });
+      }
+    };
     Promise.all([
       axios.get('http://localhost:3030/trackedstats/trackedfavs'),
       axios.get('http://localhost:3030/achievements'),
