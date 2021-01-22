@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
    height: 480,
    width: 650,
    background: 'skyblue',
+   marginRight: "70px"
     
   },
   media: {
@@ -133,6 +134,7 @@ export default function RecipeReviewCard(props) {
         <ReactPlayer 
         url={props.url}
         />
+        
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
         </Typography>

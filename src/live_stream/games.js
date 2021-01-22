@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 
+
 function Games () {
   const [games, setGames] = useState([])
 
@@ -32,30 +33,25 @@ function Games () {
 
     fetchData();
   },[])
+
   return (
     
     <div className='row'>
-      <div className='col-4'>
-        <div className='card'>
-          <img className='card-img-top' src={games.box_art_url} alt=""></img>
-          <div className="card-body">
-            <h5 className="card-title">{games.name}</h5>
-            <button className="btn btn-success">
+     
               <Link
                 className='link'
                 to ={{
-                  pathname:"/streams/game/" + games.name,
+                  pathname:"/streams/game",
                   state: {
-                    gameID: games.id
+                    gameID: games.id,
+                    username: games.name,
                   }
                 }}
               >
                 {games.name} streams {" "}
               </Link>
-            </button>
-          </div>
-        </div>
-      </div>
+           
+          
     </div>
     
   )

@@ -3,7 +3,7 @@ import api from "./api";
 import { Link } from 'react-router-dom';
 // import "bootstrap/dist/css/bootstrap.min.css";
 import ReactPlayer from "react-player";
-import "../checkbox.css"
+import "../stream_games.css";
 
 
 function GameStreams ({match, location}) {
@@ -46,30 +46,50 @@ function GameStreams ({match, location}) {
       <div className='row'>
       {streamData.map(stream => (
         <div className='col-lg-4 col-md-6 col-sm-12 mt-5'>
-        <div className='card'>
-          <img className='card-img-top' src={stream.thumbnail_url} alt=""></img>
+        <div className='card1'>
+           <Link
+                className='card-img-top'
+                to ={{
+                  pathname:`/streams/game/${location.state.username}/` + stream.user_name,
+                  state: {
+                    username: stream.user_name,
+                    views: stream.viewer_count,
+                  }
+                }}
+              >
+                <img className='card-img-top' src={stream.thumbnail_url} alt=""></img>
+              </Link>
+          {/* <img className='card-img-top' src={stream.thumbnail_url} alt=""></img> */}
           {/* <ReactPlayer
           style ={{width: 100}}
           url={`http://twitch.tv/${stream.user_name}`}
           /> */}
-          <div className="card-body">
-            <h5 className="card-title">{stream.user_name}</h5>
-            <div className='card-text'>
-              {stream.viewer_count} live Viewers
+          <div className="card-body" style={{display: "flex", flexDirection: "row", justifyContent: "space-between",}}>
+            <div>
+              <h5 className="card-title">{stream.user_name}</h5>
+              <div className='card-text'>
+                {stream.viewer_count} live Viewers
+              </div>
             </div>
+            
 
             <button className="btn btn-success">
-            <Link
+           
+              <Link
                 className='link'
                 to ={{
                   pathname:`/streams/game/${match.params.id}/` + stream.user_name,
                   state: {
-                    username: stream.user_name
+                    username: stream.user_name,
+                    views: stream.viewer_count,
+                    time_started: stream.started_at
                   }
                 }}
               >
-                {stream.name} streams {" "}
+                Watch {stream.user_name}'s stream {" "}
               </Link>
+                
+              
             </button>
           </div>
         </div>

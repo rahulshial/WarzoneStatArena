@@ -11,6 +11,7 @@ import RecipeReviewCard from "../news";
 import EnhancedTable from "../leaderboard";
 import EnhancedTable1 from "../topAchievers";
 import useApplicationData from "../hooks/useApplicationData";
+import Games from "../live_stream/games";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     background: "lightblue" ,
     display: "flex",
     justifyContent: "space-evenly",
-    alignItems: "center",
+    // alignItems: "center",
 
 
     
@@ -55,7 +56,8 @@ const useStyles = makeStyles((theme) => ({
   },
   gameId: {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginBottom: "20px"
 
   },
   title: {
@@ -118,7 +120,7 @@ export default function Home() {
   return (
     <div className={classes.root}>
       <Grid container spacing={0}>
-        <Grid item xs={12}>
+        <Grid item xs={12} style={{height:300}}>
           <Paper className={classes.paper} >
             <div>
               <img src={codLogo} alt=""/>
@@ -127,7 +129,7 @@ export default function Home() {
             <div>
               <p>
                 <h1>
-                  Modern Warfare Stats
+                  Enter Your Modern Warfare Gamer ID
                 </h1>
                 <br/>
               </p>
@@ -137,12 +139,13 @@ export default function Home() {
                 onClick={setPlatform}
               />
               
-            </div>
+            
             <BasicTextFields 
                 value={state.name}
                 onChange={setName}
                 onClick={setGamerData}
               />
+            </div>
             <div>
               <Button className={classes.shoot} href= "http://localhost:8080/auth/twitch/callback">
                 Login With Twitch
@@ -160,7 +163,7 @@ export default function Home() {
         
           
           
-        <Grid item xs={12}>
+        <Grid item xs={12} style={{height:450}}>
           <Paper className={classes.paper}>
           <p className={classes.title}>Leaderboard</p>
           <EnhancedTable
@@ -176,6 +179,7 @@ export default function Home() {
         <Grid item xs={12} >
           <Paper className={classes.paper}>
             <RecipeReviewCard 
+              
               url="https://www.twitch.tv/nickmercs"
               title='Call of Duty: Warzone Supposedly Has a New "Broken" OP Gun'
               avatar="RS"
@@ -189,6 +193,8 @@ export default function Home() {
               subheader="charlieintel.com"
               link="https://charlieintel.com/faze-swagg-reveals-a-gun-better-than-dmr-14-in-warzone/75052/"
             />
+           
+            
           </Paper>
         </Grid>
       </Grid>

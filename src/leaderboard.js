@@ -141,7 +141,7 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Top Streamer of the week
+          Top Streamers of the week
         </Typography>
       )}
 
@@ -169,7 +169,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "40%",
     background: "#3f51b5",
     marginRight: 300,
-    marginBottom: theme.spacing(2),
+    marginBottom: "100px",
   },
   table: {
     minWidth: 750,
@@ -189,8 +189,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function tableRows () {
-  if (headCells.length > 6) {
-    return 5
+  if (headCells.length > 4) {
+    return 3
   }
   return headCells.length
 }
@@ -315,7 +315,7 @@ export default function EnhancedTable() {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[2, 5, 10]}
+          rowsPerPageOptions={[3]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}

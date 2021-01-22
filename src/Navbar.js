@@ -17,6 +17,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Games from './live_stream/games'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -193,6 +194,11 @@ export default function PrimarySearchAppBar() {
 
           <Typography className={classes.title} variant="h6" style={{marginRight:'1%'}}>
           <Link className="item-nav" to="/Large">Stream Overlay</Link>
+          </Typography>
+
+          <Typography className={classes.title} variant="h6" style={{marginRight:'1%'}}>
+          {/* <Link className="item-nav" to='/streams/Call%20of%20Duty:%20Warzone'>Top 20 Live Streams</Link> */}
+          <Games>Top 20 Live Streams</Games>
           </Typography>
 
           <div className={classes.grow} />

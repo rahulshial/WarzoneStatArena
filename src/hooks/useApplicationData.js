@@ -109,6 +109,8 @@ export default function useApplicationData () {
     // console.log(state.name);
     // console.log(state.platform);
     const gamerTag = state.name.replace("#", "%23")
+    // .replace(" ", "%20")
+    console.log(gamerTag);
     // const gamerTag = state.name;
 
     const gamerPlatform = state.platform

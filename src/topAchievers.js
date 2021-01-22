@@ -169,7 +169,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "40%",
     background: "#3f51b5",
     marginRight: 300,
-    marginBottom: theme.spacing(2),
+    marginBottom: "100px",
   },
   table: {
     minWidth: 750,
@@ -189,8 +189,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function tableRows () {
-  if (headCells.length > 6) {
-    return 5
+  if (headCells.length > 4) {
+    return 3
   }
   return headCells.length
 }
@@ -312,7 +312,7 @@ export default function EnhancedTable1() {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[2, 5, 10]}
+          rowsPerPageOptions={[5]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
