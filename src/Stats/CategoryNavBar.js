@@ -32,7 +32,6 @@ export default function CenteredTabs(props) {
         <Tab label="Overview" />
         <Tab label="Guns" />
         <Tab label="Game Modes" />
-        <Tab label="Misc Stats" />
 
 
       </Tabs>

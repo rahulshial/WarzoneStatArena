@@ -15,7 +15,7 @@ import iw8_ar_tango21 from './images/guns/ar/ram-7.png';
 // SMGS
 import iw8_sm_augolf from './images/guns/smg/aug.png';
 import iw8_sm_victor from './images/guns/smg/fennec.png';
-import iso from './images/guns/smg/iso.png';
+import iw8_sm_charlie9 from './images/guns/smg/iso.png';
 import iw8_sm_mpapa5 from './images/guns/smg/mp5.png';
 import iw8_sm_mpapa7 from './images/guns/smg/mp7.png';
 import iw8_sm_papa90 from './images/guns/smg/p90.png';
@@ -34,7 +34,7 @@ import iw8_sh_aalpha12 from './images/guns/sg/jak-12.png'
 import iw8_lm_pkilo from './images/guns/lmg/pkm.png'
 import iw8_lm_mgolf34 from './images/guns/lmg/mg34.png'
 import iw8_lm_lima86 from './images/guns/lmg/sa87.png'
-import iw8_lm_dblmg from './images/guns/lmg/finn-lmg.png'
+import iw8_lm_sierrax from './images/guns/lmg/finn-lmg.png'
 import iw8_lm_mgolf36 from './images/guns/lmg/holger-26.png'
 import iw8_lm_kilo121 from './images/guns/lmg/m91.png'
 import iw8_lm_mkilo3 from './images/guns/lmg/bruen-mk9.png'
@@ -63,14 +63,38 @@ import iw8_la_rpapa7 from './images/guns/launcher/rpg-7.png'
 import iw8_la_juliet from './images/guns/launcher/jokr.png'
 import iw8_la_gromeo from './images/guns/launcher/pila.png'
 import iw8_la_kgolf from './images/guns/launcher/strela-p.png'
+import iw8_la_mike32 from './images/guns/launcher/MGL-32.webp'
+
+import equip_frag from './images/guns/lethals/frag.webp'
+import equip_thermite from './images/guns/lethals/thermite.webp'
+import equip_semtex from './images/guns/lethals/semtex.webp'
+import equip_claymore from './images/guns/lethals/claymore.webp'
+import equip_c4 from './images/guns/lethals/c4.webp'
+import equip_at_mine from './images/guns/lethals/mine.webp'
+import equip_throwing_knife from './images/guns/lethals/throwing_knife.webp'
+import equip_molotov from './images/guns/lethals/molotov.webp'
 
 
-// NEED ANOTHER LAUNCHER IMG
+
+
+export const LETHAL = {
+  equip_frag,
+  equip_thermite,
+  equip_semtex,
+  equip_claymore,
+  equip_c4,
+  equip_at_mine,
+  equip_throwing_knife,
+  equip_molotov,
+}
+
+
 export const LAUNCHER = {
   iw8_la_rpapa7,
   iw8_la_juliet,
   iw8_la_gromeo,
   iw8_la_kgolf,
+  iw8_la_mike32,
 
 }
 export const PISTOL = {
@@ -104,7 +128,7 @@ export const LMG = {
   iw8_lm_pkilo,
   iw8_lm_mgolf34,
   iw8_lm_lima86,
-  iw8_lm_dblmg,
+  iw8_lm_sierrax,
   iw8_lm_mgolf36,
   iw8_lm_kilo121,
   iw8_lm_mkilo3,
@@ -138,7 +162,7 @@ export const AR = {
 export const SMG = {
   iw8_sm_augolf,
   iw8_sm_victor,
-  iso,
+  iw8_sm_charlie9,
   iw8_sm_mpapa5,
   iw8_sm_mpapa7,
   iw8_sm_papa90,
