@@ -167,7 +167,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" style={{backgroundColor:"#1a1f26",color:"#ffd369"}}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -198,7 +198,7 @@ export default function PrimarySearchAppBar() {
 
           <Typography className={classes.title} variant="h6" style={{marginRight:'1%'}}>
           {/* <Link className="item-nav" to='/streams/Call%20of%20Duty:%20Warzone'>Top 20 Live Streams</Link> */}
-          <Games>Top 20 Live Streams</Games>
+          <Games style={{color:"white"}}>Top 20 Live Streams</Games>
           </Typography>
 
           <div className={classes.grow} />

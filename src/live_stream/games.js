@@ -39,7 +39,8 @@ function Games () {
     <div className='row'>
      
               <Link
-                className='link'
+                className='link1'
+                // style={{color:"#1a1f26"}}
                 to ={{
                   pathname:"/streams/game",
                   state: {

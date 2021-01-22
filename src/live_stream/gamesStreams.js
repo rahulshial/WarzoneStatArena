@@ -35,7 +35,7 @@ function GameStreams ({match, location}) {
     fetchData();
   },[viewers])
   return (
-    <div>
+    <div style={{backgroundColor:"#222831", color:"#ffd369"}}>
       
       <h1 className='text-center'>Warzone Top 20 Streams</h1>
       <br></br>

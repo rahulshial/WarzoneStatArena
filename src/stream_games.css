@@ -16,7 +16,7 @@
 }
 
 .text-primary {
-  color: #007bff!important;
+  color: #fff!important;
 }
 
 .row {
@@ -69,10 +69,11 @@
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #62676f;
   background-clip: border-box;
   border: 1px solid rgba(0,0,0,.125);
   border-radius: .25rem;
+  color: #13181f;
 }
 
 .card-img-top {
@@ -125,5 +126,10 @@ a {
 
 .link{
   color: #13181f;
+
+}
+
+.link1{
+  color: #fff;
 
 }
