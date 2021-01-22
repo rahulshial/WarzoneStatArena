@@ -18,13 +18,15 @@ const useStyles = makeStyles((theme) => ({
   root: {
    height: 480,
    width: 650,
-   background: 'skyblue',
-   marginRight: "70px"
+   background: '#62676f',
+   marginRight: "70px",
+   color:"#fff",
     
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
+    
   },
   expand: {
     transform: 'rotate(0deg)',

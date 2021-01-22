@@ -14,14 +14,17 @@ const useStyles = makeStyles({
     minHeight: 400,
     maxHeight: 400,
     margin: 20,
+    backgroundColor:"#858d9b"
 
   },
   media: {
     height: 200,
+    backgroundColor:"#62676f"
   },
   text: {
    fontFamily: "Times New Roman, serif",
    fontSize: 20,
+   color:"#ffd369"
   }
 });
 

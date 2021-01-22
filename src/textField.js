@@ -12,7 +12,9 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: '30ch',
       marginRight: 0,
-      height: 55
+      height: 55,
+      backgroundColor: "#fff",
+      color:"#ffd369"
       
     },
   },
@@ -21,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     width: 50,
     marginLeft:0,
-    backgroundColor: "transparent",
+    color:"#383d44",
+    backgroundColor: "#ffd369",
   },
 }));
 

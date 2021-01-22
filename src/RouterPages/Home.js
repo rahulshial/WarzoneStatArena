@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     textAlign: 'center',
     height: 500,
-    background: "lightblue" ,
+    background: "#222831" ,
     display: "flex",
     justifyContent: "space-evenly",
     // alignItems: "center",
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     background: '#a970ff',
     borderRadius: 3,
     border: 0,
-    color: "white",
+    color: "#fff",
     fontWeight: 'bold',
     fontSize:'22px',
     fontFamily:'Lucidatypewriter, monospace',
@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     height: 48,
     padding: '0 30px',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+
   },
   label: {
     textTransform: 'capitalize',
@@ -62,7 +63,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 40,
-    marginBottom: 400
+    marginBottom: 400,
+    color:"#ffd369"
     
   }
 }));
@@ -93,28 +95,6 @@ export default function Home() {
   }
   
 
-  // const {
-  //   weapons1,
-  //   setWeapon
-  // } = useApplicationData();
-
-  // console.log(weapons1.weapons.weapon_assault_rifle);
-  // console.log(weapons1.weeklyData.properties);
-  //   // if (weapons1.weapons.weapon_assault_rifle) {
-  //   //   const gunstat = weapons1.weapons.weapon_assault_rifle.iw8_ar_akilo47.properties.kills
-  //   //   return gunstat
-  //   // }
-  //   let weeklyKills = 0
-  //   let weeklyDeaths = 0
-  //   let weeklyKdRatio = 0
-  //   let weeklyMatchesPlayed = 0
-  //   if (weapons1.weeklyData.properties) {
-  //     console.log(weapons1.weeklyData.properties["kills"]);
-  //      weeklyKills = weapons1.weeklyData.properties.kills
-  //      weeklyDeaths = weapons1.weeklyData.properties.deaths
-  //      weeklyKdRatio = weapons1.weeklyData.properties.kdRatio
-  //      weeklyMatchesPlayed = weapons1.weeklyData.properties.matchesPlayed
-  //   }
   
 
   return (
@@ -128,7 +108,7 @@ export default function Home() {
             <div>
             <div>
               <p>
-                <h1>
+                <h1 style={{color:"#ffd369"}}>
                   Enter Your Modern Warfare Gamer ID
                 </h1>
                 <br/>

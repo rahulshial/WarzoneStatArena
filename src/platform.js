@@ -19,13 +19,18 @@ const useStyles = makeStyles((theme) => ({
       height: 55,
       
     },
-    '&:focus': {
-      background:"red",
-    },
+   
     img: {
       width: "45px",
+      
+      
     }
   },
+  button: {
+    "&:focus": {
+      background:"#ffd369",
+    }
+  }
 }));
 
 export default function GroupSizesColors(props) {
@@ -41,21 +46,21 @@ export default function GroupSizesColors(props) {
   //console.log(platform);
   return (
     <div className={classes.root}>
-      <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group" >
+      <ButtonGroup size="large" style={{backgroundColor:"#fff"}} aria-label="large outlined primary button group" >
         {/* give back "psn" */}
-        <Button onClick= {()=> test1("psn")}>
+        <Button className={classes.button} onClick= {()=> test1("psn")}>
           <img className="img"  src={psn} alt=""/>
         </Button> 
         {/* give back "acti" */}
-        <Button  onClick= {()=> test1("acti")}>
+        <Button  className={classes.button} onClick= {()=> test1("acti")}>
           <img  className="img" src={Mw} alt=""/>
         </Button>
         {/* give back "battlenet" */}
-        <Button  onClick= {()=> test1("battle")} >
+        <Button  className={classes.button} onClick= {()=> test1("battle")} >
           <img  className="img" src={battlenet} alt=""/>
         </Button>
         {/* give back "xbox" */}
-        <Button  onClick= {()=> test1("xbox")} >
+        <Button  className={classes.button} onClick= {()=> test1("xbox")} >
           <img className="img" src={xbox} alt=""/>
         </Button>
       </ButtonGroup>

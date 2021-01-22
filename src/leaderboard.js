@@ -71,12 +71,14 @@ function EnhancedTableHead(props) {
         </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
+            className={classes.text}
             key={headCell.id}
             align={headCell.numeric ? 'right' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'default'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
+            
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
@@ -167,7 +169,8 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
     maxWidth: "40%",
-    background: "#3f51b5",
+    color: "#fff",
+    background: "#62676f",
     marginRight: 300,
     marginBottom: "100px",
   },
@@ -187,6 +190,10 @@ const useStyles = makeStyles((theme) => ({
     top: 20,
     width: 1,
   },
+  text:{
+    color:"#fff",
+    fontSize:"18px",
+  }
 }));
 function tableRows () {
   if (headCells.length > 4) {
@@ -295,13 +302,13 @@ export default function EnhancedTable() {
                           inputProps={{ 'aria-labelledby': labelId }}
                         />
                       </TableCell> */}
-                      <TableCell component="th" id={labelId} scope="row" padding="none">
+                      <TableCell component="th" id={labelId} scope="row" padding="none" className={classes.text}>
                         {row.name}
                       </TableCell>
-                      <TableCell align="right">{row.kills}</TableCell>
-                      <TableCell align="right">{row.death}</TableCell>
-                      <TableCell align="right">{row.KD}</TableCell>
-                      <TableCell align="right">{row.Votes}</TableCell>
+                      <TableCell align="center"  className={classes.text} >{row.kills}</TableCell>
+                      <TableCell align="center" className={classes.text}>{row.death}</TableCell>
+                      <TableCell align="center" className={classes.text}>{row.KD}</TableCell>
+                      <TableCell align="center" className={classes.text}>{row.Votes}</TableCell>
                     </TableRow>
                   );
                 })}
