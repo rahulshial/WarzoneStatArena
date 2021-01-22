@@ -146,7 +146,7 @@ export default function TrackedGuns(props) {
               <div className="unfav-button">
                 <Grid container spacing={1}>
                   <Grid item xs={4}>
-                    <Paper className={classes.paperButton} variant='outlined' onClick={() => removeStat(fixed.gun)}>Remove {gunName} favourite</Paper>                    
+                    <Paper className={classes.paperButton} variant='outlined' onClick={() => removeStat(fixed.gun)}>Remove {gunName}</Paper>                    
                   </Grid>
                 </Grid>
               </div>

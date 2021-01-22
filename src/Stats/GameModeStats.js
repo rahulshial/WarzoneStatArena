@@ -60,7 +60,6 @@ export default function GameModeStats(props) {
     return (
         <div className='game-modes'>
           <div className={classes.root}>
-            <br></br>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Paper className={classes.paper} variant='outlined'><strong>{gunDataObj.modes[index].toUpperCase()}</strong>:</Paper>                    
@@ -69,6 +68,9 @@ export default function GameModeStats(props) {
                 {loopGameStats()}
               </Grid>
             </Grid>
+            <br></br>
+            <br></br>
+            <br></br>
           </div>  
         </div>
     )
