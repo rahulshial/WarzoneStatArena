@@ -31,6 +31,8 @@ const BorderLinearProgress = withStyles((theme) => ({
 const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 275,
+    color: "#ffd369",
+    backgroundColor: "#565666",
   },
   title: {
     fontSize: 14,
@@ -44,9 +46,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#ffd369",
     backgroundColor: "#0f0e18",
   },
-  paperRoot: {
-
-  }
 }));
 
 export default function Overview(props) {
@@ -69,7 +68,7 @@ export default function Overview(props) {
     <div>
       <Card className={classes.root} variant="outlined">
         <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
+          <Typography className={classes.title} gutterBottom>
           <h1>{shown.allstats.username} stats on <strong>{shown.allstats.platform}</strong> at Level {shown.allstats.level}</h1>
           </Typography>
           <Grid container spacing={1}>

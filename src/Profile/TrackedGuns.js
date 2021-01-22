@@ -16,7 +16,14 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: "#ffd369",
-    backgroundColor: '#0f0e18;'
+    backgroundColor: '#0f0e18',
+  },
+  paperButton: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: "#ffd369",
+    backgroundColor: 'red',
+    fontSize: 20
   },
 }));
 
@@ -137,7 +144,11 @@ export default function TrackedGuns(props) {
             </div>
             <div className="right-side">
               <div className="unfav-button">
-                <button onClick={() => removeStat(fixed.gun)}><h2>Unfavourite the {gunName}</h2></button>
+                <Grid container spacing={1}>
+                  <Grid item xs={4}>
+                    <Paper className={classes.paperButton} variant='outlined' onClick={() => removeStat(fixed.gun)}>Remove {gunName} favourite</Paper>                    
+                  </Grid>
+                </Grid>
               </div>
               <div className={classes.root}>
                 <Grid container spacing={1}>

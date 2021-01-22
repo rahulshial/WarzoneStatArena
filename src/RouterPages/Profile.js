@@ -7,14 +7,12 @@ import { useHistory } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import ButtonBase from '@material-ui/core/ButtonBase';
 
 /** Local imports */
 import '../styles/profile.css'
 import ProfileNavBar from '../Profile/ProfileNavBar'
 import TrackedGuns from '../Profile/TrackedGuns.js'
 import GamerStats from '../Profile/GamerStats';
-
 
 
 /** Declare Material UI classes styles */
@@ -32,13 +30,13 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    // color: theme.palette.text.secondary,
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     border: 0,
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
-    textSize: '24px'
+    textSize: '24px',
+    fontSize: '30px',
   },
 }));
   
