@@ -165,13 +165,14 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 400,
     
     
+    
   },
   paper: {
     position: "absolute",
     maxWidth: "40%",
     color: "#fff",
     background: "#62676f",
-    marginRight: 300,
+    marginRight: 350,
     marginBottom: "100px",
   },
   table: {
@@ -193,6 +194,8 @@ const useStyles = makeStyles((theme) => ({
   text:{
     color:"#fff",
     fontSize:"18px",
+    
+
   }
 }));
 function tableRows () {
@@ -230,11 +233,11 @@ export default function EnhancedTable() {
   }
 
   const rows = [
-    createData('YooGood', 305, 3.7, 67, 4.3),
+    createData('Rahul', 305, 3.7, 67, 4.3),
     createData('Stephan', 452, 25.0, 51, 4.9),
-    createData('CaprianPrice', 262, 16.0, 24, 6.0),
-    createData("Nickmercs", state.platform, weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
-    createData('Mo', 356, 16.0, 49, 3.9),
+    createData('Swagg', 640, 231, 2.77, 74),
+    createData("Nickmercs", 528, 124, 4.26, 55),
+    createData('Mo', 104, 31, 3.35, 37),
   ];
 
   const handleRequestSort = (event, property) => {
@@ -305,10 +308,10 @@ export default function EnhancedTable() {
                       <TableCell component="th" id={labelId} scope="row" padding="none" className={classes.text}>
                         {row.name}
                       </TableCell>
-                      <TableCell align="center"  className={classes.text} >{row.kills}</TableCell>
-                      <TableCell align="center" className={classes.text}>{row.death}</TableCell>
-                      <TableCell align="center" className={classes.text}>{row.KD}</TableCell>
-                      <TableCell align="center" className={classes.text}>{row.Votes}</TableCell>
+                      <TableCell align="right"  className={classes.text} >{row.kills}</TableCell>
+                      <TableCell align="right" className={classes.text}>{row.death}</TableCell>
+                      <TableCell align="right" className={classes.text}>{row.KD}</TableCell>
+                      <TableCell align="right" className={classes.text}>{row.Votes}</TableCell>
                     </TableRow>
                   );
                 })}

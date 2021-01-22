@@ -7,8 +7,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   root: {
-    
-    fontSize:300,
     height: 48,
   },
 });

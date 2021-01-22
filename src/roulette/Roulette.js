@@ -233,6 +233,7 @@ export default function Roulette() {
           />
 
           <MediaCard
+            
             title="Rules"
             selected={selected.rule}
             image={ruled}

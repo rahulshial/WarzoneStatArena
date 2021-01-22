@@ -9,8 +9,8 @@ import SwitchesSize from "./checkbox";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 500,
-    maxWidth: 500,
+    minWidth: 400,
+    maxWidth: 400,
     minHeight: 400,
     maxHeight: 400,
     margin: 20,
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
   text: {
    fontFamily: "Times New Roman, serif",
-   fontSize: 20,
+   fontSize: 18,
    color:"#ffd369"
   }
 });
@@ -39,6 +39,7 @@ export default function MediaCard(props) {
           image={props.image}
           title={props.title}
         />
+        
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2" className={classes.text}>
            <SwitchesSize 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // import "bootstrap/dist/css/bootstrap.min.css";
 import ReactPlayer from "react-player";
 import "../stream_games.css";
-
+let interval;
 
 function GameStreams ({match, location}) {
   console.log(match);
@@ -31,9 +31,14 @@ function GameStreams ({match, location}) {
     }
 
     
-    console.log(viewers);
     fetchData();
-  },[viewers])
+    // interval = setInterval(() => {
+    //   fetchData();
+    // }, 10000);
+    // return function cleanup () {
+    //   clearInterval(interval)
+    // }
+  },[])
   return (
     <div style={{backgroundColor:"#222831", color:"#ffd369"}}>
       
