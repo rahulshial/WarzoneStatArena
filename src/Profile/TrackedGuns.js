@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: "#ffd369",
     backgroundColor: 'red',
-    fontSize: 20
+    fontSize: 20,
   },
 }));
 
