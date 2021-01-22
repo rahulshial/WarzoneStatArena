@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 
 export default function ProfileNavBar(props) {
   const classes = useStyles();
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(1);
 
   const chosenTab = (e, newTab) => {
     setTab(newTab)
