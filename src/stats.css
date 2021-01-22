@@ -5,7 +5,7 @@
   margin-top: 1px;
   justify-content: space-between;
   align-items: center;
-  background-color: #475666;
+  background-color: #3775b6;
   color: #629BCA;
   padding: 1%;
 }
@@ -37,7 +37,13 @@
   justify-content: center;
 }
 .gun-icon {
-  width: 50%;
+  display: flex;
+  flex-direction: row;
+  max-width: 75%;
+  max-height: 75%;
+  margin: auto;
+  /* margin-right: auto; */
+  align-items: center;
 }
 
 /* #################################33 */
@@ -68,7 +74,9 @@
   justify-content: center;
 
 }
-
+.gun-item-table {
+  width: 100%;
+}
 /* 
 table  {
   font-family: arial, sans-serif;
@@ -129,14 +137,14 @@ tr:nth-child(even) {
 }
 
 .container .card .face {
-  width: 300px;
-  height: 200px;
-  transition: 0.5s;
+  width: 440px;
+  height: 202px;
+  transition: .4s;
 }
 
 .container .card .face.face1 {
   position: relative;
-  background: #333;
+  background: #0f0e18;
 
 
   z-index: 1;

@@ -5,7 +5,8 @@ import GunNav from '../Stats/GunNavBar';
 import CategoryNav from '../Stats/CategoryNavBar';
 import GunStats from '../Stats/GunStats';
 import GameModeStats from '../Stats/GameModeStats';
-import { AR, SMG, SG, LMG, MRKSMN, SNPR, PISTOL, LAUNCHER } from '../images.js'
+import Overview from '../Stats/Overview'
+import { AR, SMG, SG, LMG, MRKSMN, SNPR, PISTOL, LAUNCHER, LETHAL } from '../images.js'
 import useApplicationData from "../hooks/useApplicationData";
 
 export default function Guns(props) {
@@ -24,7 +25,7 @@ export default function Guns(props) {
     weapons1,
     setWeapon,
   } = useApplicationData();
-
+  
   // useEffect(() => {
   //   let nickname = props.name.replace("#", "%23")
   //   // nickname will === username
@@ -50,22 +51,22 @@ export default function Guns(props) {
   //     })
   // }, [])
 
-  // Checking for what tab is selected on the stats page
+  // Checking for what GUN tab is selected on the stats page
   const gunTabSelected = (indexValue) => {
-    const categories = ["weapon_assault_rifle", "weapon_marksman", "weapon_sniper", "weapon_smg", "tacticals", "lethals", "weapon_lmg", "weapon_launcher", "weapon_pistol", "weapon_shotgun", "supers", "weapon_other", "weapon_melee"];
+    const categories = ["weapon_assault_rifle", "weapon_marksman", "weapon_sniper", "weapon_smg","lethals", "weapon_lmg", "weapon_launcher", "weapon_pistol", "weapon_shotgun", "supers", "weapon_other", "weapon_melee"];
 
     const gunCat = [
       AR,
       MRKSMN,
       SNPR,
       SMG,
-      AR,
-      AR,
+      LETHAL,
       LMG,
       LAUNCHER,
       PISTOL,
       SG,
     ]
+
     // shown = setting the cat state to an object of the category
     setWeapon(prev => ({
       ...prev,
@@ -81,7 +82,7 @@ export default function Guns(props) {
 
     // This function sets the weapons1 for the specific shown weapons1 and category if we dont set weapons1s here the page crashes when you change from a game mode to guns... because the guns component cant read the game modes object and vice versa
 
-    const categories = ["overview", "guns", "game_modes", "misc_stats"];
+    const categories = ["overview", "guns", "game_modes"];
 
     if (categories[indexValue] === "guns") {
       setWeapon(prev => ({
@@ -93,7 +94,11 @@ export default function Guns(props) {
       setWeapon(prev => ({
         ...prev,
         shown: weapons1.gameModes,
-        // gameModeCat: 'gun'
+      }))
+    } else if (categories[indexValue] === "overview") {
+      setWeapon(prev => ({
+        ...prev,
+        shown: weapons1.playerInfo
       }))
     }
 
@@ -140,6 +145,14 @@ export default function Guns(props) {
           </table>
         </>
       )
+    } else if (weapons1.shownCat === "overview") {
+      return (
+        <>
+          <Overview
+            shown={weapons1.shown}
+          />
+        </>
+      )
     }
   }
 
@@ -149,7 +162,6 @@ export default function Guns(props) {
 
   return (
     <div>
-      <h1>STATS</h1>
       <CategoryNav
         onSelect={categorySelected}
       />

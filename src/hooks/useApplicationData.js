@@ -28,8 +28,8 @@ export default function useApplicationData () {
     weeklyData: [],
     gunNavSelected: [],
     selectedGunTab: 'weapon_assault_rifle',
+    playerInfo: {},
   })
-
 
   async function getDropZone () {
     console.log("iniside function");
@@ -149,12 +149,12 @@ export default function useApplicationData () {
     // if (cookies.gamerTagInfo) {
       axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
       .then(res => {
-        
         // console.log(res.data[0].weeklyData);
         if (res.data[0].weeklyData !== null) {
         const weapons = res.data[2].guns;
         const gameModes = res.data[1].gameModes;
         const weeklyData = res.data[0].weeklyData.all;
+        const playerInfo = res.data[4]
         // console.log(weeklyData);
         // console.log(gameModes);
         // console.log(weapons);
@@ -164,10 +164,14 @@ export default function useApplicationData () {
           weapons,
           weeklyData,
           category: "",
+          playerInfo,
+          shownCat: 'overview',
+          shown: playerInfo
         }))
       } else {
         // console.log("insided elsee useapllication");
         const weapons = res.data[2].guns;
+        const playerInfo = res.data[4]
         const gameModes = res.data[1].gameModes;
         // console.log(gameModes);
         // console.log(weapons);
@@ -176,6 +180,9 @@ export default function useApplicationData () {
           gameModes,
           weapons,
           category: "",
+          playerInfo,
+          shownCat: 'overview',
+          shown: playerInfo,
         }))
       }
 

@@ -49,11 +49,11 @@ export default function GunStats({ shown, gunImgs, gunTab, weapons, gunNavSelect
     //  VALUE = PROPPER GUN NAME
 
       if (gunStat === "kdRatio" || gunStat === "accuracy") {
-        titles.push(<h3>{gunStat}</h3>)
-        stats.push(<h3>{gun[gunStat].toFixed(2)}</h3>)
+        titles.push(<td><h5>{gunStat}</h5></td>)
+        stats.push(<td><h5>{gun[gunStat].toFixed(2)}</h5></td>)
       } else {
-        titles.push(<h3>{gunStat}</h3>)
-        stats.push(<h3>{gun[gunStat]}</h3>)
+        titles.push(<td><h5>{gunStat}</h5></td>)
+        stats.push(<td><h5>{gun[gunStat]}</h5></td>)
       }
     })
     return (

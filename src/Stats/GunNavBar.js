@@ -32,7 +32,7 @@ export default function CenteredTabs(props) {
         <Tab label="MarksMan Rifles" />
         <Tab label="Snipers" />
         <Tab label="Smg's" />
-        <Tab label="Tacticals" />
+        {/* <Tab label="Tacticals" /> */}
         <Tab label="Lethals" />
         <Tab label="LMG's" />
         <Tab label="Launchers" />

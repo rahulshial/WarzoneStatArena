@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import CheckboxCategories from './CheckboxCategories'
-
+import URLtextField from './URLtextField'
 
 export default function LargeOverlay(props) {
   const { 
@@ -59,7 +59,12 @@ export default function LargeOverlay(props) {
               <div className="overlay-title1">{tmpStat8[0]}</div>
               <div className="overlay-stat1">{tmpStat8[1]}</div>
             </div>
-            {overlayUrl.length > 0 ? <textarea name="" id="" cols="30" rows="2">{overlayUrl}</textarea>: <></> }
+            <URLtextField/>
+            {overlayUrl.length > 0 ? 
+            <textarea name="" id="" cols="30" rows="2">{overlayUrl}</textarea>: 
+            <></> 
+            }
+            
             <button onClick={(e) => { saveOverlay() }}>Select This Overlay</button>
           </div>
     </>
