@@ -5,9 +5,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 /** Local imports */
-import getStatsForFavorites from '../helpers/getStatsForFavorites'
+// import getStatsForFavorites from '../helpers/getStatsForFavorites'
 import gunDataObj from '../helpers/gunData'
-// import GunCard from './GunCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,22 +19,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function TrackedGuns(props) {
   const classes = useStyles();
-  const { favorites, deleteStat, achievements, displayedCards, compareGamerGuns } = props;
-  const [trackedStats, setTrackedStats] = useState([]);
-
-  useEffect(() => {
-    return getStatsForFavorites(favorites)
-    .then(data => {
-      setTrackedStats(data)
-    })
-  }, [favorites])
+  const { favorites, gunStats, deleteStat, achievements, displayedCards, compareGamerGuns } = props;
 
   return favorites.map((fav, index) => {
-    // console.log('TRACKED GUNS - Favourites: ',fav);
-    // console.log('TRACKED GUNS - Compare Gamer Guns: ', compareGamerGuns);
     const fixed = JSON.parse(fav.tracked_item);
     const gunCat = fixed.cat;
     const gunId = fixed.gun;
@@ -45,23 +33,25 @@ export default function TrackedGuns(props) {
 
     const loopTrackedStats = () => {
       const stats = [];
-      for (const stat in trackedStats[index]) {
-        if(trackedStats[index][stat] % 1 > 0) {
-          stats.push(<Grid item xs={1.5}>
-            <Paper className={classes.paper}>{gunDataObj.gunStatTitle[stat]}: {trackedStats[index][stat].toFixed(2)}</Paper>
-            </Grid>);
+      const favoriteGunStats = gunStats[0][gunCat][gunId].properties;
+      if(gunStats && fixed) {
+        for (const stat in favoriteGunStats) {
+          if(favoriteGunStats[stat] % 1 > 0) {
+            stats.push(<Grid item xs={1.5}>
+              <Paper className={classes.paper}>{gunDataObj.gunStatTitle[stat]}: {favoriteGunStats[stat].toFixed(2)}</Paper>
+              </Grid>);
           } else {
             stats.push(<Grid item xs={1.5}>
-              <Paper className={classes.paper}>{gunDataObj.gunStatTitle[stat]}: {trackedStats[index][stat]}</Paper>
+              <Paper className={classes.paper}>{gunDataObj.gunStatTitle[stat]}: {favoriteGunStats[stat]}</Paper>
               </Grid>);
-            }
-      }
-      return stats;
+            };
+        };
+        return stats; 
+      };
     };
 
     const loopCompareStats = () => {
       const compareStatsReturn = [];
-      console.log(compareGamerGuns.length)
       if(compareGamerGuns.length > 0) {
         const compareGunStats = compareGamerGuns[0][gunCat][gunId].properties
         if(compareGamerGuns && fixed) {
@@ -81,15 +71,19 @@ export default function TrackedGuns(props) {
       };
     };
 
+    const favoriteGunEarnedAchievements = () => {
+      if(favorites.length > 0) {
+        return earnedAchievements(gunStats[0][gunCat][gunId].properties);
+      };
+    }
+
     const compareEarnedAchievements = () => {
       if(compareGamerGuns.length > 0) {
-        console.log('Calling Earned Achievements...');
         return earnedAchievements(compareGamerGuns[0][gunCat][gunId].properties);
     };
   };
 
     const earnedAchievements = (statsArray) => {
-      console.log('Stats Array: ', statsArray);
       if(statsArray) {
         return achievements.map((achievement) => {
           let headShotRatio = 0;
@@ -109,13 +103,13 @@ export default function TrackedGuns(props) {
               break;
           };
           if ((statsArray.headshots >= headShotRatio) && (headShotRatio > 0)) {
-            return <img className="achiev-icons" src={achievement.image} alt="" />
+            return <img className="achieve-icons" src={achievement.image} alt="" />
           };
           if ((statsArray.accuracy <= accuracyRatio) && (accuracyRatio > 0)) {
-            return <img className="achiev-icons" src={achievement.image} alt="" />
+            return <img className="achieve-icons" src={achievement.image} alt="" />
           };
           if ((statsArray.kdRatio >= kdRatio) && (kdRatio > 0)) {
-            return <img className="achiev-icons" src={achievement.image} alt="" />
+            return <img className="achieve-icons" src={achievement.image} alt="" />
           };
         });      
       };
@@ -138,47 +132,37 @@ export default function TrackedGuns(props) {
         <div class='tracked-guns'>
           <div className="fav-gun-card">
             <div className="card-img">
-              <img className="fav-gun-icon" src={fixed.image} alt="" onClick={() => removeStat(fixed.gun)}/>
+              <img className="fav-gun-icon" src={fixed.image} alt=""/>
             </div>
-            <div>
-              <button onClick={() => removeStat(fixed.gun)}><h2>Unfavourite the {gunName}</h2></button>
-              <div className="right-side">
-                <hr />
+            <div className="right-side">
+              <div className="unfav-button">
+                <button onClick={() => removeStat(fixed.gun)}><h2>Unfavourite the {gunName}</h2></button>
               </div>
               <div className={classes.root}>
                 <Grid container spacing={1}>
                   {loopTrackedStats()}
                 </Grid>
               </div>
-              <hr />
-              <div>
-                <h3 style={{ textAlign: 'center' }}>Achievements</h3>
-              </div>
-              <hr />
               <div className="gun-achieves">
-                {earnedAchievements(trackedStats[index])}
+                {favoriteGunEarnedAchievements()}
               </div>
+
             </div>
-            <div className='empty-block'>
-              <h3>Empty Block</h3>
-            </div>
+
             <div className='compare-gamer-block'>
-              <h3>Compare Gamer Stats</h3>
               <Grid container spacing={1}>
                   {loopCompareStats()}
                 </Grid>
-                <hr />
-              <div>
-                <h3 style={{ textAlign: 'center' }}>Achievements</h3>
-              </div>
-              <hr />
+              <br />
               <div className="gun-achieves">
                 {compareEarnedAchievements()}
               </div>
             </div>
           </div>
         </div>
+
       </>
+
     );  
   })
 };

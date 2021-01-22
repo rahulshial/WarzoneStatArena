@@ -5,7 +5,7 @@
 
 .fav-gun-card {
   display: grid;
-  grid-template-columns: 30% 30% 10% 30%;
+  grid-template-columns: 20% 40% 40%;
   width: 100%;
   margin: 2px;
   background-color: rgb(180, 180, 180);
@@ -19,17 +19,32 @@
 }
 
 .right-side {
-  text-align: center
+  /* text-align: center; */
+  border: 1px;
+  border-radius: 5%;
+  margin-left: 10px;
 }
 
+.unfav-button {
+  margin-bottom: 10px;
+  color: red;
+}
 .card-img {
   display: flex;
   background-color: rgb(138, 138, 138);
+  border: 1px;
+  border-radius: 5%
 }
 
 .gun-achieves {
   display: flex;
   justify-content: flex-start;
+}
+
+.achieve-icons {
+  margin: 10px 5px 5px 5px;
+  height: 75px;
+  width: 75px;
 }
 
 .gamer-stats {
@@ -53,4 +68,10 @@
   border-color: black;
 }
 
+.tracked-guns-header {
+  font-size: large;
+}
 
+.compare-gamer-block {
+  margin-top: 27px;
+}
