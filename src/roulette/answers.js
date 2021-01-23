@@ -9,21 +9,23 @@ import SwitchesSize from "./checkbox";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 400,
-    maxWidth: 400,
-    minHeight: 400,
-    maxHeight: 400,
+    minWidth: 300,
+    maxWidth: 300,
+    minHeight: 300,
+    maxHeight: 300,
     margin: 20,
     backgroundColor:"#858d9b"
 
   },
   media: {
-    height: 200,
-    backgroundColor:"#62676f"
+    height: 150,
+    backgroundColor:"#62676f",
+    objectFit: "contain",
+    backgroundSize:"contain"
   },
   text: {
    fontFamily: "Times New Roman, serif",
-   fontSize: 18,
+   fontSize: 13,
    color:"#ffd369"
   }
 });
@@ -36,7 +38,7 @@ export default function MediaCard(props) {
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
-          className={classes.media}
+          className={props.classStyle}
           image={props.image}
           title={props.title}
         />

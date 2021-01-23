@@ -61,6 +61,7 @@ import p90 from '../images/guns/smg/p90.png';
 import bizon from '../images/guns/smg/pp19-bizon.png';
 import striker from '../images/guns/smg/striker-45.png';
 import uzi from '../images/guns/smg/uzi.png';
+import mac from '../images/guns/smg/mac10.png';
 
 // light machine gun images
 import pkm from '../images/guns/lmg/pkm.png'
@@ -80,7 +81,8 @@ import mk2 from '../images/guns/marksman/mk2-carbine.png'
 import kar from '../images/guns/marksman/kar98k.png'
 import crossbow from '../images/guns/marksman/crossbow.png'
 import sks from '../images/guns/marksman/sks.png'
-import spr from '../images/guns/marksman/sp-r-208.png'
+import spr from '../images/guns/marksman/sp-r-208.png';
+import ebr from '../images/guns/marksman/ebr-14.png';
 
 // pistole images
 import m19 from '../images/guns/pistol/m19.png'
@@ -233,7 +235,7 @@ function primaryGunImage (primary) {
     return hdr
   }
   if (primary === "EBR-14") {
-    return boo
+    return ebr
   }
   if (primary === "KAR98K") {
     return kar
@@ -271,6 +273,9 @@ function primaryGunImage (primary) {
   }
   if (primary === "holger-26") {
     return holger
+  }
+  if (primary === "Mac-10") {
+    return mac
   }
 
 
