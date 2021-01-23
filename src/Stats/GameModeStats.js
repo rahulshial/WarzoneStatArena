@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
     color: "#ffd369",
     backgroundColor: 'transparent',
+    fontSize: 20
   },
   paperStat: {
     padding: theme.spacing(2),

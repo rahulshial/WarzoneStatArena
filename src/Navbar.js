@@ -1,9 +1,8 @@
+/**React imports */
 import React from 'react';
 import { Link } from 'react-router-dom'
-import './navbar.css'
 
-
-
+/** Material-ui Imports */
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,6 +16,9 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+
+/** Local imports */
+import './navbar.css'
 import Games from './live_stream/games'
 
 const useStyles = makeStyles((theme) => ({
@@ -167,7 +169,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" style={{backgroundColor:"#1a1f26",color:"#ffd369"}}>
+      <AppBar position="fixed" style={{backgroundColor:"#1a1f26",color:"#ffd369"}}>
         <Toolbar>
           <IconButton
             edge="start"
