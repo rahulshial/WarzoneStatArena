@@ -52,15 +52,6 @@
   color: white;
 }
 
-
-
-
-
-
-
-
-
-
 /*  MEDIUM BAR */
 .medium-bar {
   position: absolute;
@@ -100,4 +91,11 @@
   margin: 4px 0 5px 0;
   text-transform: uppercase;
   color: white;
+}
+
+/*  CHECK BOXES */
+
+.category-selects, .category-two-selects, .category-three-selects {
+  display: flex;
+  justify-content: center;
 }

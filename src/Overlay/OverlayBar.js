@@ -9,6 +9,7 @@ import { Input } from '@material-ui/core';
 export default function OverlayBar(props) {
   let { id } = useParams();
   const { weeklyData, lifetimeData, gunData } = props
+
   const [state, setState] = useState({
     tmpStat1: ["Example Stat", 33],
     tmpStat2: ["Example Stat", 33],
@@ -19,8 +20,10 @@ export default function OverlayBar(props) {
     tmpStat7: ["Example Stat", 33],
     tmpStat8: ["Example Stat", 33],
     selectedStatsObj: {},
-    overlayUrl: ''
+    overlayUrl: '',
+    hasBeenChecked: {}
   })
+
   const generateRandomString = () => {
     let newId = "";
     const len = 10;
@@ -30,6 +33,7 @@ export default function OverlayBar(props) {
     }
     return newId;
   };
+
   const saveOverlay = () => {
     console.log(state.selectedStatsObj);
     if (id === 'Small') {
@@ -97,7 +101,8 @@ export default function OverlayBar(props) {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
-              tmpStat1: [name, value]
+              tmpStat1: [name, value],
+              hasBeenChecked: [...state.hasBeenChecked, value]
             }))
             return
           }
@@ -105,7 +110,8 @@ export default function OverlayBar(props) {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
-              tmpStat2: [name, value]
+              tmpStat2: [name, value],
+              hasBeenChecked: [...state.hasBeenChecked, value]
             }))
             return
           }
@@ -113,7 +119,8 @@ export default function OverlayBar(props) {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
-              tmpStat3: [name, value]
+              tmpStat3: [name, value],
+              hasBeenChecked: [...state.hasBeenChecked, value]
             }))
             return
           }
@@ -121,7 +128,8 @@ export default function OverlayBar(props) {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
-              tmpStat4: [name, value]
+              tmpStat4: [name, value],
+              hasBeenChecked: [...state.hasBeenChecked, value]
             }))
             return
           }
@@ -169,7 +177,8 @@ export default function OverlayBar(props) {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
-              tmpStat1: [name, value]
+              tmpStat1: [name, value],
+              hasBeenChecked: {...state.hasBeenChecked, stat1:apiName}
             }))
             return
           }
@@ -177,7 +186,8 @@ export default function OverlayBar(props) {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
-              tmpStat2: [name, value]
+              tmpStat2: [name, value],
+              hasBeenChecked: {...state.hasBeenChecked, stat2:apiName}
             }))
             return
           }
@@ -185,7 +195,8 @@ export default function OverlayBar(props) {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
-              tmpStat3: [name, value]
+              tmpStat3: [name, value],
+              hasBeenChecked: {...state.hasBeenChecked, stat3:apiName}
             }))
             return
           }
@@ -193,7 +204,8 @@ export default function OverlayBar(props) {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
-              tmpStat4: [name, value]
+              tmpStat4: [name, value],
+              hasBeenChecked: {...state.hasBeenChecked, stat4:apiName}
             }))
             return
           }
@@ -201,7 +213,8 @@ export default function OverlayBar(props) {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
-              tmpStat5: [name, value]
+              tmpStat5: [name, value],
+              hasBeenChecked: {...state.hasBeenChecked, stat5:apiName}
             }))
             return
           }
@@ -209,7 +222,8 @@ export default function OverlayBar(props) {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
-              tmpStat6: [name, value]
+              tmpStat6: [name, value],
+              hasBeenChecked: {...state.hasBeenChecked, stat6:apiName}
             }))
             return
           }
@@ -217,7 +231,8 @@ export default function OverlayBar(props) {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
-              tmpStat7: [name, value]
+              tmpStat7: [name, value],
+              hasBeenChecked: {...state.hasBeenChecked, stat7:apiName}
             }))
             return
           }
@@ -225,7 +240,8 @@ export default function OverlayBar(props) {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
-              tmpStat8: [name, value]
+              tmpStat8: [name, value],
+              hasBeenChecked: {...state.hasBeenChecked, stat8:apiName}
             }))
             return
           }
@@ -302,6 +318,7 @@ export default function OverlayBar(props) {
       return (
         <>
           <LargeOverlay
+            checked={state.hasBeenChecked}
             overlayUrl={state.overlayUrl}
             tmpStat1={state.tmpStat1}
             tmpStat2={state.tmpStat2}
@@ -316,7 +333,8 @@ export default function OverlayBar(props) {
             gunData={gunData}
             selectedStat={selectedStat}
             saveOverlay={saveOverlay}
-          />
+            />
+            {Object.keys(state.selectedStatsObj).length === 8 ? <h1>You have 8 stats!</h1>:<></>}
         </>
       );
     } else {
