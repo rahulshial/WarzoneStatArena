@@ -20,7 +20,7 @@ export default function useApplicationData () {
 
 
   // state for stat page
-  const [allApiData, setallApiData] = useState({
+  const [allApiData, setAllApiData] = useState({
     gameModes: [],
     shown: [],
     shownCat: [],
@@ -157,7 +157,7 @@ export default function useApplicationData () {
         const weeklyData = res.data[0].weeklyData.all;
         const playerInfo = res.data[4]
     
-        setallApiData(prev => ({
+        setAllApiData(prev => ({
           ...prev,
           gameModes,
           weapons,
@@ -173,7 +173,7 @@ export default function useApplicationData () {
         const playerInfo = res.data[4]
         const gameModes = res.data[1].gameModes;
 
-        setallApiData(prev => ({
+        setAllApiData(prev => ({
           ...prev,
           gameModes,
           weapons,
@@ -205,7 +205,7 @@ export default function useApplicationData () {
     getPrimaryAttachments,
     getTactical,
     allApiData,
-    setallApiData,
+    setAllApiData,
     cookies,
   };
 }

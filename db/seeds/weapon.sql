@@ -1,7 +1,7 @@
 INSERT INTO weapon (weapon, image, class) values ('MP5', '../img/trainstation-weapon.jpeg', 'SMG');
 INSERT INTO weapon (weapon, image, class) values ('MP7', '../img/trainstation-weapon.jpeg', 'SMG');
 INSERT INTO weapon (weapon, image, class) values ('AUG', '../img/trainstation-weapon.jpeg', 'SMG');
-INSERT INTO weapon (weapon, image, class) values ('Dam', '../img/trainstation-weapon.jpeg', 'SMG');
+INSERT INTO weapon (weapon, image, class) values ('Mac-10', '../img/trainstation-weapon.jpeg', 'SMG');
 INSERT INTO weapon (weapon, image, class) values ('P90', '../img/trainstation-weapon.jpeg', 'SMG');
 INSERT INTO weapon (weapon, image, class) values ('PP19 Bizon', '../img/trainstation-weapon.jpeg', 'SMG');
 INSERT INTO weapon (weapon, image, class) values ('Uzi', '../img/trainstation-weapon.jpeg', 'SMG');

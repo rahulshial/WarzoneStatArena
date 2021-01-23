@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../checkbox.css";
 import MediaCard from "./answers";
+import { makeStyles } from '@material-ui/core/styles';
 import useApplicationData from "../hooks/useApplicationData";
 import image1 from "../img/trainstation-secondary.png";
 import heartbeat from '../img/dropzone_images/heartbeat.jpg';
@@ -9,7 +10,23 @@ import ruled from "../img/ruled.jpg";
 import mine from "../img/mine1.png";
 import {dropzoneImage, primaryGunImage, secondaryGunImage} from './dropzoneImage'
 
+const useStyles = makeStyles({
+  media: {
+    height: 150,
+    backgroundColor:"#62676f",
+    objectFit: "contain",
+    backgroundSize:280
+  },
+  media1: {
+    height: 150,
+    backgroundColor:"#62676f",
+    
+  },
+})
+
 export default function Roulette() {
+  const classes = useStyles();
+
   const {
     getDropZone,
     getRules,
@@ -48,6 +65,7 @@ export default function Roulette() {
     // grabbing all querry data from stat server by functions imported from useApplicationData helper function
     Promise.all([getRules(), getPrimary(), getDropZone(), getSecondary(), getPrimaryAttachments(), getTactical()]).then((data) =>{
       // primary gun 
+      console.log(data[1]);
       let primaryGun = data[1].name
       let primaryGunClass = data[1].category
 
@@ -183,6 +201,7 @@ export default function Roulette() {
       <div className="answers">
         <div>
           <MediaCard
+            classStyle={classes.media}
             title="Primary Gun"
             selected={selected.primary}
             class={selected.primaryClass}
@@ -192,6 +211,7 @@ export default function Roulette() {
           />
 
           <MediaCard
+            classStyle={classes.media}
             title="Secondary Gun"
             selected={selected.secondary}
             class={selected.secondaryClass}
@@ -202,6 +222,7 @@ export default function Roulette() {
         </div>
         <div>
           <MediaCard
+            classStyle={classes.media1}
             title="Attachments"
             selected={selected.attachment}
             class={selected.attachmentClass}
@@ -211,6 +232,7 @@ export default function Roulette() {
           />
 
           <MediaCard
+            classStyle={classes.media1}
             title='Tactical & Lethal'
             selected={selected.tactical}
             class={selected.tacticalClass}
@@ -222,6 +244,7 @@ export default function Roulette() {
 
         <div>
           <MediaCard
+            classStyle={classes.media1}
             title="Drop Zone"
             selected={selected.dropzone}
             image={dropzoneImage(selected.dropzone)}
@@ -231,7 +254,7 @@ export default function Roulette() {
           />
 
           <MediaCard
-            
+            classStyle={classes.media1}
             title="Rules"
             selected={selected.rule}
             image={ruled}
