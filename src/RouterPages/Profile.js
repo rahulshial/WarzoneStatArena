@@ -36,7 +36,23 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
     textSize: '24px',
-    fontSize: '30px',
+  },
+  paperButton: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'white',
+    textSize: '24px',
+    cursor: 'pointer',
+  },
+  paperEmpty: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: "#ffd369",
+    backgroundColor: '#0f0e18',
   },
 }));
   
@@ -152,8 +168,7 @@ export default function Profile(props) {
         />
         </div>
       )
-    }
-    else {
+    } else {
       if (state.favorites.length > 0) {
         if(Object.keys(cookies).length > 0) {
           return (
@@ -165,7 +180,7 @@ export default function Profile(props) {
                     <Paper className={classes.paper}>Stats for my favorite Guns</Paper>
                   </Grid>
                   <Grid item xs={5}>
-                    <Paper className={classes.paper} onClick={() => {removeCompare()}}>Click here to STOP Compare with {compareGamerTag}</Paper>                    
+                    <Paper className={classes.paperButton} onClick={() => {removeCompare()}}>Click here to STOP Compare with {compareGamerTag}</Paper>                    
                   </Grid>
                 </Grid>
                 <br />
@@ -211,14 +226,17 @@ export default function Profile(props) {
                 </div>
               </div>
             );  
-        }
-      }
-      else {
+          }
+    } else {
         return (
           <div>
-            <h3>Empty Favourites</h3>
+            <Grid container spacing={1}>
+              <Grid item xs={12}>
+                <Paper className={classes.paperEmpty}>You have no favourited items</Paper>
+              </Grid>
+            </Grid>
           </div>
-          )
+        )
       };
     };
   };

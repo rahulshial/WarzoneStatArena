@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#ffd369",
     backgroundColor: '#0f0e18;',
     elevation: 24,
+    cursor: 'pointer'
   },
 }));
 

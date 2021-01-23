@@ -32,21 +32,15 @@
   margin-left: 10px;
 }
 
-.unfav-button {
-  margin-bottom: 10px;
-  color: red;
-}
-
-
 .gun-achieves {
   display: flex;
   justify-content: flex-start;
 }
 
 .achieve-icons {
-  margin: 10px 5px 5px 5px;
-  height: 75px;
-  width: 75px;
+  margin: 10px 10px 5px 5px;
+  height: 50px;
+  width: 50px;
 }
 
 .gamer-stats {

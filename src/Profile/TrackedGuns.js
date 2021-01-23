@@ -3,6 +3,8 @@ import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import DeleteIcon from '@material-ui/icons/Delete';
+import Button from '@material-ui/core/Button';
 
 /** Local imports */
 // import getStatsForFavorites from '../helpers/getStatsForFavorites'
@@ -22,8 +24,11 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: "#ffd369",
-    backgroundColor: 'red',
-    fontSize: 20,
+    backgroundColor: '#0f0e18',
+    fontSize: 15,
+  },
+  button: {
+    margin: theme.spacing(1),
   },
 }));
 
@@ -144,11 +149,15 @@ export default function TrackedGuns(props) {
             </div>
             <div className="right-side">
               <div className="unfav-button">
-                <Grid container spacing={1}>
-                  <Grid item xs={4}>
-                    <Paper className={classes.paperButton} variant='outlined' onClick={() => removeStat(fixed.gun)}>Remove {gunName}</Paper>                    
-                  </Grid>
-                </Grid>
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+                startIcon={<DeleteIcon />}
+                onClick={() => removeStat(fixed.gun)}
+                >
+                {gunName}
+              </Button>
               </div>
               <div className={classes.root}>
                 <Grid container spacing={1}>
@@ -158,13 +167,11 @@ export default function TrackedGuns(props) {
               <div className="gun-achieves">
                 {favoriteGunEarnedAchievements()}
               </div>
-
             </div>
-
             <div className='compare-gamer-block'>
               <Grid container spacing={1}>
-                  {loopCompareStats()}
-                </Grid>
+                {loopCompareStats()}
+              </Grid>
               <br />
               <div className="gun-achieves">
                 {compareEarnedAchievements()}
@@ -172,9 +179,7 @@ export default function TrackedGuns(props) {
             </div>
           </div>
         </div>
-
       </>
-
     );  
   })
 };

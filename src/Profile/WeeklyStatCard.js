@@ -13,12 +13,18 @@ const useStyles = makeStyles((theme) => ({
     color: "#ffd369",
     backgroundColor: "#0f0e18",
   },
+  paperEmpty: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: "#ffd369",
+    backgroundColor: '#0f0e18',
+  },
 }));
 
 export default function WeeklyStatCard({weeklyData}) {
   const classes = useStyles();
-console.log('Weekly Data: ', weeklyData)
-  if(weeklyData.length > 0) {
+console.log('Weekly Data: ', weeklyData.length)
+  if(weeklyData.length > 1) {
     const avgLifeTime = weeklyData[0].avgLifeTime / 60;
     const headShotPercent = weeklyData[0].headshotPercentage * 100;
     const timePlayed = weeklyData[0].timePlayed / 60;
@@ -107,7 +113,13 @@ console.log('Weekly Data: ', weeklyData)
   }
   else {
     return (
-    <h4>You haven't played this week!!!</h4>
+      <div>
+      <Grid container spacing={1}>
+        <Grid item xs={12}>
+          <Paper className={classes.paperEmpty}>You have not played this week!</Paper>
+        </Grid>
+      </Grid>
+    </div>
     );
   };
 };
