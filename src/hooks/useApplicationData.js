@@ -124,7 +124,7 @@ export default function useApplicationData () {
     history.push("/stats")
     
     
-    return;
+    return gamerInfo;
         
   }
 
