@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 export default function WeeklyStatCard({weeklyData}) {
   const classes = useStyles();
 console.log('Weekly Data: ', weeklyData.length)
-  if(weeklyData.length > 1) {
+  if(weeklyData[0] !== null) {
     const avgLifeTime = weeklyData[0].avgLifeTime / 60;
     const headShotPercent = weeklyData[0].headshotPercentage * 100;
     const timePlayed = weeklyData[0].timePlayed / 60;
