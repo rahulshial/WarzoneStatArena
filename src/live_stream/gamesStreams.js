@@ -2,13 +2,46 @@ import React, { useState, useEffect } from "react";
 import api from "./api";
 import { Link } from "react-router-dom";
 import "../stream_games.css";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import ArrowIcon from '@material-ui/icons/ArrowForwardIosRounded';
+import { makeStyles } from '@material-ui/core/styles';
 
 let interval;
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '30ch',
+      marginRight: 0,
+      height: 55,
+      backgroundColor: "#fff",
+      color:"white",
+      
+      
+    },
+  },
+ 
+  button: {
+    width: 52,
+    height:55,
+    color:"#fff",
+    backgroundColor: "#ffd369",
+    
+  },
+  text: {
+    backgroundColor:"#fff",
+    
+  }
+}));
+
 function GameStreams({ match, location }) {
+  const classes = useStyles();
   //  setting state for Game Streamers Data from Twitch API
   const [streamData, setStreamData] = useState([]);
   const [viewers, setViewers] = useState(0);
+  const [state, setState] = useState("")
 
   // axios call to twitch API
   useEffect(() => {
@@ -44,7 +77,7 @@ function GameStreams({ match, location }) {
     //   clearInterval(interval)
     // }
   }, []);
-
+  // https://api.twitch.tv/helix/games?name=Call%20of%20Duty%3A%20Warzone
   return (
     <div style={{ backgroundColor: "#222831", color: "#ffd369" }}>
       <h1 className="text-center">Warzone Top 20 Streams</h1>
@@ -53,6 +86,19 @@ function GameStreams({ match, location }) {
         <strong className="text-primary">{viewers} </strong>
         Currently watching Top 20 Warzone Streams on Twitch
       </h3>
+      <div style={{display:"flex", justifyContent:"center", marginTop:"1rem"}}>
+        <TextField  id="filled" label="Twitch Search" variant="filled"  className={classes.text} onChange={(e) => setState(e.target.value)}/>
+        <Button
+          href={`https://www.twitch.tv/search?term=${state}`}
+          className={classes.button}
+          target={"_blank"}
+        >
+         <ArrowIcon fontSize="inherit" />
+        </Button>
+      </div>
+      
+       
+      
       <div className="row">
         {streamData.map((stream) => (
           <div className="col-lg-4 col-md-6 col-sm-12 mt-5">

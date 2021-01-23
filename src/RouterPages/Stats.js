@@ -22,8 +22,8 @@ export default function Guns(props) {
   // })
 
   const {
-    weapons1,
-    setWeapon,
+    allApiData,
+    setAllApiData,
   } = useApplicationData();
   
   // useEffect(() => {
@@ -68,11 +68,11 @@ export default function Guns(props) {
     ]
 
     // shown = setting the cat state to an object of the category
-    setWeapon(prev => ({
+    setAllApiData(prev => ({
       ...prev,
       gunNavSelected: indexValue,
       selectedGunTab: categories[indexValue],
-      shown: weapons1.weapons[categories[indexValue]],
+      shown: allApiData.weapons[categories[indexValue]],
       category: gunCat[indexValue]
     }))
   };
@@ -80,30 +80,30 @@ export default function Guns(props) {
 
   const categorySelected = (indexValue) => {
 
-    // This function sets the weapons1 for the specific shown weapons1 and category if we dont set weapons1s here the page crashes when you change from a game mode to guns... because the guns component cant read the game modes object and vice versa
+    // This function sets the allApiData for the specific shown allApiData and category if we dont set allApiDatas here the page crashes when you change from a game mode to guns... because the guns component cant read the game modes object and vice versa
 
     const categories = ["overview", "guns", "game_modes"];
 
     if (categories[indexValue] === "guns") {
-      setWeapon(prev => ({
+      setAllApiData(prev => ({
         ...prev,
-        shown: weapons1.weapons.weapon_assault_rifle,
+        shown: allApiData.weapons.weapon_assault_rifle,
         category: AR
       }))
     } else if (categories[indexValue] === "game_modes") {
-      setWeapon(prev => ({
+      setAllApiData(prev => ({
         ...prev,
-        shown: weapons1.gameModes,
+        shown: allApiData.gameModes,
       }))
     } else if (categories[indexValue] === "overview") {
-      setWeapon(prev => ({
+      setAllApiData(prev => ({
         ...prev,
-        shown: weapons1.playerInfo
+        shown: allApiData.playerInfo
       }))
     }
 
-    // shown = setting the cat weapons1 to an object of the category
-    setWeapon(prev => ({
+    // shown = setting the cat allApiData to an object of the category
+    setAllApiData(prev => ({
       ...prev,
       shownCat: categories[indexValue]
     }))
@@ -114,7 +114,7 @@ export default function Guns(props) {
     // This is setting to return what SECONDARY navBar is shown...
     //if the gun category is selected then we show all the sub categories of guns.. IE AR, SMGS, SHOTTIES etc... OR game modes.. depending on what was clicked..
 
-    if (weapons1.shownCat === "guns") {
+    if (allApiData.shownCat === "guns") {
       return (
         <>
           <GunNav
@@ -123,33 +123,33 @@ export default function Guns(props) {
           <div className="card-row">
 
             <GunStats
-              shown={weapons1.shown}
-              gunImgs={weapons1.category}
-              gunTab={weapons1.selectedGunTab}
-              weapons={weapons1.weapons}
-              gunNavSelected={weapons1.gunNavSelected}
+              shown={allApiData.shown}
+              gunImgs={allApiData.category}
+              gunTab={allApiData.selectedGunTab}
+              weapons={allApiData.weapons}
+              gunNavSelected={allApiData.gunNavSelected}
             />
 
           </div>
         </>
       )
-    } else if (weapons1.shownCat === "game_modes") {
+    } else if (allApiData.shownCat === "game_modes") {
 
       return (
         <>
           <table>
             <GameModeStats
-              shown={weapons1.shown}
-              category={weapons1.gameModeCat}
+              shown={allApiData.shown}
+              category={allApiData.gameModeCat}
             />
           </table>
         </>
       )
-    } else if (weapons1.shownCat === "overview") {
+    } else if (allApiData.shownCat === "overview") {
       return (
         <>
           <Overview
-            shown={weapons1.shown}
+            shown={allApiData.shown}
           />
         </>
       )
