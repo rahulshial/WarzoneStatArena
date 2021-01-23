@@ -17,64 +17,66 @@ export default function Roulette() {
     getSecondary,
     getPrimaryAttachments,
     getTactical,
-    cookies
   } = useApplicationData();
 
   
-
+  // states to check for checked or unchecked cards of the roulette
   const [primaryChecked, setPrimaryChecked] = useState(false);
-  const [primaryAttachmentChecked, setPrimaryAttachmentChecked] = useState(false);
+  const [GunAttachmentsChecked, setGunAttachmentsChecked] = useState(false);
   const [tacticalLethalChecked, settacticalLethalChecked] = useState(false);
   const [secondaryChecked, setSecondaryChecked] = useState(false);
   const [dropzoneChecked, setDropzoneChecked] = useState(false);
   const [rulesChecked, setRulesChecked] = useState(false);
 
+  // state for roulette data when checked
   const [selected, setSelected] = useState({
     rule: "",
     primary: "",
     primaryClass: "",
     secondary: "",
     secondaryClass: "",
-    attachment1:[],
-    attachment1Class:[],
+    attachment:[],
+    attachmentClass:[],
     tactical:[],
     tacticalClass:[],
     dropzone: "",
-    primaryImage: [],
-    secondaryImage: image1,
-    dropzoneImage: [],
   });
 
+  // random roullete data generator function
   function generateRoulette() {
-    // console.log(cookies.gamerTagInfo);
- 
+
+    // grabbing all querry data from stat server by functions imported from useApplicationData helper function
     Promise.all([getRules(), getPrimary(), getDropZone(), getSecondary(), getPrimaryAttachments(), getTactical()]).then((data) =>{
-      console.log(data);
+      // primary gun 
       let primaryGun = data[1].name
       let primaryGunClass = data[1].category
-      let primaryGunAttachments = data[4]
-      let tacticalAttachment = data[5]
-      console.log("Primary Attachments", primaryGunAttachments);
 
+      // attachments
+      let GunAttachments = data[4]
+      let tacticalAttachment = data[5]
+      
+      // secondary gun
       let secondaryGun = data[3].name
       let secondaryGunClass = data[3].category
 
+      // dropzone
       let location  = data[2].name
 
+      // rules
       let rule = data[0].text
 
-    
-      let primAttachments = []
-      let primAttachmentsClass = []
+      // setting state for more than one gun attachments and styling them better
+      let GunAttachment = []
+      let GunAttachmentClass = []
       let countAttachment = 0;
-      for (const attachment in primaryGunAttachments) {
-        
+      for (const attachment in GunAttachments) {
         countAttachment = countAttachment + 1;
-        const allAttachments = primaryGunAttachments[attachment];
-        primAttachments.push (countAttachment, ". ", allAttachments.attachment_name, ",   ")
-        primAttachmentsClass.push (countAttachment, ". ", allAttachments.type, ",  ")
+        const allAttachments = GunAttachments[attachment];
+        GunAttachment.push (countAttachment, ". ", allAttachments.attachment_name, ",   ")
+        GunAttachmentClass.push (countAttachment, ". ", allAttachments.type, ",  ")
       }
 
+      // setting state for lethal & tactical attachments and styling them better
       let tacticalLethal = []
       let tacticalLethalClass = []
       let countTactical = 0;
@@ -88,7 +90,7 @@ export default function Roulette() {
        
       
       
-
+      // checking for state of checked checkboxes
       if (dropzoneChecked) {
         
         setSelected(prev => ({
@@ -118,7 +120,6 @@ export default function Roulette() {
         setSelected(prev => ({
           ...prev,
           primary: primaryGun,
-          primaryImage:"../img/trainstation-weapon.jpeg",
           primaryClass: primaryGunClass,
           
         }))
@@ -126,22 +127,21 @@ export default function Roulette() {
         setSelected(prev => ({
           ...prev,
           primary: "",
-          primaryImage:"",
           primaryClass: ""
         }))
       };
 
-      if (primaryAttachmentChecked) {
+      if (GunAttachmentsChecked) {
         setSelected(prev => ({
           ...prev,
-          attachment1: primAttachments,
-          attachment1Class: primAttachmentsClass
+          attachment: GunAttachment,
+          attachmentClass: GunAttachmentClass
         }))
       } else {
         setSelected(prev => ({
           ...prev,
-          attachment1: "",
-          attachment1Class: ""
+          attachment: "",
+          attachmentClass: ""
         }))
       };
 
@@ -164,14 +164,12 @@ export default function Roulette() {
         setSelected(prev => ({
           ...prev,
           secondary: secondaryGun,
-          secondaryImage:"../img/trainstation-weapon.jpeg",
           secondaryClass: secondaryGunClass
         }))
       } else {
         setSelected(prev => ({
           ...prev,
           secondary: "",
-          secondaryImage:"",
           secondaryClass: ""
         }))
       };
@@ -205,11 +203,11 @@ export default function Roulette() {
         <div>
           <MediaCard
             title="Attachments"
-            selected={selected.attachment1}
-            class={selected.attachment1Class}
+            selected={selected.attachment}
+            class={selected.attachmentClass}
             image={mags}
-            checked={primaryAttachmentChecked}
-            onChange={() => setPrimaryAttachmentChecked(!primaryAttachmentChecked)}
+            checked={GunAttachmentsChecked}
+            onChange={() => setGunAttachmentsChecked(!GunAttachmentsChecked)}
           />
 
           <MediaCard
@@ -233,6 +231,7 @@ export default function Roulette() {
           />
 
           <MediaCard
+            
             title="Rules"
             selected={selected.rule}
             image={ruled}

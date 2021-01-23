@@ -170,7 +170,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "40%",
     color: "#fff",
     background: "#62676f",
-    marginRight: 300,
+    marginRight: 100,
     marginBottom: "100px",
   },
   table: {

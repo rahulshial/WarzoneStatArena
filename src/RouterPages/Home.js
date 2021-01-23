@@ -11,7 +11,6 @@ import RecipeReviewCard from "../news";
 import EnhancedTable from "../leaderboard";
 import EnhancedTable1 from "../topAchievers";
 import useApplicationData from "../hooks/useApplicationData";
-import Games from "../live_stream/games";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,6 +78,7 @@ export default function Home() {
     setGamerData,
   } = useApplicationData();
 
+  // setting gamer tag from text Field Input
   function setName(event) {
 
     setState(prev => ({
@@ -86,7 +86,7 @@ export default function Home() {
       name: event.target.value
     }))
   }
-
+  // setting state of Platform
   function setPlatform(platform) {
     setState(prev => ({
       ...prev,
@@ -115,11 +115,12 @@ export default function Home() {
               </p>
             </div>
             <div className={classes.gameId}>
+              {/* platform component */}
               <GroupSizesColors
                 onClick={setPlatform}
               />
               
-            
+            {/* textfield component */}
             <BasicTextFields 
                 value={state.name}
                 onChange={setName}

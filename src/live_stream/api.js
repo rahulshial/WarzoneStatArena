@@ -1,10 +1,11 @@
 import axios from "axios";
 
-
+// getting auth for using Twitch API
+// add to .env
 let api = axios.create({
   headers:{
     "Client-ID": 'gdd6ap5ukewvnjfff55esj36jf4rdn',
-    "Authorization": 'Bearer chyza35wqkhe04gpotisywcuajmlz6'
+    "Authorization": 'Bearer f8z6ttyw29tb2bkhnqmj1rlvi4qv3t'
   }
 })
 

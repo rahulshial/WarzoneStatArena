@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
    height: 480,
    width: 650,
    background: '#62676f',
-   marginRight: "70px",
+  //  marginRight: "70px",
    color:"#fff",
     
   },
@@ -133,7 +133,8 @@ export default function RecipeReviewCard(props) {
         subheader={props.subheader}
       />
    
-        <ReactPlayer 
+        <ReactPlayer
+        style={{paddingLeft:"10px"}}
         url={props.url}
         />
         

@@ -165,13 +165,14 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 400,
     
     
+    
   },
   paper: {
     position: "absolute",
     maxWidth: "40%",
     color: "#fff",
     background: "#62676f",
-    marginRight: 300,
+    marginRight: 350,
     marginBottom: "100px",
   },
   table: {
@@ -193,6 +194,8 @@ const useStyles = makeStyles((theme) => ({
   text:{
     color:"#fff",
     fontSize:"18px",
+    
+
   }
 }));
 function tableRows () {
@@ -211,30 +214,30 @@ export default function EnhancedTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(tableRows);
 
   const {
-    weapons1,
+    allApiData,
     state,
   } = useApplicationData();
-  // console.log(weapons1.name);
+  // console.log(allApiData.name);
   
 
   let weeklyKills = 0
   let weeklyDeaths = 0
   let weeklyKdRatio = 0
   let weeklyMatchesPlayed = 0
-  if (weapons1.weeklyData.properties) {
-    // console.log(weapons1.weeklyData.properties["kills"]);
-     weeklyKills = weapons1.weeklyData.properties.kills
-     weeklyDeaths = weapons1.weeklyData.properties.deaths
-     weeklyKdRatio = weapons1.weeklyData.properties.kdRatio
-     weeklyMatchesPlayed = weapons1.weeklyData.properties.matchesPlayed
+  if (allApiData.weeklyData.properties) {
+    // console.log(allApiData.weeklyData.properties["kills"]);
+     weeklyKills = allApiData.weeklyData.properties.kills
+     weeklyDeaths = allApiData.weeklyData.properties.deaths
+     weeklyKdRatio = allApiData.weeklyData.properties.kdRatio
+     weeklyMatchesPlayed = allApiData.weeklyData.properties.matchesPlayed
   }
 
   const rows = [
-    createData('YooGood', 305, 3.7, 67, 4.3),
+    createData('Rahul', 305, 3.7, 67, 4.3),
     createData('Stephan', 452, 25.0, 51, 4.9),
-    createData('CaprianPrice', 262, 16.0, 24, 6.0),
-    createData("Nickmercs", state.platform, weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
-    createData('Mo', 356, 16.0, 49, 3.9),
+    createData('Swagg', 640, 231, 2.77, 74),
+    createData("Nickmercs", 528, 124, 4.26, 55),
+    createData('Mo', 104, 31, 3.35, 37),
   ];
 
   const handleRequestSort = (event, property) => {
@@ -305,10 +308,10 @@ export default function EnhancedTable() {
                       <TableCell component="th" id={labelId} scope="row" padding="none" className={classes.text}>
                         {row.name}
                       </TableCell>
-                      <TableCell align="center"  className={classes.text} >{row.kills}</TableCell>
-                      <TableCell align="center" className={classes.text}>{row.death}</TableCell>
-                      <TableCell align="center" className={classes.text}>{row.KD}</TableCell>
-                      <TableCell align="center" className={classes.text}>{row.Votes}</TableCell>
+                      <TableCell align="right"  className={classes.text} >{row.kills}</TableCell>
+                      <TableCell align="right" className={classes.text}>{row.death}</TableCell>
+                      <TableCell align="right" className={classes.text}>{row.KD}</TableCell>
+                      <TableCell align="right" className={classes.text}>{row.Votes}</TableCell>
                     </TableRow>
                   );
                 })}

@@ -2,14 +2,16 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useCookies } from 'react-cookie';
 import {useHistory} from 'react-router-dom';
-// const cookieSession = require('cookie-session');
 
 
 
 
 export default function useApplicationData () {
+
   const [cookies, setCookie] = useCookies(['name']);
   const history = useHistory();
+
+  // state for home page's text field
   const [state, setState] = useState(prev => ({
     ...prev,
     name:"",
@@ -17,8 +19,8 @@ export default function useApplicationData () {
   }));
 
 
-  
-  const [weapons1, setWeapon] = useState({
+  // state for stat page
+  const [allApiData, setallApiData] = useState({
     gameModes: [],
     shown: [],
     shownCat: [],
@@ -31,87 +33,88 @@ export default function useApplicationData () {
     playerInfo: {},
   })
 
+  // dropZone data database querry from StatServer
   async function getDropZone () {
     console.log("iniside function");
     return await axios('http://localhost:3030/roulette/dropzone')
       .then(res => {
-        // console.log("dropzone", res.data[0])
+       
         return res.data[0]
       })
       .catch(error => {
-        // console.log('Dropzone Axios Error: ', error)
+        console.log('Dropzone Axios Error: ', error)
       });
   };
 
+  // Primary Gun data database querry from StatServer
   async function getPrimary() {
     console.log("iniside function");
     return await axios('http://localhost:3030/roulette/primary')
       .then(res => {
-        //  console.log("weapon", res.data[0])
+       
          return res.data[0]
       })
       .catch(error => {
-        // console.log('Weapon Axios Error: ', error)
+        console.log('Weapon Axios Error: ', error)
       });
   }
 
+  // Gun Attachments data database querry from StatServer
   async function getPrimaryAttachments () {
-    // console.log("iniside function");
+    
     return await axios('http://localhost:3030/roulette/attachments')
       .then(res => {
-        //  console.log("weapon", res.data)
+        
          return res.data
       })
       .catch(error => {
-        // console.log('Weapon Axios Error: ', error)
+        console.log('Weapon Axios Error: ', error)
       });
   }
 
+  // Secondary Gun data database querry from StatServer
   async function getSecondary() {
-    // console.log("iniside function");
+   
     return await axios('http://localhost:3030/roulette/secondary')
       .then(res => {
-        //  console.log("weapon", res.data[0])
+       
          return res.data[0]
       })
       .catch(error => {
-        // console.log('Weapon Axios Error: ', error)
+        console.log('Weapon Axios Error: ', error)
       });
   }
  
+  // Rules data database querry from StatServer
   async function getRules() {
-    // console.log("iniside function");
+    
     return await axios('http://localhost:3030/roulette/rules')
       .then(res => {
-        // console.log("rules", res.data[0])
+       
         return res.data[0]
       })
       .catch(error => {
-        // console.log('Rules Axios Error: ', error)
+        console.log('Rules Axios Error: ', error)
       });
     }
 
+    // Tactical & Lethal Attachmnets data database querry from StatServer
     async function getTactical() {
-      // console.log("iniside function");
+      
       return await axios('http://localhost:3030/roulette/tactical')
         .then(res => {
-          // console.log("tactical", res.data)
+          
           return res.data
         })
         .catch(error => {
-          // console.log('Rules Axios Error: ', error)
+          console.log('Rules Axios Error: ', error)
         });
       }
   
   
-
+  // setting state of Gamer Tag and Gamer Platform
   function setGamerData () {
-    // console.log(state.name);
-    // console.log(state.platform);
     const gamerTag = state.name.replace("#", "%23")
-    // .replace(" ", "%20")
-    console.log(gamerTag);
-    // const gamerTag = state.name;
 
     const gamerPlatform = state.platform
     const gamerInfo = {gamerTag, gamerPlatform}
@@ -125,42 +128,36 @@ export default function useApplicationData () {
         
   }
 
-  
+  // fetching Data from StatServer for Gamer, based on Gamer Tag & platform Input
   useEffect(() => {
-    //let nickname = props.name.replace("#", "%23")
-    // nickname will === username
-    // Promise.all([
-    //   axios.get(`http://localhost:3030/stats/moho`),
-    //   axios.get(`http://localhost:3030/stats/allstats/moho`)
-    // ])
+  
     let gamerTag = '';
     let gamerPlatform = '';
+    
+    //  checking if coockie exist before making axios call
     if(cookies.gamerTagInfo) {
+
       gamerTag = cookies.gamerTagInfo.gamerTag;
       gamerPlatform = cookies.gamerTagInfo.gamerPlatform;
-      console.log(gamerPlatform);
     }
     else {
       gamerTag = 'Nickmercs%2311526';
       gamerPlatform = 'battle';
     };
 
-    // console.log ('Gamer Tag: ', gamerTag);
-    // console.log ('Gamer Platform: ', gamerPlatform);
+    
 
-    // if (cookies.gamerTagInfo) {
       axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
       .then(res => {
-        // console.log(res.data[0].weeklyData);
+
         if (res.data[0].weeklyData !== null) {
+
         const weapons = res.data[2].guns;
         const gameModes = res.data[1].gameModes;
         const weeklyData = res.data[0].weeklyData.all;
         const playerInfo = res.data[4]
-        // console.log(weeklyData);
-        // console.log(gameModes);
-        // console.log(weapons);
-        setWeapon(prev => ({
+    
+        setallApiData(prev => ({
           ...prev,
           gameModes,
           weapons,
@@ -171,13 +168,12 @@ export default function useApplicationData () {
           shown: playerInfo
         }))
       } else {
-        // console.log("insided elsee useapllication");
+
         const weapons = res.data[2].guns;
         const playerInfo = res.data[4]
         const gameModes = res.data[1].gameModes;
-        // console.log(gameModes);
-        // console.log(weapons);
-        setWeapon(prev => ({
+
+        setallApiData(prev => ({
           ...prev,
           gameModes,
           weapons,
@@ -192,55 +188,11 @@ export default function useApplicationData () {
       .catch(error => {
         console.log(error);
       })
-    // }
+
     
   }, [])
 
-  // useEffect(() => {
-  //   //let nickname = props.name.replace("#", "%23")
-  //   // nickname will === username
-  //   // Promise.all([
-  //   //   axios.get(`http://localhost:3030/stats/moho`),
-  //   //   axios.get(`http://localhost:3030/stats/allstats/moho`)
-  //   // ])
-  //     axios.get(`http://localhost:3030/stats/moho}`)
-  //     .then(res => {
-        
-  //       // console.log(res.data[0].weeklyData);
-  //       if (res.data[0].weeklyData !== null) {
-  //       const weapons = res.data[2].guns;
-  //       const gameModes = res.data[1].gameModes;
-  //       const weeklyData = res.data[0].weeklyData.all;
-  //       console.log(weeklyData);
-  //       console.log(gameModes);
-  //       console.log(weapons);
-  //       setWeapon(prev => ({
-  //         ...prev,
-  //         gameModes,
-  //         weapons,
-  //         weeklyData,
-  //         category: "",
-  //       }))
-  //     } else {
-  //       console.log("insided elsee useapllication");
-  //       const weapons = res.data[2].guns;
-  //       const gameModes = res.data[1].gameModes;
-  //       console.log(gameModes);
-  //       console.log(weapons);
-  //       setWeapon(prev => ({
-  //         ...prev,
-  //         gameModes,
-  //         weapons,
-  //         category: "",
-  //       }))
-  //     }
-
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     })
-    
-  // }, [])
+ 
   
   return { 
     state,
@@ -252,8 +204,8 @@ export default function useApplicationData () {
     getSecondary,
     getPrimaryAttachments,
     getTactical,
-    weapons1,
-    setWeapon,
+    allApiData,
+    setallApiData,
     cookies,
   };
 }

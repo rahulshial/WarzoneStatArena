@@ -1,3 +1,4 @@
+// dropZone Images for roulette
 import stadiumImage from '../img/dropzone_images/stadiumImage.jpg';
 import tvImage from '../img/dropzone_images/tvImage.jpg';
 import BoneyardImage from '../img/dropzone_images/boneydardImage.jpg';
@@ -19,6 +20,7 @@ import boo from'../img/dropzone_images/warzoneMap.jpg';
 import fight from "../img/dropzone_images/fight.jpg";
 import shotgun from "../img/dropzone_images/shotgun.jpeg";
 
+// different lethal & tactical images
 // import claymoreImage from '../img/dropzone_images/boneydardImage.jpg';
 // import fragImage from '../img/dropzone_images/damImage.jpg';
 // import mcImage from '../img/dropzone_images/dtImage.jpg';
@@ -37,20 +39,18 @@ import shotgun from "../img/dropzone_images/shotgun.jpeg";
 // import ggImage from '../img/dropzone_images/portImage.jpg';
 // import dgImage from'../img/dropzone_images/warzoneMap.jpg';
 
-// ARS
+// ARS images
 import ak47 from '../images/guns/ar/ak-47.png';
-
 import asVal from '../images/guns/ar/as-val.png';
 import crMax from '../images/guns/ar/cr-56-amax.png';
 import fal from '../images/guns/ar/fal.png';
 import fnScar from '../images/guns/ar/fn-scar-17.png';
 import fr556 from '../images/guns/ar/fr-556.png';
-
 import killo141 from '../images/guns/ar/kilo141.png';
-
 import m13 from '../images/guns/ar/m13.png';
 import oden from '../images/guns/ar/oden.png';
 import ram7 from '../images/guns/ar/ram-7.png';
+
 // SMGS
 import aug from '../images/guns/smg/aug.png';
 import fennec from '../images/guns/smg/fennec.png';
@@ -62,6 +62,7 @@ import bizon from '../images/guns/smg/pp19-bizon.png';
 import striker from '../images/guns/smg/striker-45.png';
 import uzi from '../images/guns/smg/uzi.png';
 
+// light machine gun images
 import pkm from '../images/guns/lmg/pkm.png'
 import mg34 from '../images/guns/lmg/mg34.png'
 import sa87 from '../images/guns/lmg/sa87.png'
@@ -70,6 +71,7 @@ import holger from '../images/guns/lmg/holger-26.png'
 import m91 from '../images/guns/lmg/m91.png'
 import bruen from '../images/guns/lmg/bruen-mk9.png'
 
+// snipers and marksman images
 import rytec from '../images/guns/sniper/rytec-amr.png'
 import dragunov from '../images/guns/sniper/dragunov.png'
 import ax from '../images/guns/sniper/ax-50.png'
@@ -80,6 +82,7 @@ import crossbow from '../images/guns/marksman/crossbow.png'
 import sks from '../images/guns/marksman/sks.png'
 import spr from '../images/guns/marksman/sp-r-208.png'
 
+// pistole images
 import m19 from '../images/guns/pistol/m19.png'
 import p357 from '../images/guns/pistol/357.png'
 import p1911 from '../images/guns/pistol/1911.png'
@@ -87,11 +90,13 @@ import x16 from '../images/guns/pistol/x16.png'
 import gs50 from '../images/guns/pistol/50-gs.png'
 import renetti from '../images/guns/pistol/renetti.png'
 
+// launchers images
 import rpg from '../images/guns/launcher/rpg-7.png'
 import jokr from '../images/guns/launcher/jokr.png'
 import pila from '../images/guns/launcher/pila.png'
 import strela from '../images/guns/launcher/strela-p.png'
 
+// shotgun images
 import m680 from '../images/guns/sg/model-680.png'
 import sh725 from '../images/guns/sg/725.png'
 import origin from '../images/guns/sg/origin-12-shotgun.png'
@@ -99,6 +104,8 @@ import r9 from '../images/guns/sg/r9-0-shotgun.png'
 import vlk from '../images/guns/sg/vlk-rogue.png'
 import jak12 from '../images/guns/sg/jak-12.png'
 
+
+// showing different dropZone images based on querry output
 function dropzoneImage (drop) {
   if (drop === "Stadium") {
     return stadiumImage
@@ -154,6 +161,7 @@ function dropzoneImage (drop) {
  return boo
 }
 
+// showing different primaryGunImage based on querry output
 function primaryGunImage (primary) {
   if (primary === "MP5") {
     return mp5
@@ -271,6 +279,7 @@ function primaryGunImage (primary) {
  return fight
 }
 
+// showing different secondaryGunImage based on querry output
 function secondaryGunImage (secondary) {
   if (secondary === "X16") {
     return x16
