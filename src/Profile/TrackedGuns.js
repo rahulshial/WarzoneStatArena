@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
 
 /** Local imports */
 // import getStatsForFavorites from '../helpers/getStatsForFavorites'
@@ -29,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1),
+    marginTop: 20,
+    marginRight: 40
   },
 }));
 
@@ -116,13 +119,13 @@ export default function TrackedGuns(props) {
               break;
           };
           if ((statsArray.headshots >= headShotRatio) && (headShotRatio > 0)) {
-            return <img className="achieve-icons" src={achievement.image} alt="" />
+            return (<Tooltip title={achievement.name}><img className="achieve-icons" src={achievement.image} alt="" /></Tooltip>)
           };
           if ((statsArray.accuracy <= accuracyRatio) && (accuracyRatio > 0)) {
-            return <img className="achieve-icons" src={achievement.image} alt="" />
+            return (<Tooltip title={achievement.name}><img className="achieve-icons" src={achievement.image} alt="" /></Tooltip>)
           };
           if ((statsArray.kdRatio >= kdRatio) && (kdRatio > 0)) {
-            return <img className="achieve-icons" src={achievement.image} alt="" />
+            return (<Tooltip title={achievement.name}><img className="achieve-icons" src={achievement.image} alt="" /></Tooltip>)
           };
         });      
       };
@@ -148,23 +151,24 @@ export default function TrackedGuns(props) {
               <img className="fav-gun-icon" src={fixed.image} alt=""/>
             </div>
             <div className="right-side">
-              <div className="unfav-button">
-              <Button
-                variant="contained"
-                color="secondary"
-                className={classes.button}
-                startIcon={<DeleteIcon />}
-                onClick={() => removeStat(fixed.gun)}
-                >
-                {gunName}
-              </Button>
-              </div>
-              <div className={classes.root}>
+               <div className={classes.root}>
                 <Grid container spacing={1}>
                   {loopTrackedStats()}
                 </Grid>
               </div>
               <div className="gun-achieves">
+              <div className="unfav-button">
+                <Button
+                  variant="contained"
+                  size='medium'
+                  color="secondary"
+                  className={classes.button}
+                  startIcon={<DeleteIcon />}
+                  onClick={() => removeStat(fixed.gun)}
+                  >
+                  {gunName}
+                </Button>
+              </div>
                 {favoriteGunEarnedAchievements()}
               </div>
             </div>
@@ -178,6 +182,7 @@ export default function TrackedGuns(props) {
               </div>
             </div>
           </div>
+          <br></br>
         </div>
       </>
     );  

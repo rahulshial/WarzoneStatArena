@@ -3,6 +3,7 @@ import React from 'react'
 /** Material UI Imports */
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Tooltip from '@material-ui/core/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
 
 /** Local imports */
@@ -16,9 +17,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: "#ffd369",
-    backgroundColor: '#0f0e18;',
+    backgroundColor: 'transparent',
     elevation: 24,
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
 }));
 
@@ -32,10 +33,13 @@ export default function StatCard(props) {
         <div className="face face1">
           <Grid container spacing={1}>
             <Grid item xs={4}>
-              <Paper className={classes.paper} variant='outlined' onClick={() => onAdd(gunName, image, cat)}>{gunLongName}</Paper>                    
+            <Tooltip title='Add to Favourites' placement="right">
+              <Paper className={classes.paper} onClick={() => onAdd(gunName, image, cat)}>{gunLongName}</Paper></Tooltip>                  
             </Grid>
           </Grid>
-          <img className="gun-icon" src={image} alt="" />
+          <Tooltip title='Add to Favourites' placement="top-end">
+            <img className="gun-icon" src={image} alt="" onClick={() => onAdd(gunName, image, cat)}></img>
+          </Tooltip>
           <div className="content">
             <div className='gun-flex'>
             </div>

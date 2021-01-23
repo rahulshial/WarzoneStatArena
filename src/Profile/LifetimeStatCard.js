@@ -102,10 +102,10 @@ export default function LifetimeStatCard({lifetimeData}) {
             <Paper className={classes.paper}>Score: {lifetimeData[0].score}</Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Score  / game: {lifetimeData[0].scorePerGame}</Paper>
+            <Paper className={classes.paper}>Score  / game: {lifetimeData[0].scorePerGame.toFixed(2)}</Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Score / min: {lifetimeData[0].scorePerMinute}</Paper>
+            <Paper className={classes.paper}>Score / min: {lifetimeData[0].scorePerMinute.toFixed(2)}</Paper>
           </Grid>
           <Grid item xs={2}>
             <Paper className={classes.paper}>Longest Win Streak: {lifetimeData[0].recordLongestWinStreak}</Paper>

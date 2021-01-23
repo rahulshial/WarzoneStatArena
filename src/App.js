@@ -5,7 +5,7 @@ import './stats.css';
 import Home from './RouterPages/Home.js';
 import Stats from './RouterPages/Stats.js';
 import Overlay from './RouterPages/Overlay.js';
-import Profile from './RouterPages/Profile.js'
+import Profile from './Profile/Profile.js'
 import PrimarySearchAppBar from './Navbar.js';
 import Roulette from './roulette/Roulette.js';
 import OverlaySelected from './Overlay/OverlaySelected'

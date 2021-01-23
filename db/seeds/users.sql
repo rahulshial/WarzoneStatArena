@@ -1,1 +1,0 @@
-INSERT INTO users (firstName, lastName, title) values ('mohammad', 'torabi', 'Mr.');

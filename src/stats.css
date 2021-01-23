@@ -184,6 +184,9 @@ justify-content: space-between;
 .container .card:hover .face.face2{
   transform: translateY(0);
 }
+.container .card:hover .face.face1 .MuiPaper-root {
+  background-color: '#3c0000';
+};
 
 .container .card .face.face2 .content p {
   margin: 44%;

@@ -1,9 +1,11 @@
+/** React component imports */
 import React from 'react'
 
 /** Material UI Imports */
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+
 /** Local Imports */
 import '../stats.css';
 import gunDataObj from '../helpers/gunData';
@@ -18,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
     color: "#ffd369",
     backgroundColor: '#0f0e18',
     fontSize: '24px',
+  },
+  paperMode: {
+    padding: theme.spacing(2),
+    textAlign: 'left',
+    color: "#ffd369",
+    backgroundColor: 'transparent',
   },
   paperStat: {
     padding: theme.spacing(2),
@@ -62,7 +70,7 @@ export default function GameModeStats(props) {
           <div className={classes.root}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Paper className={classes.paper} variant='outlined'><strong>{gunDataObj.modes[index].toUpperCase()}</strong>:</Paper>                    
+                <Paper className={classes.paperMode} variant='outlined'><strong>{gunDataObj.modes[index].toUpperCase()}</strong>:</Paper>                    
               </Grid>
               <Grid container spacing={2}>
                 {loopGameStats()}
@@ -76,20 +84,3 @@ export default function GameModeStats(props) {
     )
   });
 };
-
-// Object.keys(stat).map((thing) => {
-//   titles.push(<td>{gunDataObj.gunStatTitle[thing]}</td>)
-//   stats.push(<td>{stat[thing]}</td>)
-// })
-/*
-<h2>{gunDataObj.modes[index]}</h2>
-<tr>{titles}</tr>
-<tr>{stats}</tr>
-*/
-/* <h1>{modes[i]}</h1>
-<div className="top-row">
-  {titles}
-</div>
-<div className="top-row">
-  {stats}
-</div> */

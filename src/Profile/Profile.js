@@ -10,27 +10,19 @@ import { makeStyles } from '@material-ui/core/styles';
 
 /** Local imports */
 import '../styles/profile.css'
-import ProfileNavBar from '../Profile/ProfileNavBar'
-import TrackedGuns from '../Profile/TrackedGuns.js'
-import GamerStats from '../Profile/GamerStats';
-
+import ProfileNavBar from './ProfileNavBar'
+import TrackedGuns from './TrackedGuns.js'
+import GamerStats from './GamerStats';
 
 /** Declare Material UI classes styles */
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    border: 0,
-    borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    color: 'white',
-    height: 48,
-    padding: '0 30px',
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    background: 'linear-gradient(45deg, #de1616 30%, #fcc14c 90%)',
     border: 0,
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
@@ -40,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   paperButton: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    background: 'linear-gradient(45deg, #de1616 30%, #fcc14c 90%)',
     border: 0,
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
@@ -51,8 +43,12 @@ const useStyles = makeStyles((theme) => ({
   paperEmpty: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    color: "#ffd369",
-    backgroundColor: '#0f0e18',
+    background: 'linear-gradient(45deg, #de1616 30%, #fcc14c 90%)',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'white',
+    textSize: '24px',
   },
 }));
   
@@ -74,12 +70,6 @@ export default function Profile(props) {
     shownTab: 1,
   });
 
-  if ('gamerTagInfo' in cookies) {
-    console.log('gamerTagInfo found in : ', cookies);
-  } else {
-    console.log('gamerTagInfo not found in : ', cookies);
-  }
-
   useEffect(() => {
     const gamerTag = "Nickmercs%2311526";
     const gamerPlatform = "battle";
@@ -89,8 +79,6 @@ export default function Profile(props) {
         const compareGamerPlatform = cookies.gamerTagInfo.gamerPlatform;
         axios.get(`http://localhost:3030/stats/${compareGamerTag}&${compareGamerPlatform}`)
         .then((compareGamerData) => {
-          // console.log('PROFILE - Compare Gamer guns: ', compareGamerData);
-          console.log('PROFILE - Compare Gamer guns: ', compareGamerData.data[2].guns);
           const compareGamerGuns = [compareGamerData.data[2].guns];
           setState(prev => ({
             ...prev,
@@ -174,13 +162,12 @@ export default function Profile(props) {
           return (
             <div className='tracked-guns'>
               <div className='tracked-guns-header'>
-                <br />
                 <Grid container spacing={1}>
                   <Grid item xs={7}>
-                    <Paper className={classes.paper}>Stats for my favorite Guns</Paper>
+                    <Paper className={classes.paper} elevation={24}>Stats for my favorite Guns</Paper>
                   </Grid>
                   <Grid item xs={5}>
-                    <Paper className={classes.paperButton} onClick={() => {removeCompare()}}>Click here to STOP Compare with {compareGamerTag}</Paper>                    
+                    <Paper className={classes.paperButton} elevation={24} onClick={() => {removeCompare()}}>Click here to STOP Compare with {compareGamerTag}</Paper>                    
                   </Grid>
                 </Grid>
                 <br />
@@ -202,13 +189,12 @@ export default function Profile(props) {
             return (
               <div className='tracked-guns'>
                 <div className='tracked-guns-header'>
-                  <br />
                   <Grid container spacing={1}>
                     <Grid item xs={7}>
-                      <Paper className={classes.paper}>Stats for my favorite Guns</Paper>
+                      <Paper className={classes.paper} elevation={24}>Stats for my favorite Guns</Paper>
                     </Grid>
                     <Grid item xs={5}>
-                      <Paper className={classes.paper}>Compare Stats with {compareGamerTag}</Paper>
+                      <Paper className={classes.paper} elevation={24}>Compare Stats with {compareGamerTag}</Paper>
                     </Grid>
                   </Grid>
                   <br />

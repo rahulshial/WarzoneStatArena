@@ -39,13 +39,13 @@ console.log('Weekly Data: ', weeklyData.length)
               <Paper className={classes.paper}>Kills: {weeklyData[0].kills}</Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Gulag: {weeklyData[0].gulagKills}</Paper>
+              <Paper className={classes.paper}>Gulag Kills: {weeklyData[0].gulagKills}</Paper>
           </Grid>
           <Grid item xs={2}>
               <Paper className={classes.paper}>Deaths: {weeklyData[0].deaths}</Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Gulag: {weeklyData[0].gulagDeaths}</Paper>
+              <Paper className={classes.paper}>Gulag Deaths: {weeklyData[0].gulagDeaths}</Paper>
           </Grid>
           <Grid item xs={2}>
               <Paper className={classes.paper}>Kills/game: {weeklyData[0].killsPerGame.toFixed(2)}</Paper>
@@ -93,7 +93,7 @@ console.log('Weekly Data: ', weeklyData.length)
               <Paper className={classes.paper}>Down Player Kills: {weeklyData[0].objectiveLastStandKill}</Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Vehicles Destroyed: {weeklyData[0].objectiveDestroyedVehicleMedium}</Paper>
+              <Paper className={classes.paper}>Vehicles Destroyed: {weeklyData[0].objectiveDestroyedVehicleMedium? weeklyData[0].objectiveDestroyedVehicleMedium : 0 }</Paper>
           </Grid>
           <Grid item xs={2}>
               <Paper className={classes.paper}>Missions Accepted: {weeklyData[0].objectiveBrMissionPickupTablet}</Paper>
