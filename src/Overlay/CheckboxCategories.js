@@ -1,36 +1,94 @@
-import React from 'react'
+import React, { useState } from 'react';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import CheckboxGuns from './categories/CheckboxGuns';
+import CheckboxWeekly from './categories/CheckboxWeekly';
+import CheckboxLifetime from './categories/CheckboxLifetime';
 
 export default function CheckboxCategories(props) {
-  const { selectedStat, weeklyData } = props
+  const { checked, selectedStat, weeklyData, lifetimeData, gunData } = props
 
-  const avgLifeTime = weeklyData.weeklyData.all.properties.avgLifeTime.toFixed(2);
-  const damageDone = weeklyData.weeklyData.all.properties.damageDone;
-  const damageTaken = weeklyData.weeklyData.all.properties.damageTaken;
-  const gulagKills = weeklyData.weeklyData.all.properties.gulagKills;
-  const gulagDeaths = weeklyData.weeklyData.all.properties.gulagDeaths;
-  const executions = weeklyData.weeklyData.all.properties.executions;
-  const timePlayed = weeklyData.weeklyData.all.properties.timePlayed;
-  const headshots = weeklyData.weeklyData.all.properties.headshots;
-  const assists = weeklyData.weeklyData.all.properties.assists;
-  const deaths = weeklyData.weeklyData.all.properties.deaths;
-  const distanceTraveled = weeklyData.weeklyData.all.properties.distanceTraveled.toFixed(2);
-  const headshotPercentage = weeklyData.weeklyData.all.properties.headshotPercentage.toFixed(2) * 100;
-  const kdRatio = weeklyData.weeklyData.all.properties.kdRatio.toFixed(2);
-  const killsPerGame = weeklyData.weeklyData.all.properties.killsPerGame.toFixed(2);
-  const matchesPlayed = weeklyData.weeklyData.all.properties.matchesPlayed;
-  const buyStationPurchase = weeklyData.weeklyData.all.properties.objectiveBrKioskBuy;
-  const missionsPickedUp = weeklyData.weeklyData.all.properties.objectiveBrMissionPickupTablet;
-  const vehiclesDestroyed = weeklyData.weeklyData.all.properties.objectiveDestroyedVehicleMedium;
-  const knockedPlayersKilled = weeklyData.weeklyData.all.properties.objectiveLastStandKill;
-  const revives = weeklyData.weeklyData.all.properties.objectiveReviver;
-  const teamsWiped = weeklyData.weeklyData.all.properties.objectiveTeamWiped;
-  const totalScore = weeklyData.weeklyData.all.properties.score;
-  const scorePerMinute = weeklyData.weeklyData.all.properties.scorePerMinute.toFixed(2);
-  const wallBangs = weeklyData.weeklyData.all.properties.wallBangs;
+  const [state, setState] = useState({
+    weeklyStats: false,
+    lifetimeStats: false,
+    guns: false,
+  });
 
-  // console.log(e.target.nextSibling.attributes[1].nodeValue)
+
+  const handleChange = (event) => {
+    setState({
+      [event.target.name]: event.target.checked 
+    });
+  };
+
   return (
+    <>
     <div>
+      <FormGroup row className="category-selects">
+        <FormControlLabel
+          control={
+            <
+              Checkbox checked={state.weeklyStats}
+              onChange={handleChange}
+              name="weeklyStats"
+              color='primary'
+            />
+          }
+          label="Weekly Stats"
+        />
+        <FormControlLabel
+          control={
+            <
+              Checkbox checked={state.lifetimeStats}
+              onChange={handleChange}
+              name="lifetimeStats"
+              color='primary'
+            />
+          }
+          label="Lifetime Stats"
+
+        />
+        <FormControlLabel
+          control={
+            <
+              Checkbox checked={state.guns}
+              onChange={handleChange}
+              name="guns"
+              color='primary'
+            />
+          }
+          label="Gun Stats"
+        />
+      </FormGroup>
+    </div>
+    <div>
+
+    {state.weeklyStats ? 
+    <CheckboxWeekly
+    weeklyData={weeklyData}
+    selectedStat={selectedStat}
+    checked={checked}
+    />:<></>}
+
+    {state.guns ? 
+    <CheckboxGuns 
+    gunData={gunData} 
+    selectedStat={selectedStat}
+    />:<></>}
+
+    {state.lifetimeStats ? 
+    <CheckboxLifetime 
+    lifetimeData={lifetimeData}
+    selectedStat={selectedStat}
+    />:<></>}
+
+    </div>
+    </>
+  )
+};
+
+{/* <div>
       <input type="checkbox" id="stat1" name="Average Lifetime" value={avgLifeTime} isChecked='false' onChange={(e) => {selectedStat(e.target.value, e.target.name, e.target.checked, e.target.nextSibling.attributes[1].nodeValue)}}></input>
       <label for="stat1" name="avgLifeTime"> Average Lifetime </label><br />
 
@@ -103,6 +161,4 @@ export default function CheckboxCategories(props) {
       <input type="checkbox" id="stat24" name="Wall Bangs" value={wallBangs} onChange={(e) => { selectedStat(e.target.value, e.target.name, e.target.checked, e.target.nextSibling.attributes[1].nodeValue) }}></input>
       <label for="stat24" name="wallBangs"> Wall Bangs</label><br />
 
-    </div>
-  )
-};
+    </div> */}
