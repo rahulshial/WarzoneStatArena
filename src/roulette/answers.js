@@ -31,6 +31,7 @@ const useStyles = makeStyles({
 export default function MediaCard(props) {
   const classes = useStyles();
   
+  // card for roulette page
   return (
     <Card className={classes.root}>
       <CardActionArea>

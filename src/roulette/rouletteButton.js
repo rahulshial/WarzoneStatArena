@@ -23,7 +23,8 @@ const useStyles = makeStyles({
 
 export default function ClassesNesting(props) {
   const classes = useStyles();
-
+  
+  // mine button to fire generateRoulette()
   return (
     <Button
       onClick={props.onClick}

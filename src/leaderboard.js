@@ -214,22 +214,22 @@ export default function EnhancedTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(tableRows);
 
   const {
-    weapons1,
+    allApiData,
     state,
   } = useApplicationData();
-  // console.log(weapons1.name);
+  // console.log(allApiData.name);
   
 
   let weeklyKills = 0
   let weeklyDeaths = 0
   let weeklyKdRatio = 0
   let weeklyMatchesPlayed = 0
-  if (weapons1.weeklyData.properties) {
-    // console.log(weapons1.weeklyData.properties["kills"]);
-     weeklyKills = weapons1.weeklyData.properties.kills
-     weeklyDeaths = weapons1.weeklyData.properties.deaths
-     weeklyKdRatio = weapons1.weeklyData.properties.kdRatio
-     weeklyMatchesPlayed = weapons1.weeklyData.properties.matchesPlayed
+  if (allApiData.weeklyData.properties) {
+    // console.log(allApiData.weeklyData.properties["kills"]);
+     weeklyKills = allApiData.weeklyData.properties.kills
+     weeklyDeaths = allApiData.weeklyData.properties.deaths
+     weeklyKdRatio = allApiData.weeklyData.properties.kdRatio
+     weeklyMatchesPlayed = allApiData.weeklyData.properties.matchesPlayed
   }
 
   const rows = [

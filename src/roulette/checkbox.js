@@ -13,7 +13,8 @@ const useStyles = makeStyles({
 
 export default function SwitchesSize(props) {
   const classes = useStyles();
-
+  
+    // checkbox componenet for selecting what to role
     return (
       <FormGroup classes={{
         root: classes.root}}>
