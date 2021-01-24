@@ -3,10 +3,22 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import '../styles/profile.css'
 
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
+    backgroundColor: '#2A313C',
+
+  },
+  tab: {
+    color: '#DADADA',
+    '&:hover': {
+      fontWeight: 'bold',
+    },
+    '&:focus': {
+      fontWeight: 'bold',
+    },
   },
 });
 
@@ -22,14 +34,13 @@ export default function ProfileNavBar(props) {
   return (
     <Paper className={classes.root}>
       <Tabs
+        TabIndicatorProps={{style: {backgroundColor: "#ffd369"}}}
         value={tab}
         onChange={chosenTab}
-        indicatorColor="primary"
-        textColor="primary"
         centered
       >
-        <Tab label="Statistics" />
-        <Tab label="Favourite Items" />
+        <Tab className={classes.tab} label="Statistics" />
+        <Tab className={classes.tab} label="Favourite Items" />
       </Tabs>
     </Paper>
   );
