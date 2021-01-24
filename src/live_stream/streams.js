@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ReactPlayer from "react-player"
+import Iframe from 'react-iframe'
 
 function Streams ({match, location}) {
  
@@ -18,7 +19,19 @@ function Streams ({match, location}) {
           url={`http://twitch.tv/${location.state.username}`}
         />
       </div>
-     
+      <div> https://www.twitch.tv/embed/Aydan/chat?darkpopout&parent=cq-esports.com
+      <ReactPlayer 
+          url={`http://twitch.tv/embed/${location.state.username}/chat?ldarkpopout&parent=cq-esports.com`}
+        />
+      </div>
+      <div>
+      <Iframe
+          id="chat_embed"
+          url={`https://www.twitch.tv/embed/Aydan/chat?darkpopout&parent=cq-esports.com`}
+          height="500"
+          width="350"></Iframe>
+      </div>
+
     </div>
     
   )

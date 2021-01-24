@@ -13,13 +13,13 @@ import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ReactPlayer from "react-player"
 import LinkIcon from '@material-ui/icons/Link';
+import Iframe from 'react-iframe'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-   height: 480,
+   height: 450,
    width: 650,
    background: '#62676f',
-  //  marginRight: "70px",
    color:"#fff",
     
   },
@@ -41,8 +41,9 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
-  hello: {
-    width:500,
+  header: {
+    display:"flex",
+    justifyContent:"center"
   },
  
 }));
@@ -84,17 +85,7 @@ export default function RecipeReviewCard(props) {
           <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
           <Typography paragraph>
-          </Typography>
-          <Typography paragraph>
-            The DMR-14 has become a fan-favorite weapon ever since Warzone Season 1 went live, but now it appears to have some competition as YouTuber ‘FaZe Swagg’ has found another gun that he claims is even better.
-          </Typography>
-          <Typography paragraph>
-            With Warzone Season 1 well underway, players have taken the time to get used to the different weapons and loadouts that are available to them. There is a great variety of guns to choose from in the latest update, and one that’s gained a lot of popularity is the DMR-14.
-
-            This high-powered weapon is capable of destroying armor, and bringing down your foes at any range. It does more damage than any other weapon in the game, and comes with a 40 round magazine for long gunfights.
-          </Typography>
-          <Typography>
-            All of these factors have led to many fans considering the DMR-14 to be the best weapon in Warzone, but FaZe Swagg claims to have found a contender that’s similar “but way better”.
+            {props.text}
           </Typography>
         </CardContent>
       </Collapse>
@@ -128,20 +119,19 @@ export default function RecipeReviewCard(props) {
           <ExpandMoreIcon />
           
         </IconButton>
-        } 
+        }
         title={props.title}
         subheader={props.subheader}
       />
-   
+        
         <ReactPlayer
         style={{paddingLeft:"10px"}}
         url={props.url}
         />
         
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-        </Typography>
-      </CardContent>
+        
+        
+        
       
     </Card>
   );

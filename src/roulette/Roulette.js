@@ -3,7 +3,6 @@ import "../checkbox.css";
 import MediaCard from "./answers";
 import { makeStyles } from '@material-ui/core/styles';
 import useApplicationData from "../hooks/useApplicationData";
-import image1 from "../img/trainstation-secondary.png";
 import heartbeat from '../img/dropzone_images/heartbeat.jpg';
 import mags from '../img/dropzone_images/mags.jpg';
 import ruled from "../img/ruled.jpg";
@@ -19,7 +18,7 @@ const useStyles = makeStyles({
   },
   media1: {
     height: 150,
-    backgroundColor:"#62676f",
+    backgroundColor:"#424242",
     
   },
 })
@@ -108,7 +107,7 @@ export default function Roulette() {
        
       
       
-      // checking for state of checked checkboxes
+      // checking for state of checkboxes
       if (dropzoneChecked) {
         
         setSelected(prev => ({

@@ -13,7 +13,6 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import useApplicationData from "./hooks/useApplicationData";
 
 
 
@@ -161,21 +160,20 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-around",
     alignItems: "flex-end",
-    marginTop: 400,
+    marginTop: "25%",
     
     
   },
   paper: {
     position: "absolute",
-    maxWidth: "40%",
+    width: "40%",
     color: "#fff",
     background: "#62676f",
-    marginRight: 100,
     marginBottom: "100px",
   },
   table: {
-    minWidth: 750,
-    margin: 5
+    margin: 5,
+    height:"50px",
     
   },
   visuallyHidden: {
@@ -191,7 +189,7 @@ const useStyles = makeStyles((theme) => ({
   },
   text:{
     color:"#fff",
-    fontSize:"18px",
+    fontSize:"12px",
   }
 }));
 function tableRows () {

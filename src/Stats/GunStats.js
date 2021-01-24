@@ -30,7 +30,7 @@ export default function GunStats({ shown, gunImgs, gunTab, weapons, gunNavSelect
     axios
       .post("http://localhost:3030/trackedstats/addnew", gunObj)
       .then(res => {
-
+        console.log("hello");
       })
       .catch(err => {
         console.log(err);

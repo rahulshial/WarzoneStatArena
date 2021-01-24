@@ -14,22 +14,30 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+   
+    paddingRight:"20px",
+    width:400,
     '& > *': {
-      margin: theme.spacing(1),
-      height: 55,
+      // margin: theme.spacing(1),
+      height: 45,
+      marginRight:"30px",
+      marginBottom:"10px",
       
     },
    
-    img: {
-      width: "45px",
-      
-      
-    }
+    
   },
   button: {
+    
     "&:focus": {
       background:"#ffd369",
     }
+  },
+  img: {
+    width: "30px",
+    height:"30px"
+    
+    
   }
 }));
 
@@ -49,19 +57,19 @@ export default function GroupSizesColors(props) {
       <ButtonGroup size="large" style={{backgroundColor:"#fff"}} aria-label="large outlined primary button group" >
         {/* give back "psn" */}
         <Button className={classes.button} onClick= {()=> test1("psn")}>
-          <img className="img"  src={psn} alt=""/>
+          <img className={classes.img}  src={psn} alt=""/>
         </Button> 
         {/* give back "acti" */}
         <Button  className={classes.button} onClick= {()=> test1("acti")}>
-          <img  className="img" src={Mw} alt=""/>
+          <img  className={classes.img} src={Mw} alt=""/>
         </Button>
         {/* give back "battlenet" */}
         <Button  className={classes.button} onClick= {()=> test1("battle")} >
-          <img  className="img" src={battlenet} alt=""/>
+          <img  className={classes.img} src={battlenet} alt=""/>
         </Button>
         {/* give back "xbox" */}
         <Button  className={classes.button} onClick= {()=> test1("xbox")} >
-          <img className="img" src={xbox} alt=""/>
+          <img className={classes.img} src={xbox} alt=""/>
         </Button>
       </ButtonGroup>
     </div>
