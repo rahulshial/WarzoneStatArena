@@ -13,7 +13,6 @@ import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ReactPlayer from "react-player"
 import LinkIcon from '@material-ui/icons/Link';
-import Iframe from 'react-iframe'
 
 const useStyles = makeStyles((theme) => ({
   root: {
