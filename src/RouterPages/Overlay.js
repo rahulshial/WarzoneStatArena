@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../overlay.css';
-
+import OverlayNav from '../Overlay/OverlayNav'
 import OverlayBar from '../Overlay/OverlayBar';
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from "react-router-dom";
 
 export default function Overlay() {
   const [state, setState] = useState({
@@ -17,8 +10,11 @@ export default function Overlay() {
     gameModes: {},
     gunData: {},
     lifetimeData: {},
+    overlaySelected: "Small",
   })
 
+
+  
   useEffect(() => {
     // let nickname = props.name.replace("#", "%23")
     // nickname will === username
@@ -41,7 +37,7 @@ export default function Overlay() {
             lifetimeData: res.data[3],
           }))
         }
-        
+
       })
       .catch(error => {
         console.log(error);
@@ -49,61 +45,120 @@ export default function Overlay() {
   }, [])
 
 
-  const functun = () => {
-    if (Object.keys(state.gameModes).length !== 0) {
-      if (Object.keys(state.weeklyData).length > 0){
-        return (
-          
-          <Router>
-            <div>
-              <h2>Choose Overlay To Customize</h2>
-              <ul>
-                <h1>
-                  <Link to="/Large">Large Overlay</Link>
-                </h1>
-  
-                <h1>
-                  <Link to="/Small">Small Overlay</Link>
-
-                </h1>
-              </ul>
-
-              <Switch>
-
-                <Route path="/:id" children={<OverlayBar weeklyData={state.weeklyData} lifetimeData={state.lifetimeData} gunData={state.gunData} />} />
-
-              </Switch>
-
-            </div>
-          </Router>
-        )
-      } else {
-        return (
-          <Router>
-            <div>
-              <h2>Choose Overlay To Customize</h2>
-              <ul>
-                <h1>
-                  <Link to="/Large">Large Overlay</Link>
-                </h1>
-  
-                <h1>
-                  <Link to="/Small">Small Overlay</Link>
-                </h1>
-              </ul>
-              <Switch>
-                <Route path="/:id" children={<OverlayBar weeklyData="null" lifetimeData={state.lifetimeData} gunData={state.gunData} />} />
-              </Switch>
-            </div>
-          </Router>
-        )        
-      }
-    }
+  const overlaySelected = (index) => {
+    const size = ["Small", "Large"]
+    setState(prev => ({
+      ...prev,
+      overlaySelected: size[index]
+    }))
   }
-  return (
-    <>
-      {functun()}
-    </>
-  )
+
+  if (Object.keys(state.gameModes).length !== 0) {
+    return (
+      <div style={{
+        backgroundColor: '#222831',
+        height: "93.3vh",
+      }}>
+        <OverlayNav
+          onSelect={overlaySelected}
+        />
+        <OverlayBar
+          gameModes={state.gameModes}
+          lifetimeData={state.lifetimeData}
+          gunData={state.gunData}
+          weeklyData={state.weeklyData}
+          overlaySize={state.overlaySelected}
+        />
+      </div>
+    )
+
+  } else {
+    return (
+      <h1>Loading</h1>
+    )
+  }
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   const overlaySize = () => {
+//     if (Object.keys(state.gameModes).length !== 0) {
+//       if (Object.keys(state.weeklyData).length > 0){
+//         return (
+
+//           <Router>
+//             <div>
+//             <OverlayNav/>
+//               <h2>Choose Overlay To Customize</h2>
+//               <ul>
+//                 <h1>
+//                   <Link to="/Large">Large Overlay</Link>
+//                 </h1>
+
+//                 <h1>
+//                   <Link to="/Small">Small Overlay</Link>
+
+//                 </h1>
+//               </ul>
+
+//               <Switch>
+
+//                 <Route path="/:id" children={<OverlayBar gameModes={state.gameModes} lifetimeData={state.lifetimeData} gunData={state.gunData} />} />
+
+//               </Switch>
+
+//             </div>
+//           </Router>
+//         )
+//       } else {
+//         return (
+//           <Router>
+//             <div>
+//             <h1>cats</h1>
+//               <h2>Choose Overlay To Customize</h2>
+//               <ul>
+//                 <h1>
+//                   <Link to="/Large">Large Overlay</Link>
+//                 </h1>
+
+//                 <h1>
+//                   <Link to="/Small">Small Overlay</Link>
+//                 </h1>
+//               </ul>
+//               <Switch>
+//                 <Route path="/:id" children={<OverlayBar weeklyData="null" lifetimeData={state.lifetimeData} gunData={state.gunData} />} />
+//               </Switch>
+//             </div>
+//           </Router>
+//         )        
+//       }
+//     }
+//   }
+//   return (
+//     <>
+//       {overlaySize()}
+//     </>
+//   )
+// }
 
