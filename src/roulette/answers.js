@@ -14,12 +14,12 @@ const useStyles = makeStyles({
     minHeight: 300,
     maxHeight: 300,
     margin: 20,
-    backgroundColor:"#858d9b"
+    backgroundColor:"#424242"
 
   },
   media: {
     height: 150,
-    backgroundColor:"#62676f",
+    backgroundColor:"#424242",
     objectFit: "contain",
     backgroundSize:"contain"
   },

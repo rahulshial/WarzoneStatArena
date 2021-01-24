@@ -149,7 +149,7 @@ export default function useApplicationData () {
 
       axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
       .then(res => {
-
+       console.log("hellooooo");
         if (res.data[0].weeklyData !== null) {
 
         const weapons = res.data[2].guns;
@@ -186,7 +186,7 @@ export default function useApplicationData () {
 
       })
       .catch(error => {
-        console.log(error);
+        history.push("/roulette")
       })
 
     

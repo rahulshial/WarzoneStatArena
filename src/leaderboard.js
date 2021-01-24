@@ -162,22 +162,19 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-around",
     alignItems: "flex-end",
-    marginTop: 400,
-    
-    
-    
+    marginTop: "25%",
   },
   paper: {
     position: "absolute",
-    maxWidth: "40%",
+    width: "40%",
     color: "#fff",
     background: "#62676f",
-    marginRight: 350,
     marginBottom: "100px",
   },
   table: {
-    minWidth: 750,
-    margin: 5
+    margin: 5,
+    height:"50px",
+    
     
   },
   visuallyHidden: {
@@ -193,7 +190,7 @@ const useStyles = makeStyles((theme) => ({
   },
   text:{
     color:"#fff",
-    fontSize:"18px",
+    fontSize:"12px",
     
 
   }

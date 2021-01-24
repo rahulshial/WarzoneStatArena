@@ -8,13 +8,15 @@ import ArrowIcon from '@material-ui/icons/ArrowForwardIosRounded';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    height: 40,
     '& > *': {
-      margin: theme.spacing(1),
+      // margin: theme.spacing(1),
       width: '30ch',
       marginRight: 0,
-      height: 55,
+      
       backgroundColor: "#fff",
-      color:"#ffd369"
+      color:"#ffd369",
+
       
     },
   },
@@ -22,9 +24,17 @@ const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
     width: 50,
-    marginLeft:0,
+    height: 55,
+    marginLeft:"10px",
     color:"#383d44",
     backgroundColor: "#ffd369",
+    borderRadius:"10px",
+    marginBottom:"10px"
+  },
+  textfield: {
+    marginTop:"5px",
+    borderRadius:"10px",
+    // height: 40,
   },
 }));
 
@@ -35,8 +45,9 @@ export default function BasicTextFields(props) {
   const classes = useStyles();
 
    return (
-    <form className={classes.root} noValidate autoComplete="on"  onSubmit={(event) => event.preventDefault()}>
-      <TextField id="outlined-basic" label="GAMER ID" variant="outlined" value={props.value} onChange={props.onChange}/>
+     <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+       <form className={classes.root} noValidate autoComplete="on"  onSubmit={(event) => event.preventDefault()}>
+      <TextField label="GAMER ID" variant="outlined"   className={classes.textfield} value={props.value} onChange={props.onChange}/>
       <Button
         variant="contained"
         color="primary"
@@ -47,6 +58,8 @@ export default function BasicTextFields(props) {
       </Button>
       
     </form>
+     </div>
+    
   ); 
   
 }

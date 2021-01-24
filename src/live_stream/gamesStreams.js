@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
     height:55,
     color:"#fff",
     backgroundColor: "#ffd369",
+    marginLeft:"0.5%"
+    
     
   },
   text: {
@@ -93,7 +95,7 @@ function GameStreams({ match, location }) {
         Currently watching Top 20 Warzone Streams on Twitch
       </h3>
       <div style={{display:"flex", justifyContent:"center", marginTop:"1rem"}}>
-        <TextField  id="filled" label="Twitch Search" variant="filled"   onKeyDown={(e) => enter(e)}className={classes.text} onChange={(e) => setState(e.target.value)}/>
+        <TextField  id="filled" label="Twitch Search" variant="filled"   style={{borderRadius:"10px", width:"400px"}} onKeyDown={(e) => enter(e)}className={classes.text} onChange={(e) => setState(e.target.value)}/>
         <Button
           href={`https://www.twitch.tv/search?term=${state}`}
           className={classes.button}

@@ -15,11 +15,13 @@ import useApplicationData from "../hooks/useApplicationData";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    padding: 0
+    padding: 0,
+    display: "flex",
+    justifyContent: "space-between",
   },
   paper: {
     margin:0,
-    padding: theme.spacing(1),
+    // padding: theme.spacing(1),
     color: theme.palette.text.secondary,
     textAlign: 'center',
     height: 500,
@@ -37,10 +39,10 @@ const useStyles = makeStyles((theme) => ({
     border: 0,
     color: "#fff",
     fontWeight: 'bold',
-    fontSize:'22px',
+    fontSize:'18px',
     fontFamily:'Lucidatypewriter, monospace',
-    width: '400px',
-    height: 48,
+    width: '300px',
+    height: 45,
     padding: '0 30px',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
 
@@ -56,14 +58,22 @@ const useStyles = makeStyles((theme) => ({
   },
   gameId: {
     display: "flex",
-    justifyContent: "center",
-    marginBottom: "20px"
+    flexDirection:"column",
+    justifyContent: "flex-start",
+    alignItems:"center",
 
   },
   title: {
-    fontSize: 40,
-    marginBottom: 400,
-    color:"#ffd369"
+    fontSize: 30,
+    color:"#ffd369",
+    marginTop: "5%",
+    marginLeft: "1%"
+    
+  },
+  title1: {
+    fontSize: 30,
+    color:"#ffd369",
+    marginLeft: "1%"
     
   }
 }));
@@ -99,85 +109,77 @@ export default function Home() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={0}>
-        <Grid item xs={12} style={{height:300}}>
-          <Paper className={classes.paper} >
-            <div>
-              <img src={codLogo} alt=""/>
-            </div>
-            <div>
-            <div>
-              <p>
-                <h1 style={{color:"#ffd369"}}>
-                  Enter Your Modern Warfare Gamer ID
-                </h1>
-                <br/>
-              </p>
-            </div>
+      <Grid container spacing={0} >
+        {/* <Grid item xs={12} style={{height:300}
+        }>
+          <Paper className={classes.paper} > */}
+        <div style={{display:"flex",flexDirection:"row",justifyContent:"space-around", width:"100%"}}>
+          
+            <img src={codLogo} style={{height: 200, width: 420,}} alt=""/>
+          
+          <div style={{display:"flex",flexDirection:"column",justifyContent:"space-evenly"}}>
+          <div>
+            <h1 style={{color:"#ffd369", marginTop: 25}}>
+              Enter Your Modern Warfare Gamer ID
+            </h1>
+          </div>
+          <div style={{display: "flex", marginTop:"20px"}}>
             <div className={classes.gameId}>
               {/* platform component */}
-              <GroupSizesColors
-                onClick={setPlatform}
-              />
-              
-            {/* textfield component */}
-            <BasicTextFields 
+              <GroupSizesColors onClick={setPlatform}/>
+              {/* textfield component */}
+              <BasicTextFields 
                 value={state.name}
                 onChange={setName}
                 onClick={setGamerData}
               />
             </div>
-            <div>
+            
+            <div style={{display: "flex", alignItems:"center", justifyContent:"space-between"}}>
+              <p style={{color:"white", marginRight: "40px"}}>OR</p>
               <Button className={classes.shoot} href= "http://localhost:8080/auth/twitch/callback">
-                Login With Twitch
+                Twitch Login
                 <img className={classes.img} src={twitch} alt="" />
               </Button>
             </div>
+        </div>
+        </div>
+          
+       
+    </div>
+          <div style={{width:"100%"}}>
+            <p className={classes.title}>Leaderboard</p>
+            <div style={{display:"flex", justifyContent:"space-evenly", alignItems:"center", marginTop:"3%"}}>
+              <EnhancedTable/>
+              <EnhancedTable1/>
             </div>
             
-            
-            
+          </div>
           
-          
-          </Paper>
-        </Grid>
-        
-          
-          
-        <Grid item xs={12} style={{height:450}}>
-          <Paper className={classes.paper}>
-          <p className={classes.title}>Leaderboard</p>
-          <EnhancedTable
-            // weeklyKills = {weeklyKills}
-            // weeklyDeaths = {weeklyDeaths}
-            // weeklyKdRatio = {weeklyKdRatio}
-            // weeklyMatchesPlayed = {weeklyMatchesPlayed}
-          />
-          <EnhancedTable1/>
-          </Paper>
-        </Grid>
-        
-        <Grid item xs={12} >
-          <Paper className={classes.paper}>
-            <RecipeReviewCard 
+          <div style={{width:"100%", marginBottom:"3%"}}>
+            <p className={classes.title1}>Blogs & Videos</p>
+            <div style={{display:"flex", justifyContent:"space-evenly", alignItems:"center", marginTop:"3%"}}>
+              <RecipeReviewCard 
+                url="https://youtu.be/hi7DrHz6g9c"
+                title='Call of Duty: Warzone Supposedly Has a New "Broken" OP Gun'
+                avatar="RS"
+                subheader="By Mike Hume"
+                link="https://www.washingtonpost.com/video-games/tips/best-cold-war-loadouts-warzone/"
+                
+                text="Beyond a slew of bugs that allowed players to turn invisible or infinitely heal themselves outside of “Warzone’s” shrinking gas circle, the integration of “Call of Duty: Black Ops Cold War’s” weaponry created a number of questions about the effectiveness of attachments (which are unique to “Cold War” guns) and how they stacked up against traditional “Warzone” loadouts based off “Call of Duty: Modern Warfare’s” guns. Then people discovered the DMR-14. The emphasis on the DMR meant few players were scrutinizing the other new weapons. And while some, like the Mac-10 submachine gun and the Diamatti burst pistol, became secondary weapons for DMR users, few were paying attention to “Cold War’s” other possibilities. Now that the DMR has (mercifully) been nerfed and the meta has rebalanced, there are still a lot of questions about what “Cold War” guns are best. We’re here to provide some answers."
+              />
+              <RecipeReviewCard
+                url='https://www.youtube.com/watch?v=nEJD_q21vCM'
+                title="FaZe Swagg reveals a gun better than DMR-14 in Warzone"
+                avatar="MT"
+                subheader="By Lloyd Coombes "
+                link="https://www.gamesradar.com/best-call-of-duty-warzone-guns/"
+                text="The best Warzone guns have seen a boost recently, with the integration of Black Ops Cold War into Call of Duty Warzone. This influx of new weapons means there is a slew to choose from for practically any playstyle, including the existing ones from Call of Duty Modern Warfare.
+                While there are a ton of guns at your disposal, there are a handful that stand above the rest, which is where this guide to the Warzone best guns comes in. If you want to compete with skilled players, you’ll need to use top-tier weapons and loadouts that are ideal in all situations. From snipers to SMGs, and even light machine guns, these are the best guns in Warzone."
+              />
+            </div>
               
-              url="https://www.twitch.tv/nickmercs"
-              title='Call of Duty: Warzone Supposedly Has a New "Broken" OP Gun'
-              avatar="RS"
-              subheader="charlieintel.com"
-              link="https://charlieintel.com/faze-swagg-reveals-a-gun-better-than-dmr-14-in-warzone/75052/"
-            />
-            <RecipeReviewCard
-              url='https://www.youtube.com/watch?v=nEJD_q21vCM'
-              title="FaZe Swagg reveals a gun better than DMR-14 in Warzone"
-              avatar="MT"
-              subheader="charlieintel.com"
-              link="https://charlieintel.com/faze-swagg-reveals-a-gun-better-than-dmr-14-in-warzone/75052/"
-            />
-           
-            
-          </Paper>
-        </Grid>
+          </div>
       </Grid>
       
     </div>
