@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     display: "flex",
     justifyContent: "space-between",
+    backgroundColor:"#191d24"
   },
   paper: {
     margin:0,
@@ -25,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     textAlign: 'center',
     height: 500,
-    background: "#222831" ,
     display: "flex",
     justifyContent: "space-evenly",
     // alignItems: "center",
@@ -63,14 +63,14 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 30,
-    color:"#ffd369",
+    color:"#dea01e",
     marginTop: "5%",
     marginLeft: "1%"
     
   },
   title1: {
     fontSize: 30,
-    color:"#ffd369",
+    color:"#dea01e",
     marginLeft: "1%"
     
   }
@@ -117,7 +117,7 @@ export default function Home() {
           
           <div style={{display:"flex",flexDirection:"column",justifyContent:"space-evenly"}}>
           <div>
-            <h1 style={{color:"#ffd369", marginTop: 25}}>
+            <h1 style={{color:"#dea01e", marginTop: 25}}>
               Enter Your Modern Warfare Gamer ID
             </h1>
           </div>

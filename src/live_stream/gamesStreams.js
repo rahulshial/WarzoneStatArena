@@ -87,7 +87,7 @@ function GameStreams({ match, location }) {
   }
   // https://api.twitch.tv/helix/games?name=Call%20of%20Duty%3A%20Warzone
   return (
-    <div style={{ backgroundColor: "#222831", color: "#ffd369" }}>
+    <div style={{ backgroundColor: "#191d24", color: "#ffd369" }}>
       <h1 className="text-center">Warzone Top 20 Streams</h1>
       <br></br>
       <h3 className="text-center">

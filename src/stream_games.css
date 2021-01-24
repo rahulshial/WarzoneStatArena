@@ -60,11 +60,11 @@
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #62676f;
+  background-color: #2a313c;
   background-clip: border-box;
   border: 1px solid rgba(0,0,0,.125);
   border-radius: .25rem;
-  color: #13181f;
+  color: #fff;
 }
 
 .card-img-top {
@@ -106,8 +106,8 @@
 
 .btn-success {
   color: #13181f;
-  background-color: #ffd369;
-  border-color: #ffd369;
+  background-color: #dea01e;
+  border-color: #dea01e;
 }
 
 a {

@@ -15,7 +15,15 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import useApplicationData from "./hooks/useApplicationData";
 
+//font color on press
+// .MuiTableSortLabel-root.MuiTableSortLabel-active {
+//   color: #dea01e;
+// }
 
+// .MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon {
+//   color: #dea01e;
+//   opacity: 1;
+// }
 
 function createData(name, kills, death, KD, Votes) {
   return { name, kills, death, KD, Votes };
@@ -168,7 +176,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: "40%",
     color: "#fff",
-    background: "#62676f",
+    background: "#151518",
     marginBottom: "100px",
   },
   table: {

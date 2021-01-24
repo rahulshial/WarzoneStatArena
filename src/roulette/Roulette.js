@@ -12,13 +12,13 @@ import {dropzoneImage, primaryGunImage, secondaryGunImage} from './dropzoneImage
 const useStyles = makeStyles({
   media: {
     height: 150,
-    backgroundColor:"#62676f",
+    backgroundColor:"#191d24",
     objectFit: "contain",
     backgroundSize:280
   },
   media1: {
     height: 150,
-    backgroundColor:"#424242",
+    backgroundColor:"#2a313c",
     
   },
 })

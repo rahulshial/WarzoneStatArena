@@ -168,7 +168,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: "40%",
     color: "#fff",
-    background: "#62676f",
+    background: "#151518",
     marginBottom: "100px",
   },
   table: {

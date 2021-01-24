@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     
     "&:focus": {
-      background:"#ffd369",
+      background:"#dea01e",
     }
   },
   img: {

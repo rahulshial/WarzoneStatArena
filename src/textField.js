@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 0,
       
       backgroundColor: "#fff",
-      color:"#ffd369",
+      color:"#dea01e",
 
       
     },
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     height: 55,
     marginLeft:"10px",
     color:"#383d44",
-    backgroundColor: "#ffd369",
+    backgroundColor: "#dea01e",
     borderRadius:"10px",
     marginBottom:"10px"
   },
