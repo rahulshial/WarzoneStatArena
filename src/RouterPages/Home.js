@@ -28,8 +28,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-evenly",
     // alignItems: "center",
 
-
-    
   },
   shoot: {
     background: '#a970ff',
