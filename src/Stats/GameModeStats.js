@@ -24,8 +24,9 @@ const useStyles = makeStyles((theme) => ({
   paperMode: {
     padding: theme.spacing(2),
     textAlign: 'left',
-    color: "#ffd369",
-    backgroundColor: 'transparent',
+    color: "#dea01e",
+    // backgroundColor: 'transparent',
+    backgroundColor: "#565666",
     fontSize: 20
   },
   paperStat: {
@@ -33,6 +34,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: "#ffd369",
     backgroundColor: '#0f0e18',
+    borderLeft: '2px solid',
+  },
+  statValue: {
+    color: "#dadada",
   },
 }));
 
@@ -54,11 +59,11 @@ export default function GameModeStats(props) {
         for (const stat in statRow) {
           if(statRow[stat] % 1 > 0) {
             returnGameStats.push(<Grid item xs={2}>
-              <Paper className={classes.paperStat}>{gunDataObj.gunStatTitle[stat]}: {statRow[stat].toFixed(2)}</Paper>
+              <Paper className={classes.paperStat}>{gunDataObj.gunStatTitle[stat]}: <strong className={classes.statValue}>{statRow[stat].toFixed(2)}</strong></Paper>
               </Grid>);
           } else {
             returnGameStats.push(<Grid item xs={2}>
-              <Paper className={classes.paperStat}>{gunDataObj.gunStatTitle[stat]}: {statRow[stat]}</Paper>
+              <Paper className={classes.paperStat}>{gunDataObj.gunStatTitle[stat]}: <strong className={classes.statValue}>{statRow[stat]}</strong></Paper>
               </Grid>);
             };
         };
@@ -67,7 +72,7 @@ export default function GameModeStats(props) {
     };
 
     return (
-        <div className='game-modes'>
+        <div className='game-modes' >
           <div className={classes.root}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
@@ -77,7 +82,6 @@ export default function GameModeStats(props) {
                 {loopGameStats()}
               </Grid>
             </Grid>
-            <br></br>
             <br></br>
             <br></br>
           </div>  

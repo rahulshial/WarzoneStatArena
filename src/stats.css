@@ -36,6 +36,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .gun-icon {
   display: flex;
   flex-direction: row;
@@ -46,57 +47,9 @@
   align-items: center;
 }
 
-/* #################################33 */
-/* .fav-gun-icon {
-  width: 100%;
-  align-self: center;
-}
-.fav-guns-container {
-  display: flex;
-  flex-direction: column;
-  
-}
-
-.fav-gun-card {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  width: 44%;
-  margin: 2px;
-  background-color: rgb(180, 180, 180);
-} */
-/* .card-img {
-  display: flex;
-  background-color: rgb(138, 138, 138);
-
-}
-.gun-achieves {
-  display: flex;
-  justify-content: center;
-
-} */
 .gun-item-table {
   width: 100%;
 }
-/* 
-table  {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-table h2 {
-  margin: 60px 0 15px 0;
-}
-td, th {
-  border: 1px solid #dddddd;
-  text-align: center;
-  padding: 8px;
-}
-
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
- */
 
 .container {
   /* width: 17%; */

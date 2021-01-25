@@ -12,6 +12,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: "#ffd369",
     backgroundColor: "#0f0e18",
+    borderLeft: '2px solid',
+  },
+  statValue: {
+    color: "#dadada",
   },
 }));
 
@@ -30,25 +34,25 @@ export default function LifetimeStatCard({lifetimeData}) {
             <Paper className={classes.paper}><strong>Best</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Curr Win Streak: {lifetimeData[0].currentWinStreak}</Paper>
+            <Paper className={classes.paper}>Curr Win Streak: <strong className={classes.statValue}>{lifetimeData[0].currentWinStreak}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Kills: {lifetimeData[0].bestKills}</Paper>
+            <Paper className={classes.paper}>Kills: <strong className={classes.statValue}>{lifetimeData[0].bestKills}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Deaths: {lifetimeData[0].bestDeaths}</Paper>
+            <Paper className={classes.paper}>Deaths: <strong className={classes.statValue}>{lifetimeData[0].bestDeaths}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>KD Ratio: {lifetimeData[0].bestKD}</Paper>
+            <Paper className={classes.paper}>KD Ratio: <strong className={classes.statValue}>{lifetimeData[0].bestKD}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Stabs: {lifetimeData[0].bestStabs}</Paper>
+            <Paper className={classes.paper}>Stabs: <strong className={classes.statValue}>{lifetimeData[0].bestStabs}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Assists: {lifetimeData[0].bestAssists}</Paper>
+            <Paper className={classes.paper}>Assists: <strong className={classes.statValue}>{lifetimeData[0].bestAssists}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Score: {lifetimeData[0].bestScore} @{lifetimeData[0].bestSPM}/min</Paper>
+            <Paper className={classes.paper}>Score: <strong className={classes.statValue}>{lifetimeData[0].bestScore} @{lifetimeData[0].bestSPM}/min</strong></Paper>
           </Grid>
         </Grid>
         <br></br>
@@ -57,70 +61,70 @@ export default function LifetimeStatCard({lifetimeData}) {
             <Paper className={classes.paper}><strong>Lifetime</strong></Paper>
           </Grid>          
           <Grid item xs={2}>
-            <Paper className={classes.paper}>KD Ratio: {lifetimeData[0].kdRatio.toFixed(2)}</Paper>
+            <Paper className={classes.paper}>KD Ratio: <strong className={classes.statValue}>{lifetimeData[0].kdRatio.toFixed(2)}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Kills: {lifetimeData[0].kills}</Paper>
+            <Paper className={classes.paper}>Kills: <strong className={classes.statValue}>{lifetimeData[0].kills}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Deaths: {lifetimeData[0].deaths}</Paper>
+            <Paper className={classes.paper}>Deaths: <strong className={classes.statValue}>{lifetimeData[0].deaths}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Suicides: {lifetimeData[0].suicides}</Paper>
+            <Paper className={classes.paper}>Suicides: <strong className={classes.statValue}>{lifetimeData[0].suicides}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Head Shots: {lifetimeData[0].headshots}</Paper>
+            <Paper className={classes.paper}>Head Shots: <strong className={classes.statValue}>{lifetimeData[0].headshots}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Accuracy: {accuracy.toFixed(2)}%</Paper>
+            <Paper className={classes.paper}>Accuracy: <strong className={classes.statValue}>{accuracy.toFixed(2)}%</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Hits: {lifetimeData[0].hits}</Paper>
+            <Paper className={classes.paper}>Hits: <strong className={classes.statValue}>{lifetimeData[0].hits}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Misses: {lifetimeData[0].misses}</Paper>
+            <Paper className={classes.paper}>Misses: <strong className={classes.statValue}>{lifetimeData[0].misses}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Assists: {lifetimeData[0].assists}</Paper>
+            <Paper className={classes.paper}>Assists: <strong className={classes.statValue}>{lifetimeData[0].assists}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Games: {lifetimeData[0].totalGamesPlayed}</Paper>
+            <Paper className={classes.paper}>Games: <strong className={classes.statValue}>{lifetimeData[0].totalGamesPlayed}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Time Played: {timePlayedTotal.toFixed(0)} mins</Paper>
+            <Paper className={classes.paper}>Time Played: <strong className={classes.statValue}>{timePlayedTotal.toFixed(0)} mins</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Game Wins: {lifetimeData[0].wins}</Paper>
+            <Paper className={classes.paper}>Game Wins: <strong className={classes.statValue}>{lifetimeData[0].wins}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Game Loss: {lifetimeData[0].losses}</Paper>
+            <Paper className={classes.paper}>Game Loss: <strong className={classes.statValue}>{lifetimeData[0].losses}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>W/L Ratio: {winLossRatio.toFixed(2)}%</Paper>
+            <Paper className={classes.paper}>W/L Ratio: <strong className={classes.statValue}>{winLossRatio.toFixed(2)}%</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Score: {lifetimeData[0].score}</Paper>
+            <Paper className={classes.paper}>Score: <strong className={classes.statValue}>{lifetimeData[0].score}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Score  / game: {lifetimeData[0].scorePerGame.toFixed(2)}</Paper>
+            <Paper className={classes.paper}>Score  / game: <strong className={classes.statValue}>{lifetimeData[0].scorePerGame.toFixed(2)}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Score / min: {lifetimeData[0].scorePerMinute.toFixed(2)}</Paper>
+            <Paper className={classes.paper}>Score / min: <strong className={classes.statValue}>{lifetimeData[0].scorePerMinute.toFixed(2)}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Longest Win Streak: {lifetimeData[0].recordLongestWinStreak}</Paper>
+            <Paper className={classes.paper}>Longest Win Streak: <strong className={classes.statValue}>{lifetimeData[0].recordLongestWinStreak}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Kill Streak: {lifetimeData[0].recordKillStreak}</Paper>
+            <Paper className={classes.paper}>Kill Streak: <strong className={classes.statValue}>{lifetimeData[0].recordKillStreak}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Kills / match: {lifetimeData[0].recordKillsInAMatch}</Paper>
+            <Paper className={classes.paper}>Kills / match: <strong className={classes.statValue}>{lifetimeData[0].recordKillsInAMatch}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>Deaths / match: {lifetimeData[0].recordDeathsInAMatch}</Paper>
+            <Paper className={classes.paper}>Deaths / match: <strong className={classes.statValue}>{lifetimeData[0].recordDeathsInAMatch}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-            <Paper className={classes.paper}>XP in Match: {lifetimeData[0].recordXpInAMatch}</Paper>
+            <Paper className={classes.paper}>XP in Match: <strong className={classes.statValue}>{lifetimeData[0].recordXpInAMatch}</strong></Paper>
           </Grid>
         </Grid>
       </div>

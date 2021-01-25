@@ -14,6 +14,7 @@ import gunDataObj from '../helpers/gunData'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    backgroundColor: '#191d24',
   },
   paper: {
     padding: theme.spacing(2),

@@ -18,33 +18,54 @@ const BorderLinearProgress = withStyles((theme) => ({
   root: {
     height: 20,
     borderRadius: 5,
+    marginTop: 10,
   },
   colorPrimary: {
     backgroundColor: theme.palette.grey[theme.palette.type === 'light' ? 200 : 700],
   },
   bar: {
     borderRadius: 5,
-    backgroundColor: '#1aff31',
+    background: 'linear-gradient(45deg, #fcc14c 30%, #1aff31 90%)'
+    // backgroundColor: '#1aff31',
   },
 }))(LinearProgress);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: 275,
+    // minWidth: 275,
     color: "#ffd369",
     backgroundColor: "#565666",
   },
   title: {
     fontSize: 14,
+    color: '#dea01e',
   },
   pos: {
     marginBottom: 12,
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     textAlign: 'center',
-    color: "#ffd369",
+    // color: "#ffd369",
+    // color: "#dadada",
+    color: '#dea01e',
     backgroundColor: "#0f0e18",
+    width: '100%',
+    fontSize: '17px',
+    borderBottom: '2px solid',
+  },
+  statTitle: {
+    // color: '#ffd369',
+    color: '#dea01e',
+    fontSize: '16px',
+  },
+  statValue: {
+    color: "#dadada",
+    // color: '#ffd369',
+  },
+  gridBox: {
+    display: 'flex',
+
   },
 }));
 
@@ -72,21 +93,22 @@ export default function Overview(props) {
           <h1>{shown.allstats.username} stats on <strong>{shown.allstats.platform}</strong> at Level {shown.allstats.level}</h1>
           </Typography>
           <Grid container spacing={1}>
-            <Grid item xs={2}>
-                <Paper className={classes.paper}><strong>Time Played:</strong> {timePlayedTotal}</Paper>
+            <Grid className={classes.gridBox} item xs={2}>
+                <Paper className={classes.paper} square>Time Played: <strong className={classes.statValue}>{timePlayedTotal}</strong></Paper>
             </Grid>
             <Grid item xs={2}>
-                <Paper className={classes.paper}><strong>XP earned this level:</strong> {shown.allstats.levelXpGained}</Paper>
+                <Paper className={classes.paper}>XP earned this level: <strong className={classes.statValue}>{shown.allstats.levelXpGained}</strong></Paper>
             </Grid>        
             <Grid item xs={2}>
-                <Paper className={classes.paper}><strong>XP needed to level up:</strong> {shown.allstats.levelXpRemainder}</Paper>
+                <Paper className={classes.paper}>XP needed to level up: <strong className={classes.statValue}>{shown.allstats.levelXpRemainder}</strong></Paper>
             </Grid>        
             <Grid item xs={2}>
-                <Paper className={classes.paper}><strong>To next Level:</strong> {percentageToLevel.toFixed(2)}%</Paper>
+                <Paper className={classes.paper}>To next Level: <strong className={classes.statValue}>{percentageToLevel.toFixed(2)}%</strong></Paper>
             </Grid>        
+            <Grid item xs={4}>
+              <BorderLinearProgress variant="determinate" value={percentageCompleted} />
+            </Grid>
           </Grid>
-
-          <BorderLinearProgress variant="determinate" value={percentageCompleted} />
         </CardContent>
       </Card>
     </div>

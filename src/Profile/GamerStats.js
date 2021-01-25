@@ -9,7 +9,7 @@ export default function GamerStats(props) {
   const { weeklyData, lifetimeData } = props;
   console.log('weekly data: ', weeklyData)
   return (
-    <div className='gamer-stats'>
+    <div className='gamer-stats' style={{backgroundColor: '#191D24',}}>
       <Container maxWidth="false">
         <div className='weekly-stats'>
           <br></br>

@@ -120,7 +120,7 @@ export default function Guns(props) {
           <GunNav
             onSelect={gunTabSelected}
           />
-          <div className="card-row">
+          <div className="card-row" style={{backgroundColor: '#191D24', minHeight: '100vh', height: '100%'}}>
 
             <GunStats
               shown={allApiData.shown}
@@ -137,12 +137,12 @@ export default function Guns(props) {
 
       return (
         <>
-          <table>
+          <div style={{backgroundColor: '#191D24', minHeight: '100vh', height: '100%'}}>
             <GameModeStats
               shown={allApiData.shown}
               category={allApiData.gameModeCat}
             />
-          </table>
+          </div>
         </>
       )
     } else if (allApiData.shownCat === "overview") {

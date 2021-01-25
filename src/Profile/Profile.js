@@ -160,7 +160,7 @@ export default function Profile(props) {
       if (state.favorites.length > 0) {
         if(Object.keys(cookies).length > 0) {
           return (
-            <div className='tracked-guns'>
+            <div className='tracked-guns' style={{backgroundColor: '#191D24',  minHeight: '100vh', height: '100%'}}>
               <div className='tracked-guns-header'>
                 <Grid container spacing={1}>
                   <Grid item xs={7}>
@@ -187,7 +187,7 @@ export default function Profile(props) {
           );  
         } else {
             return (
-              <div className='tracked-guns'>
+              <div className='tracked-guns' style={{backgroundColor: '#191D24',  minHeight: '100vh', height: '100%'}}>
                 <div className='tracked-guns-header'>
                   <Grid container spacing={1}>
                     <Grid item xs={7}>
@@ -215,7 +215,7 @@ export default function Profile(props) {
           }
     } else {
         return (
-          <div>
+          <div style={{backgroundColor: '#191D24', minHeight: '100vh', height: '100%'}}>
             <Grid container spacing={1}>
               <Grid item xs={12}>
                 <Paper className={classes.paperEmpty}>You have no favourited items</Paper>

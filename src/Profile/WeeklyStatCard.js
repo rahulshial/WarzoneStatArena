@@ -12,12 +12,16 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: "#ffd369",
     backgroundColor: "#0f0e18",
+    borderLeft: '2px solid',
   },
   paperEmpty: {
     padding: theme.spacing(2),
     textAlign: 'center',
     color: "#ffd369",
     backgroundColor: '#0f0e18',
+  },
+  statValue: {
+    color: "#dadada",
   },
 }));
 
@@ -33,79 +37,79 @@ console.log('Weekly Data: ', weeklyData.length)
       <div className={classes.root}>
         <Grid container spacing={1}>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>KD Ratio: {weeklyData[0].kdRatio.toFixed(2)}</Paper>
+              <Paper className={classes.paper}>KD Ratio: <strong className={classes.statValue}>{weeklyData[0].kdRatio.toFixed(2)}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Kills: {weeklyData[0].kills}</Paper>
+              <Paper className={classes.paper}>Kills: <strong className={classes.statValue}>{weeklyData[0].kills}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Gulag Kills: {weeklyData[0].gulagKills}</Paper>
+              <Paper className={classes.paper}>Gulag Kills: <strong className={classes.statValue}>{weeklyData[0].gulagKills}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Deaths: {weeklyData[0].deaths}</Paper>
+              <Paper className={classes.paper}>Deaths: <strong className={classes.statValue}>{weeklyData[0].deaths}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Gulag Deaths: {weeklyData[0].gulagDeaths}</Paper>
+              <Paper className={classes.paper}>Gulag Deaths: <strong className={classes.statValue}>{weeklyData[0].gulagDeaths}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Kills/game: {weeklyData[0].killsPerGame.toFixed(2)}</Paper>
+              <Paper className={classes.paper}>Kills/game: <strong className={classes.statValue}>{weeklyData[0].killsPerGame.toFixed(2)}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Wall Bangs: {weeklyData[0].wallBangs}</Paper>
+              <Paper className={classes.paper}>Wall Bangs: <strong className={classes.statValue}>{weeklyData[0].wallBangs}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Head Shots: {weeklyData[0].headshots} @{headShotPercent.toFixed(2)}%</Paper>
+              <Paper className={classes.paper}>Head Shots: <strong className={classes.statValue}>{weeklyData[0].headshots} @{headShotPercent.toFixed(2)}%</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Near Misses: {weeklyData[0].nearmisses}</Paper>
+              <Paper className={classes.paper}>Near Misses: <strong className={classes.statValue}>{weeklyData[0].nearmisses}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Executions: {weeklyData[0].executions}</Paper>
+              <Paper className={classes.paper}>Executions: <strong className={classes.statValue}>{weeklyData[0].executions}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Assists: {weeklyData[0].assists}</Paper>
+              <Paper className={classes.paper}>Assists: <strong className={classes.statValue}>{weeklyData[0].assists}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Damage Taken: {weeklyData[0].damageTaken}</Paper>
+              <Paper className={classes.paper}>Damage Taken: <strong className={classes.statValue}>{weeklyData[0].damageTaken}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Damage Done: {weeklyData[0].damageDone}</Paper>
+              <Paper className={classes.paper}>Damage Done: <strong className={classes.statValue}>{weeklyData[0].damageDone}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Avg Life: {avgLifeTime.toFixed(2)} min</Paper>
+              <Paper className={classes.paper}>Avg Life: <strong className={classes.statValue}>{avgLifeTime.toFixed(2)} min</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Score: {weeklyData[0].score} @ {weeklyData[0].scorePerMinute.toFixed(2)} / min</Paper>
+              <Paper className={classes.paper}>Score: <strong className={classes.statValue}>{weeklyData[0].score} @ {weeklyData[0].scorePerMinute.toFixed(2)} / min</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Distance Travelled: {distanceTraveled.toFixed(0)} kms</Paper>
+              <Paper className={classes.paper}>Distance Travelled: <strong className={classes.statValue}>{distanceTraveled.toFixed(0)} kms</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Time Played: {timePlayed.toFixed(0)} mins</Paper>
+              <Paper className={classes.paper}>Time Played: <strong className={classes.statValue}>{timePlayed.toFixed(0)} mins</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Matches: {weeklyData[0].matchesPlayed}</Paper>
+              <Paper className={classes.paper}>Matches: <strong className={classes.statValue}>{weeklyData[0].matchesPlayed}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Teams Wiped: {weeklyData[0].objectiveTeamWiped}</Paper>
+              <Paper className={classes.paper}>Teams Wiped: <strong className={classes.statValue}>{weeklyData[0].objectiveTeamWiped}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Down Player Kills: {weeklyData[0].objectiveLastStandKill}</Paper>
+              <Paper className={classes.paper}>Down Player Kills: <strong className={classes.statValue}>{weeklyData[0].objectiveLastStandKill}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Vehicles Destroyed: {weeklyData[0].objectiveDestroyedVehicleMedium? weeklyData[0].objectiveDestroyedVehicleMedium : 0 }</Paper>
+              <Paper className={classes.paper}>Vehicles Destroyed: <strong className={classes.statValue}>{weeklyData[0].objectiveDestroyedVehicleMedium? weeklyData[0].objectiveDestroyedVehicleMedium : 0 }</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Missions Accepted: {weeklyData[0].objectiveBrMissionPickupTablet}</Paper>
+              <Paper className={classes.paper}>Missions Accepted: <strong className={classes.statValue}>{weeklyData[0].objectiveBrMissionPickupTablet}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Mates Revived: {weeklyData[0].objectiveReviver}</Paper>
+              <Paper className={classes.paper}>Mates Revived: <strong className={classes.statValue}>{weeklyData[0].objectiveReviver}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Buy Station: {weeklyData[0].objectiveBrKioskBuy}</Paper>
+              <Paper className={classes.paper}>Buy Station: <strong className={classes.statValue}>{weeklyData[0].objectiveBrKioskBuy}</strong></Paper>
           </Grid>
           <Grid item xs={2}>
-              <Paper className={classes.paper}>Cache Opened: {weeklyData[0].objectiveBrCacheOpen}</Paper>
+              <Paper className={classes.paper}>Cache Opened: <strong className={classes.statValue}>{weeklyData[0].objectiveBrCacheOpen}</strong></Paper>
           </Grid>
         </Grid>
       </div>

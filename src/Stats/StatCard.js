@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(.5),
     textAlign: 'center',
     color: "#ffd369",
     backgroundColor: 'transparent',

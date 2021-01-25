@@ -7,6 +7,16 @@ import Tab from '@material-ui/core/Tab';
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
+    backgroundColor: '#323B48',
+  },
+  tab: {
+    color: '#DADADA',
+    '&:hover': {
+      fontWeight: 'bold',
+    },
+    '&:focus': {
+      fontWeight: 'bold',
+    },
   },
 });
 
@@ -22,22 +32,21 @@ export default function CenteredTabs(props) {
   return (
     <Paper className={classes.root}>
       <Tabs
+        TabIndicatorProps={{style: {backgroundColor: "#ffd369"}}}
         value={tab}
         onChange={chosenTab}
-        indicatorColor="primary"
-        textColor="primary"
         centered
       >
-        <Tab label="Assault Rifles" />
-        <Tab label="MarksMan Rifles" />
-        <Tab label="Snipers" />
-        <Tab label="Smg's" />
+        <Tab className={classes.tab} label="Assault Rifles" />
+        <Tab className={classes.tab} label="MarksMan Rifles" />
+        <Tab className={classes.tab} label="Snipers" />
+        <Tab className={classes.tab} label="Smg's" />
         {/* <Tab label="Tacticals" /> */}
-        <Tab label="Lethals" />
-        <Tab label="LMG's" />
-        <Tab label="Launchers" />
-        <Tab label="Pistols" />
-        <Tab label="ShotGuns" />
+        <Tab className={classes.tab} label="Lethals" />
+        <Tab className={classes.tab} label="LMG's" />
+        <Tab className={classes.tab} label="Launchers" />
+        <Tab className={classes.tab} label="Pistols" />
+        <Tab className={classes.tab} label="ShotGuns" />
       </Tabs>
     </Paper>
   );
