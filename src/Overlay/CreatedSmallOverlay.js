@@ -13,8 +13,6 @@ export default function CreatedSmallOverlay(props) {
     statValue4,
   } = props
 
-  console.log(statName1);
-  console.log(statValue1);
   return (
     <div>
       <div className="created-medium-bar">

@@ -37,7 +37,8 @@ export default function SmallOverylay(props) {
     tmpStat3,
     tmpStat4
   } = props
-
+  const statVal1 = 33.2312312312
+  console.log(statVal1.toFixed(2));
   return (
     <>
       <CheckboxCategories
