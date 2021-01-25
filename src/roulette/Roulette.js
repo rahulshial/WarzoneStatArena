@@ -1,29 +1,33 @@
+//react imports
 import React, { useState } from "react";
-import "../checkbox.css";
+// material UI imports
+import { makeStyles } from "@material-ui/core/styles";
+// local imports and styling
 import MediaCard from "./answers";
-import { makeStyles } from '@material-ui/core/styles';
 import useApplicationData from "../hooks/useApplicationData";
-import heartbeat from '../img/dropzone_images/heartbeat.jpg';
-import mags from '../img/dropzone_images/mags.jpg';
+import heartbeat from "../img/dropzone_images/heartbeat.jpg";
+import mags from "../img/dropzone_images/mags.jpg";
 import ruled from "../img/ruled.jpg";
 import mine from "../img/mine1.png";
-import {dropzoneImage, primaryGunImage, secondaryGunImage} from './dropzoneImage'
+import "../styles/roulette.css";
+import {
+  dropzoneImage,
+  primaryGunImage,
+  secondaryGunImage,
+} from "./dropzoneImage";
 
 const useStyles = makeStyles({
   media: {
     height: 150,
-    backgroundColor:"#191d24",
+    backgroundColor: "#191d24",
     objectFit: "contain",
-    backgroundSize:200,
-    
+    backgroundSize: 200,
   },
   media1: {
     height: 150,
-    backgroundColor:"#2a313c",
-    
-    
+    backgroundColor: "#2a313c",
   },
-})
+});
 
 export default function Roulette() {
   const classes = useStyles();
@@ -37,7 +41,6 @@ export default function Roulette() {
     getTactical,
   } = useApplicationData();
 
-  
   // states to check for checked or unchecked cards of the roulette
   const [primaryChecked, setPrimaryChecked] = useState(false);
   const [GunAttachmentsChecked, setGunAttachmentsChecked] = useState(false);
@@ -53,80 +56,97 @@ export default function Roulette() {
     primaryClass: "",
     secondary: "",
     secondaryClass: "",
-    attachment:[],
-    attachmentClass:[],
-    tactical:[],
-    tacticalClass:[],
+    attachment: [],
+    attachmentClass: [],
+    tactical: [],
+    tacticalClass: [],
     dropzone: "",
   });
 
   // random roullete data generator function
-  function generateRoulette() {
-
+  const generateRoulette = () => {
     // grabbing all querry data from stat server by functions imported from useApplicationData helper function
-    Promise.all([getRules(), getPrimary(), getDropZone(), getSecondary(), getPrimaryAttachments(), getTactical()]).then((data) =>{
-      // primary gun 
+    Promise.all([
+      getRules(),
+      getPrimary(),
+      getDropZone(),
+      getSecondary(),
+      getPrimaryAttachments(),
+      getTactical(),
+    ]).then((data) => {
+      // primary gun
       console.log(data[1]);
-      let primaryGun = data[1].name
-      let primaryGunClass = data[1].category
+      let primaryGun = data[1].name;
+      let primaryGunClass = data[1].category;
 
       // attachments
-      let GunAttachments = data[4]
-      let tacticalAttachment = data[5]
-      
+      let GunAttachments = data[4];
+      let tacticalAttachment = data[5];
+
       // secondary gun
-      let secondaryGun = data[3].name
-      let secondaryGunClass = data[3].category
+      let secondaryGun = data[3].name;
+      let secondaryGunClass = data[3].category;
 
       // dropzone
-      let location  = data[2].name
+      let location = data[2].name;
 
       // rules
-      let rule = data[0].text
+      let rule = data[0].text;
 
       // setting state for more than one gun attachments and styling them better
-      let GunAttachment = []
-      let GunAttachmentClass = []
+      let GunAttachment = [];
+      let GunAttachmentClass = [];
       let countAttachment = 0;
       for (const attachment in GunAttachments) {
         countAttachment = countAttachment + 1;
         const allAttachments = GunAttachments[attachment];
-        GunAttachment.push (countAttachment, ". ", allAttachments.attachment_name, ",   ")
-        GunAttachmentClass.push (countAttachment, ". ", allAttachments.type, ",  ")
+        GunAttachment.push(
+          countAttachment,
+          ". ",
+          allAttachments.attachment_name,
+          ",   "
+        );
+        GunAttachmentClass.push(
+          countAttachment,
+          ". ",
+          allAttachments.type,
+          ",  "
+        );
       }
 
       // setting state for lethal & tactical attachments and styling them better
-      let tacticalLethal = []
-      let tacticalLethalClass = []
+      let tacticalLethal = [];
+      let tacticalLethalClass = [];
       let countTactical = 0;
       for (const tactical in tacticalAttachment) {
         countTactical = countTactical + 1;
         const allTactical = tacticalAttachment[tactical];
-        tacticalLethal.push (countTactical, ". ", allTactical.attachment_name, ",   ")
-        tacticalLethalClass.push (countTactical, ". ", allTactical.type, ",  ")
+        tacticalLethal.push(
+          countTactical,
+          ". ",
+          allTactical.attachment_name,
+          ",   "
+        );
+        tacticalLethalClass.push(countTactical, ". ", allTactical.type, ",  ");
       }
 
-       
-      
-      
       // checking for state of checkboxes
       if (dropzoneChecked) {
-        
-        setSelected(prev => ({
+        setSelected((prev) => ({
           ...prev,
           dropzone: location,
-        }))
+        }));
       } else {
-        setSelected(prev => ({
+        setSelected((prev) => ({
           ...prev,
           dropzone: "",
-        }))
+        }));
       }
 
       if (rulesChecked) {
         setSelected((prev) => ({
-            ...prev,
-            rule: rule,
+          ...prev,
+          rule: rule,
         }));
       } else {
         setSelected((prev) => ({
@@ -136,70 +156,69 @@ export default function Roulette() {
       }
 
       if (primaryChecked) {
-        setSelected(prev => ({
+        setSelected((prev) => ({
           ...prev,
           primary: primaryGun,
           primaryClass: primaryGunClass,
-          
-        }))
+        }));
       } else {
-        setSelected(prev => ({
+        setSelected((prev) => ({
           ...prev,
           primary: "",
-          primaryClass: ""
-        }))
-      };
+          primaryClass: "",
+        }));
+      }
 
       if (GunAttachmentsChecked) {
-        setSelected(prev => ({
+        setSelected((prev) => ({
           ...prev,
           attachment: GunAttachment,
-          attachmentClass: GunAttachmentClass
-        }))
+          attachmentClass: GunAttachmentClass,
+        }));
       } else {
-        setSelected(prev => ({
+        setSelected((prev) => ({
           ...prev,
           attachment: "",
-          attachmentClass: ""
-        }))
-      };
+          attachmentClass: "",
+        }));
+      }
 
       if (tacticalLethalChecked) {
-        setSelected(prev => ({
+        setSelected((prev) => ({
           ...prev,
           tactical: tacticalLethal,
-          tacticalClass: tacticalLethalClass
-        }))
+          tacticalClass: tacticalLethalClass,
+        }));
       } else {
-        setSelected(prev => ({
+        setSelected((prev) => ({
           ...prev,
           tactical: "",
-          tacticalClass: ""
-        }))
-      };
-      
+          tacticalClass: "",
+        }));
+      }
 
       if (secondaryChecked) {
-        setSelected(prev => ({
+        setSelected((prev) => ({
           ...prev,
           secondary: secondaryGun,
-          secondaryClass: secondaryGunClass
-        }))
+          secondaryClass: secondaryGunClass,
+        }));
       } else {
-        setSelected(prev => ({
+        setSelected((prev) => ({
           ...prev,
           secondary: "",
-          secondaryClass: ""
-        }))
-      };
-
+          secondaryClass: "",
+        }));
+      }
     });
   }
 
   return (
-    <div className="Roulette">
-      <p className="roulette-discription">Press on the Proximity Mine bellow to roll</p>
-      <div className="answers">
+    <div className="roulette">
+      <p className="roulette-discription">
+        Press on the Proximity Mine bellow to roll
+      </p>
+      <div className="roulette-Cards">
         <div>
           <MediaCard
             classStyle={classes.media}
@@ -234,7 +253,7 @@ export default function Roulette() {
 
           <MediaCard
             classStyle={classes.media1}
-            title='Tactical & Lethal'
+            title="Tactical & Lethal"
             selected={selected.tactical}
             class={selected.tacticalClass}
             image={heartbeat}
@@ -264,8 +283,13 @@ export default function Roulette() {
           />
         </div>
       </div>
-      <div className="checkbox">
-        <img alt="mineButton" className="button" src={mine} onClick={generateRoulette} />
+      <div className="roulette-checkbox">
+        <img
+          alt="mineButton"
+          className="button-generateRoulette"
+          src={mine}
+          onClick={generateRoulette}
+        />
       </div>
     </div>
   );

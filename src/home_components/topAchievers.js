@@ -1,30 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { lighten, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import "./App.css";
+// react imports
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
+// material UI imports
+import { lighten, makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TablePagination from "@material-ui/core/TablePagination";
+import TableRow from "@material-ui/core/TableRow";
+import TableSortLabel from "@material-ui/core/TableSortLabel";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 
-//font color on press
-
-
-function createData(name, kills, death, KD, Votes) {
-  return { name, kills, death, KD, Votes };
+// creating fake Data
+const createData = (name, TopAcheivment, Acheivments, KD, matchesPlayed) => {
+  return { name, TopAcheivment, Acheivments, KD, matchesPlayed };
 }
 
-
-
-function descendingComparator(a, b, orderBy) {
+// sorting the table
+const descendingComparator = (a, b, orderBy) => {
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
@@ -34,13 +32,13 @@ function descendingComparator(a, b, orderBy) {
   return 0;
 }
 
-function getComparator(order, orderBy) {
-  return order === 'desc'
+const getComparator = (order, orderBy) => {
+  return order === "desc"
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-function stableSort(array, comparator) {
+const stableSort = (array, comparator) => {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
@@ -49,16 +47,34 @@ function stableSort(array, comparator) {
   });
   return stabilizedThis.map((el) => el[0]);
 }
+// ---------------------------------------------------------------------
 
+// table content Input
 const headCells = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Streamer' },
-  { id: 'kills', numeric: true, disablePadding: false, label: 'Kills' },
-  { id: 'death', numeric: true, disablePadding: false, label: 'Death' },
-  { id: 'KD', numeric: true, disablePadding: false, label: 'K/D Ratio' },
-  { id: 'Matches Played', numeric: true, disablePadding: false, label: 'Matches Played' },
+  { id: "name", numeric: false, disablePadding: true, label: "Gamer" },
+  {
+    id: "Top Acheivment",
+    numeric: true,
+    disablePadding: false,
+    label: "Top Acheivment",
+  },
+  {
+    id: "Acheivments",
+    numeric: true,
+    disablePadding: false,
+    label: "Acheivments",
+  },
+  { id: "k/d ratio", numeric: true, disablePadding: false, label: "K/D Ratio" },
+  {
+    id: "Matches Played",
+    numeric: true,
+    disablePadding: false,
+    label: "Matches Played",
+  },
 ];
 
-function EnhancedTableHead(props) {
+// rendering the Head values of the table
+const EnhancedTableHead = (props) => {
   const { classes, order, orderBy, onRequestSort } = props;
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
@@ -67,25 +83,23 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        {/* <TableCell padding="checkbox">
-          
-        </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
             className={classes.text}
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
-            padding={headCell.disablePadding ? 'none' : 'default'}
+            align={headCell.numeric ? "right" : "left"}
+            padding={headCell.disablePadding ? "none" : "default"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
-              direction={orderBy === headCell.id ? order : 'asc'}
+              active={orderBy === headCell.id}
+              direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}
             >
               {headCell.label}
               {orderBy === headCell.id ? (
                 <span className={classes.visuallyHidden}>
-                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                  {order === "desc" ? "sorted descending" : "sorted ascending"}
                 </span>
               ) : null}
             </TableSortLabel>
@@ -96,12 +110,13 @@ function EnhancedTableHead(props) {
   );
 }
 
+// controlling values input
 EnhancedTableHead.propTypes = {
   classes: PropTypes.object.isRequired,
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
+  order: PropTypes.oneOf(["asc", "desc"]).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
 };
@@ -112,7 +127,7 @@ const useToolbarStyles = makeStyles((theme) => ({
     paddingRight: theme.spacing(1),
   },
   highlight:
-    theme.palette.type === 'light'
+    theme.palette.type === "light"
       ? {
           color: theme.palette.secondary.main,
           backgroundColor: lighten(theme.palette.secondary.light, 0.85),
@@ -122,13 +137,13 @@ const useToolbarStyles = makeStyles((theme) => ({
           backgroundColor: theme.palette.secondary.dark,
         },
   title: {
-    flex: '1 1 100%',
-    display:"flex",
-    justifyContent:"center",
-   
+    flex: "1 1 100%",
+    display: "flex",
+    justifyContent: "center",
   },
 }));
 
+// tool bar Component
 const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
@@ -140,18 +155,29 @@ const EnhancedTableToolbar = (props) => {
       })}
     >
       {numSelected > 0 ? (
-        <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
+        <Typography
+          className={classes.title}
+          color="inherit"
+          variant="subtitle1"
+          component="div"
+        >
           {numSelected} selected
         </Typography>
       ) : (
-        <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-          Top Streamers of the week
+        <Typography
+          className={classes.title}
+          variant="h6"
+          id="tableTitle"
+          component="div"
+        >
+          Top Achievers of StatSite
         </Typography>
       )}
     </Toolbar>
   );
 };
 
+// controlling values input
 EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
@@ -166,91 +192,89 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     position: "absolute",
-    width: "40%",
+    width: "45%",
     color: "#fff",
     background: "#151518",
     marginBottom: "100px",
   },
   table: {
     margin: 5,
-    height:"50px",
-    
+    height: "50px",
   },
   visuallyHidden: {
     border: 0,
-    clip: 'rect(0 0 0 0)',
+    clip: "rect(0 0 0 0)",
     height: 1,
     margin: -1,
-    overflow: 'hidden',
+    overflow: "hidden",
     padding: 0,
-    position: 'absolute',
+    position: "absolute",
     top: 20,
     width: 1,
   },
-  text:{
-    color:"#fff",
-    fontSize:"12px",
-  }
+  text: {
+    color: "#fff",
+    fontSize: "12px",
+  },
 }));
 
-function tableRows () {
+// number of rows showing
+const tableRows = () => {
   if (headCells.length > 4) {
-    return 3
+    return 3;
   }
-  return headCells.length
+  return headCells.length;
 }
 
-
-export default function EnhancedTable() {
+// main leaderboard const
+export default function EnhancedTable1() {
   const classes = useStyles();
-  const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('kills');
+  const [order, setOrder] = React.useState("asc");
+  const [orderBy, setOrderBy] = React.useState("TopAcheivment");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(tableRows);
 
   const rows = [
-    createData('Symfuhny', 305, 3.7, 67, 41),
-    createData('Aydan', 452, 25.0, 51, 70),
-    createData('Swagg', 640, 231, 2.77, 74),
-    createData("Nickmercs", 528, 124, 4.26, 55),
-    createData('TimTheTatMan', 104, 31, 3.35, 37),
+    createData("Symfuhny", 305, 14, 3.9, 41),
+    createData("Aydan", 452, 25, 4.8, 70),
+    createData("Swagg", 640, 31, 2.77, 74),
+    createData("Nickmercs", 528, 11, 4.26, 55),
+    createData("TimTheTatMan", 104, 27, 3.35, 37),
   ];
 
+  // specifing asc or dec sorting
   const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
+    const isAsc = orderBy === property && order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
   };
 
-
+  // handling the page change
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
+  // rows per page const
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
-  
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar/>
-        <TableContainer >
+        <EnhancedTableToolbar />
+        <TableContainer>
           <Table
             className={classes.table}
             aria-labelledby="tableTitle"
-            // dense ? 'small' : 'medium'
-            size={'small'}
+            size={"small"}
             aria-label="enhanced table"
           >
             <EnhancedTableHead
               classes={classes}
-              
               order={order}
               orderBy={orderBy}
-              // onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
@@ -258,38 +282,40 @@ export default function EnhancedTable() {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  // const isItemSelected = isSelected(row.name);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
-                    <TableRow
-                      role="checkbox"
-                      tabIndex={-1}
-                      key={row.name}
-                    >
-                     
-                      <TableCell component="th" id={labelId} scope="row" padding="none" className={classes.text}>
+                    <TableRow tabIndex={-1} key={row.name}>
+                      <TableCell
+                        component="th"
+                        id={labelId}
+                        scope="row"
+                        padding="none"
+                        className={classes.text}
+                      >
                         {row.name}
                       </TableCell>
-                      <TableCell align="right" className={classes.text} >{row.kills}</TableCell>
-                      <TableCell align="right" className={classes.text}>{row.death}</TableCell>
-                      <TableCell align="right" className={classes.text}>{row.KD}</TableCell>
-                      <TableCell align="right" className={classes.text}>{row.Votes}</TableCell>
+                      <TableCell align="center" className={classes.text}>
+                        {row.TopAcheivment}
+                      </TableCell>
+                      <TableCell align="center" className={classes.text}>
+                        {row.Acheivments}
+                      </TableCell>
+                      <TableCell align="center" className={classes.text}>
+                        {row.KD}
+                      </TableCell>
+                      <TableCell align="center" className={classes.text}>
+                        {row.matchesPlayed}
+                      </TableCell>
                     </TableRow>
                   );
                 })}
-              {/* {emptyRows > 0 && (
-                // (dense ? 33 : 53
-                <TableRow style={{ height: 33 * emptyRows, }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )} */}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
-          style={{color:"#dea01e"}}
-          rowsPerPageOptions={[3]}
+          style={{ color: "#dea01e" }}
+          rowsPerPageOptions={[5]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
