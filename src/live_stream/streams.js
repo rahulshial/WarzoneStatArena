@@ -8,7 +8,7 @@ function Streams ({match, location}) {
 
   // const url = `location.href=https://www.twitch.tv/search?term=${state}`
   return ( 
-    <div style={{display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", color:"rgb(255, 211, 105)"}}>
+    <div style={{display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", color:"rgb(255, 211, 105)", backgroundColor:"#191d24"}}>
       <h1 style={{fontSize:"30px", marginTop:"30px"}}>Watching {match.params.id}'s Stream</h1>
       <h2 style={{margin: "40px"}}>
         <strong className='text-primary'>{location.state.views}</strong> Viewers
