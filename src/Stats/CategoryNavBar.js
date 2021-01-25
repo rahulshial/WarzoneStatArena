@@ -1,4 +1,7 @@
+/** React Imports */
 import React, { useState } from 'react';
+
+/** Material UI Imports */
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
@@ -25,10 +28,9 @@ export default function CenteredTabs(props) {
   const [tab, setTab] = useState(0);
 
   const chosenTab = (e, newTab) => {
-    setTab(newTab)
-    props.onSelect(newTab) 
-    // props.onCat()
-  }
+    setTab(newTab);
+    props.onSelect(newTab) ;
+  };
   
   return (
     <Paper className={classes.root}>
@@ -44,4 +46,4 @@ export default function CenteredTabs(props) {
       </Tabs>
     </Paper>
   );
-}
+};

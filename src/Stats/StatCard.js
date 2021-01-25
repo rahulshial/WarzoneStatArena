@@ -21,11 +21,17 @@ const useStyles = makeStyles((theme) => ({
     elevation: 24,
     cursor: 'pointer',
   },
+  gridContainer: {
+    marginTop: '2px',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 }));
 
 export default function StatCard(props) {
   const classes = useStyles();
-  const { image, gunName, onAdd, cat, topRow, statsRow } = props;
+  const { image, gunName, onAdd, cat, statsRow } = props;
   const gunLongName = gunDataObj.gunNameObj[gunName]
   return (
     <div className="container">
@@ -46,25 +52,11 @@ export default function StatCard(props) {
           </div>
         </div>
         <div className="face face2">
-
           <table className='gun-item-table'>
-
-            <tr>
-              {topRow}
-            </tr>
-            <tr>
-            {statsRow}
-
-            </tr>
-
+            <Grid container spacing={1} className={classes.gridContainer}>
+              {statsRow}
+            </Grid>
           </table>
-          <div className="achievements">
-            <h5>Achievements</h5>
-            <hr></hr>
-            <div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>

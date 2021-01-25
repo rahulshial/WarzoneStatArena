@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'left',
     color: "#dea01e",
-    // backgroundColor: 'transparent',
     backgroundColor: "#565666",
     fontSize: 20
   },
@@ -43,13 +42,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function GameModeStats(props) {
   const classes = useStyles();
-  const { shown } = props
+  const { shown } = props;
   const topRow = [];
 
   
   for (const stat in shown) {
-    topRow.push(shown[stat].properties)
-  }
+    topRow.push(shown[stat].properties);
+  };
 
   return topRow.map((statRow, index) => {
     console.log('Game Modes: ', statRow);
@@ -86,6 +85,6 @@ export default function GameModeStats(props) {
             <br></br>
           </div>  
         </div>
-    )
+    );
   });
 };

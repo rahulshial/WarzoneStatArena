@@ -1,61 +1,78 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import '../stats.css'
-import StatCard from './StatCard.js'
+/** React Imports */
+import React from 'react';
+import axios from 'axios';
 
+/** Material UI Imports */
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+
+/** Local Imports */
+import '../stats.css';
+import StatCard from './StatCard.js';
+import gunDataObj from '../helpers/gunData';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: '#191d24',
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: "black",
+    backgroundColor: '#fff',
+    fontSize: '0.83em'
+  },
+}));
 
 export default function GunStats({ shown, gunImgs, gunTab, weapons, gunNavSelected }) {
-
-  const [gunCatState, setGunCatState] = useState('weapon_assault_rifle');
-  const topRow = []
-  const categories = ["weapon_assault_rifle", "weapon_marksman", "weapon_sniper", "weapon_smg", "tacticals", "lethals", "weapon_lmg", "weapon_launcher", "weapon_pistol", "weapon_shotgun", "supers", "weapon_other", "weapon_melee"];
-
-
+  const classes = useStyles();
+  const topRow = [];
+  
   const changeGunCat = () => {
-    console.log(gunTab);
-  }
+    console.log('In gun stats: ', shown);
+  };
 
   for (const stat in shown) {
     topRow.push(shown[stat].properties)
-  }
+  };
 
-  const onButtonClick = (gun, img, cat) => {
-    
+  const onButtonClick = (gun, img, cat) => {    
     const gunObj = {
       cat: gunTab,
       gun,
       image: img
-    }
-
+    };
+    
     axios
       .post("http://localhost:3030/trackedstats/addnew", gunObj)
       .then(res => {
-        console.log("hello");
+        console.log("Gun added to favourite items");
       })
       .catch(err => {
         console.log(err);
       })
-  }
+  };
 
   return topRow.map((gun, i) => {
-
     const titles = [];
     const stats = [];
 
     Object.keys(gun).map((gunStat, i) => {
-
-     // FOR GRABBING PROPPER GUN NAMES PERHAPS A HELPER FILE WITH AN OBJECT 
-    //  KEY = IW8_AR*** 
-    //  VALUE = PROPPER GUN NAME
-
-      if (gunStat === "kdRatio" || gunStat === "accuracy") {
-        titles.push(<td><h5>{gunStat}</h5></td>)
-        stats.push(<td><h5>{gun[gunStat].toFixed(2)}</h5></td>)
+      if (gun[gunStat] % 1 > 0) {
+        stats.push(
+          <Grid item xs={1.5}>
+            <Paper className={classes.paper}>{gunDataObj.gunStatTitle[gunStat]}: <strong>{gun[gunStat].toFixed(2)}</strong></Paper>
+          </Grid>);
       } else {
-        titles.push(<td><h5>{gunStat}</h5></td>)
-        stats.push(<td><h5>{gun[gunStat]}</h5></td>)
-      }
-    })
+        stats.push(
+          <Grid item xs={1.5}>
+            <Paper className={classes.paper}>{gunDataObj.gunStatTitle[gunStat]}: <strong>{gun[gunStat]}</strong></Paper>
+          </Grid>);
+      };
+    });
+
     return (
       <>
         <StatCard
@@ -64,14 +81,9 @@ export default function GunStats({ shown, gunImgs, gunTab, weapons, gunNavSelect
           image={gunImgs[Object.keys(shown)[i]]}
           topRow={titles}
           statsRow={stats}
-          // Changed cat to just check the category! It does nothing!!
           cat={changeGunCat}
         />
       </>
-    )
-  })
-
-}
-
-
-// categories[gunNavSelected]
+    );
+  });
+};

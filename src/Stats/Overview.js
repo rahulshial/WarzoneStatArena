@@ -11,7 +11,6 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 /** Local imports */
-
 import GamerStats from '../Profile/GamerStats';
 
 const BorderLinearProgress = withStyles((theme) => ({
@@ -26,13 +25,11 @@ const BorderLinearProgress = withStyles((theme) => ({
   bar: {
     borderRadius: 5,
     background: 'linear-gradient(45deg, #fcc14c 30%, #1aff31 90%)'
-    // backgroundColor: '#1aff31',
   },
 }))(LinearProgress);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // minWidth: 275,
     color: "#ffd369",
     backgroundColor: "#565666",
   },
@@ -46,8 +43,6 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(1),
     textAlign: 'center',
-    // color: "#ffd369",
-    // color: "#dadada",
     color: '#dea01e',
     backgroundColor: "#0f0e18",
     width: '100%',
@@ -55,72 +50,78 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: '2px solid',
   },
   statTitle: {
-    // color: '#ffd369',
     color: '#dea01e',
     fontSize: '16px',
   },
   statValue: {
     color: "#dadada",
-    // color: '#ffd369',
   },
   gridBox: {
     display: 'flex',
-
   },
 }));
 
 export default function Overview(props) {
   const classes = useStyles();
-  const { shown } = props
-  console.log('All stats received: ',shown);
+  const { shown } = props;
   const weeklyData = [shown.allstats.weekly.all.properties];
   const lifetimeData = [shown.allstats.lifetime.all.properties];
-
-  console.log('Weekly Data: ', weeklyData);
-  console.log('Lifetime Data: ', lifetimeData);
-  
   const fullLevel = shown.allstats.levelXpGained + shown.allstats.levelXpRemainder;
   const percentageToLevel = shown.allstats.levelXpRemainder / fullLevel * 100;
   const percentageCompleted = 100 - percentageToLevel;
   const timePlayedTotal = shown.allstats.lifetime.mode.br.properties.timePlayed;
 
+  let platform = '';
+  switch(shown.allstats.platform) {
+    case 'uno':
+      platform = 'activision';
+      break;
+    case 'xbl':
+      platform = 'xbox';
+      break;
+    case 'battle':
+      platform = 'battlenet';
+      break;
+    default:
+      platform = shown.allstats.platform;
+      break;
+  };
+
   return (
     <>
-    <div>
-      <Card className={classes.root} variant="outlined">
-        <CardContent>
-          <Typography className={classes.title} gutterBottom>
-          <h1>{shown.allstats.username} stats on <strong>{shown.allstats.platform}</strong> at Level {shown.allstats.level}</h1>
-          </Typography>
-          <Grid container spacing={1}>
-            <Grid className={classes.gridBox} item xs={2}>
-                <Paper className={classes.paper} square>Time Played: <strong className={classes.statValue}>{timePlayedTotal}</strong></Paper>
+      <div>
+        <Card className={classes.root} variant="outlined">
+          <CardContent>
+            <Typography className={classes.title} gutterBottom>
+            <h1>{shown.allstats.username} stats on <strong>{platform}</strong> at Level {shown.allstats.level}</h1>
+            </Typography>
+            <Grid container spacing={1}>
+              <Grid className={classes.gridBox} item xs={2}>
+                  <Paper className={classes.paper} square>Time Played: <strong className={classes.statValue}>{timePlayedTotal}</strong></Paper>
+              </Grid>
+              <Grid item xs={2}>
+                  <Paper className={classes.paper}>XP earned this level: <strong className={classes.statValue}>{shown.allstats.levelXpGained}</strong></Paper>
+              </Grid>        
+              <Grid item xs={2}>
+                  <Paper className={classes.paper}>XP needed to level up: <strong className={classes.statValue}>{shown.allstats.levelXpRemainder}</strong></Paper>
+              </Grid>        
+              <Grid item xs={2}>
+                  <Paper className={classes.paper}>To next Level: <strong className={classes.statValue}>{percentageToLevel.toFixed(2)}%</strong></Paper>
+              </Grid>        
+              <Grid item xs={4}>
+                <BorderLinearProgress variant="determinate" value={percentageCompleted} />
+              </Grid>
             </Grid>
-            <Grid item xs={2}>
-                <Paper className={classes.paper}>XP earned this level: <strong className={classes.statValue}>{shown.allstats.levelXpGained}</strong></Paper>
-            </Grid>        
-            <Grid item xs={2}>
-                <Paper className={classes.paper}>XP needed to level up: <strong className={classes.statValue}>{shown.allstats.levelXpRemainder}</strong></Paper>
-            </Grid>        
-            <Grid item xs={2}>
-                <Paper className={classes.paper}>To next Level: <strong className={classes.statValue}>{percentageToLevel.toFixed(2)}%</strong></Paper>
-            </Grid>        
-            <Grid item xs={4}>
-              <BorderLinearProgress variant="determinate" value={percentageCompleted} />
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
-    </div>
-    <div className='profile-page-gamer-stats'>
-
-    <GamerStats 
-      key={weeklyData}
-      weeklyData={weeklyData}
-      lifetimeData={lifetimeData}
-      />
-
-    </div>
+          </CardContent>
+        </Card>
+      </div>
+      <div className='profile-page-gamer-stats'>
+        <GamerStats 
+          key={weeklyData}
+          weeklyData={weeklyData}
+          lifetimeData={lifetimeData}
+          />
+      </div>
     </>
-  )
-}
+  );
+};

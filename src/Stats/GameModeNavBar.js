@@ -1,3 +1,5 @@
+/** This component is for future enhancements to show gamemode wise stats separately if needed. */
+
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';

@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from 'react'
+/** React Imports */
+import React from 'react';
 import axios from 'axios';
+
+/** Material UI Imports */
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -8,7 +11,6 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 
 /** Local imports */
-// import getStatsForFavorites from '../helpers/getStatsForFavorites'
 import gunDataObj from '../helpers/gunData'
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: "#ffd369",
     backgroundColor: '#0f0e18',
+    '&:hover': {
+      elevation: '24',
+      backgroundColor: '#ff0057',  
+    },
   },
   paperButton: {
     padding: theme.spacing(2),
@@ -134,7 +140,6 @@ export default function TrackedGuns(props) {
 
     const removeStat = () => {
       axios
-        // change to .delete
         .post("http://localhost:3030/trackedstats/removestat", removedItem)
         .then((res) => {
           deleteStat(fixed.gun)
@@ -174,11 +179,11 @@ export default function TrackedGuns(props) {
               </div>
             </div>
             <div className='compare-gamer-block'>
-              <Grid container spacing={1}>
+              <Grid container spacing={1} style={{marginLeft: '10px'}}>
                 {loopCompareStats()}
               </Grid>
               <br />
-              <div className="gun-achieves">
+              <div className="gun-achieves" style={{marginLeft: '10px'}}>
                 {compareEarnedAchievements()}
               </div>
             </div>

@@ -1,4 +1,7 @@
+/** React Imports */
 import React from 'react'
+
+/** Material UI Imports */
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -13,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
     color: "#ffd369",
     backgroundColor: "#0f0e18",
     borderLeft: '2px solid',
+    '&:hover': {
+      elevation: '24',
+      backgroundColor: '#ff0057',  
+    },
   },
   paperEmpty: {
     padding: theme.spacing(2),
@@ -27,8 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function WeeklyStatCard({weeklyData}) {
   const classes = useStyles();
-console.log('Weekly Data: ', weeklyData.length)
-  if(weeklyData[0] !== null) {
+  if(weeklyData[0]) {
     const avgLifeTime = weeklyData[0].avgLifeTime / 60;
     const headShotPercent = weeklyData[0].headshotPercentage * 100;
     const timePlayed = weeklyData[0].timePlayed / 60;

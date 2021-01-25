@@ -1,57 +1,30 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
-import '../stats.css'
+/** The stats page shows the logged users or the selected gamers statistics in terms of his Overview
+ * Weapons and Gamemodes.
+ * Subordinate components of Stats are CategoryNavBar to selecte which stat category to be viewed
+ * GunNavBar to select the weapon type to view
+ * Overview to show weekly and lifetime stats
+  */
+/** React Imports */
+import React from "react";
+import {useHistory} from 'react-router-dom';
+
+/** Local Imports */
+import '../stats.css';
+import { AR, SMG, SG, LMG, MRKSMN, SNPR, PISTOL, LAUNCHER, LETHAL } from '../images.js'
+import useApplicationData from "../hooks/useApplicationData";
 import GunNav from '../Stats/GunNavBar';
 import CategoryNav from '../Stats/CategoryNavBar';
 import GunStats from '../Stats/GunStats';
 import GameModeStats from '../Stats/GameModeStats';
-import Overview from '../Stats/Overview'
-import { AR, SMG, SG, LMG, MRKSMN, SNPR, PISTOL, LAUNCHER, LETHAL } from '../images.js'
-import useApplicationData from "../hooks/useApplicationData";
-import {useHistory} from 'react-router-dom';
+import Overview from '../Stats/Overview';
 
 export default function Guns(props) {
   const history = useHistory();
-  // const [state, setState] = useState({
-  //   gameModes: [],
-  //   shown: [],
-  //   shownCat: [],
-  //   gameModeCat: [],
-  //   category: [],
-  //   weapons: [],
-  //   gunNavSelected: [],
-  //   selectedGunTab: 'weapon_assault_rifle'
-  // })
 
   const {
     allApiData,
     setAllApiData,
   } = useApplicationData();
-  
-  // useEffect(() => {
-  //   let nickname = props.name.replace("#", "%23")
-  //   // nickname will === username
-  //   // Promise.all([
-  //   //   axios.get(`http://localhost:3030/stats/moho`),
-  //   //   axios.get(`http://localhost:3030/stats/allstats/moho`)
-  //   // ])
-  //   axios.get(`http://localhost:3030/stats/moho`)
-  //     .then(res => {
-  //       const weapons = res.data[2].guns;
-  //       const gameModes = res.data[1].gameModes;
-  //       console.log(gameModes);
-  //       setState(prev => ({
-  //         ...prev,
-  //         gameModes,
-  //         weapons,
-  //         category: AR,
-  //       }))
-
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     })
-  // }, [])
 
   // Checking for what GUN tab is selected on the stats page
   const gunTabSelected = (indexValue) => {
@@ -67,7 +40,7 @@ export default function Guns(props) {
       LAUNCHER,
       PISTOL,
       SG,
-    ]
+    ];
 
     // shown = setting the cat state to an object of the category
     setAllApiData(prev => ({
@@ -91,32 +64,30 @@ export default function Guns(props) {
         ...prev,
         shown: allApiData.weapons.weapon_assault_rifle,
         category: AR
-      }))
+      }));
     } else if (categories[indexValue] === "game_modes") {
       setAllApiData(prev => ({
         ...prev,
         shown: allApiData.gameModes,
-      }))
+      }));
     } else if (categories[indexValue] === "overview") {
       setAllApiData(prev => ({
         ...prev,
         shown: allApiData.playerInfo
-      }))
+      }));
     }
 
     // shown = setting the cat allApiData to an object of the category
     setAllApiData(prev => ({
       ...prev,
       shownCat: categories[indexValue]
-    }))
+    }));
   };
 
+    /**This is setting to return what SECONDARY navBar is shown. if the gun category is selected then we show all the sub categories of guns.. IE AR, SMGS, SHOTTIES etc... OR game modes.. depending on what was clicked..
+     * */
+
   const navBarsToShow = () => {
-
-    // This is setting to return what SECONDARY navBar is shown...
-    //if the gun category is selected then we show all the sub categories of guns.. IE AR, SMGS, SHOTTIES etc... OR game modes.. depending on what was clicked..
-    
-
     if (allApiData.shownCat === "guns") {
       return (
         <>
@@ -132,12 +103,10 @@ export default function Guns(props) {
               weapons={allApiData.weapons}
               gunNavSelected={allApiData.gunNavSelected}
             />
-
           </div>
         </>
-      )
+      );
     } else if (allApiData.shownCat === "game_modes") {
-
       return (
         <>
           <div style={{backgroundColor: '#191D24', minHeight: '100vh', height: '100%'}}>
@@ -147,24 +116,21 @@ export default function Guns(props) {
             />
           </div>
         </>
-      )
+      );
     } else if (allApiData.shownCat === "overview") {
       return (
         <>
+         <div style={{backgroundColor: '#191D24', minHeight: '100vh', height: '100%'}}>
           <Overview
             shown={allApiData.shown}
           />
+          </div>
         </>
-      )
+      );
     } else if (!allApiData.shown) {
       history.push("/")
     }
   }
-
-
-
-
-
   return (
     <div>
       <CategoryNav
@@ -172,8 +138,8 @@ export default function Guns(props) {
       />
       {navBarsToShow()}
     </div >
-  )
-}
+  );
+};
 
 
 

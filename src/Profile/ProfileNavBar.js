@@ -1,15 +1,19 @@
+/** React Imports */
 import React, { useState } from 'react';
+
+/** Material UI Imports */
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+
+/** Local Imports */
 import '../styles/profile.css'
 
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
     backgroundColor: '#2A313C',
-
   },
   tab: {
     color: '#DADADA',
@@ -29,7 +33,7 @@ export default function ProfileNavBar(props) {
   const chosenTab = (e, newTab) => {
     setTab(newTab)
     props.onSelect(newTab)
-  }
+  };
   
   return (
     <Paper className={classes.root}>
@@ -44,4 +48,4 @@ export default function ProfileNavBar(props) {
       </Tabs>
     </Paper>
   );
-}
+};

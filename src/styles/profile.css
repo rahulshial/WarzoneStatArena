@@ -5,7 +5,7 @@
 /* #bc0505 30%, #DEA01E 90% */
 .fav-gun-card {
   display: grid;
-  grid-template-columns: 20% 40% 40%;
+  grid-template-columns: 20% 38% 40%;
   width: 100%;
   margin: 2px;
 }

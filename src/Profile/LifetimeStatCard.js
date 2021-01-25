@@ -1,4 +1,7 @@
+/** React Imports */
 import React from 'react'
+
+/** Material UI Imports */
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -13,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
     color: "#ffd369",
     backgroundColor: "#0f0e18",
     borderLeft: '2px solid',
+    '&:hover': {
+      elevation: '24',
+      backgroundColor: '#ff0057',  
+    },
   },
   statValue: {
     color: "#dadada",
