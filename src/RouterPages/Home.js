@@ -147,8 +147,8 @@ export default function Home() {
           }
         });
     } else {
-      alert("Please enter Name & Choose an platform!");
-      history.go(0);
+      setApiError("no input");
+      // history.go(0);
     }
   };
 

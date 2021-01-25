@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     marginTop: "5px",
+    marginBottom:"30%",
     borderRadius: "10px",
   },
   textField: {
@@ -59,7 +60,7 @@ export default function BasicTextFields(props) {
           >
             <TextField
               label="GAMER ID"
-              variant="standard"
+              variant="filled"
               className={classes.input}
               value={props.value}
               onChange={props.onChange}
@@ -97,7 +98,7 @@ export default function BasicTextFields(props) {
         >
           <TextField
             label="GAMER ID"
-            variant="outlined"
+            variant="filled"
             className={classes.input}
             value={props.value}
             onChange={props.onChange}
