@@ -1,0 +1,30 @@
+.roulette {
+  background-image: url("../img/warzone8.jpg");
+  padding-bottom: 1vh;
+  padding-top: 30px;
+  height: 100%;
+}
+
+.roulette-checkbox {
+  display: flex;
+
+  margin: 20px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.roulette-Cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.button-generateRoulette {
+  border-radius: round;
+  cursor: pointer;
+}
+
+.roulette-discription {
+  display: flex;
+  justify-content: center;
+}

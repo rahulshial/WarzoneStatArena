@@ -3,10 +3,7 @@
   margin: 4px;
 }
 
-.MuiAppBar-colorPrimary {
-  color: #fff;
-  background-color: #080a0c;
-}
+
 
 .item-nav:focus {
   color: #dea01e;
