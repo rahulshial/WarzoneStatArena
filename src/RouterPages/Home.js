@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from "axios";
+
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -11,6 +13,7 @@ import RecipeReviewCard from "../news";
 import EnhancedTable from "../leaderboard";
 import EnhancedTable1 from "../topAchievers";
 import useApplicationData from "../hooks/useApplicationData";
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,12 +83,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home() {
   const classes = useStyles();
-
+  const history = useHistory();
+  const [apiError, setApiError] = useState("");
   const {
     state,
     setState,
     setGamerData,
-    apiError
+    // apiError
   } = useApplicationData();
 
   // setting gamer tag from text Field Input
@@ -96,6 +100,30 @@ export default function Home() {
       name: event.target.value
     }))
   }
+
+  const checkTagAndPlatformEntered = (event) => {
+    console.log(document.querySelector('input').value);
+    if (state.name && state.platform) {
+      const gamerTag = state.name.replace("#", "%23");
+      const gamerPlatform = state.platform;
+      axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
+      .then(res => {
+       console.log("checking gamer data in Home", res);
+       if(res.data.error) {
+          setApiError(res.data.error)
+          setState(prev => ({
+            ...prev,
+            name: ''
+          }))
+       } else {
+        setGamerData();
+      }})
+    } else {
+      alert('Please enter Name & Choose an platform!');
+      history.go(0);  
+    }
+  };
+
   // setting state of Platform
   function setPlatform(platform) {
     setState(prev => ({
@@ -135,7 +163,7 @@ export default function Home() {
                 <BasicTextFields 
                   value={state.name}
                   onChange={setName}
-                  onClick={setGamerData}
+                  onClick={checkTagAndPlatformEntered}
                   error={apiError}
                 />
               </div>

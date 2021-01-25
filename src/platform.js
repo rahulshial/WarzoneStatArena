@@ -68,7 +68,7 @@ export default function GroupSizesColors(props) {
           <img  className={classes.img} src={battlenet} alt=""/>
         </Button>
         {/* give back "xbox" */}
-        <Button  className={classes.button} onClick= {()=> test1("xbox")} >
+        <Button  className={classes.button} onClick= {()=> test1("xbl")} >
           <img className={classes.img} src={xbox} alt=""/>
         </Button>
       </ButtonGroup>

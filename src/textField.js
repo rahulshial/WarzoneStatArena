@@ -58,12 +58,14 @@ export default function BasicTextFields(props) {
         <div>
         <div className={classes.textField} >
           <form className={classes.root} noValidate autoComplete="on"  onSubmit={(event) => event.preventDefault()}>
-         <TextField label="GAMER ID" variant="outlined"   className={classes.input} value={props.value} onChange={props.onChange}/>
+         <TextField label="GAMER ID" variant="outlined"   className={classes.input} value={props.value} 
+         onChange={props.onChange}
+         />
          <Button
            variant="contained"
            color="primary"
            className={classes.button}
-           onClick={props.onClick}
+           onClick={event => {props.onClick(event)}}
          >
             <ArrowIcon fontSize="inherit" />
          </Button>

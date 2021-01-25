@@ -33,7 +33,7 @@ export default function useApplicationData () {
     playerInfo: {},
   })
 
-  const [apiError, setApiError] = useState("")
+  // const [apiError, setApiError] = useState("")
 
   // dropZone data database querry from StatServer
   async function getDropZone () {
@@ -145,7 +145,7 @@ export default function useApplicationData () {
       gamerPlatform = cookies.gamerTagInfo.gamerPlatform;
     }
     else {
-      gamerTag = 'Nickmercs%2311526';
+      gamerTag = 'stefler%231173';
       gamerPlatform = 'battle';
     };
 
@@ -154,13 +154,13 @@ export default function useApplicationData () {
       axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
       .then(res => {
        console.log("hellooooo", res);
-       if(res.data.error){
-         console.log(res.data.error)
+      //  if(res.data.error){
+      //    console.log(res.data.error)
           
-          history.push("/")
-          setApiError(res.data.error)
-         return;
-       }
+      //     history.push("/")
+      //     // setApiError(res.data.error)
+      //    return;
+      //  }
         if (res.data[0].weeklyData !== null) {
 
         const weapons = res.data[2].guns;
@@ -219,6 +219,6 @@ export default function useApplicationData () {
     allApiData,
     setAllApiData,
     cookies,
-    apiError
+    // apiError
   };
 }

@@ -85,7 +85,7 @@ export default function Profile(props) {
   });
 
   useEffect(() => {
-    const gamerTag = "Nickmercs%2311526";
+    const gamerTag = "stefler%231173";
     const gamerPlatform = "battle";
     if(Object.keys(cookies).length > 0) {
       if('gamerTagInfo' in cookies) {
