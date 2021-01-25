@@ -19,27 +19,41 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
+  paperLeft: {
+    marginTop: '10px',
+    marginRight: '20px',
     padding: theme.spacing(2),
     textAlign: 'center',
-    background: 'linear-gradient(45deg, #de1616 30%, #fcc14c 90%)',
+    background: 'linear-gradient(45deg, #bc0505 30%, #DEA01E 90%)',
     border: 0,
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
     textSize: '24px',
   },
-  paperButton: {
+  paperRight: {
+    marginTop: '10px',
     padding: theme.spacing(2),
     textAlign: 'center',
-    background: 'linear-gradient(45deg, #de1616 30%, #fcc14c 90%)',
+    background: 'linear-gradient(45deg, #DEA01E 30%, #bc0505 90%)',
     border: 0,
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     color: 'white',
     textSize: '24px',
-    cursor: 'pointer',
   },
+  // paperButton: {
+  //   marginTop: '10px',
+  //   padding: theme.spacing(2),
+  //   textAlign: 'center',
+  //   background: 'linear-gradient(45deg, #DEA01E 30%, #bc0505 90%)',
+  //   border: 0,
+  //   borderRadius: 3,
+  //   boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  //   color: 'white',
+  //   textSize: '24px',
+  //   cursor: 'pointer',
+  // },
   paperEmpty: {
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -162,12 +176,12 @@ export default function Profile(props) {
           return (
             <div className='tracked-guns' style={{backgroundColor: '#191D24',  minHeight: '100vh', height: '100%'}}>
               <div className='tracked-guns-header'>
-                <Grid container spacing={1}>
+                <Grid container spacing={8}>
                   <Grid item xs={7}>
-                    <Paper className={classes.paper} elevation={24}>Stats for my favorite Guns</Paper>
+                    <Paper className={classes.paperLeft} elevation={24}>Stats for my favorite Guns</Paper>
                   </Grid>
                   <Grid item xs={5}>
-                    <Paper className={classes.paperButton} elevation={24} onClick={() => {removeCompare()}}>Click here to STOP Compare with {compareGamerTag}</Paper>                    
+                    <Paper className={classes.paperRight} elevation={24} onClick={() => {removeCompare()}}>Click here to STOP Compare with {compareGamerTag}</Paper>                    
                   </Grid>
                 </Grid>
                 <br />
@@ -191,10 +205,10 @@ export default function Profile(props) {
                 <div className='tracked-guns-header'>
                   <Grid container spacing={1}>
                     <Grid item xs={7}>
-                      <Paper className={classes.paper} elevation={24}>Stats for my favorite Guns</Paper>
+                      <Paper className={classes.paperLeft} elevation={24}>Stats for my favorite Guns</Paper>
                     </Grid>
                     <Grid item xs={5}>
-                      <Paper className={classes.paper} elevation={24}>Compare Stats with {compareGamerTag}</Paper>
+                      <Paper className={classes.paperRight} elevation={24}>Compare Stats with {compareGamerTag}</Paper>
                     </Grid>
                   </Grid>
                   <br />

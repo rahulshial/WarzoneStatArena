@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   card: {
-    backgroundColor: '#dfdede',
+    backgroundColor: '#dadada',
   }
 }));
 
@@ -61,7 +61,7 @@ export default function LargeOverlay(props) {
 
         <Paper className={classes.card} elevation={15}>
           <div className="full-bar">
-            <div className="stats">
+            <div className="stats-large-bar">
               <div className="stats1">
 
                 <div className="overlay-title1">{tmpStat1[0]}</div>

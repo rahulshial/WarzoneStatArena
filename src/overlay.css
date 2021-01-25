@@ -1,5 +1,4 @@
 
-
 /*  LARGE OVERLAY */
 .full-bar {
   margin: auto;
@@ -9,7 +8,7 @@
   /* background-color: black; */
   background-image: url("./Overlay/overlayImgs/statOverlay2.png");
 }
-.stats {
+.stats-large-bar {
   text-align: center;
   display: flex;
   justify-content: space-around;
@@ -18,29 +17,6 @@
 }
 .stats1 {
   margin-top: 25px;
-}
-
-.full-bar-created {
-  position: absolute;
-  /* margin-top: 80px; */
-  width: 900px;
-  height: 70px;
-  background-color: black;
-
-}
-.stats-created {
-  position: relative;
-
-}
-.stats1-created {
-  width: 100px;
-  float: left;
-  text-align: center;
-  font-weight: 900;
-  padding: 10 0px;
-  margin: 4px 0 0 9px;
-  text-transform: uppercase;
-  color: white;
 }
 
 /*  MEDIUM BAR */
@@ -59,15 +35,16 @@
   flex-direction: inherit;
 }
 
-.created-medium-bar {
-  width: 500px;
+
+/* CUSTOM LARGE BAR */
+
+.created-large-bar {
+  width: 900px;
   height: 70px;
   background-image: url("./Overlay/overlayImgs/statOverlay2.png");
 }
-.stats-medium-created-bar {
-  position: relative;
-}
-.created-stats1 {
+
+.stats1-created {
   width: 100px;
   float: left;
   text-align: center;
@@ -77,7 +54,23 @@
   color: rgb(223, 222, 222);
 }
 
-/*  CHECK BOXES */
+/* CREATED MED BAR */
+.created-medium-bar {
+  width: 500px;
+  height: 70px;
+  background-image: url("./Overlay/overlayImgs/statOverlay2.png");
+}
+
+.created-stats1 {
+  width: 100px;
+  /* float: left; */
+  text-align: center;
+  font-weight: 900;
+  margin: 4px 0 5px 0;
+  text-transform: uppercase;
+  color: rgb(223, 222, 222);
+}
+
 
 .category-selects,
 .category-two-selects,
@@ -86,16 +79,16 @@
   justify-content: center;
 }
 
-.MuiIconButton-label {
-  color: #FFD369;
+/* .MuiIconButton-label {
+  color: #DEA01E;
 }
 .MuiFormControlLabel-label {
   color: rgb(255, 255, 255);
+} */
+
+.MuiIconButton-label {
+  color: #dea01e;
 }
-.MuiPaper-root {
-  background-color: green;
-}
-/* #0F0E18 */
 
 /* URL FIELDS */
 .url-field {
@@ -146,7 +139,7 @@
   text-indent: 0;
   /* border: 1px solid #dcdcdc; */
   display: inline-block;
-  color: #777777;
+  color: #151518;
   font-family: Arial;
   font-size: 15px;
   font-weight: bold;
@@ -165,7 +158,8 @@
     left bottom,
     color-stop(0.05, #dfdfdf),
     color-stop(1, #ededed)
-  );
+    );
+  cursor: pointer;
   background: -moz-linear-gradient(center top, #dfdfdf 5%, #ededed 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
   background-color: #dfdfdf;

@@ -43,6 +43,8 @@ export default function OverlayBar(props) {
     tmpStat8: ["Example Stat", 33],
     selectedStatsObj: {},
     overlayUrl: '',
+    pickFour: false,
+    pickEight: false,
   })
 
 
@@ -61,10 +63,6 @@ export default function OverlayBar(props) {
 
     if (overlaySize === 'Small') {
 
-      if (Object.keys(state.selectedStatsObj).length !== 4) {
-        console.log("Whoaaa whoaaa Please select 4 stats");
-        return
-      }
 
       const uniqueUrlKey = generateRandomString()
       const overlayUrlData = {
@@ -96,7 +94,7 @@ export default function OverlayBar(props) {
       const uniqueUrlKey = generateRandomString()
       console.log(state.selectedStatsObj);
       const overlayUrlData = {
-        size: id,
+        size: overlaySize,
         urlKey: uniqueUrlKey,
         stats: state.selectedStatsObj,
         userId: 1,
@@ -330,6 +328,12 @@ export default function OverlayBar(props) {
       }
     };
 
+
+
+
+
+
+
     if (overlaySize === "Large") {
       return (
         <>
@@ -354,7 +358,7 @@ export default function OverlayBar(props) {
           {Object.keys(state.selectedStatsObj).length === 8 ?
             <div className={classes.root}>
               <Chip
-                className={classes.largeOverlay}
+                className={classes.smallOverlay}
                 icon={<FaceIcon />}
                 label="Max Stats Selected"
                 color="secondary"
@@ -362,6 +366,19 @@ export default function OverlayBar(props) {
               />
             </div>
             : <></>}
+
+          {Object.keys(state.selectedStatsObj).length !== 8 ?
+            <div className={classes.root}>
+              <Chip
+                className={classes.smallOverlay}
+                icon={<FaceIcon />}
+                label="Please Select 8 Stats"
+                color="Primary"
+                deleteIcon={<DoneIcon />}
+              />
+            </div>
+            : <></>}
+
 
         </>
       );
@@ -392,6 +409,22 @@ export default function OverlayBar(props) {
               />
             </div>
             : <></>}
+
+          {Object.keys(state.selectedStatsObj).length !== 4 ?
+            <div className={classes.root}>
+              <Chip
+                className={classes.smallOverlay}
+                icon={<FaceIcon />}
+                label="Please Select 4 Stats"
+                color="Primary"
+                deleteIcon={<DoneIcon />}
+              />
+            </div>
+            : <></>}
+
+
+
+
         </>
       );
     }

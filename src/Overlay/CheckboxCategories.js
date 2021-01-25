@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: 'center',
+    color: '#DEA01E',
     "& > *": {
       marginLeft: theme.spacing('auto'),
       width: theme.spacing(111),
@@ -17,8 +18,14 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   card: {
-    backgroundColor: '#0f0e18',
+    backgroundColor: '#151518',
     marginTop: '15px',
+  },
+  checkBox: {
+    color: '#dea01e',
+  },
+  labels: {
+    color: '#dadada'
   }
 }));
 
@@ -87,27 +94,36 @@ export default function CheckboxCategories(props) {
       <Paper className={classes.card} elevation={25} >
         <FormGroup row className="category-two-selects">
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
-              <
-                Checkbox
+              <Checkbox
+                classes={{
+                  checked: classes.checkBox,
+                  colorPrimary: classes.checkBox,
+                }}
                 checked={state.contracts}
                 onChange={handleChange}
                 name="Contracts Completed"
-                color='secondary'
+                color='primary'
                 value={contracts}
                 id="contracts"
               />
             }
             label="Contracts Completed"
           />
+
+
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
-              <
-                Checkbox
+              <Checkbox
                 checked={state.deaths}
                 onChange={handleChange}
                 name="Deaths"
-                color='secondary'
                 value={deaths}
                 id="deaths"
               />
@@ -115,13 +131,19 @@ export default function CheckboxCategories(props) {
             label="Deaths"
           />
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
-              <
-                Checkbox
+              <Checkbox
+                classes={{
+                  colorPrimary: classes.checkBox,
+
+                }}
                 checked={state.downs}
                 onChange={handleChange}
                 name="Downed Players"
-                color='secondary'
+                color='primary'
                 value={downs}
                 id="downs"
               />
@@ -129,9 +151,11 @@ export default function CheckboxCategories(props) {
             label="Downed Players"
           />
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
-              <
-                Checkbox
+              <Checkbox
                 checked={state.gamesPlayed}
                 onChange={handleChange}
                 name="Games Played"
@@ -143,6 +167,9 @@ export default function CheckboxCategories(props) {
             label="Games Played"
           />
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
               <
                 Checkbox
@@ -157,6 +184,9 @@ export default function CheckboxCategories(props) {
             label="KD Ratio"
           />
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
               <
                 Checkbox
@@ -173,6 +203,9 @@ export default function CheckboxCategories(props) {
 
 
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
               <
                 Checkbox
@@ -190,6 +223,9 @@ export default function CheckboxCategories(props) {
 
 
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
               <
                 Checkbox
@@ -204,6 +240,9 @@ export default function CheckboxCategories(props) {
             label="Total Score"
           />
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
               <
                 Checkbox
@@ -218,6 +257,9 @@ export default function CheckboxCategories(props) {
             label="Score Per Minute"
           />
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
               <
                 Checkbox
@@ -232,6 +274,9 @@ export default function CheckboxCategories(props) {
             label="Time Played"
           />
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
               <
                 Checkbox
@@ -246,6 +291,9 @@ export default function CheckboxCategories(props) {
             label="Top 5 Placements"
           />
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
               <
                 Checkbox
@@ -260,6 +308,9 @@ export default function CheckboxCategories(props) {
             label="Top 10 Placements"
           />
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
               <
                 Checkbox
@@ -274,6 +325,9 @@ export default function CheckboxCategories(props) {
             label="Top 25 Placements"
           />
           <FormControlLabel
+            classes={{
+              label: classes.labels,
+            }}
             control={
               <
                 Checkbox

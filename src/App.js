@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useParams } from 'react-router-dom';
 import './App.css';
 import './stats.css';
 import Home from './RouterPages/Home.js';
@@ -43,16 +43,18 @@ export default function App(props) {
   // }
   // name={state.name} setGamerData={setGamerData} setName={setName} setPlatform={setPlatform} platfrom={state.platfrom} 
 
+
   return (
     <globalStateContext.Provider value={globalState}>
       <>
 
         {window.location.pathname.indexOf('show') === 9 ? <></> : <PrimarySearchAppBar />}
+
         <Switch>
-          <Route exact path='/' render={(props) => <Home/>} />
+          <Route exact path='/' render={(props) => <Home />} />
           <Route path='/stats' render={(props) => <Stats />} />
           <Route path='/roulette' component={Roulette} />
-          <Route path='/Large' component={Overlay} />
+          <Route path='/create' component={Overlay} />
           <Route path='/myProf' component={Profile} />
           <Route path='/overlay/show' component={OverlaySelected} />
           {/* <Route exact path='/streams' component={Games}/> */}
