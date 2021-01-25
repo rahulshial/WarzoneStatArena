@@ -1,8 +1,9 @@
 .Roulette {
   background-image: url("./img/warzone8.jpg");
-  padding-bottom: 30px;
+  padding-bottom: 1vh;
   padding-top: 30px;
-  height: 100vh;
+  /* min-height: 80vh; */
+  /* height: 100%; */
 
 }
 .componenet {
@@ -20,8 +21,7 @@
 .answers {
   display: flex;
   flex-wrap: wrap;
-  
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 
@@ -43,23 +43,8 @@
   cursor: pointer;
 }
 
-.img {
-  width: 45px;
-  
-}
-.img1 {
-  width: 5000px;
-  background-color: darkblue;
-  
-}
 
-
-.test1{
+.roulette-discription{
   display: flex;
   justify-content: center;
-}
-
-.size {
-  width: 300px;
-  height: 300px;
 }

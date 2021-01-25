@@ -16,8 +16,8 @@ import Paper from '@material-ui/core/Paper';
 
 
 
-function createData(name, kills, death, KD, Votes) {
-  return { name, kills, death, KD, Votes };
+function createData(name, TopAcheivment, Acheivments, KD, matchesPlayed) {
+  return { name, TopAcheivment, Acheivments, KD, matchesPlayed };
 }
 
 
@@ -49,10 +49,10 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Streamers' },
-  { id: 'kills', numeric: true, disablePadding: false, label: 'kills' },
-  { id: 'death', numeric: true, disablePadding: false, label: 'death' },
-  { id: 'KD', numeric: true, disablePadding: false, label: 'k/d' },
+  { id: 'name', numeric: false, disablePadding: true, label: 'Gamer' },
+  { id: 'Top Acheivment', numeric: true, disablePadding: false, label: 'Top Acheivment' },
+  { id: 'Acheivments', numeric: true, disablePadding: false, label: 'Acheivments' },
+  { id: 'k/d ratio', numeric: true, disablePadding: false, label: 'K/D Ratio' },
   { id: 'Matches Played', numeric: true, disablePadding: false, label: 'Matches Played' },
 ];
 
@@ -65,9 +65,6 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        {/* <TableCell padding="checkbox">
-          
-        </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
             className={classes.text}
@@ -122,6 +119,8 @@ const useToolbarStyles = makeStyles((theme) => ({
         },
   title: {
     flex: '1 1 100%',
+    display:"flex",
+    justifyContent:"center"
   },
 }));
 
@@ -203,32 +202,18 @@ function tableRows () {
 export default function EnhancedTable1() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('kills');
+  const [orderBy, setOrderBy] = React.useState('TopAcheivment');
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(tableRows);
 
-  // const {
-  //   weapons1,
-  // } = useApplicationData();
-
-  let weeklyKills = 0
-  let weeklyDeaths = 0
-  let weeklyKdRatio = 0
-  let weeklyMatchesPlayed = 0
-  // if (weapons1.weeklyData.length !== 0) {
-  //   console.log(weapons1.weeklyData.properties["kills"]);
-  //    weeklyKills = weapons1.weeklyData.properties.kills
-  //    weeklyDeaths = weapons1.weeklyData.properties.deaths
-  //    weeklyKdRatio = weapons1.weeklyData.properties.kdRatio
-  //    weeklyMatchesPlayed = weapons1.weeklyData.properties.matchesPlayed
-  // }
+ 
 
   const rows = [
-    createData('YooGood', weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
-    createData('Stephan', weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
-    createData('CaprianPrice', weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
-    createData('yesSiir', weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
-    createData('Mo', weeklyKills, weeklyDeaths, weeklyKdRatio, weeklyMatchesPlayed),
+    createData('Symfuhny', 305, 3.7, 67, 41),
+    createData('Aydan', 452, 25.0, 51, 70),
+    createData('Swagg', 640, 231, 2.77, 74),
+    createData("Nickmercs", 528, 124, 4.26, 55),
+    createData('TimTheTatMan', 104, 31, 3.35, 37),
   ];
 
   const handleRequestSort = (event, property) => {
@@ -282,40 +267,25 @@ export default function EnhancedTable1() {
 
                   return (
                     <TableRow
-                      hover
-                      
-                      role="checkbox"
-                      // aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={row.name}
-                      // selected={isItemSelected}
                     >
-                      {/* <TableCell padding="checkbox">
-                        <Checkbox
-                          checked={isItemSelected}
-                          inputProps={{ 'aria-labelledby': labelId }}
-                        />
-                      </TableCell> */}
+                     
                       <TableCell component="th" id={labelId} scope="row" padding="none" className={classes.text}>
                         {row.name}
                       </TableCell>
-                      <TableCell align="center" className={classes.text}>{row.kills}</TableCell>
-                      <TableCell align="center" className={classes.text}>{row.death}</TableCell>
+                      <TableCell align="center" className={classes.text}>{row.TopAcheivment}</TableCell>
+                      <TableCell align="center" className={classes.text}>{row.Acheivments}</TableCell>
                       <TableCell align="center" className={classes.text}>{row.KD}</TableCell>
                       <TableCell align="center" className={classes.text}>{row.Votes}</TableCell>
                     </TableRow>
                   );
                 })}
-              {emptyRows > 0 && (
-                // (dense ? 33 : 53
-                <TableRow style={{ height: 33 * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
             </TableBody>
           </Table>
         </TableContainer>
         <TablePagination
+          style={{color:"#dea01e"}}
           rowsPerPageOptions={[5]}
           component="div"
           count={rows.length}
@@ -325,10 +295,6 @@ export default function EnhancedTable1() {
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
       </Paper>
-      {/* <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
-      /> */}
     </div>
   );
 }

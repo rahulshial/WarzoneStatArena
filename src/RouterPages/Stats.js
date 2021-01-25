@@ -8,8 +8,10 @@ import GameModeStats from '../Stats/GameModeStats';
 import Overview from '../Stats/Overview'
 import { AR, SMG, SG, LMG, MRKSMN, SNPR, PISTOL, LAUNCHER, LETHAL } from '../images.js'
 import useApplicationData from "../hooks/useApplicationData";
+import {useHistory} from 'react-router-dom';
 
 export default function Guns(props) {
+  const history = useHistory();
   // const [state, setState] = useState({
   //   gameModes: [],
   //   shown: [],
@@ -113,6 +115,7 @@ export default function Guns(props) {
 
     // This is setting to return what SECONDARY navBar is shown...
     //if the gun category is selected then we show all the sub categories of guns.. IE AR, SMGS, SHOTTIES etc... OR game modes.. depending on what was clicked..
+    
 
     if (allApiData.shownCat === "guns") {
       return (
@@ -153,6 +156,8 @@ export default function Guns(props) {
           />
         </>
       )
+    } else if (!allApiData.shown) {
+      history.push("/")
     }
   }
 
@@ -169,7 +174,6 @@ export default function Guns(props) {
     </div >
   )
 }
-
 
 
 

@@ -9,8 +9,8 @@ import SwitchesSize from "./checkbox";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 300,
-    maxWidth: 300,
+    minWidth: 350,
+    maxWidth: 350,
     minHeight: 300,
     maxHeight: 300,
     margin: 20,
@@ -18,10 +18,10 @@ const useStyles = makeStyles({
 
   },
   media: {
-    height: 150,
+    height: 100,
     backgroundColor:"#2a313c",
-    objectFit: "contain",
-    backgroundSize:"contain"
+    // objectFit: "contain",
+    // backgroundSize:"contain"
   },
   text: {
    fontFamily: "Times New Roman, serif",

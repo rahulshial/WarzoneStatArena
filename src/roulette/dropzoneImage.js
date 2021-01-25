@@ -281,7 +281,7 @@ function primaryGunImage (primary) {
 
   
 
- return fight
+ return mac
 }
 
 // showing different secondaryGunImage based on querry output
@@ -354,7 +354,7 @@ function secondaryGunImage (secondary) {
 
   
 
- return shotgun
+ return m13
 }
 
 export {primaryGunImage, dropzoneImage, secondaryGunImage}

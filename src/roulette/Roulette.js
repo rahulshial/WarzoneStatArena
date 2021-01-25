@@ -14,11 +14,13 @@ const useStyles = makeStyles({
     height: 150,
     backgroundColor:"#191d24",
     objectFit: "contain",
-    backgroundSize:280
+    backgroundSize:200,
+    
   },
   media1: {
     height: 150,
     backgroundColor:"#2a313c",
+    
     
   },
 })
@@ -196,7 +198,7 @@ export default function Roulette() {
 
   return (
     <div className="Roulette">
-      <p className="test1">Press on the Proximity Mine bellow to roll</p>
+      <p className="roulette-discription">Press on the Proximity Mine bellow to roll</p>
       <div className="answers">
         <div>
           <MediaCard

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useCookies } from 'react-cookie';
-import {useHistory} from 'react-router-dom';
+import {Redirect, useHistory} from 'react-router-dom';
 
 
 
@@ -32,6 +32,8 @@ export default function useApplicationData () {
     selectedGunTab: 'weapon_assault_rifle',
     playerInfo: {},
   })
+
+  const [apiError, setApiError] = useState("")
 
   // dropZone data database querry from StatServer
   async function getDropZone () {
@@ -117,14 +119,16 @@ export default function useApplicationData () {
     const gamerTag = state.name.replace("#", "%23")
 
     const gamerPlatform = state.platform
-    const gamerInfo = {gamerTag, gamerPlatform}
+    // const gamerInfo = {gamerTag, gamerPlatform}
     setCookie('gamerTagInfo', {gamerTag, gamerPlatform}, { path: '/' });
     
     
-    history.push("/stats")
+
+     history.push("/stats")
     
     
-    return gamerInfo;
+    
+    return;
         
   }
 
@@ -149,7 +153,14 @@ export default function useApplicationData () {
 
       axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
       .then(res => {
-       console.log("hellooooo");
+       console.log("hellooooo", res);
+       if(res.data.error){
+         console.log(res.data.error)
+          
+          history.push("/")
+          setApiError(res.data.error)
+         return;
+       }
         if (res.data[0].weeklyData !== null) {
 
         const weapons = res.data[2].guns;
@@ -185,8 +196,9 @@ export default function useApplicationData () {
       }
 
       })
-      .catch(error => {
-        history.push("/roulette")
+      .catch (err => {
+        console.log(err)
+        // setApiError(err.data.error)
       })
 
     
@@ -207,5 +219,6 @@ export default function useApplicationData () {
     allApiData,
     setAllApiData,
     cookies,
+    apiError
   };
 }

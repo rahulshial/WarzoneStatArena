@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     width: 52,
     height:55,
     color:"#fff",
-    backgroundColor: "#ffd369",
+    backgroundColor: "#dea01e",
     marginLeft:"0.5%"
     
     
@@ -87,7 +87,7 @@ function GameStreams({ match, location }) {
   }
   // https://api.twitch.tv/helix/games?name=Call%20of%20Duty%3A%20Warzone
   return (
-    <div style={{ backgroundColor: "#191d24", color: "#ffd369" }}>
+    <div style={{ backgroundColor: "#191d24", color: "#dea01e", }}>
       <h1 className="text-center">Warzone Top 20 Streams</h1>
       <br></br>
       <h3 className="text-center">
@@ -95,7 +95,7 @@ function GameStreams({ match, location }) {
         Currently watching Top 20 Warzone Streams on Twitch
       </h3>
       <div style={{display:"flex", justifyContent:"center", marginTop:"1rem"}}>
-        <TextField  id="filled" label="Twitch Search" variant="filled"   style={{borderRadius:"10px", width:"400px"}} onKeyDown={(e) => enter(e)}className={classes.text} onChange={(e) => setState(e.target.value)}/>
+        <TextField  id="filled" label="Twitch Search" variant="filled"   style={{borderRadius:"10px", width:"400px",}} onKeyDown={(e) => enter(e)}className={classes.text} onChange={(e) => setState(e.target.value)}/>
         <Button
           href={`https://www.twitch.tv/search?term=${state}`}
           className={classes.button}
@@ -108,7 +108,7 @@ function GameStreams({ match, location }) {
       
        
       
-      <div className="row">
+      <div className="row" >
         {streamData.map((stream) => (
           <div className="col-lg-4 col-md-6 col-sm-12 mt-5">
             <div className="card1">
