@@ -51,7 +51,6 @@ export default function GameModeStats(props) {
   };
 
   return topRow.map((statRow, index) => {
-    console.log('Game Modes: ', statRow);
     const loopGameStats = () => {
       const returnGameStats = [];
       if(statRow) {

@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
 let compareGamerTag = ''
 export default function Profile(props) {
   const classes = useStyles();
-  const [cookies, setCookie, removeCookie] = useCookies(['name']);
+  const [cookies, removeCookie] = useCookies(['name']);
   const history = useHistory();
 
   (Object.keys(cookies).length > 0 ? compareGamerTag = cookies.gamerTagInfo.gamerTag.replace('%23', '#') : compareGamerTag = '');

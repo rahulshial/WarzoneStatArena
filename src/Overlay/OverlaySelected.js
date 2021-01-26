@@ -21,7 +21,7 @@ export default function OverlaySelected() {
         // Right now for demo purposes we have no login but this is fixedTag
         // is how we would use the logged in person to get their specific stats
 
-        const fixedTag = res.data[0].gamer_tag.replace("#", "%23")
+        // const fixedTag = res.data[0].gamer_tag.replace("#", "%23")
         setState(prev => ({
           ...prev,
           stats: parsedStats,

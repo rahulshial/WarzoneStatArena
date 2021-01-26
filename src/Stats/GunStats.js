@@ -26,19 +26,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function GunStats({ shown, gunImgs, gunTab, weapons, gunNavSelected }) {
+export default function GunStats({ shown, gunImgs, gunTab }) {
   const classes = useStyles();
   const topRow = [];
   
-  const changeGunCat = () => {
-    console.log('In gun stats: ', shown);
-  };
 
   for (const stat in shown) {
     topRow.push(shown[stat].properties)
   };
 
-  const onButtonClick = (gun, img, cat) => {    
+  const onButtonClick = (gun, img) => {    
     const gunObj = {
       cat: gunTab,
       gun,
@@ -59,7 +56,8 @@ export default function GunStats({ shown, gunImgs, gunTab, weapons, gunNavSelect
     const titles = [];
     const stats = [];
 
-    Object.keys(gun).map((gunStat, i) => {
+    // Object.keys(gun).map((gunStat, i) => {
+      for (const gunStat of Object.keys(gun)) {
       if (gun[gunStat] % 1 > 0) {
         stats.push(
           <Grid item xs={1.5}>
@@ -71,7 +69,7 @@ export default function GunStats({ shown, gunImgs, gunTab, weapons, gunNavSelect
             <Paper className={classes.paper}>{gunDataObj.gunStatTitle[gunStat]}: <strong>{gun[gunStat]}</strong></Paper>
           </Grid>);
       };
-    });
+    };
 
     return (
       <>
@@ -81,7 +79,6 @@ export default function GunStats({ shown, gunImgs, gunTab, weapons, gunNavSelect
           image={gunImgs[Object.keys(shown)[i]]}
           topRow={titles}
           statsRow={stats}
-          cat={changeGunCat}
         />
       </>
     );

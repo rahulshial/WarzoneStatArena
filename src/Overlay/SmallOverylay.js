@@ -29,8 +29,6 @@ export default function SmallOverylay(props) {
     overlayUrl,
     saveOverlay,
     weeklyData,
-    lifetimeData,
-    gunData,
     selectedStat,
     tmpStat1,
     tmpStat2,

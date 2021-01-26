@@ -75,7 +75,6 @@ export default function Roulette() {
       getTactical(),
     ]).then((data) => {
       // primary gun
-      console.log(data[1]);
       let primaryGun = data[1].name;
       let primaryGunClass = data[1].category;
 

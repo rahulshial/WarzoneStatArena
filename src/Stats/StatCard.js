@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function StatCard(props) {
   const classes = useStyles();
-  const { image, gunName, onAdd, cat, statsRow } = props;
+  const { image, gunName, onAdd, statsRow } = props;
   const gunLongName = gunDataObj.gunNameObj[gunName]
   return (
     <div className="container">
@@ -40,11 +40,11 @@ export default function StatCard(props) {
           <Grid container spacing={1}>
             <Grid item xs={4}>
             <Tooltip title='Add to Favourites' placement="right">
-              <Paper className={classes.paper} onClick={() => onAdd(gunName, image, cat)}>{gunLongName}</Paper></Tooltip>                  
+              <Paper className={classes.paper} onClick={() => onAdd(gunName, image)}>{gunLongName}</Paper></Tooltip>                  
             </Grid>
           </Grid>
           <Tooltip title='Add to Favourites' placement="top-end">
-            <img className="gun-icon" src={image} alt="" onClick={() => onAdd(gunName, image, cat)}></img>
+            <img className="gun-icon" src={image} alt="" onClick={() => onAdd(gunName, image)}></img>
           </Tooltip>
           <div className="content">
             <div className='gun-flex'>
