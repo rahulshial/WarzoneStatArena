@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     marginTop: "5px",
-    marginBottom:"30%",
     borderRadius: "10px",
   },
   textField: {

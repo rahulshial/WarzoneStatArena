@@ -192,7 +192,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     position: "absolute",
-    width: "45%",
+    width: "45vw",
     color: "#fff",
     background: "#151518",
     marginBottom: "100px",
