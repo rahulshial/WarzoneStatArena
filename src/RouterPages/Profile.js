@@ -74,9 +74,11 @@ const useStyles = makeStyles((theme) => ({
 let compareGamerTag = ''
 export default function Profile(props) {
   const classes = useStyles();
-  const [cookies, removeCookie] = useCookies(['name']);
+  const [cookies, setCookie, removeCookie] = useCookies(['name']);
   const history = useHistory();
 
+  console.log('cookies: ', cookies);
+  console.log('cookie length: ', Object.keys(cookies).length);
   (Object.keys(cookies).length > 0 ? compareGamerTag = cookies.gamerTagInfo.gamerTag.replace('%23', '#') : compareGamerTag = '');
   const [state, setState] = useState({
     favorites: [],
@@ -153,7 +155,7 @@ export default function Profile(props) {
   };
 
   const removeCompare = () => {
-    removeCookie('gamerTagInfo', { path: '/' });
+    removeCookie('gamerTagInfo');
     history.go(0);
   };
 
