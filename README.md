@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# STATARENA
+### Realtime statistics from the Call of Duty Franchise heavily focused on the Battle Royal "Warzone" StatArena Allows you to create live updating Twitch overlays to show off your skills from the battlefield, Compare your favourited stats with your friends or even a friendly game of "Strat Roulette" Randomly generating weapons to use and rules to follow with your friends. Watch top 20 warzone streams from Twitch.
+#
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Tech Stack
 
-## Available Scripts
+### Front-End
+    - Material UI
+    - Material UI / Lab
+    - Call-of-duty API
+    - CORS
+    - React
+    - React-cookie
+    - React-dom
 
-In the project directory, you can run:
+### Back-end
+    - MySql
+    - Redis
+    - oAuth
+    - Passport
+    - Node
+    - Express
 
-### `npm start`
+This project requires 4 servers which are laid out in the following manner:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. redis server - install global
+      - [Install Redis - Tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2. MySql Server
 
-### `npm test`
+     - [Install MySql - Tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04
+)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Clone the Database Server
+    - [Stat Server - GitHub](https://github.com/Stephan-Pauld/statServer)
+    - copy the .env.example file to .env
+    - update the .env file with your data for Mysql database and Warzone API
 
-### `npm run build`
+4. Clone the React Server
+    - [FrontEnd Server - GitHub](https://github.com/Stephan-Pauld/statsite)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#
+## To run the app follow the underlined steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. In the statServer project folder run `npm install` to install all dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. In the statsite project folder run `npm install` to install all dependencies
 
-### `npm run eject`
+3. In the statServer project folder run `redis-server & npm start`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+4. In the statsite project folder run `npm start`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

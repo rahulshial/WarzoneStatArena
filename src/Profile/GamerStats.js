@@ -13,10 +13,9 @@ export default function GamerStats(props) {
   /** THIS IS WHERE WE WILL SHOW THE GAMER'S WEEKLY AND LIFETIME STATS next to the favourited guns */
   const { weeklyData, lifetimeData } = props;
   return (
-    <div className='gamer-stats' style={{backgroundColor: '#191D24',}}>
+    <div className='gamer-stats' style={{backgroundColor: '#191D24', minHeight: '100vh', height: '100%'}}>
       <Container maxWidth="false">
         <div className='weekly-stats'>
-          <br></br>
           <h1 className='gamer-stats-h1'>Weekly Game Stats</h1>
           <WeeklyStatCard 
           weeklyData = {weeklyData}

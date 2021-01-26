@@ -48,24 +48,25 @@
 .gamer-stats {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   margin: 0;
 }
 
 .gamer-stats-h1 {
   color: #dadada;
-  font:
+  margin-bottom: 10px;
 }
 
 .weekly-stats {
-  height: 40vh;
+  /* height: 40vh; */
+  margin: 10px 0px 20px 0px;
   width: 100%;
   border: 1px;
   border-color: black;
 }
 
 .lifetime-stats {
-  height: 40vh;
+  /* height: 40vh; */
   width: 100;
   border: 1px;
   border-color: black;
@@ -76,6 +77,3 @@
   font-size: large;
 }
 
-.compare-gamer-block {
-  
-}
