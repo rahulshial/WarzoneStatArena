@@ -15,9 +15,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 /** Local imports */
 import '../styles/profile.css'
-import ProfileNavBar from './ProfileNavBar'
-import TrackedGuns from './TrackedGuns.js'
-import GamerStats from './GamerStats';
+import ProfileNavBar from '../Profile/ProfileNavBar'
+import TrackedGuns from '../Profile/TrackedGuns.js'
+import GamerStats from '../Profile/GamerStats';
 
 /** Declare Material UI classes styles */
 const useStyles = makeStyles((theme) => ({

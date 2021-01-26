@@ -1,7 +1,6 @@
 //react imports
 import React, { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 // material UI imports
 import Grid from "@material-ui/core/Grid";
@@ -117,7 +116,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home() {
   const classes = useStyles();
-  const history = useHistory();
   const [apiError, setApiError] = useState("");
   const { state, setState, setGamerData } = useApplicationData();
 
