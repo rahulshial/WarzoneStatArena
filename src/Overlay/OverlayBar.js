@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useParams } from "react-router-dom"
 import LargeOverlay from './LargeOverlay'
 import SmallOverlay from './SmallOverylay'
 import axios from 'axios';
@@ -26,29 +25,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function OverlayBar(props) {
-  let { id } = useParams();
 
   const { overlaySize, weeklyData, lifetimeData, gunData, gameModes } = props
 
   const classes = useStyles();
 
   const [state, setState] = useState({
-    tmpStat1: ["Example Stat", 33],
-    tmpStat2: ["Example Stat", 33],
-    tmpStat3: ["Example Stat", 33],
-    tmpStat4: ["Example Stat", 33],
-    tmpStat5: ["Example Stat", 33],
-    tmpStat6: ["Example Stat", 33],
-    tmpStat7: ["Example Stat", 33],
-    tmpStat8: ["Example Stat", 33],
+    tmpStat1: ["Example", 33],
+    tmpStat2: ["Example", 33],
+    tmpStat3: ["Example", 33],
+    tmpStat4: ["Example", 33],
+    tmpStat5: ["Example", 33],
+    tmpStat6: ["Example", 33],
+    tmpStat7: ["Example", 33],
+    tmpStat8: ["Example", 33],
     selectedStatsObj: {},
     overlayUrl: '',
-    pickFour: false,
-    pickEight: false,
   })
 
 
-
+  // The random generated string is the code for the specific overlay
   const generateRandomString = () => {
     let newId = "";
     const len = 10;
@@ -59,22 +55,32 @@ export default function OverlayBar(props) {
     return newId;
   };
 
+
+
+
+
+
   const saveOverlay = () => {
 
+    // Pretty straight forward function!!! When we press " CREATE OVERLAY " this 
+    // function will determine if we are on the large or small overlay
+    // it will then create and object of information that a user has selected
+    // we generate a unique URL FOR THAT SPECIFIC PLAYER... anyone could use the overlay
+    // but the stats will only change for that specific player!
+    // check "overlayUrlData" for the object we create
+
     if (overlaySize === 'Small') {
-
-
       const uniqueUrlKey = generateRandomString()
       const overlayUrlData = {
         size: overlaySize,
         urlKey: uniqueUrlKey,
         stats: state.selectedStatsObj,
+        // Hard coded for userId 1 for right now till we have a functional login working and more users!
         userId: 1,
       }
       axios
         .put(`http://localhost:3030/overlay/create`, overlayUrlData)
         .then((res) => {
-
           const url = `http://localhost:3000/overlay/show/${res.data}`
 
           setState(prev => ({
@@ -86,13 +92,10 @@ export default function OverlayBar(props) {
           console.log("**Error Saving Overlay**");
           console.log(err);
         })
+
     } else {
-      if (Object.keys(state.selectedStatsObj).length !== 8) {
-        console.log("Whoaaa whoaaa Please select 8 stats");
-        return
-      }
+
       const uniqueUrlKey = generateRandomString()
-      console.log(state.selectedStatsObj);
       const overlayUrlData = {
         size: overlaySize,
         urlKey: uniqueUrlKey,
@@ -118,11 +121,21 @@ export default function OverlayBar(props) {
   }
 
 
+
+
+  // Really need a better way of handling all this! its awful to read....
+  // when a checkbox is selected it replaces the first available space that has
+  // an existing stat with the title "Example" then we set the state of 
+  //  state.selectedStatsObj to hold that check boxes name and the value of from the apiName so we can get the value
+  // so "Kills:kills" or "Deaths:deaths" "Vehicles Destroyed: objectiveSmallVehiclesDestroyed"
+  // when the length of the keys of state.selectedStatsObj is either 4 or 8 we stop allowing stats to be added
+  // until we uncheck a checkbox which will then DELETE a stat from the state.selectedStatsObj
+
   if (weeklyData !== "null") {
     const selectedStat = (value, name, checked, apiName) => {
       if (overlaySize === 'Small') {
         if (checked) {
-          if (state.tmpStat1[0] === "Example Stat") {
+          if (state.tmpStat1[0] === "Example") {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
@@ -130,7 +143,7 @@ export default function OverlayBar(props) {
             }))
             return
           }
-          if (state.tmpStat2[0] === "Example Stat") {
+          if (state.tmpStat2[0] === "Example") {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
@@ -138,7 +151,7 @@ export default function OverlayBar(props) {
             }))
             return
           }
-          if (state.tmpStat3[0] === "Example Stat") {
+          if (state.tmpStat3[0] === "Example") {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
@@ -146,7 +159,7 @@ export default function OverlayBar(props) {
             }))
             return
           }
-          if (state.tmpStat4[0] === "Example Stat") {
+          if (state.tmpStat4[0] === "Example") {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
@@ -158,10 +171,9 @@ export default function OverlayBar(props) {
         } else {
           if (state.tmpStat1[0] === name) {
             delete state.selectedStatsObj[name]
-            console.log(state.selectedStatsObj);
             setState(prev => ({
               ...prev,
-              tmpStat1: ["Example Stat", 33]
+              tmpStat1: ["Example", 33]
             }))
             return
           }
@@ -169,7 +181,7 @@ export default function OverlayBar(props) {
             delete state.selectedStatsObj[name]
             setState(prev => ({
               ...prev,
-              tmpStat2: ["Example Stat", 33]
+              tmpStat2: ["Example", 33]
             }))
             return
           }
@@ -177,7 +189,7 @@ export default function OverlayBar(props) {
             delete state.selectedStatsObj[name]
             setState(prev => ({
               ...prev,
-              tmpStat3: ["Example Stat", 33]
+              tmpStat3: ["Example", 33]
             }))
             return
           }
@@ -185,7 +197,7 @@ export default function OverlayBar(props) {
             delete state.selectedStatsObj[name]
             setState(prev => ({
               ...prev,
-              tmpStat4: ["Example Stat", 33]
+              tmpStat4: ["Example", 33]
             }))
             return
           }
@@ -194,7 +206,7 @@ export default function OverlayBar(props) {
 
       if (overlaySize === 'Large') {
         if (checked) {
-          if (state.tmpStat1[0] === "Example Stat") {
+          if (state.tmpStat1[0] === "Example") {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
@@ -202,7 +214,7 @@ export default function OverlayBar(props) {
             }))
             return
           }
-          if (state.tmpStat2[0] === "Example Stat") {
+          if (state.tmpStat2[0] === "Example") {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
@@ -210,7 +222,7 @@ export default function OverlayBar(props) {
             }))
             return
           }
-          if (state.tmpStat3[0] === "Example Stat") {
+          if (state.tmpStat3[0] === "Example") {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
@@ -218,7 +230,7 @@ export default function OverlayBar(props) {
             }))
             return
           }
-          if (state.tmpStat4[0] === "Example Stat") {
+          if (state.tmpStat4[0] === "Example") {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
@@ -226,7 +238,7 @@ export default function OverlayBar(props) {
             }))
             return
           }
-          if (state.tmpStat5[0] === "Example Stat") {
+          if (state.tmpStat5[0] === "Example") {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
@@ -234,7 +246,7 @@ export default function OverlayBar(props) {
             }))
             return
           }
-          if (state.tmpStat6[0] === "Example Stat") {
+          if (state.tmpStat6[0] === "Example") {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
@@ -242,7 +254,7 @@ export default function OverlayBar(props) {
             }))
             return
           }
-          if (state.tmpStat7[0] === "Example Stat") {
+          if (state.tmpStat7[0] === "Example") {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
@@ -250,7 +262,7 @@ export default function OverlayBar(props) {
             }))
             return
           }
-          if (state.tmpStat8[0] === "Example Stat") {
+          if (state.tmpStat8[0] === "Example") {
             state.selectedStatsObj[name] = apiName;
             setState(prev => ({
               ...prev,
@@ -264,7 +276,7 @@ export default function OverlayBar(props) {
             delete state.selectedStatsObj[name]
             setState(prev => ({
               ...prev,
-              tmpStat1: ["Example Stat", 33]
+              tmpStat1: ["Example", 33]
             }))
             return
           }
@@ -272,7 +284,7 @@ export default function OverlayBar(props) {
             delete state.selectedStatsObj[name]
             setState(prev => ({
               ...prev,
-              tmpStat2: ["Example Stat", 33]
+              tmpStat2: ["Example", 33]
             }))
             return
           }
@@ -280,7 +292,7 @@ export default function OverlayBar(props) {
             delete state.selectedStatsObj[name]
             setState(prev => ({
               ...prev,
-              tmpStat3: ["Example Stat", 33]
+              tmpStat3: ["Example", 33]
             }))
             return
           }
@@ -288,7 +300,7 @@ export default function OverlayBar(props) {
             delete state.selectedStatsObj[name]
             setState(prev => ({
               ...prev,
-              tmpStat4: ["Example Stat", 33]
+              tmpStat4: ["Example", 33]
             }))
             return
           }
@@ -296,7 +308,7 @@ export default function OverlayBar(props) {
             delete state.selectedStatsObj[name]
             setState(prev => ({
               ...prev,
-              tmpStat5: ["Example Stat", 33]
+              tmpStat5: ["Example", 33]
             }))
             return
           }
@@ -304,7 +316,7 @@ export default function OverlayBar(props) {
             delete state.selectedStatsObj[name]
             setState(prev => ({
               ...prev,
-              tmpStat6: ["Example Stat", 33]
+              tmpStat6: ["Example", 33]
             }))
             return
           }
@@ -312,7 +324,7 @@ export default function OverlayBar(props) {
             delete state.selectedStatsObj[name]
             setState(prev => ({
               ...prev,
-              tmpStat7: ["Example Stat", 33]
+              tmpStat7: ["Example", 33]
             }))
             return
           }
@@ -320,18 +332,13 @@ export default function OverlayBar(props) {
             delete state.selectedStatsObj[name]
             setState(prev => ({
               ...prev,
-              tmpStat8: ["Example Stat", 33]
+              tmpStat8: ["Example", 33]
             }))
             return
           }
         }
       }
     };
-
-
-
-
-
 
 
     if (overlaySize === "Large") {
@@ -421,10 +428,6 @@ export default function OverlayBar(props) {
               />
             </div>
             : <></>}
-
-
-
-
         </>
       );
     }

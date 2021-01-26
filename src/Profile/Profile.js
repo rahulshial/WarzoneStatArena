@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     textSize: '24px',
   },
 }));
-  
+
 let compareGamerTag = ''
 export default function Profile(props) {
   const classes = useStyles();
@@ -97,16 +97,16 @@ export default function Profile(props) {
         const compareGamerTag = cookies.gamerTagInfo.gamerTag;
         const compareGamerPlatform = cookies.gamerTagInfo.gamerPlatform;
         axios.get(`http://localhost:3030/stats/${compareGamerTag}&${compareGamerPlatform}`)
-        .then((compareGamerData) => {
-          const compareGamerGuns = [compareGamerData.data[2].guns];
-          setState(prev => ({
-            ...prev,
-            compareGamerGuns: compareGamerGuns
-          }))
-        })
-        .catch(error => {
-          console.log('Error fetching Compare Gamer Stats: ', error)
-        });
+          .then((compareGamerData) => {
+            const compareGamerGuns = [compareGamerData.data[2].guns];
+            setState(prev => ({
+              ...prev,
+              compareGamerGuns: compareGamerGuns
+            }))
+          })
+          .catch(error => {
+            console.log('Error fetching Compare Gamer Stats: ', error)
+          });
       }
     };
     Promise.all([
@@ -151,7 +151,7 @@ export default function Profile(props) {
       displayedCards: cardShown
     }));
   };
-  
+
   const removeCompare = () => {
     removeCookie('gamerTagInfo', { path: '/' });
     history.go(0);
@@ -159,8 +159,8 @@ export default function Profile(props) {
 
   const categorySelected = (indexValue) => {
     setState(prev => ({
-    ...prev,
-    shownTab: indexValue
+      ...prev,
+      shownTab: indexValue
     }))
   };
 
@@ -168,18 +168,18 @@ export default function Profile(props) {
     if (state.shownTab === 0) {
       return (
         <div className='profile-page-gamer-stats'>
-          <GamerStats 
-          key={state.weeklyData}
-          weeklyData={state.weeklyData}
-          lifetimeData={state.lifetimeData}
-        />
+          <GamerStats
+            key={state.weeklyData}
+            weeklyData={state.weeklyData}
+            lifetimeData={state.lifetimeData}
+          />
         </div>
       )
     } else {
       if (state.favorites.length > 0) {
-        if(Object.keys(cookies).length > 0) {
+        if (Object.keys(cookies).length > 0) {
           return (
-            <div className='tracked-guns' style={{backgroundColor: '#191D24',  minHeight: '100vh', height: '100%'}}>
+            <div className='tracked-guns' style={{ backgroundColor: '#191D24', minHeight: '100vh', height: '100%' }}>
               <div className='tracked-guns-header'>
                 <Grid container spacing={1}>
                   <Grid item xs={7}>
@@ -193,33 +193,6 @@ export default function Profile(props) {
               </div>
               <div>
                 <TrackedGuns
-                key={state.favorites}
-                favorites={state.favorites}
-                gunStats={state.gunStats}
-                displayedCards={state.displayedCards}
-                deleteStat={deleteStat}
-                achievements={state.achievements}
-                compareGamerGuns={state.compareGamerGuns}
-                />
-              </div>
-            </div>
-          );  
-        } else {
-            return (
-              <div className='tracked-guns' style={{backgroundColor: '#191D24',  minHeight: '100vh', height: '100%'}}>
-                <div className='tracked-guns-header'>
-                  <Grid container spacing={1}>
-                    <Grid item xs={7}>
-                      <Paper className={classes.paperLeft} elevation={24}>Stats for my favorite Guns</Paper>
-                    </Grid>
-                    <Grid item xs={5}>
-                      <Paper className={classes.paperRight} elevation={24}>Compare Stats with {compareGamerTag}</Paper>
-                    </Grid>
-                  </Grid>
-                  <br />
-                </div>
-                <div>
-                  <TrackedGuns
                   key={state.favorites}
                   favorites={state.favorites}
                   gunStats={state.gunStats}
@@ -227,14 +200,41 @@ export default function Profile(props) {
                   deleteStat={deleteStat}
                   achievements={state.achievements}
                   compareGamerGuns={state.compareGamerGuns}
-                  />
-                </div>
+                />
               </div>
-            );  
-          }
-    } else {
+            </div>
+          );
+        } else {
+          return (
+            <div className='tracked-guns' style={{ backgroundColor: '#191D24', minHeight: '100vh', height: '100%' }}>
+              <div className='tracked-guns-header'>
+                <Grid container spacing={1}>
+                  <Grid item xs={7}>
+                    <Paper className={classes.paperLeft} elevation={24}>Stats for my favorite Guns</Paper>
+                  </Grid>
+                  <Grid item xs={5}>
+                    <Paper className={classes.paperRight} elevation={24}>Compare Stats with {compareGamerTag}</Paper>
+                  </Grid>
+                </Grid>
+                <br />
+              </div>
+              <div>
+                <TrackedGuns
+                  key={state.favorites}
+                  favorites={state.favorites}
+                  gunStats={state.gunStats}
+                  displayedCards={state.displayedCards}
+                  deleteStat={deleteStat}
+                  achievements={state.achievements}
+                  compareGamerGuns={state.compareGamerGuns}
+                />
+              </div>
+            </div>
+          );
+        }
+      } else {
         return (
-          <div style={{backgroundColor: '#191D24', minHeight: '100vh', height: '100%'}}>
+          <div style={{ backgroundColor: '#191D24', minHeight: '100vh', height: '100%' }}>
             <Grid container spacing={1}>
               <Grid item xs={12}>
                 <Paper className={classes.paperEmpty}>You have no favourited items</Paper>
@@ -245,7 +245,7 @@ export default function Profile(props) {
       };
     };
   };
-  
+
   return (
     <div>
       <ProfileNavBar

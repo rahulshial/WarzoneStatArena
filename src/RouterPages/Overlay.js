@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../overlay.css';
+import '../styles/overlay.css'
 import OverlayNav from '../Overlay/OverlayNav'
 import OverlayBar from '../Overlay/OverlayBar';
-import { Switch, Route, useParams } from 'react-router-dom';
 
 export default function Overlay() {
   const [state, setState] = useState({
@@ -14,14 +13,16 @@ export default function Overlay() {
     overlaySelected: "Small",
   })
 
- const {id} = useParams();
-  console.log(id);
   useEffect(() => {
-    // let nickname = props.name.replace("#", "%23")
-    // nickname will === username
-    axios.get(`http://localhost:3030/stats/Nickmercs%2311526&battle`)
+
+    // When we have someone logged in we will replace this with logged in cookies?
+    const gamerTag = 'stefler%231173';
+    const gamerPlatform = 'battle';
+    axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
+    
       .then(res => {
         if (res.data[0].weeklyData) {
+
           setState(prev => ({
             ...prev,
             weeklyData: res.data[0],
@@ -29,14 +30,16 @@ export default function Overlay() {
             gunData: res.data[2],
             lifetimeData: res.data[3],
           }))
+
         } else {
-          console.log(res.data[3]);
+
           setState(prev => ({
             ...prev,
             gameModes: res.data[1],
             gunData: res.data[2],
             lifetimeData: res.data[3],
           }))
+          
         }
 
       })
