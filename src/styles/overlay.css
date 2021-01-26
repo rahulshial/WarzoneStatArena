@@ -106,6 +106,15 @@
 /* .MuiCheckbox-colorSecondary.Mui-checked {
   color: blueviolet;
 } */
+
+/* .overlay .Mui-checked { 
+  whatever 
+}
+.roulette .Mui-checked { 
+  whatever 
+} */
+
+
 /* URL FIELDS */
 .url-field {
   display: flex;

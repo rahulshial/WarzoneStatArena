@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -33,9 +33,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CheckboxCategories(props) {
-  const {selectedStat, gameModes } = props
+  const { size, selectedStat, gameModes } = props
 
   const classes = useStyles();
+
+  const [statCount, setStatCount] = useState(0);
+
+  const [maxReached, setMaxReached] = useState(false);
 
   const [state, setState] = useState({
     contracts: false,
@@ -54,11 +58,19 @@ export default function CheckboxCategories(props) {
     wins: false,
   });
 
+  useEffect(() => {
+    setStatCount(Object.values(state).filter(item => item).length)
+  }, [state])
+
+  useEffect(() => {
+    setMaxReached(statCount >= size)
+  }, [statCount])
+
 
   const handleChange = (e) => {
+
     // When a checkbox is selected we set the state of the check box to true and we call the function SelectedStat
     // We pass some values to show on the creation page and for when we create the overlay of what data to show!
-
 
     // DO Something in here so when the max amount of check boxes for small or large.. Then 
     // Disable the rest of the buttons...
@@ -69,8 +81,11 @@ export default function CheckboxCategories(props) {
     }))
     selectedStat(e.target.value, e.target.name, e.target.checked, e.target.id)
 
+  }
 
-  } 
+
+
+
 
   // Variables for game modes.... SPECIFICALLY JUST WARZONE!!!!
   const contracts = gameModes.gameModes.br.properties.contracts
@@ -89,7 +104,7 @@ export default function CheckboxCategories(props) {
   const wins = gameModes.gameModes.br.properties.wins
 
 
-  
+
   return (
     <div className={classes.root}>
       <Paper className={classes.card} elevation={25} >
@@ -102,12 +117,13 @@ export default function CheckboxCategories(props) {
               <Checkbox
                 classes={{
                   checked: classes.checkBox,
-                  colorSecondary: classes.Muichecked,
+                  colorSecondary: classes.checkBox,
                 }}
                 checked={state.contracts}
                 onChange={handleChange}
-                name="Contracts Completed"
                 color='secondary'
+                name="Contracts Completed"
+                disabled={!state.contracts && maxReached}
                 value={contracts}
                 id="contracts"
               />
@@ -125,6 +141,7 @@ export default function CheckboxCategories(props) {
                 checked={state.deaths}
                 onChange={handleChange}
                 name="Deaths"
+                disabled={!state.deaths && maxReached}
                 value={deaths}
                 id="deaths"
               />
@@ -144,7 +161,7 @@ export default function CheckboxCategories(props) {
                 checked={state.downs}
                 onChange={handleChange}
                 name="Downed Players"
-                color='primary'
+                disabled={!state.downs && maxReached}
                 value={downs}
                 id="downs"
               />
@@ -160,6 +177,7 @@ export default function CheckboxCategories(props) {
                 checked={state.gamesPlayed}
                 onChange={handleChange}
                 name="Games Played"
+                disabled={!state.gamesPlayed && maxReached}
                 color='secondary'
                 value={gamesPlayed}
                 id="gamesPlayed"
@@ -177,6 +195,7 @@ export default function CheckboxCategories(props) {
                 checked={state.kdRatio}
                 onChange={handleChange}
                 name="KDR"
+                disabled={!state.kdRatio && maxReached}
                 color='secondary'
                 value={kdRatio}
                 id="kdRatio"
@@ -194,6 +213,7 @@ export default function CheckboxCategories(props) {
                 checked={state.kills}
                 onChange={handleChange}
                 name="Kills"
+                disabled={!state.kills && maxReached}
                 color='secondary'
                 value={kills}
                 id="kills"
@@ -213,6 +233,7 @@ export default function CheckboxCategories(props) {
                 checked={state.revives}
                 onChange={handleChange}
                 name="Revives"
+                disabled={!state.revives && maxReached}
                 color='secondary'
                 value={revives}
                 id="revives"
@@ -233,6 +254,7 @@ export default function CheckboxCategories(props) {
                 checked={state.score}
                 onChange={handleChange}
                 name="Score"
+                disabled={!state.score && maxReached}
                 color='secondary'
                 value={score}
                 id="score"
@@ -250,6 +272,7 @@ export default function CheckboxCategories(props) {
                 checked={state.scorePerMinute}
                 onChange={handleChange}
                 name="Score Per/Min"
+                disabled={!state.scorePerMinute && maxReached}
                 color='secondary'
                 value={scorePerMinute}
                 id="scorePerMinute"
@@ -267,6 +290,7 @@ export default function CheckboxCategories(props) {
                 checked={state.timePlayed}
                 onChange={handleChange}
                 name="Time Played"
+                disabled={!state.timePlayed && maxReached}
                 color='secondary'
                 value={timePlayed}
                 id="timePlayed"
@@ -284,6 +308,7 @@ export default function CheckboxCategories(props) {
                 checked={state.topFive}
                 onChange={handleChange}
                 name="Top 5"
+                disabled={!state.topFive && maxReached}
                 color='secondary'
                 value={topFive}
                 id="topFive"
@@ -301,6 +326,7 @@ export default function CheckboxCategories(props) {
                 checked={state.topTen}
                 onChange={handleChange}
                 name="Top 10"
+                disabled={!state.topTen && maxReached}
                 color='secondary'
                 value={topTen}
                 id="topTen"
@@ -318,6 +344,7 @@ export default function CheckboxCategories(props) {
                 checked={state.topTwentyFive}
                 onChange={handleChange}
                 name="Top 25"
+                disabled={!state.topTwentyFive && maxReached}
                 color='secondary'
                 value={topTwentyFive}
                 id="topTwentyFive"
@@ -335,6 +362,7 @@ export default function CheckboxCategories(props) {
                 checked={state.wins}
                 onChange={handleChange}
                 name="Wins"
+                disabled={!state.wins && maxReached}
                 color='secondary'
                 value={wins}
                 id="wins"
