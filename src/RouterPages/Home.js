@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: 30,
     color: "#dea01e",
-    marginTop: "1%",
+    // marginTop: "1%",
     marginLeft: "1%",
   },
   title1: {
@@ -89,12 +89,12 @@ const useStyles = makeStyles((theme) => ({
 
   gamerAreaTitle: {
     color: "#dea01e",
-    marginTop: "-2%",
+    // marginTop: "-2%",
     fontSize: "22px",
   },
   gamerInfo: {
     display: "flex",
-    marginTop: "-10%",
+    marginTop: "-15%",
   },
   leaderboard: {
     width: "100%",

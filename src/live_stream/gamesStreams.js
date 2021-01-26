@@ -116,7 +116,7 @@ const GameStreams = ({ match, location }) => {
 
       <div className="row">
         {streamData.map((stream) => (
-          <div className="col-lg-4 col-md-6 col-sm-12 mt-5">
+          <div className="col col-lg-4 col-md-6 col-sm-12 mt-5">
             <div className="card1">
               <Link
                 className="card-img-top"
@@ -164,7 +164,7 @@ const GameStreams = ({ match, location }) => {
                       },
                     }}
                   >
-                    Watch {stream.user_name}{" "}
+                    Watch{" "}
                   </Link>
                 </button>
               </div>

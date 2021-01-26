@@ -1,11 +1,11 @@
 import axios from "axios";
-
+require('dotenv').config()
 // getting auth for using Twitch API
-// add to .env
+
 let api = axios.create({
   headers:{
-    "Client-ID": 'gdd6ap5ukewvnjfff55esj36jf4rdn',
-    "Authorization": 'Bearer f8z6ttyw29tb2bkhnqmj1rlvi4qv3t'
+    "Client-ID": `${process.env.REACT_APP_ClIENT_ID}`,
+    "Authorization": `Bearer ${process.env.REACT_APP_SECRET_TOKEN}`
   }
 })
 

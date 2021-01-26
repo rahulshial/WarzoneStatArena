@@ -2,7 +2,9 @@
   background-image: url("../img/warzone8.jpg");
   padding-bottom: 1vh;
   padding-top: 30px;
+  min-height: 100vh;
   height: 100%;
+  object-fit: contain;
 }
 
 .roulette-checkbox {
@@ -28,3 +30,58 @@
   display: flex;
   justify-content: center;
 }
+
+.MuiButtonBase-root{
+  color: red;
+}
+
+.MuiTableSortLabel-root {
+  color: red;
+}
+
+
+
+.MuiTableSortLabel-icon {
+  color: red;
+}
+
+.MuiTableCell-root {
+  color: red;
+}
+.MuiTableCell-head {
+  color: red;
+}
+.makeStyles-text-104 {
+  color: red;
+}
+.MuiTableCell-alignRight {
+  color: red;
+}
+.MuiTableCell-sizeSmall{
+  color: red;
+}
+
+.makeStyles-visuallyHidden-103{
+  color: red;
+}
+
+.MuiTableSortLabel-iconDirectionDesc{
+  color: red;
+}
+
+.MuiTableRow-root {
+  color: red;
+}
+.MuiTableRow-head{
+  color: red;
+}
+
+  .makeStyles-text-40 {
+    color: red;
+  }
+  MuiTableCell-alignLeft {
+    color: red;
+  }
+  .MuiTableCell-paddingNone {
+    color: red;
+  }
