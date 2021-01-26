@@ -164,7 +164,7 @@ const GameStreams = ({ match, location }) => {
                       },
                     }}
                   >
-                    Watch {stream.user_name}{" "}
+                    Watch{" "}
                   </Link>
                 </button>
               </div>
