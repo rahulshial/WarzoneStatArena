@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // material UI imports
 import { makeStyles } from "@material-ui/core/styles";
 // local imports and styling
-import MediaCard from "./answers";
+import MediaCard from "../roulette/answers";
 import useApplicationData from "../hooks/useApplicationData";
 import heartbeat from "../img/dropzone_images/heartbeat.jpg";
 import mags from "../img/dropzone_images/mags.jpg";
@@ -14,7 +14,7 @@ import {
   dropzoneImage,
   primaryGunImage,
   secondaryGunImage,
-} from "./dropzoneImage";
+} from "../roulette/dropzoneImage";
 
 const useStyles = makeStyles({
   media: {

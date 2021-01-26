@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // local imports 
-import api from "./api";
+import api from "../live_stream/api";
 
 const Games = () => {
   const [games, setGames] = useState([]);
