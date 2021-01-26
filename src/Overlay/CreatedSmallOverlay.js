@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import '../overlay.css'
+import React from 'react'
+import '../styles/overlay.css'
 
 export default function CreatedSmallOverlay(props) {
   const {
@@ -12,6 +12,14 @@ export default function CreatedSmallOverlay(props) {
     statName4,
     statValue4,
   } = props
+
+
+
+  // This is the FINISHED overlay what the user has MADE
+  
+  // we use a ternary to see if the number has floating decimal spots some can be quite like like 
+  // headshotPercentage 13.2345236236236% will be fixed to 13.23%
+
 
   return (
     <div>

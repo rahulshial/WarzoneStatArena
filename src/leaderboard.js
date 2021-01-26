@@ -200,7 +200,6 @@ function tableRows () {
   return headCells.length
 }
 
-
 export default function EnhancedTable() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');

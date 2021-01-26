@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import CheckboxCategories from './CheckboxCategories'
 import URLtextField from './URLtextField'
 import Paper from "@material-ui/core/Paper";
@@ -37,8 +37,9 @@ export default function SmallOverylay(props) {
     tmpStat3,
     tmpStat4
   } = props
-  const statVal1 = 33.2312312312
-  console.log(statVal1.toFixed(2));
+
+   // This shows the CheckBoxes along side of the the selected overlay
+
   return (
     <>
       <CheckboxCategories
@@ -58,19 +59,19 @@ export default function SmallOverylay(props) {
 
               <div className="stats1">
                 <div className="overlay-title1">{tmpStat1[0]}</div>
-                <div className="overlay-stat1">{tmpStat1[1]}</div>
+                <div className="overlay-stat1">{Number.isInteger(Number(tmpStat1[1])) ? tmpStat1[1] : Number(tmpStat1[1]).toFixed(2)}</div>
               </div>
               <div className="stats1">
                 <div className="overlay-title1">{tmpStat2[0]}</div>
-                <div className="overlay-stat1">{tmpStat2[1]}</div>
+                <div className="overlay-stat1">{Number.isInteger(Number(tmpStat2[1])) ? tmpStat2[1] : Number(tmpStat2[1]).toFixed(2)}</div>
               </div>
               <div className="stats1">
                 <div className="overlay-title1">{tmpStat3[0]}</div>
-                <div className="overlay-stat1">{tmpStat3[1]}</div>
+                <div className="overlay-stat1">{Number.isInteger(Number(tmpStat3[1])) ? tmpStat3[1] : Number(tmpStat3[1]).toFixed(2)}</div>
               </div>
               <div className="stats1">
                 <div className="overlay-title1">{tmpStat4[0]}</div>
-                <div className="overlay-stat1">{tmpStat4[1]}
+                <div className="overlay-stat1">{Number.isInteger(Number(tmpStat4[1])) ? tmpStat4[1] : Number(tmpStat4[1]).toFixed(2)}
                 </div>
               </div>
 
@@ -87,3 +88,4 @@ export default function SmallOverylay(props) {
     </>
   )
 }
+

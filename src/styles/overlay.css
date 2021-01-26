@@ -1,4 +1,5 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
 /*  LARGE OVERLAY */
 .full-bar {
   margin: auto;
@@ -6,7 +7,7 @@
   width: 900px;
   height: 70px;
   /* background-color: black; */
-  background-image: url("./Overlay/overlayImgs/statOverlay2.png");
+  background-image: url("../Overlay/overlayImgs/statOverlay2.png");
 }
 .stats-large-bar {
   text-align: center;
@@ -16,7 +17,6 @@
   flex-direction: inherit;
 }
 .stats1 {
-  margin-top: 25px;
 }
 
 /*  MEDIUM BAR */
@@ -25,7 +25,7 @@
   margin-top: 25px;
   width: 500px;
   height: 70px;
-  background-image: url("./Overlay/overlayImgs/statOverlay2.png");
+  background-image: url("../Overlay/overlayImgs/statOverlay2.png");
 }
 .stats-medium-bar {
   text-align: center;
@@ -34,6 +34,19 @@
   color: white;
   flex-direction: inherit;
 }
+.overlay-title1{
+  margin-top: 15px;
+  font-family: 'Nerko One', cursive;
+  font-size: 19px;
+  color: #ffbb00;
+  text-shadow: 4px 2px 1px #141414;
+}
+.overlay-stat1{
+  font-family: 'Nerko One', cursive;
+  font-size: 23px;
+  color: #fcfcfc;
+  text-shadow: 4px 2px 1px #141414;
+}
 
 
 /* CUSTOM LARGE BAR */
@@ -41,7 +54,7 @@
 .created-large-bar {
   width: 900px;
   height: 70px;
-  background-image: url("./Overlay/overlayImgs/statOverlay2.png");
+  background-image: url("../Overlay/overlayImgs/statOverlay2.png");
 }
 
 .stats1-created {
@@ -58,7 +71,7 @@
 .created-medium-bar {
   width: 500px;
   height: 70px;
-  background-image: url("./Overlay/overlayImgs/statOverlay2.png");
+  background-image: url("../Overlay/overlayImgs/statOverlay2.png");
 }
 
 .created-stats1 {
@@ -90,6 +103,9 @@
   color: #dea01e;
 }
 
+/* .MuiCheckbox-colorSecondary.Mui-checked {
+  color: blueviolet;
+} */
 /* URL FIELDS */
 .url-field {
   display: flex;

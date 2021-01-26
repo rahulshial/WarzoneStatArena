@@ -145,7 +145,7 @@ export default function useApplicationData () {
       gamerPlatform = cookies.gamerTagInfo.gamerPlatform;
     }
     else {
-      gamerTag = 'Nickmercs%2311526';
+      gamerTag = 'stefler%231173';
       gamerPlatform = 'battle';
     };
 

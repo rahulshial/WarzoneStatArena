@@ -7,6 +7,16 @@ import Tab from '@material-ui/core/Tab';
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
+    backgroundColor: '#2A313C',
+  },
+  tab: {
+    color: '#DADADA',
+    '&:hover': {
+      fontWeight: 'bold',
+    },
+    '&:focus': {
+      fontWeight: 'bold',
+    },
   },
 });
 
@@ -20,16 +30,26 @@ export default function CenteredTabs(props) {
   }
 
   return (
-    <Paper className={classes.root}>
+    <Paper
+      className={classes.root}
+    >
       <Tabs
+        TabIndicatorProps={{ style: { backgroundColor: "#ffd369" } }}
         value={tab}
         onChange={chosenTab}
         indicatorColor="primary"
-        textColor="primary"
         centered
       >
-        <Tab label="Small Overlay" />
-        <Tab label="Large Overlay" />
+        <Tab
+          label="Small Overlay"
+          className={classes.tab}
+        />
+
+        <Tab
+          label="Large Overlay"
+          className={classes.tab}
+        />
+
       </Tabs>
     </Paper>
   );

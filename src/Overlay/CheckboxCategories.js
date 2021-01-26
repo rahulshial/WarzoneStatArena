@@ -26,12 +26,17 @@ const useStyles = makeStyles((theme) => ({
   },
   labels: {
     color: '#dadada'
+  },
+  Muichecked: {
+    color: '#dadada'
   }
 }));
 
 export default function CheckboxCategories(props) {
-  const { size, checked, selectedStat, gameModes } = props
+  const {selectedStat, gameModes } = props
+
   const classes = useStyles();
+
   const [state, setState] = useState({
     contracts: false,
     deaths: false,
@@ -51,19 +56,12 @@ export default function CheckboxCategories(props) {
 
 
   const handleChange = (e) => {
-    // let overlaySize = 0;
-    // if (size === "Large") {
-    //   overlaySize = 8;
-    // } else {
-    //   overlaySize = 4
-    // }
-    // console.log(Object.keys(checked).length);
-    // if (Object.keys(checked).length !== 8) {
-    //   setState(prev => ({
-    //     ...prev,
-    //     [e.target.id]: false
-    //   }))
-    // }
+    // When a checkbox is selected we set the state of the check box to true and we call the function SelectedStat
+    // We pass some values to show on the creation page and for when we create the overlay of what data to show!
+
+
+    // DO Something in here so when the max amount of check boxes for small or large.. Then 
+    // Disable the rest of the buttons...
 
     setState(prev => ({
       ...prev,
@@ -72,8 +70,9 @@ export default function CheckboxCategories(props) {
     selectedStat(e.target.value, e.target.name, e.target.checked, e.target.id)
 
 
-  };
+  } 
 
+  // Variables for game modes.... SPECIFICALLY JUST WARZONE!!!!
   const contracts = gameModes.gameModes.br.properties.contracts
   const deaths = gameModes.gameModes.br.properties.deaths
   const downs = gameModes.gameModes.br.properties.downs
@@ -89,6 +88,8 @@ export default function CheckboxCategories(props) {
   const topTwentyFive = gameModes.gameModes.br.properties.topTwentyFive
   const wins = gameModes.gameModes.br.properties.wins
 
+
+  
   return (
     <div className={classes.root}>
       <Paper className={classes.card} elevation={25} >
@@ -101,12 +102,12 @@ export default function CheckboxCategories(props) {
               <Checkbox
                 classes={{
                   checked: classes.checkBox,
-                  colorPrimary: classes.checkBox,
+                  colorSecondary: classes.Muichecked,
                 }}
                 checked={state.contracts}
                 onChange={handleChange}
                 name="Contracts Completed"
-                color='primary'
+                color='secondary'
                 value={contracts}
                 id="contracts"
               />

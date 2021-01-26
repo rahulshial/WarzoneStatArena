@@ -17,21 +17,22 @@ export default function OverlaySelected() {
     axios.get(`http://localhost:3030/overlay/show/${lastSegment}`)
       .then((res) => {
         const parsedStats = JSON.parse(res.data[0].stats)
+
+        // Right now for demo purposes we have no login but this is fixedTag
+        // is how we would use the logged in person to get their specific stats
+
         const fixedTag = res.data[0].gamer_tag.replace("#", "%23")
-        console.log(parsedStats);
-        console.log(res.data[0].size);
         setState(prev => ({
           ...prev,
           stats: parsedStats,
           size: res.data[0].size,
         }))
-        return ['Nickmercs%2311526', 'battle']
+        return ['stefler%231173', 'battle']
       })
       .then((res) => {
         
         axios.get(`http://localhost:3030/stats/${res[0]}&${res[1]}`)
           .then((res) => {
-            console.log(res);
             setState(prev => ({
               ...prev,
               gameModes: res.data[1].gameModes.br.properties
@@ -44,7 +45,7 @@ export default function OverlaySelected() {
   }, [])
 
   if (state.size === 'Small' && Object.keys(state.gameModes).length > 0) {
-    console.log(state.gameModes);
+
     const statName1 = Object.keys(state.stats)[0]
     const statValue1 = state.gameModes[state.stats[Object.keys(state.stats)[0]]]
     const statName2 = Object.keys(state.stats)[1]
@@ -71,9 +72,6 @@ export default function OverlaySelected() {
     
     const statName1 = Object.keys(state.stats)[0]
     const statValue1 = state.gameModes[state.stats[Object.keys(state.stats)[0]]]
-    console.log(statName1);
-    console.log(state.gameModes);
-    // console.log(state.gameModes);
     const statName2 = Object.keys(state.stats)[1]
     const statValue2 = state.gameModes[state.stats[Object.keys(state.stats)[1]]]
     const statName3 = Object.keys(state.stats)[2]
