@@ -77,8 +77,6 @@ export default function Profile(props) {
   const [cookies, setCookie, removeCookie] = useCookies(['name']);
   const history = useHistory();
 
-  console.log('cookies: ', cookies);
-  console.log('cookie length: ', Object.keys(cookies).length);
   (Object.keys(cookies).length > 0 ? compareGamerTag = cookies.gamerTagInfo.gamerTag.replace('%23', '#') : compareGamerTag = '');
   const [state, setState] = useState({
     favorites: [],
