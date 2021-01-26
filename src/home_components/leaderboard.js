@@ -1,7 +1,8 @@
 // react imports
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import axios from "axios";
 // material UI imports
 import { lighten, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -216,19 +217,112 @@ const tableRows = () => {
 }
 
 // main leaderboard const
-export default function EnhancedTable() {
+export default function EnhancedTable(props) {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("kills");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(tableRows);
+  const [streamerStat, setStreameraStat] = useState({
+
+    nickmercs:[],
+    FontainesRazor:[],
+    pieman:[],
+    Metaphor:[],
+    illest:[],
+    
+
+
+  });
+
+  const StreamersLeaderboard = () => {
+    // Promise.all([
+      //       axios.get('http://localhost:3030/trackedstats/trackedfavs'),
+      //       axios.get('http://localhost:3030/achievements'),
+      //       axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
+      //     ])
+      //       .then(
+     
+   
+
+      
+    // // axios
+    //   .get(`http://localhost:3030/stats/symfuhny%239112896&psn`)
+    //   .then((symfuhny) => {
+    //     console.log(symfuhny);
+    //   })
+    //   .catch((error) => {
+    //     console.log("Error fetching Compare Gamer Stats: ", error);
+    //   });
+    // axios
+    //   .get(`http://localhost:3030/stats/FontainesRazor&psn`)
+    //   .then((aydan) => {
+    //     console.log(aydan);
+    //   })
+    //   .catch((error) => {
+    //     console.log("Error fetching Compare Gamer Stats: ", error);
+    //   });
+  //   axios
+  //     .get(`http://localhost:3030/stats/Nh4rdtype%232899&acti`)
+  //     .then((Nh4rdtype) => {
+  //       console.log(Nh4rdtype);
+  //     })
+  //     .catch((error) => {
+  //       console.log("Error fetching Compare Gamer Stats: ", error);
+  //     });
+  };
+  Promise.all([
+          axios.get(`http://localhost:3030/stats/Nickmercs%2311526&battle`),
+          axios.get(`http://localhost:3030/stats/FontainesRazor&psn`),
+          axios.get(`http://localhost:3030/stats/pieman%2312544&battle`),
+          axios.get(`http://localhost:3030/stats/Metaphor%2311972&battle`),
+          axios.get(`http://localhost:3030/stats/illest954&psn`),
+        ])
+        
+        
+
+
+        
+          .then((streamer)=>{
+            // console.log(streamer);
+            
+            if(!streamer[0].data[5].error) {
+              // console.log(streamer[0].data.length);
+              // console.log(streamer[0].data[0].weeklyData.all.properties.kills);
+              streamerStat.nickmercs = streamer[0].data[0].weeklyData.all.properties
+            } 
+            if(!streamer[1].data[5].error) {
+              // console.log(streamer[1].data[0].weeklyData.all.properties.kills);
+              streamerStat.FontainesRazor = streamer[1].data[0].weeklyData.all.properties
+            }
+            if(!streamer[2].data[5].error) {
+              // console.log(streamer[2].data);
+              streamerStat.pieman = streamer[2].data[0].weeklyData.all.properties
+            }
+            if(!streamer[3].data[5].error) {
+              // console.log(streamer[3].data[0].weeklyData.all.properties.kills);
+              streamerStat.Metaphor = streamer[3].data[0].weeklyData.all.properties
+            }
+            if(!streamer[4].data[5].error) {
+              // console.log(streamer[4].data[0].weeklyData.all.properties.kills);
+              streamerStat.illest = streamer[4].data[0].weeklyData.all.properties
+            }
+            
+           
+
+          })
+  
+
+        console.log(streamerStat.FontainesRazor.kdRatio);
+        console.log(streamerStat.pieman.kdRatio);
 
   const rows = [
-    createData("Symfuhny", 305, 3.7, 3.9, 41),
-    createData("Aydan", 452, 25.0, 4.8, 70),
-    createData("Swagg", 640, 231, 2.77, 74),
-    createData("Nickmercs", 528, 124, 4.26, 55),
-    createData("TimTheTatMan", 104, 31, 3.35, 37),
+    createData("Nickmercs", streamerStat.nickmercs.kills, streamerStat.nickmercs.deaths, streamerStat.nickmercs.kdRatio, streamerStat.nickmercs.matchesPlayed),
+    createData("FontainesRazor", streamerStat.FontainesRazor.kills, streamerStat.FontainesRazor.deaths, streamerStat.FontainesRazor.kdRatio, streamerStat.FontainesRazor.matchesPlayed),
+    createData("pieman", streamerStat.pieman.kills, streamerStat.pieman.deaths, streamerStat.pieman.kdRatio, streamerStat.pieman.matchesPlayed),
+    createData("Metaphor", streamerStat.Metaphor.kills, streamerStat.Metaphor.deaths, streamerStat.Metaphor.kdRatio, streamerStat.Metaphor.matchesPlayed),
+    createData("illest", streamerStat.illest.kills, streamerStat.illest.deaths, streamerStat.illest.kdRatio, streamerStat.illest.matchesPlayed),
+  
   ];
 
   // specifing asc or dec sorting
