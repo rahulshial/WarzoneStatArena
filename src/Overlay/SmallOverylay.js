@@ -46,7 +46,7 @@ export default function SmallOverylay(props) {
         gameModes={gameModes}
         selectedStat={selectedStat}
         weeklyData={weeklyData}
-        size="Small"
+        size={4}
       />
       <div className="btn-div">
         <button className="overlay-btn" onClick={(e) => { saveOverlay() }}>Create Overlay</button>

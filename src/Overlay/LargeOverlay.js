@@ -55,7 +55,7 @@ export default function LargeOverlay(props) {
         gunData={gunData}
         lifetimeData={lifetimeData}
         checked={checked}
-        size="Large"
+        size={8}
       />
       <div className="btn-div">
         <button className="overlay-btn" onClick={(e) => { saveOverlay() }}>Create Overlay</button>
