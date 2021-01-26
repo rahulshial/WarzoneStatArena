@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import LargeOverlay from './LargeOverlay'
 import SmallOverlay from './SmallOverylay'
 import axios from 'axios';
@@ -42,6 +42,25 @@ export default function OverlayBar(props) {
     selectedStatsObj: {},
     overlayUrl: '',
   })
+
+  
+  // This use effect is just to reset the state when someone
+  // changes from small to large overlay
+  useEffect(() => {
+    setState(prev => ({
+      tmpStat1: ["Example", 33],
+      tmpStat2: ["Example", 33],
+      tmpStat3: ["Example", 33],
+      tmpStat4: ["Example", 33],
+      tmpStat5: ["Example", 33],
+      tmpStat6: ["Example", 33],
+      tmpStat7: ["Example", 33],
+      tmpStat8: ["Example", 33],
+      selectedStatsObj: {},
+      overlayUrl: '',
+    }))
+  }, [overlaySize])
+
 
 
   // The random generated string is the code for the specific overlay

@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   labels: {
     color: '#dadada'
   },
-  Muichecked: {
+  test: {
     color: '#dadada'
   }
 }));
@@ -65,7 +65,7 @@ export default function CheckboxCategories(props) {
   useEffect(() => {
     setMaxReached(statCount >= size)
   }, [statCount])
-
+  
 
   const handleChange = (e) => {
 
@@ -118,6 +118,7 @@ export default function CheckboxCategories(props) {
                 classes={{
                   checked: classes.checkBox,
                   colorSecondary: classes.checkBox,
+                  disabled: classes.test,
                 }}
                 checked={state.contracts}
                 onChange={handleChange}
