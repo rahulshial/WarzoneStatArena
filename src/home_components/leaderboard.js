@@ -1,5 +1,5 @@
 // react imports
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import axios from "axios";
@@ -20,7 +20,7 @@ import Paper from "@material-ui/core/Paper";
 // creating fake Data
 const createData = (name, kills, death, KD, Votes) => {
   return { name, kills, death, KD, Votes };
-}
+};
 
 // sorting the table
 const descendingComparator = (a, b, orderBy) => {
@@ -31,13 +31,13 @@ const descendingComparator = (a, b, orderBy) => {
     return 1;
   }
   return 0;
-}
+};
 
 const getComparator = (order, orderBy) => {
   return order === "desc"
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
-}
+};
 
 const stableSort = (array, comparator) => {
   const stabilizedThis = array.map((el, index) => [el, index]);
@@ -47,7 +47,7 @@ const stableSort = (array, comparator) => {
     return a[1] - b[1];
   });
   return stabilizedThis.map((el) => el[0]);
-}
+};
 // ---------------------------------------------------------------------
 
 // table content Input
@@ -98,7 +98,7 @@ const EnhancedTableHead = (props) => {
       </TableRow>
     </TableHead>
   );
-}
+};
 
 // controlling values input
 EnhancedTableHead.propTypes = {
@@ -214,116 +214,64 @@ const tableRows = () => {
     return 3;
   }
   return headCells.length;
-}
+};
 
 // main leaderboard const
+let rows = []
 export default function EnhancedTable(props) {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("kills");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(tableRows);
-  const [streamerStat, setStreameraStat] = useState({
 
-    nickmercs:[],
-    FontainesRazor:[],
-    pieman:[],
-    Metaphor:[],
-    illest:[],
+  // bringing all streamers data from server
+  useEffect(() => {
     
-
-
-  });
-
-  const StreamersLeaderboard = () => {
-    // Promise.all([
-      //       axios.get('http://localhost:3030/trackedstats/trackedfavs'),
-      //       axios.get('http://localhost:3030/achievements'),
-      //       axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
-      //     ])
-      //       .then(
-     
-   
-
-      
-    // // axios
-    //   .get(`http://localhost:3030/stats/symfuhny%239112896&psn`)
-    //   .then((symfuhny) => {
-    //     console.log(symfuhny);
-    //   })
-    //   .catch((error) => {
-    //     console.log("Error fetching Compare Gamer Stats: ", error);
-    //   });
-    // axios
-    //   .get(`http://localhost:3030/stats/FontainesRazor&psn`)
-    //   .then((aydan) => {
-    //     console.log(aydan);
-    //   })
-    //   .catch((error) => {
-    //     console.log("Error fetching Compare Gamer Stats: ", error);
-    //   });
-  //   axios
-  //     .get(`http://localhost:3030/stats/Nh4rdtype%232899&acti`)
-  //     .then((Nh4rdtype) => {
-  //       console.log(Nh4rdtype);
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error fetching Compare Gamer Stats: ", error);
-  //     });
-  };
-  Promise.all([
-          axios.get(`http://localhost:3030/stats/Nickmercs%2311526&battle`),
-          axios.get(`http://localhost:3030/stats/FontainesRazor&psn`),
-          axios.get(`http://localhost:3030/stats/pieman%2312544&battle`),
-          axios.get(`http://localhost:3030/stats/Metaphor%2311972&battle`),
-          axios.get(`http://localhost:3030/stats/illest954&psn`),
-        ])
-        
-        
-
-
-        
-          .then((streamer)=>{
-            // console.log(streamer);
-            
-            if(!streamer[0].data[5].error) {
-              // console.log(streamer[0].data.length);
-              // console.log(streamer[0].data[0].weeklyData.all.properties.kills);
-              streamerStat.nickmercs = streamer[0].data[0].weeklyData.all.properties
-            } 
-            if(!streamer[1].data[5].error) {
-              // console.log(streamer[1].data[0].weeklyData.all.properties.kills);
-              streamerStat.FontainesRazor = streamer[1].data[0].weeklyData.all.properties
-            }
-            if(!streamer[2].data[5].error) {
-              // console.log(streamer[2].data);
-              streamerStat.pieman = streamer[2].data[0].weeklyData.all.properties
-            }
-            if(!streamer[3].data[5].error) {
-              // console.log(streamer[3].data[0].weeklyData.all.properties.kills);
-              streamerStat.Metaphor = streamer[3].data[0].weeklyData.all.properties
-            }
-            if(!streamer[4].data[5].error) {
-              // console.log(streamer[4].data[0].weeklyData.all.properties.kills);
-              streamerStat.illest = streamer[4].data[0].weeklyData.all.properties
-            }
-            
-           
-
-          })
-  
-
-        console.log(streamerStat.FontainesRazor.kdRatio);
-        console.log(streamerStat.pieman.kdRatio);
-
-  const rows = [
-    createData("Nickmercs", streamerStat.nickmercs.kills, streamerStat.nickmercs.deaths, streamerStat.nickmercs.kdRatio, streamerStat.nickmercs.matchesPlayed),
-    createData("FontainesRazor", streamerStat.FontainesRazor.kills, streamerStat.FontainesRazor.deaths, streamerStat.FontainesRazor.kdRatio, streamerStat.FontainesRazor.matchesPlayed),
-    createData("pieman", streamerStat.pieman.kills, streamerStat.pieman.deaths, streamerStat.pieman.kdRatio, streamerStat.pieman.matchesPlayed),
-    createData("Metaphor", streamerStat.Metaphor.kills, streamerStat.Metaphor.deaths, streamerStat.Metaphor.kdRatio, streamerStat.Metaphor.matchesPlayed),
-    createData("illest", streamerStat.illest.kills, streamerStat.illest.deaths, streamerStat.illest.kdRatio, streamerStat.illest.matchesPlayed),
-  
-  ];
+    Promise.all([
+      axios.get(`http://localhost:3030/stats/Nickmercs%2311526&battle`),
+      axios.get(`http://localhost:3030/stats/FontainesRazor&psn`),
+      axios.get(`http://localhost:3030/stats/pieman%2312544&battle`),
+      axios.get(`http://localhost:3030/stats/Metaphor%2311972&battle`),
+      axios.get(`http://localhost:3030/stats/illest954&psn`),
+    ]).then((streamerData) => {
+      console.log('nickmercs data: ', streamerData[0].data[0].weeklyData.all.properties);
+    console.log('Fontaines data: ', streamerData[1].data[0].weeklyData.all.properties);
+    console.log('piemans data: ', streamerData[2].data[0].weeklyData.all.properties);
+    console.log('metaphors data: ', streamerData[3].data[0].weeklyData.all.properties);
+    console.log('illests data: ', streamerData[4].data[0].weeklyData.all.properties);
+    rows.push(createData(
+      "Nickmercs",
+      streamerData[0].data[0].weeklyData.all.properties.kills,
+      streamerData[0].data[0].weeklyData.all.properties.deaths,
+      streamerData[0].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
+      streamerData[0].data[0].weeklyData.all.properties.matchesPlayed));
+    rows.push(createData(
+      "Fontaines",
+      streamerData[1].data[0].weeklyData.all.properties.kills,
+      streamerData[1].data[0].weeklyData.all.properties.deaths,
+      streamerData[1].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
+      streamerData[1].data[0].weeklyData.all.properties.matchesPlayed));
+    rows.push(createData(
+      "pieman",
+      streamerData[2].data[0].weeklyData.all.properties.kills,
+      streamerData[2].data[0].weeklyData.all.properties.deaths,
+      streamerData[2].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
+      streamerData[2].data[0].weeklyData.all.properties.matchesPlayed));
+    rows.push(createData(
+      "Metaphor",
+      streamerData[3].data[0].weeklyData.all.properties.kills,
+      streamerData[3].data[0].weeklyData.all.properties.deaths,
+      streamerData[3].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
+      streamerData[3].data[0].weeklyData.all.properties.matchesPlayed));
+    rows.push(createData(
+      "illest",
+      streamerData[4].data[0].weeklyData.all.properties.kills,
+      streamerData[4].data[0].weeklyData.all.properties.deaths,
+      streamerData[4].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
+      streamerData[4].data[0].weeklyData.all.properties.matchesPlayed));
+    });
+  }, [])
 
   // specifing asc or dec sorting
   const handleRequestSort = (event, property) => {

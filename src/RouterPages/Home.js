@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
   blog: {
     width: "100%",
     height: "fit-content",
-    marginTop: "-5%",
+    marginTop: "-2%",
     paddingBottom: "3%",
     display: "flex",
     justifyContent: "space-around",
@@ -119,13 +119,8 @@ export default function Home() {
   const [apiError, setApiError] = useState("");
   const { state, setState, setGamerData } = useApplicationData();
 
-  // const [streamerStat, setStreameraStat] = useState({
 
-  //   nickmercs:[],
-  //   FontainesRazor:[],
-
-
-  // });
+ 
 
   // setting gamer tag from text Field Input
   const setName = (event) => {
@@ -134,60 +129,8 @@ export default function Home() {
       name: event.target.value,
     }));
   };
-  // const StreamersLeaderboard = () => {
-  //   Promise.all([
-  //           axios.get('http://localhost:3030/trackedstats/trackedfavs'),
-  //           axios.get('http://localhost:3030/achievements'),
-  //           axios.get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
-  //         ])
-  //           .then(
-     
-  //   axios
-  //     .get(`http://localhost:3030/stats/Nickmercs%2311526&battle`)
-  //     .then((nickmercs) => {
-  //       if(nickmercs.data[0].weeklyData) {
-          
-  //         console.log(nickmercs.data[0].weeklyData.all.properties);
-          
-  //         setStreameraStat(prev => ({
-  //           ...prev,
-  //           nickmercs:nickmercs.data[0].weeklyData.all.properties
-  //         }))
-          
-  //       }
-     
-
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error fetching Leaderboard Streamer Stats: ", error);
-  //     });
-
-      
-  //   // axios
-  //     .get(`http://localhost:3030/stats/symfuhny%239112896&psn`)
-  //     .then((symfuhny) => {
-  //       console.log(symfuhny);
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error fetching Compare Gamer Stats: ", error);
-  //     });
-  //   axios
-  //     .get(`http://localhost:3030/stats/FontainesRazor&psn`)
-  //     .then((aydan) => {
-  //       console.log(aydan);
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error fetching Compare Gamer Stats: ", error);
-  //     });
-  //   axios
-  //     .get(`http://localhost:3030/stats/Nh4rdtype%232899&acti`)
-  //     .then((Nh4rdtype) => {
-  //       console.log(Nh4rdtype);
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error fetching Compare Gamer Stats: ", error);
-  //     });
-  // };
+  
+ 
 
  
 
@@ -251,7 +194,6 @@ export default function Home() {
         </div>
         <div className={classes.leaderboard}>
           <EnhancedTable 
-          // nickmercs={streamerStat.nickmercs}
           />
           <EnhancedTable1 />
         </div>

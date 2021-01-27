@@ -15,6 +15,7 @@ const Games = () => {
       );
       // fetching warzone data from twitch api
       let dataArray = result.data.data[0];
+      console.log(result.data.data);
       setGames(dataArray);
     };
 
