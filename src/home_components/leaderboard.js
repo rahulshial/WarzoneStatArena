@@ -224,6 +224,7 @@ export default function EnhancedTable(props) {
   const [orderBy, setOrderBy] = React.useState("kills");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(tableRows);
+  const [showData, setShowData] = useState(false)
 
   // bringing all streamers data from server
   useEffect(() => {
@@ -267,8 +268,9 @@ export default function EnhancedTable(props) {
           streamerData[4].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
           streamerData[4].data[0].weeklyData.all.properties.matchesPlayed));
       }
+      setShowData(true)
     });
-  }, [])
+  }, [showData])
 
   // specifing asc or dec sorting
   const handleRequestSort = (event, property) => {

@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
+
 // material UI imports
 import Grid from "@material-ui/core/Grid";
+
 // local imports and styling
 import BasicTextFields from "../home_components/textField";
 import GroupSizesColors from "../home_components/platform";
