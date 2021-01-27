@@ -95,6 +95,7 @@ const EnhancedTableHead = (props) => {
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}
+              style={{color:"#dea10e"}}
             >
               {headCell.label}
               {orderBy === headCell.id ? (
@@ -140,6 +141,7 @@ const useToolbarStyles = makeStyles((theme) => ({
     flex: "1 1 100%",
     display: "flex",
     justifyContent: "center",
+    Color: "#dadada"
   },
 }));
 
@@ -153,6 +155,7 @@ const EnhancedTableToolbar = (props) => {
       className={clsx(classes.root, {
         [classes.highlight]: numSelected > 0,
       })}
+      style={{color:"#dadada"}}
     >
       {numSelected > 0 ? (
         <Typography
@@ -213,10 +216,19 @@ const useStyles = makeStyles((theme) => ({
     width: 1,
   },
   text: {
-    color: "#fff",
+    color: "#dadada",
     fontSize: "12px",
   },
 }));
+
+const newStyles = makeStyles({
+  root: { /* … */ },
+  colorInherit: {
+    color: '#dea01e',
+    '&$disabled': { color: '#dadada' },
+  },
+  disabled: {},
+}, { name: 'MuiIconButton' });
 
 // number of rows showing
 const tableRows = () => {
@@ -229,6 +241,8 @@ const tableRows = () => {
 // main leaderboard const
 export default function TopAchievers() {
   const classes = useStyles();
+  const newClass = newStyles();
+
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("TopAcheivment");
   const [page, setPage] = React.useState(0);
@@ -314,6 +328,7 @@ export default function TopAchievers() {
           </Table>
         </TableContainer>
         <TablePagination
+          className={newStyles.colorInherit}
           style={{ color: "#dea01e" }}
           rowsPerPageOptions={[5]}
           component="div"

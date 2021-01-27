@@ -40,11 +40,21 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
-  header: {
+  title: {
     display: "flex",
     justifyContent: "center",
+    alignItems:"center",
+    color:"#dea10e"
   },
+  subheader:{
+    display: "flex",
+    justifyContent: "center",
+    alignItems:"center",
+    color:"#dadada"
+  }
 }));
+
+
 
 export default function Blogs(props) {
   const classes = useStyles();
@@ -69,6 +79,7 @@ export default function Blogs(props) {
             className={clsx(classes.expand, {
               [classes.expandOpen]: expanded,
             })}
+            style={{color:"#dadada"}}
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
@@ -87,7 +98,7 @@ export default function Blogs(props) {
   return (
     <Card className={classes.root}>
       <CardHeader
-        className={classes.header}
+        classes={{subheader:classes.subheader, title:classes.title}}
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
             {props.avatar}
@@ -98,6 +109,7 @@ export default function Blogs(props) {
             className={clsx(classes.expand, {
               [classes.expandOpen]: expanded,
             })}
+            style={{color:"#dea01e"}}
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
