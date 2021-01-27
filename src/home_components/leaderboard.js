@@ -235,11 +235,6 @@ export default function EnhancedTable(props) {
       axios.get(`http://localhost:3030/stats/Metaphor%2311972&battle`),
       axios.get(`http://localhost:3030/stats/illest954&psn`),
     ]).then((streamerData) => {
-      console.log('nickmercs data: ', streamerData[0].data[0].weeklyData.all.properties);
-    console.log('Fontaines data: ', streamerData[1].data[0].weeklyData.all.properties);
-    console.log('piemans data: ', streamerData[2].data[0].weeklyData.all.properties);
-    console.log('metaphors data: ', streamerData[3].data[0].weeklyData.all.properties);
-    console.log('illests data: ', streamerData[4].data[0].weeklyData.all.properties);
     rows.push(createData(
       "Nickmercs",
       streamerData[0].data[0].weeklyData.all.properties.kills,

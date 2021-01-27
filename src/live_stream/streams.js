@@ -3,8 +3,7 @@ import ReactPlayer from "react-player";
 
 const Streams = ({ match, location }) => {
   // showing live Twitch on our Server
- console.log(match);
- console.log(location);
+
   return (
     <div
       style={{
