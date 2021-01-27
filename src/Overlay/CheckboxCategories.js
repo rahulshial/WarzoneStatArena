@@ -6,6 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -21,21 +22,37 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#151518',
     marginTop: '15px',
   },
-  checkBox: {
-    color: '#dea01e',
-  },
-  labels: {
-    color: '#dadada'
-  },
-  test: {
-    color: '#dadada'
-  }
 }));
+
+
+
+
+
+
+
+
+
+const newStyles = makeStyles({
+  root: { /* … */ },
+  label: {
+    color: '#dadada',
+    '&$disabled': { color: '#333232' },
+  },
+  checked: {
+    color: '#dea01e',
+    '&$disabled': { color: '#333232' },
+  },
+  disabled: {},
+}, { name: 'MuiButton' });
+
+
+
 
 export default function CheckboxCategories(props) {
   const { size, selectedStat, gameModes } = props
 
   const classes = useStyles();
+  const newClass = newStyles();
 
   const [statCount, setStatCount] = useState(0);
 
@@ -65,7 +82,7 @@ export default function CheckboxCategories(props) {
   useEffect(() => {
     setMaxReached(statCount >= size)
   }, [statCount])
-  
+
 
   const handleChange = (e) => {
 
@@ -110,20 +127,17 @@ export default function CheckboxCategories(props) {
       <Paper className={classes.card} elevation={25} >
         <FormGroup row className="category-two-selects">
           <FormControlLabel
-            classes={{
-              label: classes.labels,
-            }}
+
+            classes={{label: newClass.label}}
+
+
             control={
               <Checkbox
-                classes={{
-                  checked: classes.checkBox,
-                  colorSecondary: classes.checkBox,
-                  disabled: classes.test,
-                }}
+                className={newClass.checked}
                 checked={state.contracts}
                 onChange={handleChange}
-                color='secondary'
                 name="Contracts Completed"
+                color=""
                 disabled={!state.contracts && maxReached}
                 value={contracts}
                 id="contracts"
@@ -134,31 +148,28 @@ export default function CheckboxCategories(props) {
 
 
           <FormControlLabel
-            classes={{
-              label: classes.labels,
-            }}
+            classes={{label: newClass.label}}
             control={
               <Checkbox
+                className={newClass.checked}
+                color=""
                 checked={state.deaths}
                 onChange={handleChange}
                 name="Deaths"
                 disabled={!state.deaths && maxReached}
                 value={deaths}
                 id="deaths"
+
               />
             }
             label="Deaths"
           />
           <FormControlLabel
-            classes={{
-              label: classes.labels,
-            }}
+            classes={{label: newClass.label}}
             control={
               <Checkbox
-                classes={{
-                  colorPrimary: classes.checkBox,
-
-                }}
+                className={newClass.checked}
+                color=""
                 checked={state.downs}
                 onChange={handleChange}
                 name="Downed Players"
@@ -171,15 +182,16 @@ export default function CheckboxCategories(props) {
           />
           <FormControlLabel
             classes={{
-              label: classes.labels,
+              label: newClass.label,
             }}
             control={
               <Checkbox
+                className={newClass.checked}
+                color=""
                 checked={state.gamesPlayed}
                 onChange={handleChange}
                 name="Games Played"
                 disabled={!state.gamesPlayed && maxReached}
-                color='secondary'
                 value={gamesPlayed}
                 id="gamesPlayed"
               />
@@ -188,16 +200,16 @@ export default function CheckboxCategories(props) {
           />
           <FormControlLabel
             classes={{
-              label: classes.labels,
+              label: newClass.label,
             }}
             control={
-              <
-                Checkbox
+              <Checkbox
+                className={newClass.checked}
+                color=""
                 checked={state.kdRatio}
                 onChange={handleChange}
                 name="KDR"
                 disabled={!state.kdRatio && maxReached}
-                color='secondary'
                 value={kdRatio}
                 id="kdRatio"
               />
@@ -206,16 +218,16 @@ export default function CheckboxCategories(props) {
           />
           <FormControlLabel
             classes={{
-              label: classes.labels,
+              label: newClass.label,
             }}
             control={
-              <
-                Checkbox
+              <Checkbox
+                className={newClass.checked}
+                color=""
                 checked={state.kills}
                 onChange={handleChange}
                 name="Kills"
                 disabled={!state.kills && maxReached}
-                color='secondary'
                 value={kills}
                 id="kills"
               />
@@ -226,16 +238,16 @@ export default function CheckboxCategories(props) {
 
           <FormControlLabel
             classes={{
-              label: classes.labels,
+              label: newClass.label,
             }}
             control={
-              <
-                Checkbox
+              <Checkbox
+                className={newClass.checked}
+                color=""
                 checked={state.revives}
                 onChange={handleChange}
                 name="Revives"
                 disabled={!state.revives && maxReached}
-                color='secondary'
                 value={revives}
                 id="revives"
               />
@@ -247,16 +259,16 @@ export default function CheckboxCategories(props) {
 
           <FormControlLabel
             classes={{
-              label: classes.labels,
+              label: newClass.label,
             }}
             control={
-              <
-                Checkbox
+              <Checkbox
+                className={newClass.checked}
+                color=""
                 checked={state.score}
                 onChange={handleChange}
                 name="Score"
                 disabled={!state.score && maxReached}
-                color='secondary'
                 value={score}
                 id="score"
               />
@@ -265,16 +277,16 @@ export default function CheckboxCategories(props) {
           />
           <FormControlLabel
             classes={{
-              label: classes.labels,
+              label: newClass.label,
             }}
             control={
-              <
-                Checkbox
+              <Checkbox
+                className={newClass.checked}
+                color=""
                 checked={state.scorePerMinute}
                 onChange={handleChange}
                 name="Score Per/Min"
                 disabled={!state.scorePerMinute && maxReached}
-                color='secondary'
                 value={scorePerMinute}
                 id="scorePerMinute"
               />
@@ -283,16 +295,16 @@ export default function CheckboxCategories(props) {
           />
           <FormControlLabel
             classes={{
-              label: classes.labels,
+              label: newClass.label,
             }}
             control={
-              <
-                Checkbox
+              <Checkbox
+                className={newClass.checked}
+                color=""
                 checked={state.timePlayed}
                 onChange={handleChange}
                 name="Time Played"
                 disabled={!state.timePlayed && maxReached}
-                color='secondary'
                 value={timePlayed}
                 id="timePlayed"
               />
@@ -301,16 +313,16 @@ export default function CheckboxCategories(props) {
           />
           <FormControlLabel
             classes={{
-              label: classes.labels,
+              label: newClass.label,
             }}
             control={
-              <
-                Checkbox
+              <Checkbox
+                className={newClass.checked}
+                color=""
                 checked={state.topFive}
                 onChange={handleChange}
                 name="Top 5"
                 disabled={!state.topFive && maxReached}
-                color='secondary'
                 value={topFive}
                 id="topFive"
               />
@@ -319,16 +331,16 @@ export default function CheckboxCategories(props) {
           />
           <FormControlLabel
             classes={{
-              label: classes.labels,
+              label: newClass.label,
             }}
             control={
-              <
-                Checkbox
+              <Checkbox
+                className={newClass.checked}
+                color=""
                 checked={state.topTen}
                 onChange={handleChange}
                 name="Top 10"
                 disabled={!state.topTen && maxReached}
-                color='secondary'
                 value={topTen}
                 id="topTen"
               />
@@ -337,16 +349,16 @@ export default function CheckboxCategories(props) {
           />
           <FormControlLabel
             classes={{
-              label: classes.labels,
+              label: newClass.label,
             }}
             control={
-              <
-                Checkbox
+              <Checkbox
+                className={newClass.checked}
+                color=""
                 checked={state.topTwentyFive}
                 onChange={handleChange}
                 name="Top 25"
                 disabled={!state.topTwentyFive && maxReached}
-                color='secondary'
                 value={topTwentyFive}
                 id="topTwentyFive"
               />
@@ -355,16 +367,16 @@ export default function CheckboxCategories(props) {
           />
           <FormControlLabel
             classes={{
-              label: classes.labels,
+              label: newClass.label,
             }}
             control={
-              <
-                Checkbox
+              <Checkbox
+                className={newClass.checked}
+                color=""
                 checked={state.wins}
                 onChange={handleChange}
                 name="Wins"
                 disabled={!state.wins && maxReached}
-                color='secondary'
                 value={wins}
                 id="wins"
               />
