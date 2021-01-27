@@ -85,6 +85,7 @@ const EnhancedTableHead = (props) => {
             <TableSortLabel
               direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}
+              style={{color:"#dea10e"}}
             >
               {headCell.label}
               {orderBy === headCell.id ? (
@@ -143,6 +144,7 @@ const EnhancedTableToolbar = (props) => {
       className={clsx(classes.root, {
         [classes.highlight]: numSelected > 0,
       })}
+      style={{color:"#dadada"}}
     >
       {numSelected > 0 ? (
         <Typography
@@ -203,10 +205,25 @@ const useStyles = makeStyles((theme) => ({
     width: 1,
   },
   text: {
-    color: "#fff",
+    color: "#dadada",
     fontSize: "12px",
   },
+  paggination:{
+    color: "#dea01e",
+    "&:disabled":{
+      color:"red"
+    }
+  }
 }));
+
+const newStyles = makeStyles({
+  root: { /* … */ },
+  colorInherit: {
+    color: '#dea01e',
+    '&$disabled': { color: '#dadada' },
+  },
+  disabled: {},
+}, { name: 'MuiIconButton' });
 
 // number of rows showing
 const tableRows = () => {
@@ -220,6 +237,7 @@ const tableRows = () => {
 let rows = [];
 export default function StreamLeaderBoard(props) {
   const classes = useStyles();
+  const newClass = newStyles()
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("kills");
   const [page, setPage] = React.useState(0);
@@ -368,6 +386,7 @@ export default function StreamLeaderBoard(props) {
           </Table>
         </TableContainer>
         <TablePagination
+          className={newStyles.colorInherit}
           style={{ color: "#dea01e" }}
           rowsPerPageOptions={[3]}
           component="div"
