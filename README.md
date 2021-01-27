@@ -6,37 +6,35 @@
 
 ### Front-End
     - Material UI
-    - Material UI / Lab
-    - Call-of-duty API
-    - CORS
     - React
-    - React-cookie
-    - React-dom
+    - Axios
 
 ### Back-end
     - MySql
     - Redis
     - oAuth
-    - Passport
-    - Node
+    - NodeJS
     - Express
+    - Call-of-duty API
 
-This project requires 4 servers which are laid out in the following manner:
+This project requires 5 servers which are laid out in the following manner:
 
 1. redis server - install global
       - [Install Redis - Tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04)
 
 2. MySql Server
 
-     - [Install MySql - Tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04
-)
+     - [Install MySql - Tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04)
 
-3. Clone the Database Server
+3. Clone the Twitch oAuth server
+    - [oAuth Server -GitHub](https://github.com/mohdtorabi/Twitch_OAuth) 
+
+4. Clone the Database Server
     - [Stat Server - GitHub](https://github.com/Stephan-Pauld/statServer)
     - copy the .env.example file to .env
     - update the .env file with your data for Mysql database and Warzone API
 
-4. Clone the React Server
+5. Clone the React Server
     - [FrontEnd Server - GitHub](https://github.com/Stephan-Pauld/statsite)
 
 #
@@ -46,9 +44,13 @@ This project requires 4 servers which are laid out in the following manner:
 
 2. In the statsite project folder run `npm install` to install all dependencies
 
-3. In the statServer project folder run `redis-server & npm start`
+3. In the Twitch_oAuth folder run `npm install` to install all dependencies
 
-4. In the statsite project folder run `npm start`
+4. In the Twitch_oAuth folder run `node index.js` 
+
+5. In the statServer project folder run `redis-server & npm start`
+
+6. In the statsite project folder run `npm start`
 
 
 Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
