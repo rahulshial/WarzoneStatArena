@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SwitchesSize(props) {
+export default function RouletteCheckbox(props) {
   const classes = useStyles();
 
   // checkbox componenet for selecting what to role

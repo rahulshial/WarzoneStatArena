@@ -7,11 +7,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
 // local imports and styling
-import BasicTextFields from "../home_components/textField";
-import GroupSizesColors from "../home_components/platform";
-import RecipeReviewCard from "../home_components/news";
-import EnhancedTable from "../home_components/leaderboard";
-import EnhancedTable1 from "../home_components/topAchievers";
+import GamerTagInput from "../Home/GamerTagInput";
+import PlatformButtons from "../Home/Platform";
+import Blogs from "../Home/Blog";
+import StreamLeaderBoard from "../Home/StreamLeaderBoard";
+import TopAchievers from "../Home/TopAchievers";
 import useApplicationData from "../hooks/useApplicationData";
 import codLogo from "../img/cod-logo.png";
 
@@ -182,9 +182,9 @@ export default function Home() {
             <div className={classes.gamerInfo}>
               <div className={classes.gameId}>
                 {/* platform component */}
-                <GroupSizesColors onClick={setPlatform} />
+                <PlatformButtons onClick={setPlatform} />
                 {/* textfield component */}
-                <BasicTextFields
+                <GamerTagInput
                   value={state.name}
                   onChange={setName}
                   onClick={checkTagAndPlatformEntered}
@@ -195,13 +195,13 @@ export default function Home() {
           </div>
         </div>
         <div className={classes.leaderboard}>
-          <EnhancedTable 
+          <StreamLeaderBoard 
           />
-          <EnhancedTable1 />
+          <TopAchievers />
         </div>
 
         <div className={classes.blog}>
-          <RecipeReviewCard
+          <Blogs
             url="https://youtu.be/hi7DrHz6g9c"
             title='Call of Duty: Warzone Supposedly Has a New "Broken" OP Gun'
             avatar="RS"
@@ -209,7 +209,7 @@ export default function Home() {
             link="https://www.washingtonpost.com/video-games/tips/best-cold-war-loadouts-warzone/"
             text="Beyond a slew of bugs that allowed players to turn invisible or infinitely heal themselves outside of “Warzone’s” shrinking gas circle, the integration of “Call of Duty: Black Ops Cold War’s” weaponry created a number of questions about the effectiveness of attachments (which are unique to “Cold War” guns) and how they stacked up against traditional “Warzone” loadouts based off “Call of Duty: Modern Warfare’s” guns. Then people discovered the DMR-14. The emphasis on the DMR meant few players were scrutinizing the other new weapons. And while some, like the Mac-10 submachine gun and the Diamatti burst pistol, became secondary weapons for DMR users, few were paying attention to “Cold War’s” other possibilities. Now that the DMR has (mercifully) been nerfed and the meta has rebalanced, there are still a lot of questions about what “Cold War” guns are best. We’re here to provide some answers."
           />
-          <RecipeReviewCard
+          <Blogs
             url="https://www.youtube.com/watch?v=nEJD_q21vCM"
             title="FaZe Swagg reveals a gun better than DMR-14 in Warzone"
             avatar="MT"

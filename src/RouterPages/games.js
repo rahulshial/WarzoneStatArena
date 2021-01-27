@@ -20,7 +20,7 @@ const Games = () => {
 
     fetchData();
   }, []);
-
+  
   return (
     <div className="row">
       <Link
@@ -29,7 +29,7 @@ const Games = () => {
           pathname: "/streams/game",
           state: {
             gameID: games.id,
-            username: games.name,
+            gameName: games.name,
           },
         }}
       >

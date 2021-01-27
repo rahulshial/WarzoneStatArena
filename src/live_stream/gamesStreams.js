@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const GameStreams = ({ match, location }) => {
+  
   const classes = useStyles();
   //  setting state for Game Streamers Data from Twitch API
   const [streamData, setStreamData] = useState([]);
@@ -48,7 +49,7 @@ const GameStreams = ({ match, location }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await api.get(
-        `https://api.twitch.tv/helix/streams?game_id=512710`
+        `https://api.twitch.tv/helix/streams?game_id=${location.state.gameID}`
       );
 
       let views = 0;
@@ -122,10 +123,10 @@ const GameStreams = ({ match, location }) => {
                 className="card-img-top"
                 to={{
                   pathname:
-                    `/streams/game/${location.state.username}/` +
+                    `/streams/game/${location.state.gameName}/` +
                     stream.user_name,
                   state: {
-                    username: stream.user_name,
+                    gamerName: stream.user_name,
                     views: stream.viewer_count,
                   },
                 }}
@@ -158,7 +159,7 @@ const GameStreams = ({ match, location }) => {
                       pathname:
                         `/streams/game/${match.params.id}/` + stream.user_name,
                       state: {
-                        username: stream.user_name,
+                        gamerName: stream.user_name,
                         views: stream.viewer_count,
                         time_started: stream.started_at,
                       },

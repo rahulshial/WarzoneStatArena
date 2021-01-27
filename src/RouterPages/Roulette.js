@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // material UI imports
 import { makeStyles } from "@material-ui/core/styles";
 // local imports and styling
-import MediaCard from "../roulette/answers";
+import RouletteCard from "../Roulette/RouletteCard";
 import useApplicationData from "../hooks/useApplicationData";
 import heartbeat from "../img/dropzone_images/heartbeat.jpg";
 import mags from "../img/dropzone_images/mags.jpg";
@@ -14,7 +14,7 @@ import {
   dropzoneImage,
   primaryGunImage,
   secondaryGunImage,
-} from "../roulette/dropzoneImage";
+} from "../Roulette/DropzoneImage";
 
 const useStyles = makeStyles({
   media: {
@@ -219,7 +219,7 @@ export default function Roulette() {
       </p>
       <div className="roulette-Cards">
         <div>
-          <MediaCard
+          <RouletteCard
             classStyle={classes.media}
             title="Primary Gun"
             selected={selected.primary}
@@ -229,7 +229,7 @@ export default function Roulette() {
             onChange={() => setPrimaryChecked(!primaryChecked)}
           />
 
-          <MediaCard
+          <RouletteCard
             classStyle={classes.media}
             title="Secondary Gun"
             selected={selected.secondary}
@@ -240,7 +240,7 @@ export default function Roulette() {
           />
         </div>
         <div>
-          <MediaCard
+          <RouletteCard
             classStyle={classes.media1}
             title="Attachments"
             selected={selected.attachment}
@@ -250,7 +250,7 @@ export default function Roulette() {
             onChange={() => setGunAttachmentsChecked(!GunAttachmentsChecked)}
           />
 
-          <MediaCard
+          <RouletteCard
             classStyle={classes.media1}
             title="Tactical & Lethal"
             selected={selected.tactical}
@@ -262,7 +262,7 @@ export default function Roulette() {
         </div>
 
         <div>
-          <MediaCard
+          <RouletteCard
             classStyle={classes.media1}
             title="Drop Zone"
             selected={selected.dropzone}
@@ -272,7 +272,7 @@ export default function Roulette() {
             onChange={() => setDropzoneChecked(!dropzoneChecked)}
           />
 
-          <MediaCard
+          <RouletteCard
             classStyle={classes.media1}
             title="Rules"
             selected={selected.rule}

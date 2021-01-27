@@ -45,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
 export default function TrackedGuns(props) {
   const classes = useStyles();
   const { favorites, gunStats, deleteStat, achievements, displayedCards, compareGamerGuns } = props;
-
   return favorites.map((fav, index) => {
     const fixed = JSON.parse(fav.tracked_item);
     const gunCat = fixed.cat;

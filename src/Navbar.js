@@ -20,7 +20,7 @@ import Button from "@material-ui/core/Button";
 
 /** Local imports */
 import "./navbar.css";
-import Games from "./RouterPages/games";
+import Games from "./RouterPages/Games";
 import twitch from "./img/twitch.png";
 
 const useStyles = makeStyles((theme) => ({

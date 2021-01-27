@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RecipeReviewCard(props) {
+export default function Blogs(props) {
   const classes = useStyles();
   
   // expanded state

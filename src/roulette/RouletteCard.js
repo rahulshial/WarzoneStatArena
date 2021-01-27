@@ -8,7 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 // local imports and styling
-import SwitchesSize from "./checkbox";
+import RouletteCheckbox from "./RouletteCheckbox";
 
 const useStyles = makeStyles({
   root: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard(props) {
+export default function RouletteCard(props) {
   const classes = useStyles();
 
   // card for roulette page
@@ -50,7 +50,7 @@ export default function MediaCard(props) {
             component="h2"
             className={classes.text}
           >
-            <SwitchesSize
+            <RouletteCheckbox
               label={props.title}
               checked={props.checked}
               onChange={props.onChange}

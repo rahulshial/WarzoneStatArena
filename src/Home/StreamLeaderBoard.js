@@ -218,7 +218,7 @@ const tableRows = () => {
 
 // main leaderboard const
 let rows = []
-export default function EnhancedTable(props) {
+export default function StreamLeaderBoard(props) {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("kills");

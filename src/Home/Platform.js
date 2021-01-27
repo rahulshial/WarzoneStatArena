@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function GroupSizesColors(props) {
+export default function PlatformButtons(props) {
   const classes = useStyles();
 
   const platfromSelector = (platform) => {

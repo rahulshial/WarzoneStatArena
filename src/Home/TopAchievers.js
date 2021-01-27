@@ -227,7 +227,7 @@ const tableRows = () => {
 }
 
 // main leaderboard const
-export default function EnhancedTable1() {
+export default function TopAchievers() {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("TopAcheivment");

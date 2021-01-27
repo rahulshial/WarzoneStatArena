@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ClassesNesting(props) {
+export default function RouletteButton(props) {
   const classes = useStyles();
 
   // mine button to fire generateRoulette()

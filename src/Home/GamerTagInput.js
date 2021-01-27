@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BasicTextFields(props) {
+export default function GamerTagInput(props) {
   const classes = useStyles();
   if (props.error) {
     return (

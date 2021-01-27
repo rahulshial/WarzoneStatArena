@@ -2,8 +2,8 @@ import React from "react";
 import ReactPlayer from "react-player";
 
 const Streams = ({ match, location }) => {
-  // showing live Twitch on our Server
 
+  // showing live Twitch on our Server
   return (
     <div
       style={{
@@ -29,11 +29,11 @@ const Streams = ({ match, location }) => {
           alignContent: "center",
         }}
       >
-        <ReactPlayer url={`http://twitch.tv/${location.state.username}`} />
+        <ReactPlayer url={`http://twitch.tv/${location.state.gamerName}`} />
       </div>
       <div>
         <ReactPlayer
-          url={`http://twitch.tv/embed/${location.state.username}/chat?ldarkpopout&parent=cq-esports.com`}
+          url={`http://twitch.tv/embed/${location.state.gamerName}/chat?ldarkpopout&parent=cq-esports.com`}
         />
       </div>
     </div>
