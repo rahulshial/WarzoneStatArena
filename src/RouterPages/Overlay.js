@@ -22,7 +22,8 @@ export default function Overlay() {
     
       .then(res => {
         if (res.data[0].weeklyData) {
-
+          // getting all data to use for the future...
+          // Right now only using gameModes
           setState(prev => ({
             ...prev,
             weeklyData: res.data[0],

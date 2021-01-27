@@ -26,12 +26,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-
-
-
-
-
-
 const newStyles = makeStyles({
   root: { /* … */ },
   label: {
@@ -129,7 +123,6 @@ export default function CheckboxCategories(props) {
           <FormControlLabel
 
             classes={{label: newClass.label}}
-
 
             control={
               <Checkbox
