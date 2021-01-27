@@ -121,9 +121,6 @@ export default function Home() {
   const [apiError, setApiError] = useState("");
   const { state, setState, setGamerData } = useApplicationData();
 
-
- 
-
   // setting gamer tag from text Field Input
   const setName = (event) => {
     setState((prev) => ({
@@ -131,10 +128,6 @@ export default function Home() {
       name: event.target.value,
     }));
   };
-  
- 
-
- 
 
   const checkTagAndPlatformEntered = (event) => {
     if (state.name && state.platform) {
@@ -195,8 +188,7 @@ export default function Home() {
           </div>
         </div>
         <div className={classes.leaderboard}>
-          <StreamLeaderBoard 
-          />
+          <StreamLeaderBoard />
           <TopAchievers />
         </div>
 

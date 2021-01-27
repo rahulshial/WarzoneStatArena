@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const GameStreams = ({ match, location }) => {
-  
   const classes = useStyles();
   //  setting state for Game Streamers Data from Twitch API
   const [streamData, setStreamData] = useState([]);
@@ -84,7 +83,7 @@ const GameStreams = ({ match, location }) => {
     if (key === "Enter") {
       console.log("do validate");
     }
-  }
+  };
   return (
     <div style={{ backgroundColor: "#191d24", color: "#dea01e" }}>
       <h1 className="text-center">Warzone Top 20 Streams</h1>
@@ -175,6 +174,6 @@ const GameStreams = ({ match, location }) => {
       </div>
     </div>
   );
-}
+};
 
 export default GameStreams;

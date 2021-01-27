@@ -1,7 +1,7 @@
 // react import
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// local imports 
+// local imports
 import api from "../live_stream/api";
 
 const Games = () => {
@@ -20,7 +20,7 @@ const Games = () => {
 
     fetchData();
   }, []);
-  
+
   return (
     <div className="row">
       <Link
@@ -37,6 +37,6 @@ const Games = () => {
       </Link>
     </div>
   );
-}
+};
 
 export default Games;

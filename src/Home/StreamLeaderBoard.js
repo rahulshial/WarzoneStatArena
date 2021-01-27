@@ -217,18 +217,17 @@ const tableRows = () => {
 };
 
 // main leaderboard const
-let rows = []
+let rows = [];
 export default function StreamLeaderBoard(props) {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("kills");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(tableRows);
-  const [showData, setShowData] = useState(false)
+  const [showData, setShowData] = useState(false);
 
   // bringing all streamers data from server
   useEffect(() => {
-    
     Promise.all([
       axios.get(`http://localhost:3030/stats/Nickmercs%2311526&battle`),
       axios.get(`http://localhost:3030/stats/FontainesRazor&psn`),
@@ -237,40 +236,65 @@ export default function StreamLeaderBoard(props) {
       axios.get(`http://localhost:3030/stats/illest954&psn`),
     ]).then((streamerData) => {
       if (rows.length === 0) {
-        rows.push(createData(
-          "Nickmercs",
-          streamerData[0].data[0].weeklyData.all.properties.kills,
-          streamerData[0].data[0].weeklyData.all.properties.deaths,
-          streamerData[0].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
-          streamerData[0].data[0].weeklyData.all.properties.matchesPlayed));
-        rows.push(createData(
-          "Fontaines",
-          streamerData[1].data[0].weeklyData.all.properties.kills,
-          streamerData[1].data[0].weeklyData.all.properties.deaths,
-          streamerData[1].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
-          streamerData[1].data[0].weeklyData.all.properties.matchesPlayed));
-        rows.push(createData(
-          "pieman",
-          streamerData[2].data[0].weeklyData.all.properties.kills,
-          streamerData[2].data[0].weeklyData.all.properties.deaths,
-          streamerData[2].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
-          streamerData[2].data[0].weeklyData.all.properties.matchesPlayed));
-        rows.push(createData(
-          "Metaphor",
-          streamerData[3].data[0].weeklyData.all.properties.kills,
-          streamerData[3].data[0].weeklyData.all.properties.deaths,
-          streamerData[3].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
-          streamerData[3].data[0].weeklyData.all.properties.matchesPlayed));
-        rows.push(createData(
-          "illest",
-          streamerData[4].data[0].weeklyData.all.properties.kills,
-          streamerData[4].data[0].weeklyData.all.properties.deaths,
-          streamerData[4].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
-          streamerData[4].data[0].weeklyData.all.properties.matchesPlayed));
+        rows.push(
+          createData(
+            "Nickmercs",
+            streamerData[0].data[0].weeklyData.all.properties.kills,
+            streamerData[0].data[0].weeklyData.all.properties.deaths,
+            streamerData[0].data[0].weeklyData.all.properties.kdRatio.toFixed(
+              2
+            ),
+            streamerData[0].data[0].weeklyData.all.properties.matchesPlayed
+          )
+        );
+        rows.push(
+          createData(
+            "Fontaines",
+            streamerData[1].data[0].weeklyData.all.properties.kills,
+            streamerData[1].data[0].weeklyData.all.properties.deaths,
+            streamerData[1].data[0].weeklyData.all.properties.kdRatio.toFixed(
+              2
+            ),
+            streamerData[1].data[0].weeklyData.all.properties.matchesPlayed
+          )
+        );
+        rows.push(
+          createData(
+            "pieman",
+            streamerData[2].data[0].weeklyData.all.properties.kills,
+            streamerData[2].data[0].weeklyData.all.properties.deaths,
+            streamerData[2].data[0].weeklyData.all.properties.kdRatio.toFixed(
+              2
+            ),
+            streamerData[2].data[0].weeklyData.all.properties.matchesPlayed
+          )
+        );
+        rows.push(
+          createData(
+            "Metaphor",
+            streamerData[3].data[0].weeklyData.all.properties.kills,
+            streamerData[3].data[0].weeklyData.all.properties.deaths,
+            streamerData[3].data[0].weeklyData.all.properties.kdRatio.toFixed(
+              2
+            ),
+            streamerData[3].data[0].weeklyData.all.properties.matchesPlayed
+          )
+        );
+        rows.push(
+          createData(
+            "illest",
+            streamerData[4].data[0].weeklyData.all.properties.kills,
+            streamerData[4].data[0].weeklyData.all.properties.deaths,
+            streamerData[4].data[0].weeklyData.all.properties.kdRatio.toFixed(
+              2
+            ),
+            streamerData[4].data[0].weeklyData.all.properties.matchesPlayed
+          )
+        );
       }
-      setShowData(true)
+      setShowData(true);
     });
-  }, [showData])
+  }, [showData]);
 
   // specifing asc or dec sorting
   const handleRequestSort = (event, property) => {

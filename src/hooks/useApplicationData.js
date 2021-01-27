@@ -28,7 +28,6 @@ export default function useApplicationData() {
     playerInfo: {},
   });
 
-
   // dropZone data database querry from StatServer
   const getDropZone = async () => {
     console.log("iniside function");
@@ -39,10 +38,10 @@ export default function useApplicationData() {
       .catch((error) => {
         console.log("Dropzone Axios Error: ", error);
       });
-  }
+  };
 
   // Primary Gun data database querry from StatServer
-  const getPrimary= async () => {
+  const getPrimary = async () => {
     console.log("iniside function");
     return await axios("http://localhost:3030/roulette/primary")
       .then((res) => {
@@ -51,10 +50,10 @@ export default function useApplicationData() {
       .catch((error) => {
         console.log("Weapon Axios Error: ", error);
       });
-  }
+  };
 
   // Gun Attachments data database querry from StatServer
-  const getPrimaryAttachments = async () =>{
+  const getPrimaryAttachments = async () => {
     return await axios("http://localhost:3030/roulette/attachments")
       .then((res) => {
         return res.data;
@@ -62,7 +61,7 @@ export default function useApplicationData() {
       .catch((error) => {
         console.log("Weapon Axios Error: ", error);
       });
-  }
+  };
 
   // Secondary Gun data database querry from StatServer
   const getSecondary = async () => {
@@ -73,7 +72,7 @@ export default function useApplicationData() {
       .catch((error) => {
         console.log("Weapon Axios Error: ", error);
       });
-  }
+  };
 
   // Rules data database querry from StatServer
   const getRules = async () => {
@@ -84,7 +83,7 @@ export default function useApplicationData() {
       .catch((error) => {
         console.log("Rules Axios Error: ", error);
       });
-  }
+  };
 
   // Tactical & Lethal Attachmnets data database querry from StatServer
   const getTactical = async () => {
@@ -95,7 +94,7 @@ export default function useApplicationData() {
       .catch((error) => {
         console.log("Rules Axios Error: ", error);
       });
-  }
+  };
 
   // setting state of Gamer Tag and Gamer Platform
   const setGamerData = () => {
@@ -108,7 +107,7 @@ export default function useApplicationData() {
     history.push("/stats");
 
     return;
-  }
+  };
 
   // fetching Data from StatServer for Gamer, based on Gamer Tag & platform Input
   useEffect(() => {

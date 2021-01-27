@@ -46,7 +46,7 @@ export default function PlatformButtons(props) {
   const platfromSelector = (platform) => {
     props.onClick(platform);
     return;
-  }
+  };
 
   return (
     <div className={classes.root}>

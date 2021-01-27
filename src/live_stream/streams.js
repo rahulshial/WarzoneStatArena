@@ -2,7 +2,6 @@ import React from "react";
 import ReactPlayer from "react-player";
 
 const Streams = ({ match, location }) => {
-
   // showing live Twitch on our Server
   return (
     <div
@@ -38,6 +37,6 @@ const Streams = ({ match, location }) => {
       </div>
     </div>
   );
-}
+};
 
 export default Streams;

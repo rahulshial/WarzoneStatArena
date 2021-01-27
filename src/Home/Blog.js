@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Blogs(props) {
   const classes = useStyles();
-  
+
   // expanded state
   const [expanded, setExpanded] = React.useState(false);
 
@@ -61,8 +61,7 @@ export default function Blogs(props) {
     return (
       <Card className={classes.root}>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-          </IconButton>
+          <IconButton aria-label="add to favorites"></IconButton>
           <IconButton aria-label="link" target="_blank" href={props.link}>
             <LinkIcon></LinkIcon>
           </IconButton>
