@@ -14,7 +14,7 @@ import {
   dropzoneImage,
   primaryGunImage,
   secondaryGunImage,
-} from "../Roulette/DropzoneImage";
+} from "../Roulette/dropzoneImage";
 
 const useStyles = makeStyles({
   media: {
