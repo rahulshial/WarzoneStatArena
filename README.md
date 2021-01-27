@@ -27,7 +27,9 @@ This project requires 5 servers which are laid out in the following manner:
      - [Install MySql - Tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04)
 
 3. Clone the Twitch oAuth server
-    - [oAuth Server -GitHub](https://github.com/mohdtorabi/Twitch_OAuth) 
+    - [oAuth Server -GitHub](https://github.com/mohdtorabi/Twitch_OAuth)
+    - copy the .env.example file to .env
+    - update .env file with your data for Twitch Account
 
 4. Clone the Database Server
     - [Stat Server - GitHub](https://github.com/Stephan-Pauld/statServer)
@@ -36,6 +38,8 @@ This project requires 5 servers which are laid out in the following manner:
 
 5. Clone the React Server
     - [FrontEnd Server - GitHub](https://github.com/Stephan-Pauld/statsite)
+    - copy the .env.example file to .env
+    - update the .env file with your data for Twitch account
 
 #
 ## To run the app follow the underlined steps:
