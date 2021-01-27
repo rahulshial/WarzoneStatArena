@@ -100,8 +100,6 @@ export default function Guns(props) {
               shown={allApiData.shown}
               gunImgs={allApiData.category}
               gunTab={allApiData.selectedGunTab}
-              weapons={allApiData.weapons}
-              gunNavSelected={allApiData.gunNavSelected}
             />
           </div>
         </>
