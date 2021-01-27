@@ -123,9 +123,9 @@ const GameStreams = ({ match, location }) => {
                 to={{
                   pathname:
                     `/streams/game/${location.state.username}/` +
-                    stream.user_name,
+                    stream.viewer_count,
                   state: {
-                    username: stream.user_name,
+                    gameID: stream.user_name,
                     views: stream.viewer_count,
                   },
                 }}

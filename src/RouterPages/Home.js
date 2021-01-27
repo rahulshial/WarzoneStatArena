@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
   blog: {
     width: "100%",
     height: "fit-content",
-    marginTop: "-5%",
+    marginTop: "-2%",
     paddingBottom: "3%",
     display: "flex",
     justifyContent: "space-around",
@@ -119,13 +119,20 @@ export default function Home() {
   const [apiError, setApiError] = useState("");
   const { state, setState, setGamerData } = useApplicationData();
 
+
+ 
+
   // setting gamer tag from text Field Input
   const setName = (event) => {
     setState((prev) => ({
       ...prev,
       name: event.target.value,
     }));
-  }
+  };
+  
+ 
+
+ 
 
   const checkTagAndPlatformEntered = (event) => {
     if (state.name && state.platform) {
@@ -156,7 +163,7 @@ export default function Home() {
       ...prev,
       platform,
     }));
-  }
+  };
 
   return (
     <div className={classes.root}>
@@ -186,7 +193,8 @@ export default function Home() {
           </div>
         </div>
         <div className={classes.leaderboard}>
-          <EnhancedTable />
+          <EnhancedTable 
+          />
           <EnhancedTable1 />
         </div>
 

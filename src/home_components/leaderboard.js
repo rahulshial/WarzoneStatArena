@@ -1,7 +1,8 @@
 // react imports
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import axios from "axios";
 // material UI imports
 import { lighten, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -19,7 +20,7 @@ import Paper from "@material-ui/core/Paper";
 // creating fake Data
 const createData = (name, kills, death, KD, Votes) => {
   return { name, kills, death, KD, Votes };
-}
+};
 
 // sorting the table
 const descendingComparator = (a, b, orderBy) => {
@@ -30,13 +31,13 @@ const descendingComparator = (a, b, orderBy) => {
     return 1;
   }
   return 0;
-}
+};
 
 const getComparator = (order, orderBy) => {
   return order === "desc"
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
-}
+};
 
 const stableSort = (array, comparator) => {
   const stabilizedThis = array.map((el, index) => [el, index]);
@@ -46,7 +47,7 @@ const stableSort = (array, comparator) => {
     return a[1] - b[1];
   });
   return stabilizedThis.map((el) => el[0]);
-}
+};
 // ---------------------------------------------------------------------
 
 // table content Input
@@ -97,7 +98,7 @@ const EnhancedTableHead = (props) => {
       </TableRow>
     </TableHead>
   );
-}
+};
 
 // controlling values input
 EnhancedTableHead.propTypes = {
@@ -213,23 +214,64 @@ const tableRows = () => {
     return 3;
   }
   return headCells.length;
-}
+};
 
 // main leaderboard const
-export default function EnhancedTable() {
+let rows = []
+export default function EnhancedTable(props) {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("kills");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(tableRows);
 
-  const rows = [
-    createData("Symfuhny", 305, 3.7, 3.9, 41),
-    createData("Aydan", 452, 25.0, 4.8, 70),
-    createData("Swagg", 640, 231, 2.77, 74),
-    createData("Nickmercs", 528, 124, 4.26, 55),
-    createData("TimTheTatMan", 104, 31, 3.35, 37),
-  ];
+  // bringing all streamers data from server
+  useEffect(() => {
+    
+    Promise.all([
+      axios.get(`http://localhost:3030/stats/Nickmercs%2311526&battle`),
+      axios.get(`http://localhost:3030/stats/FontainesRazor&psn`),
+      axios.get(`http://localhost:3030/stats/pieman%2312544&battle`),
+      axios.get(`http://localhost:3030/stats/Metaphor%2311972&battle`),
+      axios.get(`http://localhost:3030/stats/illest954&psn`),
+    ]).then((streamerData) => {
+      console.log('nickmercs data: ', streamerData[0].data[0].weeklyData.all.properties);
+    console.log('Fontaines data: ', streamerData[1].data[0].weeklyData.all.properties);
+    console.log('piemans data: ', streamerData[2].data[0].weeklyData.all.properties);
+    console.log('metaphors data: ', streamerData[3].data[0].weeklyData.all.properties);
+    console.log('illests data: ', streamerData[4].data[0].weeklyData.all.properties);
+    rows.push(createData(
+      "Nickmercs",
+      streamerData[0].data[0].weeklyData.all.properties.kills,
+      streamerData[0].data[0].weeklyData.all.properties.deaths,
+      streamerData[0].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
+      streamerData[0].data[0].weeklyData.all.properties.matchesPlayed));
+    rows.push(createData(
+      "Fontaines",
+      streamerData[1].data[0].weeklyData.all.properties.kills,
+      streamerData[1].data[0].weeklyData.all.properties.deaths,
+      streamerData[1].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
+      streamerData[1].data[0].weeklyData.all.properties.matchesPlayed));
+    rows.push(createData(
+      "pieman",
+      streamerData[2].data[0].weeklyData.all.properties.kills,
+      streamerData[2].data[0].weeklyData.all.properties.deaths,
+      streamerData[2].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
+      streamerData[2].data[0].weeklyData.all.properties.matchesPlayed));
+    rows.push(createData(
+      "Metaphor",
+      streamerData[3].data[0].weeklyData.all.properties.kills,
+      streamerData[3].data[0].weeklyData.all.properties.deaths,
+      streamerData[3].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
+      streamerData[3].data[0].weeklyData.all.properties.matchesPlayed));
+    rows.push(createData(
+      "illest",
+      streamerData[4].data[0].weeklyData.all.properties.kills,
+      streamerData[4].data[0].weeklyData.all.properties.deaths,
+      streamerData[4].data[0].weeklyData.all.properties.kdRatio.toFixed(2),
+      streamerData[4].data[0].weeklyData.all.properties.matchesPlayed));
+    });
+  }, [])
 
   // specifing asc or dec sorting
   const handleRequestSort = (event, property) => {
