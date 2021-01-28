@@ -136,8 +136,8 @@ export default function Home() {
       axios
         .get(`http://localhost:3030/stats/${gamerTag}&${gamerPlatform}`)
         .then((res) => {
-          if (res.data.error) {
-            setApiError(res.data.error);
+          if (res.data[5].error) {
+            setApiError(res.data[5].error);
             setState((prev) => ({
               ...prev,
               name: "",
